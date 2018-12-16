@@ -33,3 +33,5 @@ Open VR white papers - https://vrarproject.com/
 WebGL - https://threejs.org/examples/
 
 Audio visualization - https://codepen.io/zadvorsky/pen/vNVNYr
+
+AR in 3D space - https://jeromeetienne.github.io/AR.js/

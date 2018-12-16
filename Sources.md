@@ -1,7 +1,10 @@
 ## Places to invest
 https://www.oracle.com/uk/openworld/?gclsrc=aw.ds&gclid=Cj0KCQiAxs3gBRDGARIsAO4tqq0viBUgK3pzgy4kDqF6leFobB0TstKVn4eMZKjYQ91SzG0q3BVJzMkaAgrdEALw_wcB&source=:ad:pas:go:dg:RC_WWMK180717P00045:OOWeuropePaidSearch_Homepage&mkwid=s|pcrid|313276248420|pkw|oracle%20openworld|pmt|p|pdv|c|sckw=srch:oracle%20openworld&SC=
+
 https://www.technottingham.com/speak/
+
 http://osvr.github.io/
+
 https://www.gnome.org/foundation/membership/
 
 ## Interesting WebGL experiments

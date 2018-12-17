@@ -1,4 +1,7 @@
 # BlankCanvas Info
+
+[![Join the chat at https://gitter.im/BlankCanvas-OpenSource/Lobby](https://badges.gitter.im/BlankCanvas-OpenSource/Lobby.svg)](https://gitter.im/BlankCanvas-OpenSource/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 Swiss knife application for developing in many different data types and environments with data connectivity supporting freedom computing for the application type. Please read specification under Docs/ for full information.
 
 This software is hearby by under the GNU GPL freedom of software movement, no proprietary software redistrubution is allowable FSF will defend this invention against such injustice.

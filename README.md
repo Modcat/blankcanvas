@@ -21,8 +21,5 @@ yarn dev
  # It should compile and run if any trouble please contact me on Facebook...
  [Facebook](https://www.facebook.com/lawrence.turton)
 
-#Gitter community:
-[BlackCanvas Lobby](https://gitter.im/BlankCanvas-OpenSource/Lobby)
-
 # Author
 * **Lawrence Turton** - *Initial work* - [Modcat](https://github.com/Modcat)

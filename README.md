@@ -21,7 +21,7 @@ cd <into the a directory>
 yarn install
 yarn dev
 
- # It should compile and run if any trouble please contact me on Facebook...
+ ## It should compile and run if any trouble please contact me on Facebook...
  [Facebook](https://www.facebook.com/lawrence.turton)
 
 # Author

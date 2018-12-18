@@ -1,0 +1,260 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1404\cocoasubrtf470
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\fnil\fcharset0 Menlo-Regular;\f2\fnil\fcharset0 Menlo-Bold;
+\f3\fnil\fcharset0 Menlo-Italic;}
+{\colortbl;\red255\green255\blue255;\red254\green73\blue64;\red85\green142\blue40;\red46\green111\blue253;
+\red133\green0\blue175;\red26\green26\blue26;\red43\green71\blue20;\red103\green103\blue103;\red134\green19\blue62;
+\red217\green11\blue0;\red52\green52\blue52;\red128\green128\blue128;\red77\green77\blue77;\red26\green26\blue26;
+}
+\paperw11900\paperh16840\margl1440\margr1440\vieww25100\viewh11660\viewkind0
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\qc\partightenfactor0
+
+\f0\fs36 \cf0 \ul \ulc0 Plot Data Structure
+\fs24 \ulnone \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\f1 \cf2 \
+Red - \cf0 Possibly don\'92t implement.\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf3 Green -\cf0  Don\'92t implement yet.\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf4 \'95 -\cf0  Property created from the sortable API all other properties get constructed from the file API\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf5 Red -\cf2  \cf0 conditional property based on the type of plot.\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf0 \
+\
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf0 \'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97/>\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf0 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\qc\partightenfactor0
+
+\f2\b\fs28 \cf6 Plot data storage\
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\f1\b0\fs24 \cf0 \'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97/>
+\f2\b\fs28 \cf6 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\qc\partightenfactor0
+\cf6 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\f1\b0\fs24 \cf0 The plot data (
+\f2\b appData:\{\} object
+\f1\b0 ) is in fact stored on the relevant 
+\f2\b DOMElement
+\f1\b0  and each 
+\f2\b DOMElement
+\f1\b0  is linked via the canvas store\'85\
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\f2\b \cf0 #CANVAS0 => \{
+\f1\b0 \
+			
+\f2\b plots
+\f1\b0  => 
+\f2\b\fs28 \cf7 [
+\f1\b0\fs24 \cf0  \
+					  \cf8  Standard plot0\cf0 \
+					   0: 
+\f2\b \{ \cf9 DOMElement
+\f1\b0 \cf0  =>\
+										  
+\f2\b appData\cf10 \{
+\f1\b0  \'85 
+\f2\b \}
+\f1\b0 \cf0 \
+					      
+\f2\b \}\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\f1\b0 \cf0 \
+					   \cf8 Group plot1\cf0 \
+					   1: 
+\f2\b \{ \cf9 DOMElement
+\f1\b0 \cf0  =>\
+										  
+\f2\b appData => \cf10 \{
+\f1\b0 \cf0  \
+											           
+\f2\b childNodes
+\f1\b0 : [\
+												           0: 
+\f2\b \cf9 DOMElement\cf0  => appData\cf10 \{
+\f1\b0  \'85 
+\f2\b \}\cf0 \
+												           
+\f1\b0 1: 
+\f2\b \cf9 DOMElement\cf0  => appData\cf10 \{
+\f1\b0  \'85 
+\f2\b \}
+\f1\b0 \cf0 \
+								                       ] \
+												     
+\f2\b \cf10 \}
+\f1\b0 \cf0 \
+					      
+\f2\b \}
+\f1\b0 \
+					 
+\f2\b\fs28 \cf7 ]
+\f1\b0\fs24 \cf0 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\f2\b \cf0 \}
+\f1\b0 \
+\
+\
+When we save the file we use a 
+\f2\b recursive function
+\f1\b0  to go through all elements in the DOM and save the appData object and if a 
+\f2\b childNodes key
+\f1\b0  is found we use that as well\'85\
+\
+\
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf0 \'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97/>\
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\qc\partightenfactor0
+
+\f2\b\fs28 \cf6 Standard plot
+\f1\b0  
+\f2\b structure\
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\f1\b0\fs24 \cf0 \'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97/>\
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\f2\b \cf0 Visual node
+\f1\b0  ( such as bitmap, component or text ) structure 
+\f2\b - will contain embedded nodes\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\f1\b0 \cf0 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\f2\b \cf0 PLOT 
+\f1\b0 = 
+\f2\b DOMElement
+\f3\i\b0 \cf11  
+\f2\i0\b \cf0 \{
+\f1\b0 \
+\
+	
+\f2\b appData
+\f1\b0 : \{\
+		\
+		dataType: bitmap 
+\f2\b ||
+\f1\b0  3D 
+\f2\b ||
+\f1\b0  component 
+\f2\b ||
+\f1\b0  text, \cf12 \'97 Depending on the value this\'92ll tell our app what the visual data is currently selected\cf0 \
+		\
+		memoryData: \{ x:0 , y:0 , w:100 , h:200 \}, \cf8 \'97 This is original image data from PNG\cf0 \
+		visualData: \{ x:50 , y:20 , w:300 , h:400 \}, \cf8 \'97 This is the physical location & size on the canvas which may be different to the memory data\cf0 \
+		transforms: \{ rx, ry, rz, sx, sy \} \cf8 \'97 This allows for none destructive transforms\cf0 \
+		\cf2 history:[]\cf0   \cf8 \'97 Plot history not be confused with global canvas history\cf0 \
+		\
+		filters:[], \cf8 \'97 This contains all filters applied to the visual data\cf0 \
+		\cf3 sharedFilters\cf0 :[], \cf8 \'97 Shared filters\cf0 \
+		\
+		\cf8 // The following properties will be applied based on whether this plot is a 3D, component or text plot.\cf0 \
+\
+		\cf5 webGL\cf0 : \{ webGL context, childNodes:[] \}, \cf8 \'97 If it\'92s a 
+\f2\b 3D
+\f1\b0  plot we\'92ll have a webGL context for editing and accessing the childNodes (3D Objects) in the 3D scene\cf0 \
+		\
+		\cf5 component\cf0 : DOMElement.childNodes[], \cf8 - If its a 
+\f2\b component
+\f1\b0  ( childNodes is an array of HTML elements the component contains )\cf0 \
+		\
+		\cf5 text\cf0 : \{ \cf8 - If its a 
+\f2\b text
+\f1\b0  plot\cf0 \
+			text: DOMElement.innerHTML,\
+			font:\'92\'92,\
+			font size: \'91\'92,\
+			columns:\'92\'92,\
+			columnSpacing:\'92\'92,\
+			\'85 
+\f2\b \cf13 \'97 TODO define entire key and value pairs when I\'92ve create the typography panel\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\f1\b0 \cf0 		\}\
+\
+		\cf8 // The following properties will be applied by the sortable API\
+\
+			- Sortable API produces these properties based on the 
+\f2\b parallel data principle
+\f1\b0  to keep everything in sync\cf0 \
+		\
+		\cf4 \'95 \cf0 elements : [ DOMElement, DOMElement ], \cf8 \'97 These are the node DOM elements\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf4 		\'95\cf8  \cf0 type : node, \cf12 \'97 Defines ^element type in the stack - should be node here\cf0 \
+		\cf4 \'95 \cf0 masks:[ DOMElement, DOMElement ], \cf8 - Link to the masks either bitmap or vector it doesn\'92t matter ( gets sorted by the sortable API )\
+		\cf4 \'95 \cf0 state: \'93 locked invisible \'85 \'94, \cf8 \'97 This string represents the state of the node effecting the visual data\cf13 \
+		\cf4 \'95 \cf3 clippedBy\cf0 : [ DOMElement ] \cf8 - Point to the clipping masks in an array\cf0 \
+\
+	\}\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\f2\b \cf0 \}
+\f1\b0 \
+\
+\
+\
+\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97/>\
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\qc\partightenfactor0
+
+\f2\b\fs28 \cf14 Group plot
+\f1\b0  
+\f2\b structure - contain\'92s embedded plots\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\f1\b0\fs24 \cf0 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf0 \'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97/>\
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\f2\b \cf0 PLOT
+\f1\b0  = 
+\f2\b DOMElement
+\f3\i\b0 \cf11  
+\f2\i0\b \cf0 \{
+\f1\b0 \
+	\
+	
+\f2\b appData
+\f1\b0 : \{\
+\
+		elements : [ DOMElement, DOMElement ], \cf12 \'97 These DOMElements are the nodes in the relevant stacks\
+		\cf0 type : group,\
+		\cf3 masks\cf0 : [ [mask0 , mask0] , [mask1 , mask1] ], \cf12 \'97 Each child array represents nodes [in each stack] that point to the related DOMElements\cf0 \
+		\cf3 clippedBy\cf0 : DOMElement,\
+\
+		
+\f2\b \cf10 childNodes
+\f1\b0 \cf0 : [\
+			0: 
+\f2\b DOMElement,\
+			
+\f1\b0 1: 
+\f2\b DOMElement, \'85
+\f1\b0 \
+		]\
+	\}\
+
+\f2\b \}
+\f1\b0 \
+\
+\
+}

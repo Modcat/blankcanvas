@@ -1,0 +1,180 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1404\cocoasubrtf470
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\fnil\fcharset0 FontAwesome;}
+{\colortbl;\red255\green255\blue255;\red38\green38\blue38;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww18140\viewh13240\viewkind0
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\qc\partightenfactor0
+
+\f0\fs36 \cf0 Coding - Conceptual aside
+\fs24 \
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf0 This document contains information about things I have learnt from this project and maybe subject to change during the programming of this project.\
+\
+\
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\b\fs28 \cf0 BEST PRACTICE #1 - Deleting elements in array
+\b0\fs24 \
+\
+1. Whenever removing elements out of an array you must go backwards. For example an array of DOMElements that have a reference in memory and we remove each DOMElement completely meaning there will be no reference. This prevents our code from trying to access an array that has shifting elements.\
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\b \cf0 WRONG
+\b0 : ( Run example and it will cause errors )\
+\
+	
+\b var arrayDOM = [ DOMElement, DOMElement, DOMElement, DOMElement ]
+\b0 \
+\
+	for( var index in arrayDOM )\{ arrayDOM[ index ].remove( ); \}\
+\
+	
+\b OR
+\b0 \
+	\
+	for( var index in arrayDOM )\{ arrayDOM[ index ].splice( index, 1 ); \}\
+\
+RIGHT:\
+\
+	for( var i = arrayDOM.length - 1; i >= 0; i- - ) \{ arrayDOM[ index ].remove( ); \} \
+\
+	for( var i = arrayDOM.length - 1; i >= 0; i- - ) \{  arrayDOM[ index ].splice( index, 1 ); \} \
+\
+It doesn\'92t matter if splicing or destroying DOMElements in the array you must de-increment over the array when doing this otherwise there will be errors. This is a very common mistake I\'92ve made.\
+\
+\
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\b\fs28 \cf0 BEST PRACTICE #2 - Parallel data
+\b0\fs24 \
+\
+This issue caused an intermittent fault and cause a loss of time. The sortable API adds the node to the relevant position in the DOM and memory. The stack was working perfectly however the map array was not, it constantly kept erring and inserting a node over a group node and messing with the scopes and causing serous errors. Worst of all it was intermittent sometimes it worked for a long time and other times near enough straight away.\
+\
+Steps to solve the problem\'85\
+\
+1.Firstly this function adds the node within the stack and the mapped array to find the issue I commented out the mapped array process and retested. There was no error so I know it was that code causing the problem.\
+\
+2. Then I had to figure out why sometimes a standard node would replace a group node. This was causing the error when adding a node to that group because the groups scope has been destroyed in memory. This error only happened at different points which was puzzling but the error (anomaly in the data) was consistent.\
+\
+3. To solve the problem I used the example above (adding to the stack which worked flawlessly) and paralleled the same process and thus solved the issue. This would have saved a lot of time by doing this. Don\'92t do processes separately even if it\'92s less code. It\'92s more important have legible code than to have less readable code.\
+\
+
+\b\fs28 	- Proof of concept\
+\
+	
+\b0\fs24 This diagram shows two stacks with two different node types for one image on the canvas.\
+	Only one instance of our image exists but multiple nodes, we need to make sure our data is consistent.\
+	Also there\'92s some sub principles here to be learned\'85\
+\
+		- 
+\b Neutral state
+\b0 \
+		  There shouldn\'92t be any need to define node\'92s default state. ( true 
+\b void
+\b0  )\
+		  Only when the state has been changed from the default. ( false 
+\b shown
+\b0  )\
+		  E.g visible 
+\f1\fs28 \cf2 \expnd0\expndtw0\kerning0
+\uc0\u61550  
+\f0\fs24 \cf0 \kerning1\expnd0\expndtw0  
+\b state = \'93 \'94 || OR ||
+\b0  invisible 
+\f1\fs28 \cf2 \expnd0\expndtw0\kerning0
+\uc0\u61552  
+\f0\fs24 \cf0 \kerning1\expnd0\expndtw0  
+\b state = \'93hidden\'94
+\b0 \
+\
+		- 
+\b Datastore remove duplicates
+\b0 \
+		  Instead of maintaining multiple pieces of data only store it once (illustrated in blue).\
+		  This is inseparable with the parallel data principle when storing data for consistency.\
+	{{\NeXTGraphic Principle - parrellel data.png \width14000 \height18040
+}¬}\
+	\
+\
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\b\fs28 \cf0 BEST PRACTICE #3 - Visual data abstraction
+\b0\fs24 \
+\
+When data is stored in a database or file store no visual data can accompany it other than the pixel data itself. This may seem obvious for lets say an image on the canvas but there could be something more. For example nodes representing an image on a canvas; how is different node information stored? The best thing todo is remove all design dependancies and go with a simplistic state model and other arbitrary data, also implement a flexible metadata object.\
+\
+\
+\
+
+\b\fs28 BEST PRACTICE #4 - SOLID principle delegation\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\b0 \cf0 \
+Problem:\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\fs24 \cf0 I wrote a function that adds new nodes and also maps it to an array. This was also the problem in best practice 
+\b #2
+\b0  and caused an intermittent problem that had taken days to find. The problem is that each piece of code should be executed lexically meaning \'91read as is\'92 in place. This function was doing far too much in terms of what it was doing.\
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\fs28 \cf0 Solution:
+\fs24 \
+Instead I needed to create an object with keys telling me what each function did, for example:\
+\
+\{ \
+	node: function( \'85 )\{ \'85 \} \
+	groupNode: function( \'85 )\{ \'85 \} \
+	embedNode: function( \'85 )\{ \'85 \} \
+\}\
+\
+Each function handles each type of node and does the job it needed to do and can be read as is on its own. The job of the add function should have followed the SOLID principle more clearly AKA 
+\b only delegating the data to the right function; my add function was there just to prepare data and delegate it to the relevant function. For example:
+\b0 \
+\
+function add( \'85 )\{\
+	\
+	var data = \'91prepare the data\'92;\
+\
+	if( condition )\{\
+\
+		Object.
+\b groupNode( data );\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\b0 \cf0 \
+	\} else if( condition )\{\
+\
+		Object.
+\b node( data );\
+
+\b0 \
+	\} else \{\
+		\
+		Object.
+\b embedNode( data );
+\b0 \
+	\}\
+\
+\}
+\b  
+\b0 \
+\
+That\'92s it, but don\'92t break things down too much try to only break a function down once rather than again and again. Here I have the main function and then delegate the rest of the processing to the other functions.\
+\
+\
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\b\fs28 \cf0 BEST PRACTICE #1 - Performance with garbage collection\
+\
+
+\b0 	1. Never store binary data in raw text format; this\'92ll produce a very hefty file size. Especially DO NOT store all binary data inside of an object 	or string anywhere within the application memory. Keep the visual data in the DOM at all times as this\'92ll improve performance. Even canvas 	data is far smaller in memory and even offers access to the binary data, making it more suitable for our app.\
+	\
+	2. For analysis of binary data allocate memory using a buffer and array view wherever possible as we aren\'92t throwing things for the GC to 	    collect.\
+}

@@ -1,0 +1,790 @@
+@font-face {
+  font-family: 'icons';
+  src: url('font/icons.woff2');
+}
+
+// Old style
+a { text-decoration: none; }
+*:focus, *:hover, *:active { cursor:default; outline:none; }
+h1 {
+  display: inline-flex;
+  align-self: center;
+  font-family: times-new-roman;
+  -webkit-font-smoothing: antialiased;
+  font-weight: 100;
+  font-size: 21px;
+  padding-bottom: 20px;
+  text-transform: capitalize;
+  margin: 50px 0;
+  text-align: center;
+}
+
+::selection {
+  background: #333;
+  color: #fff;
+}
+
+$gray: #444;
+$blue: #4ca1f7;
+
+body.radialEvent {
+  -webkit-user-select: none;
+  pointer-events:none;
+}
+
+.fa {
+  font-family:'icons' !important;
+}
+
+.block select, .dark.block select, select.block {
+  color: #fff;
+  line-height: 33px;
+  border:none;
+  background: url('data:image/svg+xml;utf8,<svg  xmlns="http://www.w3.org/2000/svg" width="10" height="15"><path d="M5 0 L0 6 L10 6 Z" fill="#fff" /><path d="M5 15 L0 9 L10 9 Z" fill="#fff" /></svg>') right 10px center no-repeat #777;
+}
+
+.field_ui {
+  perspective: 1000px;
+  position:relative;
+  display:inline-flex;
+  padding: 5px 0;
+  line-height:15px;
+  border-bottom: 1px solid #aaa;
+  font-size: 14px;
+}
+
+.block .field_ui, .field_ui.block {
+  padding: 5px;
+  border-radius: 100px;
+  line-height:15px;
+  border: none;
+  background: rgba(0,0,0,0.1);
+}
+
+.block .field_ui:before, .field_ui.block:before {
+  display: none;
+}
+
+.block .field_ui input,.block .field_ui select,
+.field_ui.block input, .field_ui.block select {
+  opacity: .6;
+  color: #000;
+}
+
+.block .field_ui button, .field_ui.block button {
+  color: #777;
+}
+
+.block .field_ui i, .field_ui.block i {
+  background: #fff;
+  box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.3);
+  border-radius: 2px;
+}
+
+.block .field_ui.disabled i , .field_ui.block.disabled i {
+  box-shadow:none;
+  background: transparent;
+}
+
+.block .field_ui i:after, .field_ui.block i:after {
+  border-radius: 2px;
+  background: $gray;
+}
+
+.field_ui:before { 
+    content: "";
+    position:absolute;
+    left:0;
+    bottom: -1px;
+    width: 0px;
+    height: 2px;
+    background:$gray;
+    transition: width .2s cubic-bezier(.07,.89,.17,.98);
+}
+
+.field_ui:after {
+  content: "";
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  left: 15px;
+  top: -5px;
+  border-radius: 5px;
+  transition: all .3s;
+}
+
+.field_ui.locked:after {
+  background:#f82856;
+  top: -5px;
+  left: -5px;
+  box-shadow: 2px 2px 0px rgba(0,0,0,.3);
+}
+
+.field_ui.focused:before {
+  width: 100%;
+}
+
+.field_ui > * {
+  margin-right: 5px !important;
+}
+
+.field_ui > *:last-child {
+  margin-right: 0 !important;
+}
+
+.field_ui i {
+  font-family: 'icons';
+  background: #f0f0f0;
+  border-radius: 3px;
+}
+
+.field_ui i, .field_ui button,
+.block div.field_ui button, div.field_ui.block button {
+  perspective: 250px;
+  position: relative;
+  display:inline-block;
+  padding: 2px 5px 0 5px;
+  float:left;
+  min-width: 25px;
+  box-sizing:border-box;
+  line-height: 23px;
+  font-size:inherit;
+  text-align:center;
+  font-style: normal;
+  color: #777;
+  transition: color .2s;
+}
+
+div.field_ui button {
+  color: #222;
+  padding: 0 5px;
+  border-radius: 2px;
+  box-sizing: border-box;
+  border: 1px solid transparent;
+  background: transparent;
+  transition: border .2s; 
+}
+
+.field_ui button:hover {
+  border: 1px solid #ccc;
+}
+
+.field_ui button:active {
+  border:1px solid transparent;
+  background: $blue;
+  color: #fff !important;
+  transition: none;
+}
+
+.field_ui.focused i:before {
+  color: #eee;
+}
+
+.field_ui i:before {
+  position: relative;
+  z-index: 2;
+}
+
+.field_ui i:after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 2px;
+  z-index: 1;
+  top: 10px;
+  opacity: 0;
+  transform-origin: center center;
+  transform: rotateX(-70deg);
+  background: $gray;
+  transition: all .3s;
+}
+
+.field_ui.focused i:after {
+  top: 0;
+  opacity: 1;
+  transform: rotateZ(0deg);
+}
+
+.field_ui input[type="text"]{
+  flex-grow: 1;
+  padding:0;
+  margin:0;
+  min-width: 0px;
+  line-height: inherit;
+  box-sizing: border-box;
+  font-size: 14px;
+  border: none;
+  box-shadow:none;
+  background: transparent;
+}
+
+.field_ui input[type="text"]:focus {
+  outline:none;
+}
+
+.field_ui select {
+  -webkit-appearance: none;
+  padding: 0;
+  font-size: inherit;
+  border: none;
+  border-radius: 0;
+  background: url('data:image/svg+xml;utf8,<svg xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" version="1.1" id="svg3373" viewBox="0 0 10 7.0000001" height="7" width="10"><defs id="defs3375" /><metadata id="metadata3378"> <rdf:RDF> <cc:Work rdf:about=""> <dc:format>image/svg+xml</dc:format><dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage" /><dc:title></dc:title></cc:Work></rdf:RDF></metadata><g transform="translate(0,-1045.3622)" id="layer1"> <path id="path3381" d="m -0.04464286,1052.4069 10.93749986,-7.634 0.178567,9.1964 z" style="fill:#000000;fill-rule:evenodd;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" /></g></svg>') no-repeat right bottom transparent;
+  background-size: auto 4px;
+  border-left: 1px solid rgba(0,0,0,0.33);
+  line-height: 18px;
+  height: 19px;
+  margin-right: 3px !important;
+  padding-left: 5px;
+  margin-top: 2px;
+  display: flex;
+  align-items: flex-start;
+}
+
+.field_ui.disabled {
+  pointer-events:none;
+  border-bottom: 1px solid #ddd;
+}
+
+.field_ui.disabled * {
+  opacity: .3 !important;
+}
+
+.field_ui.disabled input[type="text"]{
+  color: transparent;
+}
+
+button {
+  min-width: 30px;
+  padding: 5px 15px;
+  line-height: 27px;
+  border: none;
+  border-radius: 2px;
+  font-size: 13px;
+  color: $gray;
+  background: transparent;
+  box-sizing:border-box;
+  border: 1px solid $gray;
+  transition: background .2s;
+}
+
+button i {
+  font-family: 'icons';
+  font-style: normal;
+  padding-right: 10px;
+}
+
+button i:last-child {
+  line-height: 27px;
+  pointer-events:none;
+  padding-right: 0;
+}
+
+button:hover {
+  background: rgba(0,0,0,.1);
+}
+
+button:active {
+ background: rgba(0,0,0,.2);
+}
+
+.block button, button.block {
+  border: none;
+  color: #fff;
+  background: #777;
+}
+
+button.block:active, button.block.active,
+.block button:active, .block button.active {
+ background: $gray;
+}
+
+*[disabled] {
+  opacity: .3;
+  pointer-events:none;
+}
+
+.toggle * {
+  pointer-events:none;
+}
+
+.toggle.on {
+  background: $gray;
+  color: #fff;
+}
+
+.groupVals, .groupValsRadial {
+  display: inline-flex;
+}
+
+.groupValsRadial .field_ui {
+    line-height: 23px;
+    height: 30px;
+}
+
+.groupVals .field_ui, .groupValsRadial .field_ui {
+  width:30px;
+  margin-left:10px;
+}
+
+.groupVals .field_ui input, .groupValsRadial .field_ui input {
+  text-align: center;
+}
+
+.groupValsRadial .field_ui:after {
+  width: 5px;
+  height: 5px;
+  left: 30px;
+  top: 5px;
+  box-sizing:border-box;
+  border: 1px solid $gray;
+}
+
+input[type=range]{
+  
+  -webkit-appearance: none;
+  flex-grow: 1;
+  background: transparent;
+
+  &::-webkit-slider-runnable-track {
+    border: 2px solid $gray;
+    border-radius: 50px;
+    height: 16px;
+    padding: 0 2px;
+  }
+
+  &::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 8px;
+    height: 8px;
+    margin-top: 2px;
+    box-sizing: border-box;
+    background: $gray;
+    border-radius: 50px;
+    
+  }
+}
+
+input[type=range].block, form.block input[type=range],
+.block input[type=range], .block form input[type=range] {
+
+  &::-webkit-slider-runnable-track {
+    border: 2px solid rgba(0,0,0,0);
+    background: $gray;
+  }
+
+  &::-webkit-slider-thumb {
+    background: white;
+    box-shadow: -1px 1px 1px rgba(0,0,0,.3);
+  }
+
+}
+
+input[type=radio] {
+  -webkit-appearance: none;
+  position: relative;
+  margin: 0;
+  padding: 0;
+  width: 15px;
+  height: 15px;
+  box-sizing: border-box;
+  border-radius: 50px;
+  background: #ddd;
+}
+
+input[type=radio][disabled]{
+  border: 1px solid #aaa;
+  background: transparent;
+} 
+
+input[type=radio]:before {
+  content: "";
+  display: inline-block;
+  float: left;
+  width: 15px;
+  height: 15px;
+  transform: scale(0);
+  border-radius: 50px;
+  transform-origin: center center;
+  transition: all .2s ease-in;
+}
+
+input[type=radio]:checked:before{
+  background: $blue;
+  transform: scale(1);
+}
+
+input[type=radio]:after {
+  content: "";
+  position: absolute;
+  display: inline-block;
+  left: 4px;
+  top: 4px;
+  width: 7px;
+  height: 7px;
+  background: #fff;
+  border-radius: 50px;
+  transform-origin: center center;
+  transform: scale(0);
+  transition: all .3s .2s ease-out;
+}
+
+
+input[type=radio]:checked:after {
+  transform-origin: center center;
+  transform: scale(1);
+}
+
+input[type=checkbox]{
+  -webkit-appearance: none;
+  position: relative;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+  width: 15px;
+  height: 15px;
+  background:#ddd;
+  border-radius: 3px;
+}
+
+input[type=checkbox][disabled] {
+  border: 1px solid #aaa;
+  background: transparent;
+}
+
+input[type=checkbox]:before {
+  content: "";
+  display:inline-block;
+  width: inherit;
+  height: inherit;
+  background: $blue;
+  transform-origin: center center;
+  transform: scale(0);
+  border-radius: 3px;
+  transition: all .2s ease-in;
+}
+
+input[type=checkbox]:checked:before {
+  transform: scale(1);
+}
+
+input[type=checkbox]:after {
+  content: url('check.svg');
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 15px;
+  height: 15px;
+  opacity: 0;
+  transition: all .2s .2s ease-in;
+}
+
+input[type=checkbox]:checked:after {
+  opacity: 1;
+}
+
+input[type=radio][disabled] + label,
+input[type=checkbox][disabled] + label{
+  opacity: .2;
+}
+
+.buttonGroup button {
+  position: relative;
+  padding: 5px 0;
+  margin-right: 10px;
+  line-height: 23px;
+  max-height: 33px;
+  color: $gray;
+  background: transparent;
+  border: none;
+  border-radius:0;
+  transition: all .2s ease-out;
+}
+
+.buttonGroup button.active {
+  background: transparent;
+  pointer-events: all;
+}
+
+.buttonGroup.toggle button.active {
+  pointer-events:none;
+}
+
+.buttonGroup {
+  display: inline-flex;
+  border-color: $gray;
+  max-height: 33px;
+  box-sizing:border-box;
+}
+
+.buttonGroup button {
+  border-color: inherit;  
+}
+
+.buttonGroup button > *, .buttonGroup button:before {
+  position: relative;
+  z-index: 2;
+  pointer-events:none;
+}
+
+.buttonGroup button:after {
+  content: "";
+  position: absolute;
+  z-index: 1;
+  right: 0;
+  bottom: 0;
+  width: 0px;
+  border-bottom: 2px solid;
+  border-color: inherit;
+  transition: all .2s cubic-bezier(.02,.89,.01,.98);
+}
+
+.buttonGroup button.active:after {
+  left: 0;
+  width: 100%;
+  transition: all .2s .1s cubic-bezier(.02,.89,.01,.98);
+}
+
+.buttonGroup.vertical {
+  display: inline-flex;
+  flex-direction: column;
+  max-height: inherit;
+}
+
+.buttonGroup.vertical button {
+  width: 100%;
+  padding: 7px 15px;
+  margin: 0;
+  text-align:left;
+  clear:left;
+}
+
+.buttonGroup.vertical button.active {
+  background: rgba(0,0,0,.05);
+}
+
+.buttonGroup.vertical button:after {
+  border-bottom: none;
+  border-right: 2px solid;
+  border-color: inherit;
+  left: inherit;
+  right: 0;
+  height: 0;
+}
+
+.buttonGroup.vertical button.active:after {
+  left: inherit;
+  right: 0;
+  height: 100%;
+}
+
+.block .buttonGroup, .buttonGroup.block {
+  border: 1px solid $gray;
+  border-radius: 3px;
+}
+
+.block .buttonGroup button, .buttonGroup.block button {
+  border-right: none;
+  border-color:  inherit;
+  padding: 5px 10px;
+  margin: 0;
+}
+
+.block .buttonGroup.vertical button,
+.buttonGroup.block.vertical button {
+  border-right: none;
+}
+
+.block .buttonGroup button.active,
+.buttonGroup.block button.active {
+  color: #fff;
+}
+
+.block .buttonGroup button:after,
+.buttonGroup.block button:after {
+  width: 100%;
+  height: 0px;
+  border:none;
+}
+
+.block .buttonGroup button.active:after,
+.buttonGroup.block button.active:after {
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: $gray;
+  border: none;
+}
+
+.block .buttonGroup button:last-child,
+.buttonGroup.block button:last-child {
+  border-right: none;
+}
+
+section[data-opener].active {
+  position: relative;
+  height: auto;
+  opacity: 1;
+  transform: rotateX(0deg) scale(1);
+  transition: all .2s .1s;
+}
+
+section[data-opener] {
+  height: 0px;
+  overflow: hidden;
+  opacity: 0;
+  transform: rotateX(40deg) scale(.9);
+  transition: all .3s;
+}
+
+.block form > .field_ui {
+  border: none;
+  border-bottom: 1px solid #aaa;
+  background: transparent;
+  border-radius:0px;
+}
+
+.block form > .field_ui input {
+  opacity:1;
+}
+
+// DARK DESIGN
+
+.dark {
+  color: #fff;
+}
+
+.dark hr {
+  border-color:#202020;
+}
+
+.dark .field_ui {
+  border-bottom: 1px solid #666;
+}
+
+.dark .field_ui button {
+  color: #666;
+}
+
+.dark .field_ui i:after {
+  background: #dedede;
+}
+
+.dark .field_ui.focused i:before{
+  color: $gray;
+}
+
+.dark .field_ui i {
+  background: $gray;
+  color: #fff;
+}
+
+.dark .groupValsRadial .field_ui:after {
+  border-color: #dedede;
+}
+
+.dark .field_ui input, .dark .field_ui select{
+  color: #fff;
+}
+
+.dark .field_ui:before {
+  background: #dedede;
+}
+
+.dark select {
+  color: #fff;
+  background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="10" height="15"><path d="M5 0 L0 6 L10 6 Z" fill="#dedede" /><path d="M5 15 L0 9 L10 9 Z" fill="#dedede" /></svg>') right 10px center no-repeat transparent;
+}
+
+.dark .field_ui select {
+  background: url('data:image/svg+xml;utf8,<svg xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" version="1.1" id="svg3373" viewBox="0 0 10 7.0000001" height="7" width="10"><defs id="defs3375" /><metadata id="metadata3378"> <rdf:RDF> <cc:Work rdf:about=""> <dc:format>image/svg+xml</dc:format><dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage" /><dc:title></dc:title></cc:Work></rdf:RDF></metadata><g transform="translate(0,-1045.3622)" id="layer1"> <path id="path3381" d="m -0.04464286,1052.4069 10.93749986,-7.634 0.178567,9.1964 z" style="fill:#DEDEDE;fill-rule:evenodd;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" /></g></svg>') no-repeat right bottom transparent;
+}
+
+.dark.block .field_ui,
+.dark .field_ui.block {
+  border-color: #333;
+  background: #222;
+}
+
+.dark.block form > .field_ui {
+  background: transparent;
+  border: none;
+  border-radius:0px;
+  border-bottom: 1px solid #666;
+}
+
+.dark input[type=checkbox], .dark input[type=radio]{
+  background: $gray;
+}
+
+.dark button {
+
+  color: #dedede;
+
+  &:hover {
+    background: rgba(255,255,255,.05);
+  }
+
+  &:active, &.on {
+    background: rgba(255,255,255,.1);
+  }
+ 
+  &.block {
+    background: $gray;
+    box-sizing: border-box;
+  }
+
+  &.block:hover {
+    background: #333;
+  }
+
+  &.block:active, &.block.on {
+    background: #222;
+    box-shadow: inset 0 0 0 1px rgba(255,255,255,.1);
+  }
+
+}
+
+.dark .buttonGroup {
+
+  &.block {
+    border-color: $gray;
+  }
+
+  & button:hover,& button:active {
+    background: transparent;
+  }
+
+  &.block button.active:after {
+    background: $gray;
+  }
+}
+
+.dark input[type=range]{
+
+  &::-webkit-slider-runnable-track {
+    border: 2px solid #dedede;
+  }
+
+  &::-webkit-slider-thumb {
+    background: #dedede;    
+  }
+
+}
+
+.dark.block input[type=range], .dark.block form input[type=range],
+.dark input[type=range].block, .dark form.block input[type=range] {
+
+  &::-webkit-slider-runnable-track {
+    border: 2px solid #dedede;
+    background: #dedede;
+  }
+
+  &::-webkit-slider-thumb {
+    background: #333;
+    
+  }
+  
+}

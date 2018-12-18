@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>blankcanvas</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
+    <% if (htmlWebpackPlugin.options.nodeModules) { %>
+      <!-- Add `node_modules/` to global paths so `require` works properly in development -->
+      <script>
+        require('module').globalPaths.push('<%= htmlWebpackPlugin.options.nodeModules.replace(/\\/g, '\\\\') %>')
+      </script>
+    <% } %>
+  </head>
+  <body>
+    <div class="draggable"></div>
+    <div id="app"></div>
+    <!-- Set `__static` path to static files in production -->
+    <% if (!process.browser) { %>
+      <script>
+        if (process.env.NODE_ENV !== 'development') window.__static = require('path').join(__dirname, '/static').replace(/\\/g, '\\\\')
+      </script>
+    <% } %>
+
+    <!-- webpack builds are automatically injected -->
+    <script src="/static/three.min.js"></script>
+    <script src="/static/ui.js"></script>
+    <script src="/static/js/loaders/OBJLoader.js"></script>
+
+		<script src="/static/js/shaders/ConvolutionShader.js"></script>
+		<script src="/static/js/shaders/CopyShader.js"></script>
+		<script src="/static/js/shaders/FilmShader.js"></script>
+		<script src="/static/js/shaders/FocusShader.js"></script>
+
+		<script src="/static/js/postprocessing/EffectComposer.js"></script>
+		<script src="/static/js/postprocessing/MaskPass.js"></script>
+		<script src="/static/js/postprocessing/RenderPass.js"></script>
+		<script src="/static/js/postprocessing/BloomPass.js"></script>
+		<script src="/static/js/postprocessing/ShaderPass.js"></script>
+		<script src="/static/js/postprocessing/FilmPass.js"></script>
+
+		<script src="/static/js/WebGL.js"></script>
+    <script src="/static/js/libs/stats.min.js"></script>
+    
+    <script src="/static/js/libs/inflate.min.js"></script>
+		<script src="/static/js/loaders/FBXLoader.js"></script>
+
+    <!-- <script src="/static/js/controls/OrbitControls.js"></script> -->
+
+    <script src="/static/js/loaders/RGBELoader.js"></script>
+		<script src="/static/js/loaders/HDRCubeTextureLoader.js"></script>
+
+		<script src="/static/js/pmrem/PMREMGenerator.js"></script>
+		<script src="/static/js/pmrem/PMREMCubeUVPacker.js"></script>
+		<script src="/static/js/libs/dat.gui.min.js"></script>
+  </body>
+</html>

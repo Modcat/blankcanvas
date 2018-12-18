@@ -1,0 +1,126 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1404\cocoasubrtf470
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;\red52\green52\blue52;\red103\green103\blue103;\red164\green8\blue0;
+\red63\green105\blue30;\red110\green5\blue0;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww15680\viewh13620\viewkind0
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\sl288\slmult1\pardirnatural\qc\partightenfactor0
+
+\f0\fs28 \cf0 \ul \ulc0 API Map
+\fs24 \ulnone \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf0 Principles:\
+\cf2  - Make the data parallel for pattern matching in the code / memory\
+- The structure must be maintained within memory ( groups =
+\i  in memory
+\i0  = \{ \} Object and has the same structure  )\
+- The visual data always takes precedence ( e.g. zIndex 0 is visually rendered at the bottom. But 0 in an array is the first element, however zIndex takes precedence as it\'92s associated with the visual data and we must keep data parallel in memory  )\
+ - Keep metadata with visual data in the object structure\
+ - Allow pointers to current visual data - ( which following the above principle will have the metadata connected )\
+ - Allow the UI to be separated from logic ( only connected by the event mapper )\
+ - Create a minimal amount of pointers (encapsulation allowing the structure to be changed without disruption to other parts of the API)\cf0 \
+\
+var app = \{\
+\
+	\cf3 'gui': require('nw.gui'),\
+	'file': require('fs'),\
+	'util': require('util'),\
+	'exec': require('child_process').exec,\
+	'installedDir': global.nw.process.cwd(),\cf4 \
+\cf0 \
+	UI : \{\
+		\
+		\cf5 // UI.js - In current development\
+\cf0 			\
+			eventMap :  \{ \} \cf3 \'97 The keys are mouse events and are mapped to their events or touch events\cf0 \
+\
+			\cf3 // Template generator\cf0 \
+			templates :  \{ \} \cf3 \'97 Defines templates that can be injected\cf0 \
+			generateTemplates( templateElements ) \cf3 \'97 Pass in array of templates\cf0 \
+			\
+			\cf3 // Template sync\cf0 \
+			__EventMap__ :  \{ \} \cf3 \'97 Contains functions which are mapped to elements with data-set attribute value\cf0 \
+			__EventTargets__ :  \{ \} \cf3 \'97 Each key contains an array of elements that need setting and syncing ( for fast memory access )\cf0 \
+			__UIEventRunner__() \cf3 \'97 Invoked on elements with data-set attribute and syncs value between elements and invoke a ^ callback\cf0 \
+			\
+			\cf3 // UI Interaction \'97 This section deals with the visuals of the UI components\cf0 \
+			EventCheck() \cf3 \'97 Invoked on UI interaction to check either a value, data-value or data-set is present\cf0 \
+			\
+			\cf3 // Targeting\
+			\cf0 targetSVG : DOMElement \cf3 \'97 Memory pointer current to targetSVG element for displaying bounding boxes and controls\cf0 \
+			elements : DOMElement   \cf3 \'97 Memory pointer to elements DIV that contains plots\cf0 \
+			\
+			renderSelect( forceRender, pointer ) \'97 Draws BBox on the targeted element, also can force render on specific element\
+			targetSelect( evt ) \'97 Draws\
+			\
+			\cf5 // Sortable.js - Extension API of app.UI - NS app,UI.sortable\
+\
+\cf0 				sort : [] \cf3 \'97 Contains array of sortable regions \'97 view sortableDataStructure.rtf\cf0 \
+\
+				findNearest() \cf3 \'97 Invoked\cf0 \
+				runRecursive() \cf3 \'97 Invoked\cf0 \
+				sortPointers() \cf3 \'97 Invoked when adding, removing or changing \cf0 \
+				add() \cf3 \'97 Adds relevant node to each stack and update stack\cf0 \
+				remove() \cf3 \'97 Removes relevant node from each stack and update stack and visual pointers\cf0 \
+				init() \cf3 \'97 Invoked by program to create new sorting region or regions\cf0 \
+				\
+				\
+				\
+	\},\
+		\
+	PTPreferences : \{\
+		'canvasMargin': 500,\
+		'cameraRawBoundry':1200,\
+	\},\
+	\
+	PTWindowManager : \{\
+		\
+		\cf4 // PTWindowManager.js - REFACTOR at the end of the file there is unoptimised code and it can be better structured (possible HTML)\cf0 \
+\
+			mainWinFocus : true \cf3 \'97 Defines wether the main window is in focus TRUE / FALSE\
+			\cf0 stackOrder : [] \cf3 \'97 Stores order of windows focused ( this keeps the windows z-index the same when refocusing )\
+			\cf0 dialogPT( name ) \cf3 \'97 DialogPT will toggle the display of a window ( for example a dock icon being clicked )\cf0 \
+			resumeSubapp() \cf3 \'97 Called when the entire app comes back into focus\cf0 \
+			hideAllapp() \cf3 \'97 Hides all external windows ( NOT internal overlay windows )\cf0 \
+			dialogOverlayPT( className ) \cf3 \'97 Open current overlay dialog and hide all others\cf0 \
+	\},\
+\
+	PTWindows : \{ \},\
+\
+	winArr : [ ],\
+	winIndexArr : [ ],\
+	winOverlayIndex : [ ],\
+\
+	PTFile : \{ \},\
+\
+	canvas : \{\
+		\
+		activeCanvas : false, \cf3 \'97 Store pointer to canvas if no open canvases activeCanvas is set to 
+\b false
+\b0 \cf0 \
+		canvasID : 0,             \cf3 \'97 Store current canvas ID \cf6 \'97 REFACTOR / POSSIBLE DELETE\cf0 \
+		store : \{ \},                   \cf3 \'97 Store all canvas objects\cf0 \
+		update : [ ],                \cf3 \'97 Allow other API\'92s to push callback functions onto update stack ( fires when active canvas is changed  )\cf0 \
+\
+		\cf4 // PTCanvasHandler.js REFACTOR violates the 4th UI principle of logic and interactivity 
+\b &
+\b0  unoptimised code\cf0 \
+			__runUpdate() \cf3 \'97 SOLID: This Internal function runs through the update array\cf0 \
+			check() \cf6 \'97 DELETE OBSOLETE\cf0 \
+			returnActiveCanvas() \cf6 \'97 DELETE OBSOLETE POINTER PROVIDED\cf0 \
+			hideAll() \cf3 \'97 SOLID: This internal function is here is hide all canvases ready to display active canvas\cf0 \
+			indexTabs() \cf3 \'97 SOLID: This internal function provides the correct index for the tab\cf0 \
+			canvasEvents() \cf3 \'97 SOLID: This shows the current canvas and runs updates as necessary \cf6 \'97 REFACTOR / POSSIBLE DELETE\cf0 \
+			canvasCreate() \cf3 \'97 SOLID: This function will create a new DOM element\cf0 \
+	\},\
+\
+	PTLayers : \{ \},\
+\
+	PTRulers : \{ \},\
+\};\
+\
+\cf3 \'97 
+\b Extension of the APP API
+\b0 \cf0 \
+	\
+app.menubar = new app.gui.Menu(\{ type: 'menubar' \});\
+app.win = app.gui.Window.get( );}

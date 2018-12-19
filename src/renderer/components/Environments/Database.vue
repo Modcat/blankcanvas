@@ -25,6 +25,8 @@
           <div class="tabs">
             <span @click="subTab = 'schema'" :class="{ 'active': subTab === 'schema' }">Schema</span>
             <span @click="subTab = 'data'" :class="{ 'active': subTab === 'data' }">Data</span>
+            <span>VR</span>
+            <span>AR</span>
           </div>
         </div>
         <div v-if="subTab === 'schema'" class="schema">
@@ -166,6 +168,8 @@ aside {
   justify-content: center;
   align-items: center;
   overflow: auto;
+  background: url('/static/images/heatmap.svg') no-repeat center center;
+  background-size: auto 100%;
 }
 h3 {
   font-weight: 600;

@@ -1,12 +1,15 @@
 <template>
   <div id="app">
+    <art-store />
     <router-view></router-view>
   </div>
 </template>
 
 <script>
+import ArtStore from './components/ArtStore'
 export default {
   name: 'blankcanvas',
+  components: { ArtStore },
   mounted () {
     window.modal = window.open('/static/properties.html', 'modal', null, {}, null, false, 900, 80)
     console.log(window.modal.$shareStore = {target: 'Artboard'})

@@ -1,0 +1,15 @@
+{
+  "name": "blankcanvas",
+  "version": "0.0.0",
+  "description": "opensorceproject",
+  "main": "electron.js",
+  "dependencies": {
+    "vue": "^1.0.28",
+    "vue-electron": "^1.0.0",
+    "vue-resource": "^1.0.3",
+    "vue-router": "^0.7.13",
+    "vuex": "^1.0.0"
+  },
+  "devDependencies": {},
+  "author": "Alexander Vladimirov <alexandervladimirov1902@gmail.com>"
+}

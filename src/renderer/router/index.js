@@ -38,7 +38,7 @@ export default new Router({
     {
       path: '/powerpoint',
       name: 'PowerPoint',
-      component: require('@/components/Environments/PowerPoint').default
+      component: require('@/components/Environments/Powerpoint').default
     },
     {
       path: '/preferences',
@@ -58,12 +58,12 @@ export default new Router({
     {
       path: '/3dvr',
       name: '3dvr',
-      component: require('@/components/Environments/ThreeDVr').default
+      component: require('@/components/Environments/ThreeDvr').default
     },
     {
       path: '/3dar',
       name: '3dar',
-      component: require('@/components/Environments/ThreeDAr').default
+      component: require('@/components/Environments/ThreedAr').default
     },
     {
       path: '/web',
@@ -73,7 +73,7 @@ export default new Router({
     {
       path: '/artflow',
       name: 'Artflow',
-      component: require('@/components/Environments/Artflow').default
+      component: require('@/components/Environments/ArtFlow').default
     },
     {
       path: '/ui',

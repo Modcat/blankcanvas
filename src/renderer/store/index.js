@@ -323,6 +323,28 @@ const createStore = () => {
                 // Each object is a person that is connected
               }
             ],
+            tracks: [
+              {
+                name: 'name of track',
+                audioSnippets: [
+                  {
+                    name: 'name of snippet',
+                    soundBytes: [],
+                    mappedInstrument: 'piano',
+                    instumentMode: 'name of mode',
+                    audioMapping: [
+                      { position: '1:22', length: 200, pitchCurve: ['array of bezier curve'], instruemtPosition: '20%' },
+                      { position: '1:33', length: 200, pitchCurve: ['array of bezier curve'], instruemtPosition: '20%' }
+                    ],
+                    // visual interface
+                    waveVisulizer: 'image of wave data',
+                    audioVisulizer: '3D swerl',
+                    codeVisualizer: 'code project for visualizer overriding the default',
+                    instrument3D: '3d object for instrument'
+                  }
+                ]
+              }
+            ],
             assets: [
               // Each object will be an audio
             ]
@@ -372,7 +394,72 @@ const createStore = () => {
             // What ever data is focused on will be controlled by the space rendered
             data: {}
           }
-        ]
+        ],
+        // Director mode
+        director: {
+          exportAssets: {
+            // Exported assets or video recording of all the cameras, screens, holograms and more
+            assets: [],
+            // Streamed cut
+            postProduction: {
+              // This will be a video project object
+            },
+            // This object will contain the final directors cut or post production
+            // The assets can be used in this final cut to make the video direction perfect
+            finalCut: {
+              // This will be a video project object
+            }
+          },
+          // Mapped environment
+          environment: {
+            // A Mapped environment allows VR, AR, Drones and more devices to be mapped to one space
+            gridSize: [],
+            gridHeight: [],
+            gridSegments: []
+          },
+          // All devices connected to the document that will be used for direction will be in this object
+          devices: {
+            id1: {
+              // Key is the UUID or name of the device
+              type: ['drone', 'Screen', 'Holographic', 'lightArray', '3DCamera', 'Phone or table AR device cameras'],
+              // For drones, screens and holographics you can attach an art board, audio visualizer or video file
+              // This will be under attached files and linked to an audio project that has an associated graphic
+              attachedFile: 'Audio, ArtBoard or video ID (object address), IP address for VR and AR',
+              // Camera only
+              cameras: [ // Array of cameras
+                {
+                  // Camera UUID to identify camera (drone, DSLR, video camcorda, VR headset, AR device etc...)
+                  id: 'Camera UUID',
+                  // Different name to identify the camera
+                  alias: 'Alias',
+                  // Paths for camera to follow in the mapped environment
+                  paths: [
+                    {
+                      // Each object is a path
+                      path: [112, 203, 30],
+                      rotationCords: [
+                        ['x', 'y', 'z', 'duration']
+                      ],
+                      startTime: '1:22',
+                      activeDuration: 200
+                    }
+                  ]
+                }
+              ],
+              // Light array only
+              lightPatterns: [ // This array is a collection of light patterns
+                [ // This array is one pattern
+                  { /* This object will define the lazer light pattern or array of normal light patterns including the start and duration of the light pattern */ }
+                ],
+                [ // Light pattern
+                  { /* Light object */ },
+                  { /* Light object */ },
+                  { /* Light object */ }
+                ]
+              ]
+            }
+          }
+        }
       }
     },
     // Mutations

@@ -3,6 +3,7 @@
     <div class="tabs">
       <span class="active">Art boards</span>
       <span @click="changeUrl">Art flow</span>
+      <span @click="changeUrl">Director</span>
     </div>
     <div class="cards">
       <div class="card">

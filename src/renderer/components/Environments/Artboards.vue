@@ -5,7 +5,8 @@
       <span @click="changeUrl">Art flow</span>
       <span @click="changeUrl">Director</span>
     </div>
-    <div class="cards">
+    <span class="label-art">Connected</span>
+    <div class="cards" style="margin-bottom: 0px;">
       <div class="card">
         <img src="/static/images/vr-logo.png" alt="">
         <span class="label-art">John</span>
@@ -15,7 +16,7 @@
         <span class="label-art">Joane</span>
       </div>
       <div class="card">
-        <img src="/static/images/Ubuntu.png" style="width:50px; margin: 0 auto;" alt="">
+        <img src="/static/images/Ubuntu.png" alt="">
         <span class="label-art">Jamie</span>
       </div>
     </div>
@@ -195,48 +196,6 @@ export default {
     margin-top: 10px;
     margin-left: 8px;
     max-width: 90%;
-  }
-}
-</style>
-
-<style lang="scss" scoped>
-.cards {
-  display: flex;
-  justify-content: center;
-  .card {
-    display: flex;
-    flex-direction: column;
-    margin: 25px 25px 25px 0;
-    background: rgba(0,0,0,0.2);
-    padding: 15px;
-    border-radius: 3px;
-    width: 120px;
-    text-align: center;
-    img {
-      max-width: 100%;
-      width: auto;
-      height: auto;
-      max-height: 150px;
-    }
-    span {
-      color: white;
-      a {
-        text-decoration: none;
-        color: inherit;
-      }
-    }
-    &:nth-child(1) {
-      background: #ffcf00;
-    }
-    &:nth-child(2) {
-      background: #ff9641;
-    }
-    &:nth-child(3) {
-      background: #e77ef3;
-    }
-    &:last-child {
-      margin-right: 0;
-    }
   }
 }
 </style>

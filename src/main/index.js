@@ -41,6 +41,7 @@ function createWindow () {
   })
 
   mainWindow.webContents.on('new-window', (event, url, frameName, disposition, options, additionalFeatures, modal = false, width = 377, height = 350) => {
+    console.log(frameName)
     if (frameName === 'modal') {
       // open window as modal
       event.preventDefault()

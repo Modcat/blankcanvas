@@ -1,5 +1,5 @@
 <template>
-  <div @click="change" class="database">
+  <div @click="change" class="database-view">
     <aside>
       <input type="text" class="search" placeholder="search" style="margin-top:0px;">
       <ul class="tree">
@@ -104,167 +104,168 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.database {
+.database-view {
   display: flex;
   height: 100vh;
   width: 100vw;
   overflow: hidden;
-}
-aside {
-  box-sizing: border-box;
-  min-width: 200px;
-  background: rgba(180,180,180,0.3);
-  resize: horizontal;
-  overflow-x: hidden;
-  overflow-y: auto;
-  border-right: 1px solid rgba(0,0,0,0.06);
-  padding-top: 15px;
-  user-select: none;
 
-  .search {
-    margin-left: 15px;
-    width: calc(100% - 30px);
-  }
-
-  .tree {
-    list-style-type: none;
-    padding: 10px 0 0 0;
-    margin: 0;
-    text-align: left;
-    color: #666;
-
-    li {
-      position: relative;
-      padding: 5px 15px;
-      z-index: 1;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-
-    li:before {
-      content: '';
-      display: block;
-      position: absolute;
-      left: -15px;
-      right: -15px;
-      top: 0;
-      bottom: 0;
-      background: rgba(255, 134, 34, 0.3);
-      z-index: -1;
-      opacity: 0;
-      transition: opacity 0.2s;
-    }
-
-    li.active:before {
-      opacity: 1;
-    }
-  }
-}
-.main {
-  display: flex;
-  flex-grow: 1;
-  min-height: 100vh;
-  justify-content: center;
-  align-items: center;
-  overflow: auto;
-  background: url('/static/images/heatmap.svg') no-repeat center center;
-  background-size: auto 100%;
-}
-h3 {
-  font-weight: 600;
-  text-transform: uppercase;
-  user-select: none;
-}
-.db-info {
-  background: rgba(255, 255, 255, 0.45);
-  border-radius: 3px;
-  padding: 15px;
-  display: flex;
-  flex-direction: column;
-}
-.table-info {
-  box-sizing: border-box;
-  padding-top: 15px;
-  text-align: left;
-  width: 100%;
-  height: 100vh;
-
-  > *:first-child {
-    margin-top: 0;
-  }
-}
-.row--wrap {
-  position: relative;
-  margin-right: -15px;
-  justify-content: space-between;
-}
-.schema {
-  padding-left: 15px;
-  > *:first-child {
-    margin-top: 0;
-  }
-
-  .search {
-    margin-bottom:15px;
-    max-width: 550px;
-    margin-left: auto;
-    margin-right: auto !important;
-  }
-}
-.column {
-  position: relative;
-  width: 20%;
-  flex-grow: 1;
-  background: rgba(255, 255, 255, 0.45);
-  border-radius: 3px;
-  padding: 10px;
-  display: flex;
-  flex-direction: column;
-  margin-right: 15px;
-  margin-bottom: 15px;
-
-  label {
+  aside {
+    box-sizing: border-box;
+    min-width: 200px;
+    background: rgba(180,180,180,0.3);
+    resize: horizontal;
+    overflow-x: hidden;
+    overflow-y: auto;
+    border-right: 1px solid rgba(0,0,0,0.06);
+    padding-top: 15px;
     user-select: none;
-    margin-top: 10px;
 
-    &:first-child {
+    .search {
+      margin-left: 15px;
+      width: calc(100% - 30px);
+    }
+
+    .tree {
+      list-style-type: none;
+      padding: 10px 0 0 0;
+      margin: 0;
+      text-align: left;
+      color: #666;
+
+      li {
+        position: relative;
+        padding: 5px 15px;
+        z-index: 1;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      li:before {
+        content: '';
+        display: block;
+        position: absolute;
+        left: -15px;
+        right: -15px;
+        top: 0;
+        bottom: 0;
+        background: rgba(255, 134, 34, 0.3);
+        z-index: -1;
+        opacity: 0;
+        transition: opacity 0.2s;
+      }
+
+      li.active:before {
+        opacity: 1;
+      }
+    }
+  }
+  .main {
+    display: flex;
+    flex-grow: 1;
+    min-height: 100vh;
+    justify-content: center;
+    align-items: center;
+    overflow: auto;
+    background: url('/static/images/heatmap.svg') no-repeat center center;
+    background-size: auto 100%;
+  }
+  h3 {
+    font-weight: 600;
+    text-transform: uppercase;
+    user-select: none;
+  }
+  .db-info {
+    background: rgba(255, 255, 255, 0.45);
+    border-radius: 3px;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+  }
+  .table-info {
+    box-sizing: border-box;
+    padding-top: 15px;
+    text-align: left;
+    width: 100%;
+    height: 100vh;
+
+    > *:first-child {
       margin-top: 0;
     }
   }
-
-  .label-art {
-    margin-bottom: 0;
+  .row--wrap {
+    position: relative;
+    margin-right: -15px;
+    justify-content: space-between;
   }
+  .schema {
+    padding-left: 15px;
+    > *:first-child {
+      margin-top: 0;
+    }
 
-  .label-art:before {
-    content: '';
-    display: block;
-    position: absolute;
-    left: 0;
-    right: 0;
-    margin-top: -15px;
-    height: 1px;
-    background: rgba(0,0,0,0.03);
-  }
-}
-// Table values
-.table-contents {
-  margin-top: 15px;
-  min-width: 100%;
-  border-radius: 2px 2px 0 0;
-
-  thead {
-    background: rgba(180, 180, 180, 0.2);
-
-    th {
-      padding: 5px;
+    .search {
+      margin-bottom:15px;
+      max-width: 550px;
+      margin-left: auto;
+      margin-right: auto !important;
     }
   }
+  .column {
+    position: relative;
+    width: 20%;
+    flex-grow: 1;
+    background: rgba(255, 255, 255, 0.45);
+    border-radius: 3px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    margin-right: 15px;
+    margin-bottom: 15px;
 
-  td {
-    padding: 5px;
-    background: rgba(255,255,255,0.45);
+    label {
+      user-select: none;
+      margin-top: 10px;
+
+      &:first-child {
+        margin-top: 0;
+      }
+    }
+
+    .label-art {
+      margin-bottom: 0;
+    }
+
+    .label-art:before {
+      content: '';
+      display: block;
+      position: absolute;
+      left: 0;
+      right: 0;
+      margin-top: -15px;
+      height: 1px;
+      background: rgba(0,0,0,0.03);
+    }
+  }
+  // Table values
+  .table-contents {
+    margin-top: 15px;
+    min-width: 100%;
+    border-radius: 2px 2px 0 0;
+
+    thead {
+      background: rgba(180, 180, 180, 0.2);
+
+      th {
+        padding: 5px;
+      }
+    }
+
+    td {
+      padding: 5px;
+      background: rgba(255,255,255,0.45);
+    }
   }
 }
 </style>

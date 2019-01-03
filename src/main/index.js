@@ -40,6 +40,15 @@ function createWindow () {
     mainWindow = null
   })
 
+  mainWindow.on('showUI', function (e, data) {
+    const modalPath = process.env.NODE_ENV === 'development'
+      ? 'http://localhost:9080/#/ui'
+      : `file://${__dirname}/index.html#ui`
+    let win = new BrowserWindow({ width: 400, height: 320, webPreferences: {webSecurity: false} })
+    win.on('close', function () { win = null })
+    win.loadURL(modalPath)
+  })
+
   mainWindow.webContents.on('new-window', (event, url, frameName, disposition, options, additionalFeatures, modal = false, width = 377, height = 350) => {
     console.log(frameName)
     if (frameName === 'modal') {
@@ -54,7 +63,8 @@ function createWindow () {
         transparent: true,
         resizable: true,
         fullscreenable: true,
-        vibrancy: 'light'
+        vibrancy: 'light',
+        webPreferences: {webSecurity: false}
       })
       event.newGuest = new BrowserWindow(options)
     }

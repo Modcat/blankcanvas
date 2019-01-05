@@ -128,8 +128,8 @@
         <div class="blur" />
       </div>
 
-      <!-- Graphics, Video or Code -->
-      <div v-if="mode === 'graphics'" :class="['document', { 'last-canvas': linkedCanvas }]">
+      <!-- Graphics, Presentation or Code -->
+      <div v-if="mode.match(/graphics|code|presentation/ig)" :class="['document', { 'last-canvas': linkedCanvas }]">
         <a href="#/audio" class="audio"/>
         <a href="#/database" class="database"/>
         <a href="#/excel" class="excel"/>
@@ -154,9 +154,26 @@
           <!-- <div id="webglCanvas"/> -->
         </div>
       </div>
+      
+      <!-- Video -->
+      <div v-if="mode === 'video'" class="document video">
+          <div id="mainCanvas" style="position:relative;">
+            <img class="vid-overlay" src="/static/images/video-overlay.png" alt="" style="position:absolute;max-width:80%;">
+            <video style="max-width:100%;" src="/static/video/honey.mp4" autoplay loop="loop"></video>
+          </div>
+      </div>
 
       <!-- Audio -->
-      <div v-if="mode === 'audio'" class="audio-env"></div>
+      <div v-if="mode === 'audio'" class="audio-env">
+        <div class="audio">
+          <div class="track">
+            <div @click="change" class="audio-preview"></div>
+          </div>
+          <div class="track">
+            <div @click="change" class="audio-preview" style="left:200px;"></div>
+          </div>
+        </div>
+      </div>
       
 
       <!-- Database -->
@@ -239,7 +256,22 @@
       
 
       <!-- Spreadsheet -->
-      <div v-if="mode === 'spreadsheet'" class="spreadsheet-env"></div>
+      <div v-if="mode === 'spreadsheet'" class="spreadsheet-env">
+        <div @click="change" ref="spreadsheet" class="spreadsheet">
+          <table class="table-contents">
+            <thead ref="header">
+              <td class="index" />
+              <th v-for="(row,indexHead) in [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]" :key="indexHead" />
+            </thead>
+            <tbody>
+              <tr v-for="(row,index) in [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]" :key="index">
+                <td class="index" v-html="index" />
+                <td class="cell" v-for="(row,indexCell) in [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]" :key="indexCell" />
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
       
 
       <!-- Bottom Draw -->
@@ -283,11 +315,23 @@ export default {
       mousey: 0,
       timelineOffsetX: '',
       showPreview: false,
-      mode: 'database',
+      mode: 'audio',
       // Database
       view: 'db-info',
       subTab: 'schema'
     }
+  },
+  mounted () {
+    this.$refs.spreadsheet.addEventListener('scroll', (e) => {
+      let scrollLeft = e.target.scrollLeft
+      this.$refs.header.style.marginLeft = `${scrollLeft * -1}px`
+    })
+
+    this.$refs.spreadsheet.addEventListener('click', (e) => {
+      if (e.target.className.match('cell')) {
+        e.target.classList.add('active')
+      }
+    })
   },
   methods: {
     change () {
@@ -420,69 +464,7 @@ export default {
     box-shadow: 0px 0px 21px 5px rgba(0,0,0,0.2);
   }
 }
-// Hotspots
-.audio {
-  display: block;
-  position: absolute;
-  z-index: 99;
-  width: 390px;
-  height: 90px;
-  top: 169px;
-  left: 320px;
-}
-.linked-canvas {
-  cursor: pointer;
-  display: block;
-  position: absolute;
-  z-index: 99;
-  width: 390px;
-  height: 180px;
-  top: 279px;
-  left: 320px;
-}
-.database {
-  display: block;
-  position: absolute;
-  z-index: 99;
-  top: 260px;
-  left: 120px;
-  width: 180px;
-  height: 200px;
-}
-.excel {
-  display: block;
-  position: absolute;
-  z-index: 99;
-  height: 200px;
-  top: 510px;
-  width: 220px;
-  left: 270px;
-}
-.video {
-  display: block;
-  position: absolute;
-  z-index: 99;
-  height: 200px;
-  top: 510px;
-  width: 220px;
-  left: 560px;
-}
-.code {
-  display: block;
-  position: absolute;
-  z-index: 99;
-  height: 500px;
-  left: 45px;
-  right: 45px;
-  margin-top: 747px;
-}
-.last-canvas {
-  opacity: 0;
-  transform: scale(0);
-}
-.mobile {
-  display: none;
-}
+// Responsive art board
 @media screen and (max-width: 800px) {
   .desktop {
     display: none;
@@ -871,6 +853,112 @@ export default {
     td {
       padding: 5px;
       background: rgba(255,255,255,0.45);
+    }
+  }
+}
+// Spreadsheet
+.spreadsheet-env {
+  display: flex;
+  flex-grow: 1;
+  overflow-y: auto;
+
+  .spreadsheet {
+    max-width: 100vw;
+    max-height: 100vh;
+    overflow: auto;
+  }
+  .table-contents {
+    margin: 0;
+    min-width: 100%;
+    border-radius: 2px 2px 0 0;
+
+    thead {
+      position: absolute;
+      counter-reset: th;
+      color: white;
+      z-index: 99;
+      // backdrop-filter: blur(3px);
+
+      th {
+        min-width: 90px;
+        min-width: 90px;
+        padding: 5px;
+        background: rgba(120, 120, 120, 0.55);
+      }
+
+      .index {
+        background: transparent !important;
+        min-width: 10px !important;
+      }
+
+      th:before {
+        counter-increment: th;
+        content: counter(th, upper-alpha);
+        display: block;
+      }
+    }
+
+    td {
+      min-width: 90px;
+      padding: 5px;
+      background: rgba(220,220,220,0.45);
+
+      &.index {
+        text-align: center;
+        min-width: auto;
+        background: rgba(180, 180, 180, 0.45);
+        color: white;
+        font-weight: bold;
+      }
+
+      &.cell {
+        position: relative;
+
+        &.active:before {
+          content: '';
+          display: block;
+          position: absolute;
+          top: -3px;
+          right: -3px;
+          left: -3px;
+          bottom: -3px;
+          border: 3px solid lightblue;
+          z-index: 5;
+        }
+      }
+    }
+  }
+}
+// Audio
+.audio-env {
+  .audio {
+    max-width: 100vw;
+    max-height: 100vh;
+    overflow: auto;
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .track {
+    position: relative;
+    padding: 25px;
+    height: 55px;
+    width: 100%;
+    border-bottom: 1px solid rgba(0,0,0,.04);
+
+    .audio-preview {
+      position: relative;
+      flex-grow: 1;
+      padding: 5px;
+      height: 55px;
+      border-radius: 4px;
+      box-shadow: 0 0 21px rgba(0,0,0,0.05);
+      background: url('/static/images/sound-wave.png') repeat-x left center rgba(255,255,255,0.5);
+      background-size: auto 35px;
+      transition: background-color 0.2s;
+
+      &:hover {
+        background-color: rgba(255,255,255,0.8);
+      }
     }
   }
 }

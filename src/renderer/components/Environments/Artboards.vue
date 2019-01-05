@@ -1,76 +1,78 @@
 <template>
-  <section @click="change" class="artboards">
-    <div class="tabs">
-      <span class="active">Art boards</span>
-      <span @click="changeUrl">Art flow</span>
-      <span @click="changeUrl">Director</span>
-    </div>
-    <span class="label-art">Connected</span>
-    <div class="cards" style="margin-bottom: 0px;">
-      <div class="card">
-        <img src="/static/images/vr-logo.png" alt="">
-        <span class="label-art">John</span>
+  <div class="clip">
+    <section @click="change" class="artboards">
+      <div class="tabs">
+        <span class="active">Art boards</span>
+        <span @click="changeUrl">Art flow</span>
+        <span @click="changeUrl">Director</span>
       </div>
-      <div class="card">
-        <img src="/static/images/XBOX.png" alt="">
-        <span class="label-art">Joane</span>
-      </div>
-      <div class="card">
-        <img src="/static/images/Ubuntu.png" alt="">
-        <span class="label-art">Jamie</span>
-      </div>
-    </div>
-    <span class="label-art">My Artboards</span>
-    <section class="art-collection">
-      <a href="#/Graphics"><div class="art" style="width: 110px; height: 150px; background: white;">
-        <img src="/static/images/art-canvas.jpg" alt=""></div></a>
-      <div class="art" style="width: 110px; height: 150px; background: white;">
-        <img src="/static/images/art-canvas.jpg" alt="">
-      </div>
-      <div class="art" style="width: 110px; height: 150px; background: white;">
-        <img src="/static/images/art-canvas.jpg" alt="">
-      </div>
-    </section>
-    <span class="label-art label-art--large">Attached Files</span>
-    <span class="label-art">Videos</span>
-    <section class="art-collection">
-      <a class="art" href="#/video">
-        <img src="/static/video/honey-thumbnail.png" />
-      </a>
-      <a class="art" href="#/video">
-        <img src="/static/video/honey-thumbnail.png" />
-      </a>
-      <a href="#/video">
-        <video class="art" src="/static/video/honey.mp4" autoplay loop="loop"></video>
-      </a>
-    </section>
-    <span class="label-art">Audio</span>
-    <section class="art-collection">
-      <a v-for="(writer,indexAudio) in [1,1,1]" :key="indexAudio" href="#/audio">
-        <div  class="art" style="width: 110px; background: white;">
-          <img src="/static/images/audio.jpg" alt="">
+      <span class="label-art">Connected</span>
+      <div class="cards" style="margin-bottom: 0px;">
+        <div class="card">
+          <img src="/static/images/vr-logo.png" alt="">
+          <span class="label-art">John</span>
         </div>
-      </a>
+        <div class="card">
+          <img src="/static/images/XBOX.png" alt="">
+          <span class="label-art">Joane</span>
+        </div>
+        <div class="card">
+          <img src="/static/images/Ubuntu.png" alt="">
+          <span class="label-art">Jamie</span>
+        </div>
+      </div>
+      <span class="label-art">My Artboards</span>
+      <section class="art-collection">
+        <a href="#/Environments"><div class="art" style="width: 110px; height: 150px; background: white;">
+          <img src="/static/images/art-canvas.jpg" alt=""></div></a>
+        <div class="art" style="width: 110px; height: 150px; background: white;">
+          <img src="/static/images/art-canvas.jpg" alt="">
+        </div>
+        <div class="art" style="width: 110px; height: 150px; background: white;">
+          <img src="/static/images/art-canvas.jpg" alt="">
+        </div>
+      </section>
+      <span class="label-art label-art--large">Attached Files</span>
+      <span class="label-art">Videos</span>
+      <section class="art-collection">
+        <a class="art" href="#/video">
+          <img src="/static/video/honey-thumbnail.png" />
+        </a>
+        <a class="art" href="#/video">
+          <img src="/static/video/honey-thumbnail.png" />
+        </a>
+        <a href="#/video">
+          <video class="art" src="/static/video/honey.mp4" autoplay loop="loop"></video>
+        </a>
+      </section>
+      <span class="label-art">Audio</span>
+      <section class="art-collection">
+        <a v-for="(writer,indexAudio) in [1,1,1]" :key="indexAudio" href="#/audio">
+          <div  class="art" style="width: 110px; background: white;">
+            <img src="/static/images/audio.jpg" alt="">
+          </div>
+        </a>
+      </section>
+      <span class="label-art">Databases</span>
+      <section class="art-collection">
+        <a v-for="(writer,indexDB) in [1,1,1,1,1,1]" :key="indexDB" href="#/database">
+          <div  class="art" style="width: 100px; height: 100px; background: url(/static/images/database.jpg) no-repeat white;background-size: auto 100%;"/>
+        </a>
+      </section>
+      <span class="label-art">Code projects</span>
+      <section class="art-collection">
+        <a v-for="(writer,indexCode) in [1,1,1,1,1,1]" :key="indexCode" href="#/codeeditor">
+          <div  class="art" style="width: 100px; height: 150px; background: url(/static/images/code.jpg) no-repeat white;background-size: auto 100%;"/>
+        </a>
+      </section>
+      <span class="label-art">Spreadsheet</span>
+      <section class="art-collection">
+        <a v-for="(writer,indexSpreadsheet) in [1,1,1,1,1,1]" :key="indexSpreadsheet" href="#/excel">
+          <div  class="art" style="width: 100px; height: 150px; background: url(/static/images/excel.jpg) no-repeat white;background-size: auto 100%;"/>
+        </a>
+      </section>
     </section>
-    <span class="label-art">Databases</span>
-    <section class="art-collection">
-      <a v-for="(writer,indexDB) in [1,1,1,1,1,1]" :key="indexDB" href="#/database">
-        <div  class="art" style="width: 100px; height: 100px; background: url(/static/images/database.jpg) no-repeat white;background-size: auto 100%;"/>
-      </a>
-    </section>
-    <span class="label-art">Code projects</span>
-    <section class="art-collection">
-      <a v-for="(writer,indexCode) in [1,1,1,1,1,1]" :key="indexCode" href="#/codeeditor">
-        <div  class="art" style="width: 100px; height: 150px; background: url(/static/images/code.jpg) no-repeat white;background-size: auto 100%;"/>
-      </a>
-    </section>
-    <span class="label-art">Spreadsheet</span>
-    <section class="art-collection">
-      <a v-for="(writer,indexSpreadsheet) in [1,1,1,1,1,1]" :key="indexSpreadsheet" href="#/excel">
-        <div  class="art" style="width: 100px; height: 150px; background: url(/static/images/excel.jpg) no-repeat white;background-size: auto 100%;"/>
-      </a>
-    </section>
-  </section>
+  </div>
 </template>
 
 <script>
@@ -88,12 +90,17 @@ export default {
 </script>
 
 <style lang="scss">
+.clip {
+  max-height: 100vh;
+  max-width: 100vw;
+  overflow-y: auto;
+}
 .artboards {
   display: flex;
   flex-direction: column;
   padding: 25px;
   align-items: center;
-  overflow-x: hidden;
+  overflow: auto;
 }
 .label-art {
   margin-top: 25px;

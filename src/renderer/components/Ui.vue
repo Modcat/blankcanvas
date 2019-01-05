@@ -30,7 +30,7 @@
 
 		<button class="color-picker"></button>
 
-		<div class="color-overlay">
+		<!-- <div class="color-overlay">
 			<div class="swatches">
 				<button style="background:#333;" />
 				<button style="background:#444;" />
@@ -70,7 +70,7 @@
 					<button @click="previewShades = true">Shades</button>
 				</div>
 			</div>
-		</div>
+		</div> -->
 
 		<div class="buttonGroup  single">
 			<button class="active fa fa-paragraph"></button>

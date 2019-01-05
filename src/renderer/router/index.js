@@ -29,24 +29,9 @@ export default new Router({
     },
     // Editor Environment for inspiration, graphics, presentation, video, audio, spreadsheet, code and database
     {
-      path: '/graphics',
-      name: 'Graphics',
-      component: require('@/components/Environments/Graphics').default
-    },
-    {
-      path: '/Audio',
-      name: 'audio',
-      component: require('@/components/Environments/Audio').default
-    },
-    {
-      path: '/codeeditor',
-      name: 'CodeEditor',
-      component: require('@/components/Environments/CodeEditor').default
-    },
-    {
-      path: '/excel',
-      name: 'Excel',
-      component: require('@/components/Environments/Excel').default
+      path: '/environments',
+      name: 'Environments',
+      component: require('@/components/Environments/Environments').default
     },
     // Wild card loader
     {

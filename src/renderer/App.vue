@@ -56,6 +56,26 @@ body {
   font-family: 'Open Sans', sans-serif;
   font-size: 10px;
   color: #666;
+  overflow: hidden;
+}
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar:vertical {
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s;
+
+  &:hover {
+    background: rgba(0, 0, 0, 0.4);
+  }
 }
 @import 'ui.scss';
 </style>

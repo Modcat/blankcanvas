@@ -3,6 +3,7 @@
     <!-- Left Draw -->
     <!-- All main content that pushes over to left -->
     <div class="left-draw draw" :style="`width:${sidebarWidth}vw;`">
+      
       <!-- Database sidebar -->
       <div :class="['database-mode', { 'on': mode === 'database' }]">
         <input type="text" class="search" placeholder="search" style="margin-top:0px;">
@@ -13,6 +14,7 @@
           <li>Table Name</li>
         </ul>
       </div>
+      
       <!-- Presentation -->
       <div :class="['presenation', { 'on': mode === 'presentation' }]">
         <section class="artboards">
@@ -103,6 +105,11 @@
           </section>
         </section>
       </div>
+
+      <!-- Code Sidebar -->
+      <div :class="['code', { 'on': mode === 'code' }]">
+        hello world
+      </div>
     </div>
     <main @click="change" id="graphics">
       <!-- Top draw -->
@@ -174,7 +181,6 @@
           </div>
         </div>
       </div>
-      
 
       <!-- Database -->
       <div v-if="mode === 'database'" class="database-env">
@@ -254,6 +260,8 @@
           </div>
       </div>
       
+      <!-- Code -->
+
 
       <!-- Spreadsheet -->
       <div v-if="mode === 'spreadsheet'" class="spreadsheet-env">
@@ -276,10 +284,15 @@
 
       <!-- Bottom Draw -->
       <div v-if="mode !== 'database' && mode !== 'spreadsheet'" class="bottom-draw draw">
-        <div :style="`left: ${mousex - 75}px; top: ${mousey - 40}px; opacity:${showPreview ? '1' : '0'}`" id="live-preview">
+
+        <!-- Code -->
+        <div v-if="mode === 'code'" id="editor"></div>
+        
+        <!-- Video Timeline -->
+        <div  v-if="mode === 'video'" :style="`left: ${mousex - 75}px; top: ${mousey - 40}px; opacity:${showPreview ? '1' : '0'}`" id="live-preview">
           <video src="/static/video/honey.mp4" autoplay loop="loop"></video>
         </div>
-        <div ref="timeline" class="animate-timeline">
+        <div v-if="mode === 'video'" ref="timeline" class="animate-timeline">
           <div class="line" :style="`left: ${mousex + timelineOffsetX}px`" />
           <div class="track">
             <div class="preview" @mousemove="showPreview = true" @mouseout="showPreview = false">
@@ -306,6 +319,14 @@
 </template>
 
 <script>
+import CodeMirror from 'codemirror'
+/* eslint-disable-next-line */
+import CodeMirrorMode from 'codemirror/mode/javascript/javascript.js'
+/* eslint-disable-next-line */
+import CodeMirrorCSS from 'codemirror/lib/codemirror.css'
+/* eslint-disable-next-line */
+import CodeMirrorTheme from 'codemirror/theme/base16-light.css'
+
 export default {
   name: 'Graphics',
   data () {
@@ -315,23 +336,42 @@ export default {
       mousey: 0,
       timelineOffsetX: '',
       showPreview: false,
-      mode: 'audio',
+      mode: 'code',
       // Database
       view: 'db-info',
       subTab: 'schema'
     }
   },
   mounted () {
-    this.$refs.spreadsheet.addEventListener('scroll', (e) => {
-      let scrollLeft = e.target.scrollLeft
-      this.$refs.header.style.marginLeft = `${scrollLeft * -1}px`
-    })
+    if (this.$refs.spreadsheet) {
+      this.$refs.spreadsheet.addEventListener('scroll', (e) => {
+        let scrollLeft = e.target.scrollLeft
+        this.$refs.header.style.marginLeft = `${scrollLeft * -1}px`
+      })
 
-    this.$refs.spreadsheet.addEventListener('click', (e) => {
-      if (e.target.className.match('cell')) {
-        e.target.classList.add('active')
-      }
-    })
+      this.$refs.spreadsheet.addEventListener('click', (e) => {
+        if (e.target.className.match('cell')) {
+          e.target.classList.add('active')
+        }
+      })
+    }
+    // Mounted
+    let codeSection = document.getElementById('editor')
+    CodeMirror(codeSection, {
+      value: `document.getElementById('close').onmousedown = function(e) {
+window.onload = function () {
+    canvas  = document.getElementById('c');
+    ctx     = canvas.getContext('2d');
+
+    canvas.width  = 560;
+    canvas.height = 350;
+
+    start();
+};`,
+      mode: 'javascript',
+      lineNumbers: true
+    }
+    )
   },
   methods: {
     change () {
@@ -349,6 +389,8 @@ export default {
         return 54.7
       } else if (this.mode === 'database') {
         return 18.6
+      } else if (this.mode === 'code') {
+        return 20
       } else {
         return 0
       }

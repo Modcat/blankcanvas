@@ -16,7 +16,7 @@ export default {
     window.db = pg
     window.sortable = Sortable
     window.modal = window.open('http://localhost:9080/#/ui', 'modal', null, {}, null, false, 900, 80)
-    console.log(window.modal.$shareStore = {target: 'Artboard'})
+    window.modal.$shareStore = {target: 'Artboard'}
     document.body.addEventListener('keydown', (e) => {
       if (e.keyCode === 121) {
         location.href = '#/'

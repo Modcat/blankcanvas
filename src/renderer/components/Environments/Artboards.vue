@@ -31,40 +31,6 @@
         <img src="/static/images/art-canvas.jpg" alt="">
       </div>
     </section>
-    <span class="label-art">Website Pages</span>
-    <section class="art-collection">
-      <a v-for="(writer,indexWeb) in [1,1,1]" :key="indexWeb" href="#/web">
-        <div  class="art" style="width: 150px; height: 120px; background: url(/static/images/webpage.jpg) no-repeat white;background-size: auto 100%;"/>
-      </a>
-    </section>
-    <span class="label-art">3D VR</span>
-    <section class="art-collection">
-      <a v-for="(writer,index3dvr) in [1,1,1]" :key="index3dvr" href="#/3dvr">
-        <div class="art" style="width: 150px; height: 120px; background: url(/static/images/vr.jpg) no-repeat white;background-size: auto 100%;"/>
-      </a>
-    </section>
-    <span class="label-art">3D AR</span>
-    <section class="art-collection">
-      <a v-for="(writer,index3dar) in [1,1,1]" :key="index3dar" href="#/3dar">
-        <div class="art" style="width: 150px; height: 120px; background: url(/static/images/vr.jpg) no-repeat white;background-size: auto 100%;"/>
-      </a>
-    </section>
-    <span class="label-art">Writer Art</span>
-    <section class="art-collection">
-      <a v-for="(writer,indexWriter) in [1,1,1,1,1,1,1,1,1,1,1,1,1,1]" :key="indexWriter" href="#/markdownwriter">
-        <div  class="art document" style="width: 110px; height: 150px; background: white;">
-          <img src="/static/images/document.png" alt="">
-        </div>
-      </a>
-    </section>
-    <span class="label-art">Slides and presentations</span>
-    <section class="art-collection">
-      <a v-for="(writer,indexPP) in [1,1,1]" :key="indexPP" href="#/powerpoint">
-        <div class="art" style="width: 150px;background: white;">
-          <img src="/static/images/pp.png" alt="">
-        </div>
-      </a>
-    </section>
     <span class="label-art label-art--large">Attached Files</span>
     <span class="label-art">Videos</span>
     <section class="art-collection">

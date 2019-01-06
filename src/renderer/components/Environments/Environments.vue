@@ -1,5 +1,5 @@
 <template>
-  <div class="main-layout">
+  <div v-hammer:onTap="onSwipeLeft" class="main-layout">
     <!-- Left Draw -->
     <!-- All main content that pushes over to left -->
     <div class="left-draw draw" :style="`width:${sidebarWidth}vw;`">
@@ -107,11 +107,11 @@
       </div>
 
       <!-- Code Sidebar -->
-      <div :class="['code', { 'on': mode === 'code' }]">
-        hello world
+      <div :class="['code-sidebar', { 'on': mode === 'code' }]">
+        <input type="text" placeholder="search">
       </div>
     </div>
-    <main @click="change" id="graphics">
+    <main id="graphics">
       <!-- Top draw -->
       <div class="top-draw draw">
         <div class="cards">
@@ -131,7 +131,7 @@
       </div>
 
       <!-- Right Draw -->
-      <div class="right-draw draw">
+      <div :class="['right-draw draw', {'on': showRightDraw}]">
         <div class="blur" />
       </div>
 
@@ -174,17 +174,17 @@
       <div v-if="mode === 'audio'" class="audio-env">
         <div class="audio">
           <div class="track">
-            <div @click="change" class="audio-preview"></div>
+            <div class="audio-preview"></div>
           </div>
           <div class="track">
-            <div @click="change" class="audio-preview" style="left:200px;"></div>
+            <div class="audio-preview" style="left:200px;"></div>
           </div>
         </div>
       </div>
 
       <!-- Database -->
       <div v-if="mode === 'database'" class="database-env">
-        <div @click="change" class="database-view" :style="`justify-content:${view === 'db-info' ? 'center' : 'flex-start'};`">
+        <div class="database-view" :style="`justify-content:${view === 'db-info' ? 'center' : 'flex-start'};`">
             <div v-if="view === 'db-info'" class="db-info">
               <span class="label-art">Database</span>
               <div class="row" style="width: 250px;">
@@ -265,7 +265,7 @@
 
       <!-- Spreadsheet -->
       <div v-if="mode === 'spreadsheet'" class="spreadsheet-env">
-        <div @click="change" ref="spreadsheet" class="spreadsheet">
+        <div ref="spreadsheet" class="spreadsheet">
           <table class="table-contents">
             <thead ref="header">
               <td class="index" />
@@ -336,6 +336,7 @@ export default {
       mousey: 0,
       timelineOffsetX: '',
       showPreview: false,
+      showRightDraw: false,
       mode: 'code',
       // Database
       view: 'db-info',
@@ -343,6 +344,15 @@ export default {
     }
   },
   mounted () {
+     document.body.addEventListener('keydown', function(e) {
+      console.log(e.keyCode)
+      if ('keypress', e.altKey && e.keyCode === 37) {
+        this.showRightDraw = true
+      }
+      if ('keypress', e.altKey && e.keyCode === 39) {
+        this.showRightDraw = false
+      }
+    }.bind(this))
     if (this.$refs.spreadsheet) {
       this.$refs.spreadsheet.addEventListener('scroll', (e) => {
         let scrollLeft = e.target.scrollLeft
@@ -374,13 +384,13 @@ window.onload = function () {
     )
   },
   methods: {
-    change () {
-      window.modal.$shareStore.target = 'Graphics'
-    },
-    mouseMove (event) {
+    mouseMove(event) {
       this.mousex = event.clientX
       this.mousey = event.clientY
       this.timelineOffsetX = this.$refs.timeline.scrollLeft
+    },
+    onSwipeLeft(e) {
+      console.log(e)
     }
   },
   computed: {
@@ -423,7 +433,7 @@ window.onload = function () {
 }
 // Draws
 .draw {
-  background: rgba(230,230,230,0.4);
+  background: rgba(245,245,245,0.4);
   z-index: 99;
   transition: height 0.5s ease-in-out;
 }
@@ -441,6 +451,10 @@ window.onload = function () {
 .top-draw {
   border-bottom: .5px solid rgba(90,90,90,0.2);
   transition: height 0.45s ease-in-out;
+  min-height: 100px;
+  position: fixed;
+  width: 100%;
+  backdrop-filter: blur(20px);
 
   &:hover {
     height: 105px;
@@ -456,9 +470,9 @@ window.onload = function () {
   min-width: 350px;
   background: rgba(255, 255, 255, 0.5);
   box-shadow: -5px -2px 15px rgba(0,0,0,0.15);
-  transition: right 0.5s ease-in-out;
+  transition: right 0.2s ease-in-out;
 
-  &.open {
+  &.on {
     right: 0;
   }
 
@@ -475,8 +489,15 @@ window.onload = function () {
 }
 .bottom-draw {
   display: flex;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  min-height: 150px;
+  overflow: auto;
   flex-direction: column;
-  border-top: .5px solid rgba(90,90,90,0.2);
+  border-top: 0.5px solid rgba(90, 90, 90, 0.2);
+  backdrop-filter: blur(20px);
+  background: rgba(230, 230, 230, 0.65);
 }
 // Document
 .document {
@@ -545,7 +566,7 @@ window.onload = function () {
   overflow: hidden;
   box-shadow: 0 0 21px 2px rgba(0,0,0,0.4);
   border-radius: 3px;
-  pointer-events: none;
+  // pointer-events: none;
   opacity: 0;
   transition: opacity 0.2s;
   z-index: 9999999999999;
@@ -562,7 +583,7 @@ window.onload = function () {
   flex-wrap: wrap;
   bottom: 0;
   width: 100%;
-  height: 450px;
+  height: 195px;
   overflow: auto;
 
   .line {
@@ -1003,5 +1024,19 @@ window.onload = function () {
       }
     }
   }
+}
+// Code
+.code-sidebar {
+  height: 100%;
+  width: 100%;
+  background: rgba(220,220,220,0.45);
+  box-sizing: border-box;
+  padding: 15px;
+}
+#editor {
+  height: 150px;
+}
+/deep/ .CodeMirror {
+  background: transparent !important;
 }
 </style>

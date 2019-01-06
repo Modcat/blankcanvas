@@ -20,19 +20,21 @@ function createWindow () {
    * Initial window options
    */
   mainWindow = new BrowserWindow({
-    height: 563,
     useContentSize: true,
-    width: 1000,
+    minWidth: 1000,
+    minHeight: 600,
     frame: false,
     transparent: true,
     resizable: true,
     fullscreenable: true,
     vibrancy: 'light',
     webPreferences: {
-      nativeWindowOpen: true,
+      // nativeWindowOpen: true,
       experimentalFeatures: true
     }
   })
+
+  mainWindow.maximize()
 
   mainWindow.loadURL(winURL)
 
@@ -50,11 +52,12 @@ function createWindow () {
   })
 
   mainWindow.webContents.on('new-window', (event, url, frameName, disposition, options, additionalFeatures, modal = false, width = 377, height = 350) => {
-    console.log(frameName)
     if (frameName === 'modal') {
       // open window as modal
       event.preventDefault()
       Object.assign(options, {
+        minWidth: 250,
+        minHeight: 250,
         modal: modal,
         parent: mainWindow,
         width,

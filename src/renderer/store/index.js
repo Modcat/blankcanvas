@@ -66,9 +66,6 @@ const createStore = () => {
             // Full doc history which will be weakly mapped which will keep the cmd+z or ctrl+z history of the document with memory pointers
             documentHistory: [
               // Each one is a memory reference
-              this.state.history[1][0],
-              this.state.history[1][2],
-              this.state.history[2.9][1]
             ],
             // Who is connected is in the array
             connected: [

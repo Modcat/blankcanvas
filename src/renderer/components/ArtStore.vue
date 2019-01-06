@@ -67,7 +67,7 @@ body.artstore-open {
   backdrop-filter: blur(5px);
   background: rgba(255,255,255,0.85);
   z-index: -1;
-  pointer-events: none;
+  // pointer-events: none;
   opacity: 0;
   left: -200%;
   transition: opacity 0.2s ease-in-out, left 0.2s ease-in-out;

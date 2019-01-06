@@ -1,27 +1,28 @@
-# blankcanvas
+# BlankCanvas Info
 
-> opensorceproject
+[![Join the chat at https://gitter.im/BlankCanvas-OpenSource/Lobby](https://badges.gitter.im/BlankCanvas-OpenSource/Lobby.svg)](https://gitter.im/BlankCanvas-OpenSource/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
-## Build Setup
+Swiss knife application for developing in many different data types and environments with data connectivity supporting freedom computing for the application type. Please read specification under Docs/ for full information.
 
-``` bash
-# install dependencies
-npm install
+This software is hearby by under the GNU GPL freedom of software movement, no proprietary software redistrubution is allowable FSF will defend this invention against such injustice.
 
-# serve with hot reload at localhost:9080
-npm run dev
+# BlankCanvas Installation
+This software runs on Node, VueJS, Electron and yarn please install all technologies bellow...
+https://nodejs.org/
+https://cli.vuejs.org/
+https://electron.org
+https://yarnpkg.com/
 
-# build electron app for production
-npm run build
+After installation do the following, replace <*> with the content you specify
 
-# lint all JS/Vue component files in `app/src`
-npm run lint
+cd <to a directory where you want to clone the project>
+git clone git clone https://github.com/Modcat/BlankCanvas.git
+cd <into the a directory>
+yarn install
+yarn dev
 
-# run webpack in production
-npm run pack
-```
-More information can be found [here](https://simulatedgreg.gitbooks.io/electron-vue/content/docs/npm_scripts.html).
+ ## It should compile and run if any trouble please contact me on Facebook...
+ [Facebook](https://www.facebook.com/lawrence.turton)
 
----
-
-This project was generated from [electron-vue](https://github.com/SimulatedGREG/electron-vue) using [vue-cli](https://github.com/vuejs/vue-cli). Documentation about this project can be found [here](https://simulatedgreg.gitbooks.io/electron-vue/content/index.html).
+# Author
+* **Lawrence Turton** - *Initial work* - [Modcat](https://github.com/Modcat)

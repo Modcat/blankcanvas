@@ -32,3 +32,18 @@ Mountain inspiration - https://pixabay.com/en/rock-cliff-high-tableau-mountain-7
 Orange changed to green in second window - Inspiration mode for advert - https://videohive.net/item/colorful-rainbow-paint-drops-from-the-bottom-mixing-in-water/22236786?s_rank=145
 
 Purple smoke - Inspirational mode for advert - https://videohive.net/item/colored-ink-spreading-in-water-colored-smoke/22410279?s_rank=6
+
+## Art contributions
+Play vector - https://pixabay.com/en/play-icon-player-button-outline-2297762/
+
+Tele Vector - https://pixabay.com/en/instagram-insta-igtv-video-icon-3814090/
+
+Mountain scenic - https://pixabay.com/en/videos/k2-mountain-himalaya-peak-8000-8k-1407/
+
+Mountain - https://pixabay.com/en/videos/mountains-clouds-fog-mist-desert-2266/
+
+Mountain Video - https://pixabay.com/en/videos/landscape-clouds-mountains-sun-1824/
+
+Mountain pic - https://pixabay.com/en/mountain-teton-range-peaks-1149897/
+
+Mountain inspiration - https://pixabay.com/en/rock-cliff-high-tableau-mountain-731140/

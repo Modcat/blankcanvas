@@ -9,7 +9,4 @@ npm-debug.log
 npm-debug.log.*
 thumbs.db
 !.gitkeep
-static/three_examples/three-js-audio-visualiser/js/dancers.mp3
-static/art-store/video-example.mp4
-static/art-store/video-example2.mp4
-static/three_examples/three-js-audio-visualiser/js/dancers.mp3
+static/three_examples/*

@@ -79,9 +79,6 @@
 export default {
   name: 'Artboards',
   methods: {
-    change () {
-      window.modal.$shareStore.target = 'Artboard'
-    },
     changeUrl () {
       window.location.href = '#/artflow'
     }

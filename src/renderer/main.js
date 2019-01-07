@@ -1,5 +1,7 @@
 import Vue from 'vue'
 import axios from 'axios'
+import Chartist from 'vue-chartist'
+Vue.use(Chartist)
 
 import App from './App'
 import router from './router'

@@ -383,3 +383,24 @@ button {
     }
   }
 }
+// Sidebar
+.right-draw {
+	.label-art {
+		margin-top: 0;
+		margin-bottom: 10px !important;
+	}
+	.box {
+		border: 0.5px solid #ddd;
+		background: rgba(255,255,255,0.35);
+		border-radius:6px;
+	
+		div {
+			border-bottom: 1px solid #ddd;
+			padding: 7px 13px;
+	
+			&:last-child {
+				border-bottom: 0;
+			}
+		}
+	}
+}

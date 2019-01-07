@@ -109,6 +109,11 @@
       <!-- Code Sidebar -->
       <div :class="['code-sidebar', { 'on': mode === 'code' }]">
         <input type="text" placeholder="search">
+        <div class="group">
+          <div class="content">
+            hello
+          </div>
+        </div>
       </div>
     </div>
     <main id="graphics">
@@ -132,7 +137,55 @@
 
       <!-- Right Draw -->
       <div :class="['right-draw draw', {'on': showRightDraw}]">
-        <div class="blur" />
+        <div class="blur">
+          <!-- People connected -->
+          <div class="cards">
+            <div class="card">
+              <img src="/static/images/vr-logo.png" alt="">
+              <span class="label-art">John</span>
+            </div>
+            <div class="card">
+              <img src="/static/images/XBOX.png" alt="">
+              <span class="label-art">Joane</span>
+            </div>
+            <div class="card">
+              <img src="/static/images/Ubuntu.png" style="width:50px; margin: 0 auto;" alt="">
+              <span class="label-art">Jamie</span>
+            </div>
+          </div>
+
+          <hr>
+
+          <!-- Clipbaord -->
+
+          <span class="label-art">Clipboard</span>
+
+          <div class="box">
+            <div v-for="(clipbaord,index) in [1,2,3,4]" :key="index">
+              Clipbaord content {{ index }} ...
+            </div>
+          </div>
+
+          <hr>
+
+          <!-- Charts -->
+
+          <span class="label-art">Charts</span>
+
+          <div class="half">
+            <div></div>
+          </div>
+          <div class="half">
+            <div></div>
+          </div>
+          <div class="half">
+            <div></div>
+          </div>
+          <div class="half">
+            <div></div>
+          </div>
+
+        </div>
       </div>
 
       <!-- Graphics, Presentation or Code -->
@@ -319,12 +372,10 @@
 </template>
 
 <script>
+// Code mirror
 import CodeMirror from 'codemirror'
-/* eslint-disable-next-line */
 import CodeMirrorMode from 'codemirror/mode/javascript/javascript.js'
-/* eslint-disable-next-line */
 import CodeMirrorCSS from 'codemirror/lib/codemirror.css'
-/* eslint-disable-next-line */
 import CodeMirrorTheme from 'codemirror/theme/base16-light.css'
 
 export default {
@@ -365,7 +416,7 @@ export default {
         }
       })
     }
-    // Mounted
+    // Code Mirror
     let codeSection = document.getElementById('editor')
     CodeMirror(codeSection, {
       value: `document.getElementById('close').onmousedown = function(e) {
@@ -477,14 +528,27 @@ window.onload = function () {
   }
 
   .blur {
+    display: flex;
+    flex-direction: column;
     position: absolute;
     top: 0;
     bottom: 0;
     left: 0;
     right: 0;
+    padding: 15px;
     overflow-y: auto;
     border-left: .5px solid rgba(90,90,90,0.3);
     backdrop-filter: blur(25px);
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+
+  hr {
+    max-width: 100%;
+    margin: 15px 0;
+    position: relative;
+    left: -15px;
+    right: -15px;
   }
 }
 .bottom-draw {

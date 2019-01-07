@@ -8293,6 +8293,13 @@ vm-browserify@0.0.4:
   dependencies:
     indexof "0.0.1"
 
+vue-chartist@^2.2.0:
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/vue-chartist/-/vue-chartist-2.2.0.tgz#08a05cb0bc1fc629befe3ca503a9af2d6def1ce7"
+  integrity sha512-LlTL4BvBqFe7yX0fD+PY12bblgVm7ZZHsVtWssmHXi6YVh/D2pfnV7Sm9+HFOVr3vqRvKpl6F048K2BWpGC4qw==
+  dependencies:
+    chartist "^0.11.0"
+
 vue-drag-sortable@^0.1.0:
   version "0.1.0"
   resolved "https://registry.yarnpkg.com/vue-drag-sortable/-/vue-drag-sortable-0.1.0.tgz#4d9853009d157153525a75ed7429860e1ce6e3b5"

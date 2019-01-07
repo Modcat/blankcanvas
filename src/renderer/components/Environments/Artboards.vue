@@ -1,6 +1,6 @@
 <template>
   <div class="clip">
-    <section @click="change" class="artboards">
+    <section class="artboards">
       <div class="tabs">
         <span class="active">Art boards</span>
         <span @click="changeUrl">Art flow</span>

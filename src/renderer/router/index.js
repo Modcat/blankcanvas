@@ -20,7 +20,7 @@ export default new Router({
     {
       path: '/artflow',
       name: 'Artflow',
-      component: require('@/components/Environments/Artflow').default
+      component: require('@/components/Environments/ArtFlow').default
     },
     {
       path: '/bounty',

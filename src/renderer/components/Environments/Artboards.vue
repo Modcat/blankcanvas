@@ -5,6 +5,7 @@
         <span class="active">Art boards</span>
         <span @click="changeUrl">Art flow</span>
         <span @click="changeUrl">Director</span>
+        <span @click="document.body.classList.add('artstore-open')">Art Store</span>
       </div>
       <span class="label-art">Connected</span>
       <div class="cards" style="margin-bottom: 0px;">

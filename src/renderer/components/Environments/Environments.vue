@@ -119,23 +119,9 @@
     <main id="graphics">
       <!-- Top draw -->
       <div class="top-draw draw">
-        <div class="cards">
-          <div class="card">
-            <img src="/static/images/vr-logo.png" alt="">
-            <span class="label-art">John</span>
-          </div>
-          <div class="card">
-            <img src="/static/images/XBOX.png" alt="">
-            <span class="label-art">Joane</span>
-          </div>
-          <div class="card">
-            <img src="/static/images/Ubuntu.png" style="width:50px; margin: 0 auto;" alt="">
-            <span class="label-art">Jamie</span>
-          </div>
-        </div>
       </div>
 
-      <!-- Right Draw -->
+      <!-- Sidebar -->
       <div :class="['right-draw draw', {'on': showRightDraw}]">
         <div class="blur">
           <!-- People connected -->
@@ -149,10 +135,25 @@
               <span class="label-art">Joane</span>
             </div>
             <div class="card">
+              <img src="/static/images/XBOX.png" alt="">
+              <span class="label-art">Jeff</span>
+            </div>
+            <div class="card">
               <img src="/static/images/Ubuntu.png" style="width:50px; margin: 0 auto;" alt="">
               <span class="label-art">Jamie</span>
             </div>
           </div>
+
+          <hr>
+
+          <!-- Switch Mode -->
+
+          <button @click="mode = 'spreadsheet'">Spreadsheet</button>
+          <button @click="mode = 'database'">Database</button>
+          <button @click="mode = 'code'">Code</button>
+          <button @click="mode = 'graphics'">Graphics</button>
+          <button @click="mode = 'video'">Video</button>
+          <button @click="mode = 'audio'">Audio</button>
 
           <hr>
 
@@ -172,17 +173,30 @@
 
           <span class="label-art">Charts</span>
 
-          <div class="half">
-            <div></div>
+          <div class="charts">
+            <div class="half">
+              <div>
+                <chartist ratio="ct-major-second" type="Line" :data="chartData" :options="chartOptions" />
+              </div>
+            </div>
+            <div class="half">
+              <div>
+                <chartist ratio="ct-major-second" type="Line" :data="chartData" :options="chartOptions" />
+              </div>
+            </div>
           </div>
-          <div class="half">
-            <div></div>
-          </div>
-          <div class="half">
-            <div></div>
-          </div>
-          <div class="half">
-            <div></div>
+
+          <hr>
+
+          <!-- Clipbaord -->
+
+          <span class="label-art">SQL Presets</span>
+
+          <div class="box">
+            <div v-for="(clipbaord,index) in [1,2,3,4]" :key="index">
+              <span class="label-art">Get Figures</span>
+              SELECT FROM *{ columns } WHERE cell CONTAINS ${ market }
+            </div>
           </div>
 
         </div>
@@ -339,7 +353,7 @@
       <div v-if="mode !== 'database' && mode !== 'spreadsheet'" class="bottom-draw draw">
 
         <!-- Code -->
-        <div v-if="mode === 'code'" id="editor"></div>
+        <div v-show="mode === 'code'" id="editor" />
         
         <!-- Video Timeline -->
         <div  v-if="mode === 'video'" :style="`left: ${mousex - 75}px; top: ${mousey - 40}px; opacity:${showPreview ? '1' : '0'}`" id="live-preview">
@@ -391,7 +405,15 @@ export default {
       mode: 'code',
       // Database
       view: 'db-info',
-      subTab: 'schema'
+      subTab: 'schema',
+      // charist
+      chartData: {
+        labels: ["A", "B", "C"],
+        series:[[1, 3, 2], [4, 6, 5]]
+      },
+      chartOptions: {
+        lineSmooth: false
+      }
     }
   },
   mounted () {
@@ -500,6 +522,7 @@ window.onload = function () {
   }
 }
 .top-draw {
+  display: none;
   border-bottom: .5px solid rgba(90,90,90,0.2);
   transition: height 0.45s ease-in-out;
   min-height: 100px;
@@ -511,6 +534,7 @@ window.onload = function () {
     height: 105px;
   }
 }
+// Sidebar
 .right-draw {
   position: fixed;
   z-index: 361;
@@ -522,14 +546,13 @@ window.onload = function () {
   background: rgba(255, 255, 255, 0.5);
   box-shadow: -5px -2px 15px rgba(0,0,0,0.15);
   transition: right 0.2s ease-in-out;
+  text-align: center;
 
   &.on {
     right: 0;
   }
 
   .blur {
-    display: flex;
-    flex-direction: column;
     position: absolute;
     top: 0;
     bottom: 0;
@@ -550,6 +573,55 @@ window.onload = function () {
     left: -15px;
     right: -15px;
   }
+	.label-art {
+		margin-top: 0;
+		margin-bottom: 10px !important;
+		~ * {
+			margin-top: 15px;
+		}
+	}
+	.charts {
+		display: flex;
+		justify-content: space-between;
+		margin-bottom: -15px;
+	}
+	.half {
+		width: 48%;
+		height: 158px;
+		background: rgba(255,255,255,0.45);
+    border-radius: 3px;
+		border: 0.5px solid #e8e8e8;
+		overflow: hidden;
+		margin-bottom: 15px;
+	}
+	.box {
+		border: 0.5px solid #ddd;
+		background: rgba(255,255,255,0.35);
+		border-radius:6px;
+	
+		div {
+			border-bottom: 1px solid #ddd;
+			padding: 0 13px;
+			white-space: nowrap;
+			text-overflow: ellipsis;
+			border-bottom: 1px solid #ddd;
+			align-items: center;
+			flex-direction: row;
+			display: flex;
+			height: 30px;
+
+			.label-art {
+				margin-left: -8px;
+				border-radius: 3px !important;
+				margin-bottom: 0 !important;
+				margin-right: 5px;
+			}
+	
+			&:last-child {
+				border-bottom: 0;
+			}
+		}
+	}
 }
 .bottom-draw {
   display: flex;
@@ -1091,6 +1163,7 @@ window.onload = function () {
 }
 // Code
 .code-sidebar {
+  display: none;
   height: 100%;
   width: 100%;
   background: rgba(220,220,220,0.45);

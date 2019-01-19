@@ -1,11 +1,15 @@
 import Vue from 'vue'
 import axios from 'axios'
+import Chartist from 'vue-chartist'
+Vue.use(Chartist)
 
 import App from './App'
 import router from './router'
+// Please create import file and attach to view here
 import store from './store'
 
-// const Three = require('/three.min.js')
+import { VueHammer } from 'vue2-hammer'
+Vue.use(VueHammer)
 
 if (!process.env.IS_WEB) Vue.use(require('vue-electron'))
 Vue.http = Vue.prototype.$http = axios

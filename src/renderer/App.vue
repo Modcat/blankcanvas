@@ -15,16 +15,30 @@ export default {
   mounted () {
     window.db = pg
     window.sortable = Sortable
-    window.modal = window.open('http://localhost:9080/#/ui', 'modal', null, {}, null, false, 900, 80)
-    window.modal.$shareStore = {target: 'Artboard'}
+    // if (!window.modal) {
+    //   window.modal = window.open('http://localhost:9080/#/ui', 'modal', null, {}, null, false, 900, 80)
+    //   window.modal.$shareStore = {target: 'Artboard'}
+    // }
     document.body.addEventListener('keydown', (e) => {
-      if (e.keyCode === 121) {
+      if (e.shiftKey && e.keyCode === 32) {
+        this.$router.go(-1)
+      }
+      if (e.ctrlKey && e.keyCode === 32) {
         location.href = '#/'
       }
     })
+    // document.body.addEventListener('touchmove', this.goBack, false)
+    // document.body.addEventListener("touchstart", this.goBack, false);
+    // document.body.addEventListener("touchend", this.goBack, false);
+    // document.body.addEventListener("touchcancel", this.goBack, false);
   },
   beforeDestroy () {
     window.modal.close()
+  },
+  methods: {
+    goBack(e) {
+      console.log('go back app', e)
+    }
   }
 }
 </script>

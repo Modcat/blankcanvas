@@ -1,10 +1,11 @@
 <template>
   <div class="clip">
-    <section @click="change" class="artboards">
+    <section class="artboards">
       <div class="tabs">
         <span class="active">Art boards</span>
         <span @click="changeUrl">Art flow</span>
         <span @click="changeUrl">Director</span>
+        <span @click="openArtStore">Art Store</span>
       </div>
       <span class="label-art">Connected</span>
       <div class="cards" style="margin-bottom: 0px;">
@@ -79,11 +80,11 @@
 export default {
   name: 'Artboards',
   methods: {
-    change () {
-      window.modal.$shareStore.target = 'Artboard'
-    },
     changeUrl () {
       window.location.href = '#/artflow'
+    },
+    openArtStore() {
+      document.body.classList.add('artstore-open')
     }
   }
 }

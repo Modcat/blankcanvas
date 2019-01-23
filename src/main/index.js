@@ -75,7 +75,7 @@ function createWindow () {
     vibrancy: 'light',
     webPreferences: {webSecurity: false}
   })
-  win.loadURL(process.env.NODE_ENV === 'development' ? 'http://localhost:9080/#/ui' : `file://${__dirname}/index.html#ui`)
+  tools.loadURL(process.env.NODE_ENV === 'development' ? 'http://localhost:9080/#/tools' : `file://${__dirname}/index.html#tools`)
 
 
   // New window creation

@@ -33,11 +33,17 @@ export default new Router({
       name: 'Environments',
       component: require('@/components/Environments/Environments').default
     },
-    //HotKeys Module.
+    //Hotkeys Module.
     {
       path: '/HotKeys',
       name: 'HotKeys',
       component: require('@/components/Environments/HotKeys').default
+    },
+    //Tools Module.
+    {
+      path: '/tools',
+      name: 'Tools',
+      component: require('@/components/Environments/Tools').default
     },
 
     // Wild card loader

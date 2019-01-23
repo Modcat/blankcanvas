@@ -3,10 +3,11 @@
     <section class="artboards">
       <div class="tabs">
         <span class="active">Art boards</span>
-        <span @click="changeUrl">Art flow</span>
-        <span @click="changeUrl">Director</span>
+        <span @click="openArtflow">Art flow</span>
+        <span>Director</span>
         <span @click="openArtStore">Art Store</span>
         <span @click="openHotkeys">HotKeys</span>
+        <span @click="openBountyBoard">Bounty Board</span>
       </div>
       <span class="label-art">Connected</span>
       <div class="cards" style="margin-bottom: 0px;">
@@ -81,24 +82,28 @@
 export default {
   name: 'Artboards',
   methods: {
-    changeUrl () {
+    openArtflow() {
       window.location.href = '#/artflow'
     },
     openArtStore() {
       document.body.classList.add('artstore-open')
     },
-    openHotkeys(){
+    openHotkeys() {
       window.location.href = '#/hotkeys'
+    },
+    openBountyBoard() {
+      window.location.href = '#/bounty'
     }
   }
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .clip {
   max-height: 100vh;
   max-width: 100vw;
   overflow-y: auto;
+  overflow-x: hidden;
 }
 .artboards {
   display: flex;
@@ -106,38 +111,8 @@ export default {
   padding: 25px;
   align-items: center;
   overflow: auto;
-}
-.label-art {
-  margin-top: 25px;
-  border-radius: 50px;
-  color: #777;
-  background: rgba(0,0,0,.1);
-  font-size: 0.7em;
-  font-weight: bold;
-  text-transform: uppercase;
-  align-self: center;
-  padding: 4px 7px;
-  user-select: none;
-
-  &:first-child {
-    margin-top: 0 !important;
-  }
-
-  &--large {
-    margin-top: 75px;
-    font-size: 1em;
-
-    &:before {
-      content: '';
-      margin-top: -30px;
-      position: absolute;
-      z-index: 0;
-      left: 0;
-      right: 0;
-      height: 1px;
-      background: rgba(163, 128, 128, 0.08);
-    }
-  }
+  max-width: 100vw;
+  overflow-x: hidden;
 }
 .art {
   max-width: 150px;

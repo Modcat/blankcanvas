@@ -6,6 +6,7 @@
         <span @click="changeUrl">Art flow</span>
         <span @click="changeUrl">Director</span>
         <span @click="openArtStore">Art Store</span>
+        <span @click="openHotkeys">HotKeys</span>
       </div>
       <span class="label-art">Connected</span>
       <div class="cards" style="margin-bottom: 0px;">
@@ -85,6 +86,9 @@ export default {
     },
     openArtStore() {
       document.body.classList.add('artstore-open')
+    },
+    openHotkeys(){
+      window.location.href = '#/hotkeys'
     }
   }
 }

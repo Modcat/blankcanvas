@@ -1,3 +1,7 @@
+<!--This is the Hotkey view.
+      We store all the hotkeys in here.
+      Todo: This is still work in progress.
+-->
 <template>
   <div class="clip">
     <section class="hotkeys">
@@ -8,77 +12,111 @@
         <span @click="openArtStore">Art Store</span>
         <span class="active">HotKeys</span>
       </div>
-      
-      <!-- This is th main hotkeys -->
-      <span class="label-art label-art--large">Main Hotkeys</span>
+
+      <!-- This is the Common hotkeys -->
+      <span class="label-art label-art--large">Common</span>
       <div class="hotkeysPosition">
-        <span class="label-art">Key</span>
+        <span class="label-art">Ctrl</span>
         <span class="combination">+</span>
-        <span class="label-art">Key</span>
-        <p class="description"> Some text</p>
+        <span class="label-art">C</span>
+        <p class="description">- Copy</p>
       </div>
+
       <div class="hotkeysPosition">
-        <span class="label-art">Key</span>
+        <span class="label-art">Ctrl</span>
         <span class="combination">+</span>
-        <span class="label-art">Key</span>
+        <span class="label-art">X</span>
+        <p class="description">- Cut &nbsp;&nbsp;</p>
+      </div>
+
+      <div class="hotkeysPosition">
+        <span class="label-art">Ctrl</span>
+        <span class="combination">+</span>
+        <span class="label-art">V</span>
+        <p class="description">- Paste</p>
+      </div>
+
+      <div class="hotkeysPosition">
+        <span class="label-art">Ctrl</span>
+        <span class="combination">+</span>
+        <span class="label-art">Z</span>
+        <p class="description">- Undo</p>
+      </div>
+
+      <div class="hotkeysPosition">
+        <span class="label-art">Ctrl</span>
+        <span class="combination">+</span>
+        <span class="label-art">Y</span>
+        <p class="description">- Redo</p>
+      </div>
+
+    <!-- This is the Audio hotkeys -->
+    <span class="label-art label-art--large">Audio</span>
+    <div class="hotkeysPosition">
+      <span class="label-art largeText">&lArr;</span>
+      <p class="description">- Move playhead back&nbsp;&nbsp;&nbsp;</p>
+    </div>
+
+    <div class="hotkeysPosition">
+      <span class="label-art largeText">&rArr;</span>
+      <p class="description">- Move playhead forward</p>
+    </div>
+
+    <div class="hotkeysPosition">
+      <span class="label-art largeText">&uArr;</span>
+      <p class="description">- Volume Up</p>
+    </div>
+
+    <div class="hotkeysPosition">
+      <span class="label-art largeText">&dArr;</span>
+      <p class="description">- Volume Down</p>
+    </div>
+  <!--This is the Code projects hotkeys-->
+  <span class="label-art label-art--large">Code projects</span>
+    <div class="hotkeysPosition">
+      <span class="label-art">Key</span>
+      <span class="combination">+</span>
+      <span class="label-art">Key</span>
       <p class="description"> Some text</p>
     </div>
 
-        <span class="label-art label-art--large">Video Hotkeys</span>
-        <div class="hotkeysPosition">
-          <span class="label-art">Key</span>
-          <span class="combination">+</span>
-          <span class="label-art">Key</span>
-          <p class="description"> Some text</p>
-        </div>
-        <div class="hotkeysPosition">
-          <span class="label-art">Key</span>
-          <span class="combination">+</span>
-          <span class="label-art">Key</span>
-        <p class="description"> Some text</p>
-      </div>
+    <div class="hotkeysPosition">
+      <span class="label-art">Key</span>
+      <span class="combination">+</span>
+      <span class="label-art">Key</span>
+    <p class="description"> Some text</p>
+  </div>
 
-      <span class="label-art label-art--large">Audio Hotkeys</span>
-      <div class="hotkeysPosition">
-        <span class="label-art">Key</span>
-        <span class="combination">+</span>
-        <span class="label-art">Key</span>
-        <p class="description"> Some text</p>
-      </div>
-      <div class="hotkeysPosition">
-        <span class="label-art">Key</span>
-        <span class="combination">+</span>
-        <span class="label-art">Key</span>
+  <!--This is the Spreadsheets hotkeys-->
+  <span class="label-art label-art--large">Spreadsheet</span>
+    <div class="hotkeysPosition">
+      <span class="label-art">Key</span>
+      <span class="combination">+</span>
+      <span class="label-art">Key</span>
       <p class="description"> Some text</p>
     </div>
 
-      <span class="label-art label-art--large">Code projects Hotkeys</span>
+    <div class="hotkeysPosition">
+      <span class="label-art">Key</span>
+      <span class="combination">+</span>
+      <span class="label-art">Key</span>
+      <p class="description"> Some Text</p>
+    </div>
+    <!--This is the Video hotkeys-->
+    <span class="label-art label-art--large">Video</span>
       <div class="hotkeysPosition">
         <span class="label-art">Key</span>
         <span class="combination">+</span>
         <span class="label-art">Key</span>
         <p class="description"> Some text</p>
       </div>
-      <div class="hotkeysPosition">
-        <span class="label-art">Key</span>
-        <span class="combination">+</span>
-        <span class="label-art">Key</span>
-      <p class="description"> Some text</p>
-    </div>
 
-      <span class="label-art label-art--large">Spreadsheet Hotkeys</span>
       <div class="hotkeysPosition">
         <span class="label-art">Key</span>
         <span class="combination">+</span>
         <span class="label-art">Key</span>
         <p class="description"> Some text</p>
       </div>
-      <div class="hotkeysPosition">
-        <span class="label-art">Key</span>
-        <span class="combination">+</span>
-        <span class="label-art">Key</span>
-        <p class="description"> Some WQELWQEL;WQEQKEQWL;EKSDLASJ;LSAKD;LAKD;LAWKEKQ;LWEKSA;LD;QWLKD;LQWKE;LKEW;QLKEASD AS;DLKWQ;ELK</p>
-    </div>
     </section>
   </div>
 </template>
@@ -189,7 +227,9 @@ export default {
   margin-top: 3px;
   margin-bottom:  3px;
 }
-
+.largeText{
+  font-size: large;
+}
 .description{
   display: inline;
 }

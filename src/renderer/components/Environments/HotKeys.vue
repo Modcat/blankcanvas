@@ -15,39 +15,47 @@
 
     <!-- This is the Common hotkeys -->
     <span class="label-art label-art--large">Global</span>
+    
+    <div class="hotkeysPosition">
+      <span class="label-art">Shift</span>
+      <span class="combination">+</span>
+      <span class="label-art">Spacebar</span>
+      <p class="description">This hotkey will let you go to the previous environment</p>
+    </div>
+
     <div class="hotkeysPosition">
       <span class="label-art">Ctrl</span>
       <span class="combination">+</span>
       <span class="label-art">C</span>
-      <p class="description">- Copy</p>
+      <p class="description">Press this to copy the currently selected asset or assets to the clipboard</p>
     </div>
 
     <div class="hotkeysPosition">
       <span class="label-art">Ctrl</span>
       <span class="combination">+</span>
       <span class="label-art">X</span>
-      <p class="description">- Cut &nbsp;&nbsp;</p>
+      <p class="description">Press this to cut the currently selected asset or assets into the clipboard</p>
     </div>
 
     <div class="hotkeysPosition">
       <span class="label-art">Ctrl</span>
       <span class="combination">+</span>
       <span class="label-art">V</span>
-      <p class="description">- Paste</p>
+      <p class="description">Paste out the asset or assets to the artboard</p>
     </div>
 
     <div class="hotkeysPosition">
       <span class="label-art">Ctrl</span>
       <span class="combination">+</span>
       <span class="label-art">Z</span>
-      <p class="description">- Undo</p>
+      <p class="description">Press to undo and step back in the document history</p>
     </div>
 
     <div class="hotkeysPosition">
       <span class="label-art">Ctrl</span>
       <span class="combination">+</span>
       <span class="label-art">Y</span>
-      <p class="description">- Redo</p>
+      <p class="description">Press to redo and step forward in the document history</p>
     </div>
 
     <!-- This is the Audio hotkeys -->

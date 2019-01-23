@@ -20,7 +20,7 @@ export default new Router({
     {
       path: '/artflow',
       name: 'Artflow',
-      component: require('@/components/Environments/Artflow').default
+      component: require('@/components/Environments/ArtFlow').default
     },
     {
       path: '/bounty',
@@ -33,6 +33,19 @@ export default new Router({
       name: 'Environments',
       component: require('@/components/Environments/Environments').default
     },
+    //Hotkeys Module.
+    {
+      path: '/HotKeys',
+      name: 'HotKeys',
+      component: require('@/components/Environments/HotKeys').default
+    },
+    //Tools Module.
+    {
+      path: '/tools',
+      name: 'Tools',
+      component: require('@/components/Environments/Tools').default
+    },
+
     // Wild card loader
     {
       path: '*',

@@ -13,6 +13,7 @@ export default {
   name: 'blankcanvas',
   components: { ArtStore, pg },
   mounted () {
+    window.electron = require('electron')
     window.db = pg
     window.sortable = Sortable
     // if (!window.modal) {

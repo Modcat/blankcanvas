@@ -61,6 +61,24 @@ function createWindow () {
   })
   win.loadURL(process.env.NODE_ENV === 'development' ? 'http://localhost:9080/#/ui' : `file://${__dirname}/index.html#ui`)
 
+
+  // New tools window
+  let tools = null
+  tools = new BrowserWindow({
+    width: 300,
+    height: 35,
+    parent: mainWindow,
+    frame: false,
+    transparent: true,
+    resizable: false,
+    fullscreenable: false,
+    vibrancy: 'light',
+    webPreferences: {webSecurity: false}
+  })
+  tools.loadURL(process.env.NODE_ENV === 'development' ? 'http://localhost:9080/#/tools' : `file://${__dirname}/index.html#tools`)
+
+
+  // New window creation
   mainWindow.webContents.on('new-window', (event, url, frameName, disposition, options, additionalFeatures, modal = false, width = 377, height = 350) => {
     if (frameName === 'modal') {
       // open window as modal

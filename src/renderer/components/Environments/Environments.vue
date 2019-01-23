@@ -149,6 +149,7 @@
           <!-- Switch Mode -->
 
           <button @click="mode = 'spreadsheet'">Spreadsheet</button>
+          <button @click="mode = 'presentation'">presentation</button>
           <button @click="mode = 'database'">Database</button>
           <button @click="mode = 'code'">Code</button>
           <button @click="mode = 'graphics'">Graphics</button>

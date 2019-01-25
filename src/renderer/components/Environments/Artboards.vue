@@ -24,7 +24,7 @@
           <span class="label-art">Jamie</span>
         </div>
       </div>
-      <span class="label-art">My Artboards</span>
+      <span class="label-art">Graphics Artboards</span>
       <section class="art-collection">
         <a href="#/Environments"><div class="art" style="width: 110px; height: 150px; background: white;">
           <img src="/static/images/art-canvas.jpg" alt=""></div></a>
@@ -35,8 +35,7 @@
           <img src="/static/images/art-canvas.jpg" alt="">
         </div>
       </section>
-      <span class="label-art label-art--large">Attached Files</span>
-      <span class="label-art">Videos</span>
+      <span class="label-art">Videos Artboards</span>
       <section class="art-collection">
         <a class="art" href="#/video">
           <img src="/static/video/honey-thumbnail.png" />
@@ -48,6 +47,7 @@
           <video class="art" src="/static/video/honey.mp4" autoplay loop="loop"></video>
         </a>
       </section>
+      <span class="label-art label-art--large">Attached Files</span>
       <span class="label-art">Audio</span>
       <section class="art-collection">
         <a v-for="(writer,indexAudio) in [1,1,1]" :key="indexAudio" href="#/audio">

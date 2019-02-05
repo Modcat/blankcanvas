@@ -42,11 +42,8 @@ function createWindow () {
     mainWindow = null
   })
 
-
   // New properties window
-
-  let win = null
-  win = new BrowserWindow({
+  let properties = new BrowserWindow({
     width: 300,
     height: 400,
     minWidth: 250,
@@ -59,7 +56,7 @@ function createWindow () {
     vibrancy: 'light',
     webPreferences: {webSecurity: false}
   })
-  win.loadURL(process.env.NODE_ENV === 'development' ? 'http://localhost:9080/#/ui' : `file://${__dirname}/index.html#ui`)
+  properties.loadURL(process.env.NODE_ENV === 'development' ? 'http://localhost:9080/#/ui' : `file://${__dirname}/index.html#ui`)
 
 
   // New tools window
@@ -77,6 +74,9 @@ function createWindow () {
   })
   tools.loadURL(process.env.NODE_ENV === 'development' ? 'http://localhost:9080/#/tools' : `file://${__dirname}/index.html#tools`)
 
+  // Allow access globally all windows
+
+  global.windowAccess = {tools, properties, mainWindow}
 
   // New window creation
   mainWindow.webContents.on('new-window', (event, url, frameName, disposition, options, additionalFeatures, modal = false, width = 377, height = 350) => {

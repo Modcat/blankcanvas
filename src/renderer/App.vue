@@ -14,12 +14,9 @@ export default {
   components: { ArtStore, pg },
   mounted () {
     window.electron = require('electron')
+    window.elecWindows = electron.remote.getGlobal('windowAccess')
     window.db = pg
     window.sortable = Sortable
-    // if (!window.modal) {
-    //   window.modal = window.open('http://localhost:9080/#/ui', 'modal', null, {}, null, false, 900, 80)
-    //   window.modal.$shareStore = {target: 'Artboard'}
-    // }
     document.body.addEventListener('keydown', (e) => {
       if (e.shiftKey && e.keyCode === 32) {
         this.$router.go(-1)
@@ -28,10 +25,6 @@ export default {
         location.href = '#/'
       }
     })
-    // document.body.addEventListener('touchmove', this.goBack, false)
-    // document.body.addEventListener("touchstart", this.goBack, false);
-    // document.body.addEventListener("touchend", this.goBack, false);
-    // document.body.addEventListener("touchcancel", this.goBack, false);
   },
   beforeDestroy () {
     window.modal.close()

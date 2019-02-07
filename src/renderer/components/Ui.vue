@@ -117,6 +117,13 @@ export default {
 </script>
 
 <style>
-  @import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro');
-  body { font-family: 'Open Sans', sans-serif; }
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro');
+body { font-family: 'Open Sans', sans-serif; }
+#wrapper {
+	height: 100vh;
+	width: 100vw;
+	overflow-y: scroll;
+	box-sizing: border-box;
+	overflow-x: hidden;
+}
 </style>

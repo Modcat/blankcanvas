@@ -1,6 +1,15 @@
 <template>
   <div id="app">
-    <art-store />
+    <div v-if="$route.name !== 'Tools' && $route.name !== 'ui'" class="top-panel">
+      <div class="tabs">
+        <span class="active" @click="openArtboards">Art boards</span>
+        <span @click="openArtflow">Art flow</span>
+        <span>Director</span>
+        <span @click="openArtstore">Art Store</span>
+        <span @click="openHotkeys">HotKeys</span>
+        <span @click="openBountyBoard">Bounty Board</span>
+      </div>
+    </div>
     <router-view></router-view>
   </div>
 </template>
@@ -8,7 +17,7 @@
 <script>
 import pg from 'pg'
 import Sortable from 'vue-drag-sortable'
-import ArtStore from './components/ArtStore'
+import ArtStore from './components/Environments/ArtStore'
 export default {
   name: 'blankcanvas',
   components: { ArtStore, pg },
@@ -32,6 +41,21 @@ export default {
   methods: {
     goBack(e) {
       console.log('go back app', e)
+    },
+    openArtboards() {
+      window.location.href = '#/artboards'
+    },
+    openArtflow() {
+      window.location.href = '#/artflow'
+    },
+    openArtstore() {
+      window.location.href = '#/artstore'
+    },
+    openHotkeys() {
+      window.location.href = '#/hotkeys'
+    },
+    openBountyBoard() {
+      window.location.href = '#/bounty'
     }
   }
 }
@@ -39,6 +63,32 @@ export default {
 
 <style lang="scss">
 $orange: rgba(255, 134, 34, 0.3);
+.top-panel {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  background: #dadada;
+  -webkit-app-region: drag;
+  .tabs {
+    border-radius: 3px;
+    box-shadow: 0px 2px 6px #ccc;
+    font-weight: 600;
+    span {
+      background: #eee;
+      margin-left: 1px;
+      border: none;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-transform: uppercase;
+      cursor: default;
+      &.active {
+        color: #fff;
+      }
+    }
+  }
+}
 #wrapper {
 	display: flex;
 	flex-direction: column;
@@ -60,7 +110,8 @@ body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  background: rgba(255, 255, 255, 0.45);
+  // background: rgba(255, 255, 255, 0.45);
+  background: #eee;
   font-family: 'Open Sans', sans-serif;
   font-size: 10px;
   color: #666;

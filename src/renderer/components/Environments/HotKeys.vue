@@ -4,14 +4,6 @@
 -->
 <template>
   <div class="hotkeys">
-    <div class="tabs">
-      <span @click="openArtBoards">Art boards</span>
-      <span @click="openArtflow">Art flow</span>
-      <span>Director</span>
-      <span @click="openArtStore">Art Store</span>
-      <span class="active">HotKeys</span>
-      <span @click="openBountyBoard">Bounty Board</span>
-    </div>
 
     <!-- This is the Common hotkeys -->
     <span class="label-art label-art--large">Global</span>

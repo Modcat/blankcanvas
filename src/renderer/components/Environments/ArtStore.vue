@@ -32,44 +32,16 @@
 
 <script>
 export default {
-  name: 'ArtStore',
-  mounted () {
-    document.body.addEventListener('keydown', (e) => {
-      if (e.keyCode === 119) {
-        document.body.classList.toggle('artstore-open')
-      }
-    })
-  }
+  name: 'ArtStore'
 }
 </script>
-
-<style lang="scss">
-body.artstore-open {
-  overflow: hidden;
-
-  .art-store {
-    z-index:100 !important;
-    pointer-events: all !important;
-    opacity: 1 !important;
-    left: 0 !important;
-  }
-}
-</style>
 
 
 <style lang="scss" scoped>
 .art-store {
-  position: fixed;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  right: 0;
+  position: relative;
   backdrop-filter: blur(5px);
   background: rgba(255,255,255,0.85);
-  z-index: -1;
-  // pointer-events: none;
-  opacity: 0;
-  left: -200%;
   transition: opacity 0.2s ease-in-out, left 0.2s ease-in-out;
   overflow-y: auto;
   box-sizing: border-box;

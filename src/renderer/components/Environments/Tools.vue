@@ -1,5 +1,5 @@
 <template>
-  <div class="nuxt_proto">Tools</div>
+  <div class="tools"></div>
 </template>
 
 <script>
@@ -9,4 +9,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.tools {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  -webkit-app-region: drag;
+}
 </style>

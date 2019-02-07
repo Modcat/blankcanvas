@@ -1,14 +1,6 @@
 <template>
   <div class="clip">
     <section class="artboards">
-      <div class="tabs">
-        <span class="active">Art boards</span>
-        <span @click="openArtflow">Art flow</span>
-        <span>Director</span>
-        <span @click="openArtStore">Art Store</span>
-        <span @click="openHotkeys">HotKeys</span>
-        <span @click="openBountyBoard">Bounty Board</span>
-      </div>
       <span class="label-art">Connected</span>
       <div class="cards" style="margin-bottom: 0px;">
         <div class="card">
@@ -80,21 +72,7 @@
 
 <script>
 export default {
-  name: 'Artboards',
-  methods: {
-    openArtflow() {
-      window.location.href = '#/artflow'
-    },
-    openArtStore() {
-      document.body.classList.add('artstore-open')
-    },
-    openHotkeys() {
-      window.location.href = '#/hotkeys'
-    },
-    openBountyBoard() {
-      window.location.href = '#/bounty'
-    }
-  }
+  name: 'Artboards'
 }
 </script>
 

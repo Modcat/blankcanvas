@@ -23,6 +23,11 @@ export default new Router({
       component: require('@/components/Environments/ArtFlow').default
     },
     {
+      path: '/artstore',
+      name: 'ArtStore',
+      component: require('@/components/Environments/ArtStore').default
+    },
+    {
       path: '/bounty',
       name: 'Bounty',
       component: require('@/components/Environments/BountyBoard').default

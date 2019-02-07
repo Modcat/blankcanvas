@@ -101,7 +101,7 @@
 
 <script>
 export default {
-  name: 'landing-page',
+  name: 'UI',
   data () {
     return {
       // color picker
@@ -116,7 +116,7 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss" scoped>
 @import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro');
 body { font-family: 'Open Sans', sans-serif; }
 #wrapper {
@@ -125,5 +125,9 @@ body { font-family: 'Open Sans', sans-serif; }
 	overflow-y: scroll;
 	box-sizing: border-box;
 	overflow-x: hidden;
+	-webkit-app-region: drag;
+	* {
+		-webkit-app-region: no-drag;
+	}
 }
 </style>

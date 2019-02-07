@@ -53,7 +53,7 @@ function createWindow () {
     transparent: true,
     resizable: true,
     fullscreenable: false,
-    vibrancy: 'light',
+    // vibrancy: 'light',
     webPreferences: {webSecurity: false}
   })
   properties.loadURL(process.env.NODE_ENV === 'development' ? 'http://localhost:9080/#/ui' : `file://${__dirname}/index.html#ui`)

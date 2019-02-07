@@ -1,13 +1,5 @@
 <template>
   <div class="artflow">
-    <div class="tabs">
-      <span @click="openArtBoards">Art boards</span>
-      <span class="active">Art flow</span>
-      <span>Director</span>
-      <span @click="openArtStore">Art Store</span>
-      <span @click="openHotkeys">HotKeys</span>
-      <span @click="openBountyBoard">Bounty Board</span>
-    </div>
     <img src="/static/images/artflow.svg" alt="">
   </div>
 </template>

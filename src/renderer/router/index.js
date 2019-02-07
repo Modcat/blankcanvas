@@ -7,9 +7,14 @@ export default new Router({
   routes: [
     // UI for props window
     {
-      path: '/ui',
-      name: 'ui',
-      component: require('@/components/Ui').default
+      path: '/properties',
+      name: 'Properties',
+      component: require('@/components/Windows/Properties').default
+    },
+    {
+      path: '/tools',
+      name: 'Tools',
+      component: require('@/components/Windows/Tools').default
     },
     // Top level document
     {
@@ -43,12 +48,6 @@ export default new Router({
       path: '/HotKeys',
       name: 'HotKeys',
       component: require('@/components/Environments/HotKeys').default
-    },
-    //Tools Module.
-    {
-      path: '/tools',
-      name: 'Tools',
-      component: require('@/components/Environments/Tools').default
     },
 
     // Wild card loader

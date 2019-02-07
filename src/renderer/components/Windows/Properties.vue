@@ -101,7 +101,7 @@
 
 <script>
 export default {
-  name: 'UI',
+  name: 'Properties',
   data () {
     return {
       // color picker

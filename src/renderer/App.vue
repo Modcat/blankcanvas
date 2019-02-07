@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <div v-if="$route.name !== 'Tools' && $route.name !== 'ui'" class="top-panel">
+    <div v-if="$route.name !== 'Tools' && $route.name !== 'Properties'" class="top-panel">
       <div class="tabs">
         <span class="active" @click="openArtboards">Art boards</span>
         <span @click="openArtflow">Art flow</span>

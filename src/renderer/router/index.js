@@ -16,10 +16,17 @@ export default new Router({
       name: 'Tools',
       component: require('@/components/Windows/Tools').default
     },
+    // Editor Environment for inspiration, graphics, presentation, video, audio, spreadsheet, code and database
+    {
+      path: '/environments',
+      name: 'Environments',
+      props: { mode: false },
+      component: require('@/components/Environments/Environments').default
+    },
     // Top level document
     {
       path: '/',
-      name: 'artboards',
+      name: 'Artboards',
       component: require('@/components/Environments/Artboards').default
     },
     {
@@ -37,39 +44,15 @@ export default new Router({
       name: 'Bounty',
       component: require('@/components/Environments/BountyBoard').default
     },
-    // Editor Environment for inspiration, graphics, presentation, video, audio, spreadsheet, code and database
-    {
-      path: '/environments',
-      name: 'Environments',
-      component: require('@/components/Environments/Environments').default
-    },
-    //Hotkeys Module.
     {
       path: '/hotkeys',
       name: 'HotKeys',
       component: require('@/components/Environments/HotKeys').default
     },
-
     // Wild card loader
     {
       path: '*',
       redirect: '/'
     }
-    // Useless but copy code out
-    // {
-    //   path: '/3dvr',
-    //   name: '3dvr',
-    //   component: require('@/components/Environments/ThreeDVr').default
-    // },
-    // {
-    //   path: '/3dar',
-    //   name: '3dar',
-    //   component: require('@/components/Environments/ThreeDAr').default
-    // },
-    // {
-    //   path: '/web',
-    //   name: 'WebView',
-    //   component: require('@/components/Environments/WebView').default
-    // }
   ]
 })

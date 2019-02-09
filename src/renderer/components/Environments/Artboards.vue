@@ -18,24 +18,25 @@
       </div>
       <span class="label-art">Graphics Artboards</span>
       <section class="art-collection">
-        <a href="#/Environments"><div class="art" style="width: 110px; height: 150px; background: white;">
-          <img src="/static/images/art-canvas.jpg" alt=""></div></a>
-        <div class="art" style="width: 110px; height: 150px; background: white;">
-          <img src="/static/images/art-canvas.jpg" alt="">
-        </div>
-        <div class="art" style="width: 110px; height: 150px; background: white;">
-          <img src="/static/images/art-canvas.jpg" alt="">
-        </div>
+        <a href="#/environments?mode=graphics"><div class="art" style="width: 110px; height: 150px; background: white;">
+          <img src="/static/images/art-canvas.jpg" alt=""></div>
+        </a>
+        <a href="#/environments?mode=graphics"><div class="art" style="width: 110px; height: 150px; background: white;">
+          <img src="/static/images/art-canvas.jpg" alt=""></div>
+        </a>
+        <a href="#/environments?mode=graphics"><div class="art" style="width: 110px; height: 150px; background: white;">
+          <img src="/static/images/art-canvas.jpg" alt=""></div>
+        </a>
       </section>
       <span class="label-art">Videos Artboards</span>
       <section class="art-collection">
-        <a class="art" href="#/video">
+        <a class="art" href="#/environments?mode=video">
           <img src="/static/video/honey-thumbnail.png" />
         </a>
-        <a class="art" href="#/video">
+        <a class="art" href="#/environments?mode=video">
           <img src="/static/video/honey-thumbnail.png" />
         </a>
-        <a href="#/video">
+        <a href="#/environments?mode=video">
           <video class="art" src="/static/video/honey.mp4" autoplay loop="loop"></video>
         </a>
       </section>
@@ -43,26 +44,26 @@
       <span class="label-art">Audio</span>
       <section class="art-collection">
         <a v-for="(writer,indexAudio) in [1,1,1]" :key="indexAudio" href="#/audio">
-          <div  class="art" style="width: 110px; background: white;">
+          <a href="#/environments?mode=audio"  class="art" style="width: 110px; background: white;">
             <img src="/static/images/audio.jpg" alt="">
-          </div>
+          </a>
         </a>
       </section>
       <span class="label-art">Databases</span>
       <section class="art-collection">
-        <a v-for="(writer,indexDB) in [1,1,1,1,1,1]" :key="indexDB" href="#/database">
+        <a v-for="(writer,indexDB) in [1,1,1,1,1,1]" :key="indexDB" href="#/environments?mode=database">
           <div  class="art" style="width: 100px; height: 100px; background: url(/static/images/database.jpg) no-repeat white;background-size: auto 100%;"/>
         </a>
       </section>
       <span class="label-art">Code projects</span>
       <section class="art-collection">
-        <a v-for="(writer,indexCode) in [1,1,1,1,1,1]" :key="indexCode" href="#/codeeditor">
+        <a v-for="(writer,indexCode) in [1,1,1,1,1,1]" :key="indexCode" href="#/environments?mode=codeeditor">
           <div  class="art" style="width: 100px; height: 150px; background: url(/static/images/code.jpg) no-repeat white;background-size: auto 100%;"/>
         </a>
       </section>
       <span class="label-art">Spreadsheet</span>
       <section class="art-collection">
-        <a v-for="(writer,indexSpreadsheet) in [1,1,1,1,1,1]" :key="indexSpreadsheet" href="#/excel">
+        <a v-for="(writer,indexSpreadsheet) in [1,1,1,1,1,1]" :key="indexSpreadsheet" href="#/environments?mode=spreadsheet">
           <div  class="art" style="width: 100px; height: 150px; background: url(/static/images/excel.jpg) no-repeat white;background-size: auto 100%;"/>
         </a>
       </section>
@@ -93,6 +94,7 @@ export default {
   overflow-x: hidden;
 }
 .art {
+  display: block;
   max-width: 150px;
   max-height: 150px;
 }

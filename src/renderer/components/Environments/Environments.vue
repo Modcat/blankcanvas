@@ -3,7 +3,7 @@
     <!-- Left Draw -->
     <!-- All main content that pushes over to left -->
     <div class="left-draw draw" :style="`width:${sidebarWidth}vw;`">
-      
+
       <!-- Database sidebar -->
       <div :class="['database-mode', { 'on': mode === 'database' }]">
         <input type="text" class="search" placeholder="search" style="margin-top:0px;">
@@ -147,14 +147,13 @@
           <hr>
 
           <!-- Switch Mode -->
-
-          <button @click="mode = 'spreadsheet'">Spreadsheet</button>
-          <button @click="mode = 'presentation'">presentation</button>
-          <button @click="mode = 'database'">Database</button>
-          <button @click="mode = 'code'">Code</button>
-          <button @click="mode = 'graphics'">Graphics</button>
-          <button @click="mode = 'video'">Video</button>
-          <button @click="mode = 'audio'">Audio</button>
+          <router-link :to="'/environments?mode=spreadsheet'">Spreadsheet</router-link>
+          <router-link :to="'/environments?mode=presentation'">presentation</router-link>
+          <router-link :to="'/environments?mode=database'">Database</router-link>
+          <router-link :to="'/environments?mode=code'">Code</router-link>
+          <router-link :to="'/environments?mode=graphics'">Graphics</router-link>
+          <router-link :to="'/environments?mode=video'">Video</router-link>
+          <router-link :to="'/environments?mode=audio'">Audio</router-link>
 
           <hr>
 
@@ -403,7 +402,7 @@ export default {
       timelineOffsetX: '',
       showPreview: false,
       showRightDraw: false,
-      mode: 'code',
+      mode: this.$route.query.mode || 'graphics',
       // Database
       view: 'db-info',
       subTab: 'schema',
@@ -465,6 +464,11 @@ window.onload = function () {
     },
     onSwipeLeft(e) {
       console.log(e)
+    }
+  },
+  watch: {
+    '$route.query.mode': function() {
+      this.mode = this.$route.query.mode
     }
   },
   computed: {

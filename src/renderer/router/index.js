@@ -45,7 +45,7 @@ export default new Router({
     },
     //Hotkeys Module.
     {
-      path: '/HotKeys',
+      path: '/hotkeys',
       name: 'HotKeys',
       component: require('@/components/Environments/HotKeys').default
     },

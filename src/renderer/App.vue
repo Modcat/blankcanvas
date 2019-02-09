@@ -2,12 +2,12 @@
   <div id="app">
     <div v-if="$route.name !== 'Tools' && $route.name !== 'Properties'" class="top-panel">
       <div class="tabs">
-        <span class="active" @click="openArtboards">Art boards</span>
-        <span @click="openArtflow">Art flow</span>
-        <span>Director</span>
-        <span @click="openArtstore">Art Store</span>
-        <span @click="openHotkeys">HotKeys</span>
-        <span @click="openBountyBoard">Bounty Board</span>
+        <router-link to="/">Art boards</router-link>
+        <router-link to="/artflow">Art flow</router-link>
+        <router-link to="/director">Director</router-link>
+        <router-link to="/artstore">Art Store</router-link>
+        <router-link to="/hotkeys">HotKeys</router-link>
+        <router-link to="/bounty">Bounty Board</router-link>
       </div>
     </div>
     <router-view></router-view>
@@ -34,29 +34,6 @@ export default {
         location.href = '#/'
       }
     })
-  },
-  beforeDestroy () {
-    window.modal.close()
-  },
-  methods: {
-    goBack(e) {
-      console.log('go back app', e)
-    },
-    openArtboards() {
-      window.location.href = '#/artboards'
-    },
-    openArtflow() {
-      window.location.href = '#/artflow'
-    },
-    openArtstore() {
-      window.location.href = '#/artstore'
-    },
-    openHotkeys() {
-      window.location.href = '#/hotkeys'
-    },
-    openBountyBoard() {
-      window.location.href = '#/bounty'
-    }
   }
 }
 </script>
@@ -67,14 +44,17 @@ $orange: rgba(255, 134, 34, 0.3);
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 20px;
+  padding: 15px;
   background: #dadada;
   -webkit-app-region: drag;
   .tabs {
     border-radius: 3px;
     box-shadow: 0px 2px 6px #ccc;
     font-weight: 600;
-    span {
+    a {
+      padding: 0 15px;
+      display: inline-block;
+      text-decoration: none;
       background: #eee;
       margin-left: 1px;
       border: none;
@@ -83,8 +63,16 @@ $orange: rgba(255, 134, 34, 0.3);
       align-items: center;
       text-transform: uppercase;
       cursor: default;
-      &.active {
+      color: inherit;
+      &:first-child {
+        border-radius: 3px 0 0 3px;
+      }
+      &:last-child {
+        border-radius: 0 3px 3px 0;
+      }
+      &.router-link-exact-active {
         color: #fff;
+        background: #aaa;
       }
     }
   }

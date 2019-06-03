@@ -69,6 +69,7 @@
     "bulma-pro": "^0.1.6",
     "codemirror": "^5.47.0",
     "git": "^0.1.5",
+    "simple-git": "^1.113.0",
     "vue": "^2.6.10",
     "vue-chartist": "^2.2.0",
     "vue-drag-sortable": "^0.1.0",

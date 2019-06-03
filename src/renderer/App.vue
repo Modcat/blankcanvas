@@ -56,6 +56,12 @@ export default {
         location.href = '#/'
       }
     })
+
+    // Github
+    const simpleGit = require('simple-git')('/Users/Lawrence/Documents/blankcanvas/')
+    // If it doesn't exists clone
+    // simpleGit.clone('https://github.com/Modcat/blancanvas-project')
+    console.log( simpleGit.cwd('/Users/Lawrence/Documents/blankcanvas/blancanvas-project') )
   }
 }
 </script>

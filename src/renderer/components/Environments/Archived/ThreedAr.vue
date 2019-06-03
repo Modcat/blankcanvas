@@ -1,23 +1,36 @@
 <template>
   <div>
-    <main @click="change" id="graphics">
-      <div id="target"/>
+    <main
+      id="graphics"
+      @click="change"
+    >
+      <div id="target" />
 
-      <span/>
+      <span />
       <div class="document">
         <div id="mainCanvas">
           <span class="label-art label-art--large"><a href="#/codeeditor">Source Code</a></span>
           <div class="cards">
             <div class="card">
-              <img src="/static/images/vr-logo.png" alt="">
+              <img
+                src="/static/images/vr-logo.png"
+                alt=""
+              >
               <span class="label-art">John</span>
             </div>
             <div class="card">
-              <img src="/static/images/XBOX.png" alt="">
+              <img
+                src="/static/images/XBOX.png"
+                alt=""
+              >
               <span class="label-art">Joane</span>
             </div>
             <div class="card">
-              <img src="/static/images/Ubuntu.png" style="width:50px; margin: 0 auto;" alt="">
+              <img
+                src="/static/images/Ubuntu.png"
+                style="width:50px; margin: 0 auto;"
+                alt=""
+              >
               <span class="label-art">Jamie</span>
             </div>
           </div>
@@ -25,8 +38,7 @@
         </div>
         <!-- <canvas id="mainCanvas"/> -->
       </div>
-      <span/>
-
+      <span />
     </main>
   </div>
 </template>
@@ -34,18 +46,18 @@
 export default {
   name: 'AR',
   mounted () {
-    var params = {
+    const params = {
       envMap: 'HDR',
       roughness: 0.0,
       metalness: 0.0,
       exposure: 1.0,
       debug: false
     }
-    var container
-    var camera, scene, renderer
-    var torusMesh, planeMesh
-    var ldrCubeRenderTarget, hdrCubeRenderTarget, rgbmCubeRenderTarget
-    var ldrCubeMap, hdrCubeMap, rgbmCubeMap
+    let container
+    let camera; let scene; let renderer
+    let torusMesh; let planeMesh
+    let ldrCubeRenderTarget; let hdrCubeRenderTarget; let rgbmCubeRenderTarget
+    let ldrCubeMap; let hdrCubeMap; let rgbmCubeMap
     init()
     animate()
     function init () {
@@ -73,39 +85,39 @@ export default {
       planeMesh.position.y = -50
       planeMesh.rotation.x = -Math.PI * 0.5
       scene.add(planeMesh)
-      var hdrUrls = [ 'px.hdr', 'nx.hdr', 'py.hdr', 'ny.hdr', 'pz.hdr', 'nz.hdr' ]
+      const hdrUrls = [ 'px.hdr', 'nx.hdr', 'py.hdr', 'ny.hdr', 'pz.hdr', 'nz.hdr' ]
       hdrCubeMap = new window.THREE.HDRCubeTextureLoader()
         .setPath('/static/textures/cube/pisaHDR/')
         .load(window.THREE.UnsignedByteType, hdrUrls, function () {
-          var pmremGenerator = new window.THREE.PMREMGenerator(hdrCubeMap)
+          const pmremGenerator = new window.THREE.PMREMGenerator(hdrCubeMap)
           pmremGenerator.update(renderer)
-          var pmremCubeUVPacker = new window.THREE.PMREMCubeUVPacker(pmremGenerator.cubeLods)
+          const pmremCubeUVPacker = new window.THREE.PMREMCubeUVPacker(pmremGenerator.cubeLods)
           pmremCubeUVPacker.update(renderer)
           hdrCubeRenderTarget = pmremCubeUVPacker.CubeUVRenderTarget
           pmremGenerator.dispose()
           pmremCubeUVPacker.dispose()
         })
-      var ldrUrls = [ 'px.png', 'nx.png', 'py.png', 'ny.png', 'pz.png', 'nz.png' ]
+      const ldrUrls = [ 'px.png', 'nx.png', 'py.png', 'ny.png', 'pz.png', 'nz.png' ]
       ldrCubeMap = new window.THREE.CubeTextureLoader()
         .setPath('/static/textures/cube/pisa/')
         .load(ldrUrls, function () {
           ldrCubeMap.encoding = window.THREE.GammaEncoding
-          var pmremGenerator = new window.THREE.PMREMGenerator(ldrCubeMap)
+          const pmremGenerator = new window.THREE.PMREMGenerator(ldrCubeMap)
           pmremGenerator.update(renderer)
-          var pmremCubeUVPacker = new window.THREE.PMREMCubeUVPacker(pmremGenerator.cubeLods)
+          const pmremCubeUVPacker = new window.THREE.PMREMCubeUVPacker(pmremGenerator.cubeLods)
           pmremCubeUVPacker.update(renderer)
           ldrCubeRenderTarget = pmremCubeUVPacker.CubeUVRenderTarget
           pmremGenerator.dispose()
           pmremCubeUVPacker.dispose()
         })
-      var rgbmUrls = [ 'px.png', 'nx.png', 'py.png', 'ny.png', 'pz.png', 'nz.png' ]
+      const rgbmUrls = [ 'px.png', 'nx.png', 'py.png', 'ny.png', 'pz.png', 'nz.png' ]
       rgbmCubeMap = new window.THREE.CubeTextureLoader()
         .setPath('/static/textures/cube/pisaRGBM16/')
         .load(rgbmUrls, function () {
           rgbmCubeMap.encoding = window.THREE.RGBM16Encoding
-          var pmremGenerator = new window.THREE.PMREMGenerator(rgbmCubeMap)
+          const pmremGenerator = new window.THREE.PMREMGenerator(rgbmCubeMap)
           pmremGenerator.update(renderer)
-          var pmremCubeUVPacker = new window.THREE.PMREMCubeUVPacker(pmremGenerator.cubeLods)
+          const pmremCubeUVPacker = new window.THREE.PMREMCubeUVPacker(pmremGenerator.cubeLods)
           pmremCubeUVPacker.update(renderer)
           rgbmCubeRenderTarget = pmremCubeUVPacker.CubeUVRenderTarget
           pmremGenerator.dispose()
@@ -132,8 +144,8 @@ export default {
       // gui.open()
     }
     function onWindowResize () {
-      var width = window.innerWidth
-      var height = window.innerHeight
+      const width = window.innerWidth
+      const height = window.innerHeight
       camera.aspect = width / height
       camera.updateProjectionMatrix()
       renderer.setSize(width, height)
@@ -147,7 +159,7 @@ export default {
     function render () {
       torusMesh.material.roughness = params.roughness
       torusMesh.material.metalness = params.metalness
-      var renderTarget, cubeMap
+      let renderTarget; let cubeMap
       switch (params.envMap) {
         case 'LDR':
           renderTarget = ldrCubeRenderTarget
@@ -162,7 +174,7 @@ export default {
           cubeMap = rgbmCubeMap
           break
       }
-      var newEnvMap = renderTarget ? renderTarget.texture : null
+      const newEnvMap = renderTarget ? renderTarget.texture : null
       if (newEnvMap && newEnvMap !== torusMesh.material.envMap) {
         torusMesh.material.envMap = newEnvMap
         torusMesh.material.needsUpdate = true

@@ -1,5 +1,7 @@
 <template>
-  <div class="nuxt_proto">Preferences</div>
+  <div class="nuxt_proto">
+    Preferences
+  </div>
 </template>
 
 <script>

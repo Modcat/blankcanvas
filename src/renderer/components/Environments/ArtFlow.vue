@@ -1,6 +1,9 @@
 <template>
   <div class="artflow">
-    <img src="/static/images/artflow.svg" alt="">
+    <img
+      src="/static/images/artflow.svg"
+      alt=""
+    >
   </div>
 </template>
 

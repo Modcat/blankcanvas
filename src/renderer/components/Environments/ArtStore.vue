@@ -1,22 +1,42 @@
 <template>
   <div class="art-store">
     <div class="main-hero preview color-shift">
-      <img src="/static/art-store/mountains-hero.jpg" />
+      <img src="/static/art-store/mountains-hero.jpg">
     </div>
     <div class="grid">
       <div class="illusration preview color-shift">
-        <img src="/static/art-store/illustration.svg" style="margin-top: -0.8vw;" />
-        <input type="range" min="0" max="360"/>
-        <aside></aside>
+        <img
+          src="/static/art-store/illustration.svg"
+          style="margin-top: -0.8vw;"
+        >
+        <input
+          type="range"
+          min="0"
+          max="360"
+        >
+        <aside />
       </div>
       <div class="video preview color-shift">
-        <video style="max-width:100%;" src="/static/art-store/video-example.mp4" autoplay loop="loop"></video>
-        <input type="range" min="0" max="360"/>
-        <aside></aside>
+        <video
+          style="max-width:100%;"
+          src="/static/art-store/video-example.mp4"
+          autoplay
+          loop="loop"
+        />
+        <input
+          type="range"
+          min="0"
+          max="360"
+        >
+        <aside />
       </div>
       <div class="3d preview color-shift">
-        <input type="range" min="0" max="360"/>
-        <aside></aside>
+        <input
+          type="range"
+          min="0"
+          max="360"
+        >
+        <aside />
       </div>
       <div class="audio preview" />
       <div class="code preview" />
@@ -24,8 +44,8 @@
     </div>
     <span class="label-art label-art--large">Preview</span>
     <div class="creative-code">
-      <aside></aside>
-      <div class="code"></div>
+      <aside />
+      <div class="code" />
     </div>
   </div>
 </template>

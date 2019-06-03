@@ -1,36 +1,44 @@
 <template>
   <div id="wrapper">
-
-		<input type="text" value="Hello Design">
+    <input
+      type="text"
+      value="Hello Design"
+    >
 			
-		<div class="field_ui " >
-			<i class="fa fa-edit"></i>
-			<input type="text" value="Hello Design">      
-		</div>
+    <div class="field_ui ">
+      <i class="fa fa-edit" />
+      <input
+        type="text"
+        value="Hello Design"
+      >      
+    </div>
 
-		<div class="field_ui" >
-				<i class="fa fa-rocket"></i>
-				<input type="text" value="Hello Design">
-				<select>
-					<option>px</option>
-					<option>pt</option>
-					<option>mm</option>
-					<option>cm</option>
-				</select>
-		</div>
+    <div class="field_ui">
+      <i class="fa fa-rocket" />
+      <input
+        type="text"
+        value="Hello Design"
+      >
+      <select>
+        <option>px</option>
+        <option>pt</option>
+        <option>mm</option>
+        <option>cm</option>
+      </select>
+    </div>
 
-		<select>
-			<option>normal</option>
-			<option>multiply</option>
-			<option>overlay</option>
-			<option>difference</option>
-		</select>
+    <select>
+      <option>normal</option>
+      <option>multiply</option>
+      <option>overlay</option>
+      <option>difference</option>
+    </select>
 
-		<button><span>Button</span></button>
+    <button><span>Button</span></button>
 
-		<button class="color-picker"></button>
+    <button class="color-picker" />
 
-		<!-- <div class="color-overlay">
+    <!-- <div class="color-overlay">
 			<div class="swatches">
 				<button style="background:#333;" />
 				<button style="background:#444;" />
@@ -72,30 +80,33 @@
 			</div>
 		</div> -->
 
-		<div class="buttonGroup  single">
-			<button class="active fa fa-paragraph"></button>
-			<button class="fa fa-font"></button>
-			<button class="fa fa-font"></button>
-		</div>
+    <div class="buttonGroup  single">
+      <button class="active fa fa-paragraph" />
+      <button class="fa fa-font" />
+      <button class="fa fa-font" />
+    </div>
 
-		<input type="range" >
+    <input type="range">
 
-		<div class="panel-row">
+    <div class="panel-row">
+      <div class="panel">
+        <div class="radial " />
+      </div>
 
-			<div class="panel">
-				<div class="radial "></div>
-			</div>
-
-			<div class="panel">
-				<form class="groupValsRadial" >
-					<div class="radial "></div>
-					<div class="field_ui">
-						<input type="text" autocomplete="off" value="0">
-					</div>
-				</form>
-			</div>
-		</div>
-		<hr>
+      <div class="panel">
+        <form class="groupValsRadial">
+          <div class="radial " />
+          <div class="field_ui">
+            <input
+              type="text"
+              autocomplete="off"
+              value="0"
+            >
+          </div>
+        </form>
+      </div>
+    </div>
+    <hr>
   </div>
 </template>
 

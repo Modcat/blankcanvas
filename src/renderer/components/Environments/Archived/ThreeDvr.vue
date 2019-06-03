@@ -1,23 +1,36 @@
 <template>
   <div>
-    <main @click="change" id="graphics">
-      <div id="target"/>
+    <main
+      id="graphics"
+      @click="change"
+    >
+      <div id="target" />
 
-      <span/>
+      <span />
       <div class="document">
         <div id="mainCanvas">
           <span class="label-art label-art--large"><a href="#/codeeditor">Source Code</a></span>
           <div class="cards">
             <div class="card">
-              <img src="/static/images/vr-logo.png" alt="">
+              <img
+                src="/static/images/vr-logo.png"
+                alt=""
+              >
               <span class="label-art">John</span>
             </div>
             <div class="card">
-              <img src="/static/images/XBOX.png" alt="">
+              <img
+                src="/static/images/XBOX.png"
+                alt=""
+              >
               <span class="label-art">Joane</span>
             </div>
             <div class="card">
-              <img src="/static/images/Ubuntu.png" style="width:50px; margin: 0 auto;" alt="">
+              <img
+                src="/static/images/Ubuntu.png"
+                style="width:50px; margin: 0 auto;"
+                alt=""
+              >
               <span class="label-art">Jamie</span>
             </div>
           </div>
@@ -25,8 +38,7 @@
         </div>
         <!-- <canvas id="mainCanvas"/> -->
       </div>
-      <span/>
-
+      <span />
     </main>
   </div>
 </template>
@@ -35,31 +47,31 @@
 export default {
   name: 'ThreeDVr',
   mounted () {
-    var camera, scene, renderer, mesh, parent
-    var meshes = []
-    var clonemeshes = []
-    var composer, effectFocus
-    var clock = new window.THREE.Clock()
+    let camera; let scene; let renderer; let mesh; let parent
+    const meshes = []
+    const clonemeshes = []
+    let composer; let effectFocus
+    const clock = new window.THREE.Clock()
     init()
     animate()
     function init () {
-      var container = document.querySelector('#container')
+      const container = document.querySelector('#container')
       camera = new window.THREE.PerspectiveCamera(20, window.innerWidth / window.innerHeight, 1, 50000)
       camera.position.set(0, 700, 7000)
       scene = new window.THREE.Scene()
       scene.background = new window.THREE.Color(0x000104)
       scene.fog = new window.THREE.FogExp2(0x000104, 0.0000675)
       camera.lookAt(scene.position)
-      var loader = new window.THREE.OBJLoader()
+      const loader = new window.THREE.OBJLoader()
       loader.load('/static/models/obj/male02/male02.obj', function (object) {
-        var positions = combineBuffer(object, 'position')
+        const positions = combineBuffer(object, 'position')
         createMesh(positions, scene, 4.05, -500, -350, 600, 0xff7744)
         createMesh(positions, scene, 4.05, 500, -350, 0, 0xff5522)
         createMesh(positions, scene, 4.05, -250, -350, 1500, 0xff9922)
         createMesh(positions, scene, 4.05, -250, -350, -1500, 0xff99ff)
       })
       loader.load('/static/models/obj/female02/female02.obj', function (object) {
-        var positions = combineBuffer(object, 'position')
+        const positions = combineBuffer(object, 'position')
         createMesh(positions, scene, 4.05, -1000, -350, 0, 0xffdd44)
         createMesh(positions, scene, 4.05, 0, -350, 0, 0xffffff)
         createMesh(positions, scene, 4.05, 1000, -350, 400, 0xff4422)
@@ -74,17 +86,17 @@ export default {
       container.appendChild(renderer.domElement)
       parent = new window.THREE.Object3D()
       scene.add(parent)
-      var grid = new window.THREE.Points(new window.THREE.PlaneBufferGeometry(15000, 15000, 64, 64), new window.THREE.PointsMaterial({ color: 0xff0000, size: 10 }))
+      const grid = new window.THREE.Points(new window.THREE.PlaneBufferGeometry(15000, 15000, 64, 64), new window.THREE.PointsMaterial({ color: 0xff0000, size: 10 }))
       grid.position.y = -400
       grid.rotation.x = -Math.PI / 2
       parent.add(grid)
       // postprocessing
-      var renderModel = new window.THREE.RenderPass(scene, camera)
-      var effectBloom = new window.THREE.BloomPass(0.75)
-      var effectFilm = new window.THREE.FilmPass(0.5, 0.5, 1448, false)
+      const renderModel = new window.THREE.RenderPass(scene, camera)
+      const effectBloom = new window.THREE.BloomPass(0.75)
+      const effectFilm = new window.THREE.FilmPass(0.5, 0.5, 1448, false)
       effectFocus = new window.THREE.ShaderPass(window.THREE.FocusShader)
-      effectFocus.uniforms[ 'screenWidth' ].value = window.innerWidth
-      effectFocus.uniforms[ 'screenHeight' ].value = window.innerHeight
+      effectFocus.uniforms.screenWidth.value = window.innerWidth
+      effectFocus.uniforms.screenHeight.value = window.innerHeight
       effectFocus.renderToScreen = true
       composer = new window.THREE.EffectComposer(renderer)
       composer.addPass(renderModel)
@@ -99,22 +111,22 @@ export default {
       camera.updateProjectionMatrix()
       camera.lookAt(scene.position)
       composer.reset()
-      effectFocus.uniforms[ 'screenWidth' ].value = window.innerWidth
-      effectFocus.uniforms[ 'screenHeight' ].value = window.innerHeight
+      effectFocus.uniforms.screenWidth.value = window.innerWidth
+      effectFocus.uniforms.screenHeight.value = window.innerHeight
     }
     function combineBuffer (model, bufferName) {
       let count = 0
       model.traverse(function (child) {
         if (child.isMesh) {
-          var buffer = child.geometry.attributes[ bufferName ]
+          const buffer = child.geometry.attributes[ bufferName ]
           count += buffer.array.length
         }
       })
-      var combined = new Float32Array(count)
+      const combined = new Float32Array(count)
       let offset = 0
       model.traverse(function (child) {
         if (child.isMesh) {
-          var buffer = child.geometry.attributes[ bufferName ]
+          const buffer = child.geometry.attributes[ bufferName ]
           combined.set(buffer.array, offset)
           offset += buffer.array.length
         }
@@ -122,11 +134,11 @@ export default {
       return new window.THREE.BufferAttribute(combined, 3)
     }
     function createMesh (positions, scene, scale, x, y, z, color) {
-      var geometry = new window.THREE.BufferGeometry()
+      const geometry = new window.THREE.BufferGeometry()
       geometry.addAttribute('position', positions.clone())
       geometry.addAttribute('initialPosition', positions.clone())
       geometry.attributes.position.setDynamic(true)
-      var clones = [
+      const clones = [
         [ 6000, 0, -4000 ],
         [ 5000, 0, 0 ],
         [ 1000, 0, 5000 ],
@@ -136,18 +148,18 @@ export default {
         [ -5000, 0, -5000 ],
         [ 0, 0, 0 ]
       ]
-      for (var i = 0; i < clones.length; i++) {
-        var c = (i < clones.length - 1) ? 0x252525 : color
+      for (let i = 0; i < clones.length; i++) {
+        const c = (i < clones.length - 1) ? 0x252525 : color
         mesh = new window.THREE.Points(geometry, new window.THREE.PointsMaterial({ size: 30, color: c }))
         mesh.scale.x = mesh.scale.y = mesh.scale.z = scale
         mesh.position.x = x + clones[ i ][ 0 ]
         mesh.position.y = y + clones[ i ][ 1 ]
         mesh.position.z = z + clones[ i ][ 2 ]
         parent.add(mesh)
-        clonemeshes.push({ mesh: mesh, speed: 0.5 + Math.random() })
+        clonemeshes.push({ mesh, speed: 0.5 + Math.random() })
       }
       meshes.push({
-        mesh: mesh,
+        mesh,
         verticesDown: 0,
         verticesUp: 0,
         direction: 0,
@@ -161,31 +173,29 @@ export default {
       render()
     }
     function render () {
-      var delta = 10 * clock.getDelta()
+      let delta = 10 * clock.getDelta()
       delta = delta < 2 ? delta : 2
       parent.rotation.y += -0.02 * delta
       /* eslint-disable-next-line */
       for (var j = 0; j < clonemeshes.length; j++) {
-        var cm = clonemeshes[ j ]
+        const cm = clonemeshes[ j ]
         cm.mesh.rotation.y += -0.1 * delta * cm.speed
       }
       /* eslint-disable-next-line */
       for (var j = 0; j < meshes.length; j++) {
-        var data = meshes[ j ]
-        var positions = data.mesh.geometry.attributes.position
-        var initialPositions = data.mesh.geometry.attributes.initialPosition
-        var count = positions.count
+        const data = meshes[ j ]
+        const positions = data.mesh.geometry.attributes.position
+        const initialPositions = data.mesh.geometry.attributes.initialPosition
+        const {count} = positions
         if (data.start > 0) {
           data.start -= 1
-        } else {
-          if (data.direction === 0) {
+        } else if (data.direction === 0) {
             data.direction = -1
           }
-        }
-        for (var i = 0; i < count; i++) {
-          var px = positions.getX(i)
-          var py = positions.getY(i)
-          var pz = positions.getZ(i)
+        for (let i = 0; i < count; i++) {
+          const px = positions.getX(i)
+          const py = positions.getY(i)
+          const pz = positions.getZ(i)
           // falling down
           if (data.direction < 0) {
             if (py > 0) {
@@ -201,13 +211,13 @@ export default {
           }
           // rising up
           if (data.direction > 0) {
-            var ix = initialPositions.getX(i)
-            var iy = initialPositions.getY(i)
-            var iz = initialPositions.getZ(i)
-            var dx = Math.abs(px - ix)
-            var dy = Math.abs(py - iy)
-            var dz = Math.abs(pz - iz)
-            var d = dx + dy + dx
+            const ix = initialPositions.getX(i)
+            const iy = initialPositions.getY(i)
+            const iz = initialPositions.getZ(i)
+            const dx = Math.abs(px - ix)
+            const dy = Math.abs(py - iy)
+            const dz = Math.abs(pz - iz)
+            const d = dx + dy + dx
             if (d > 1) {
               positions.setXYZ(
                 i,

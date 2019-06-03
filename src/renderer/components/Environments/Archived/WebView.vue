@@ -1,17 +1,19 @@
 <template>
   <div>
-    <main @click="change" id="graphics">
-      <div id="target"/>
+    <main
+      id="graphics"
+      @click="change"
+    >
+      <div id="target" />
 
-      <span/>
+      <span />
       <div class="document">
         <div id="mainCanvas">
-         <h1>{{ dom.title }}</h1>
-         <p>{{ dom.p }}</p>
+          <h1>{{ dom.title }}</h1>
+          <p>{{ dom.p }}</p>
         </div>
       </div>
-      <span/>
-
+      <span />
     </main>
   </div>
 </template>

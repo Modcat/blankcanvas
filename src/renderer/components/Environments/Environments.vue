@@ -1,15 +1,32 @@
 <template>
-  <div v-hammer:onTap="onSwipeLeft" class="main-layout">
+  <div
+    v-hammer:onTap="onSwipeLeft"
+    class="main-layout"
+  >
     <!-- Left Draw -->
     <!-- All main content that pushes over to left -->
-    <div class="left-draw draw" :style="`width:${sidebarWidth}vw;`">
-
+    <div
+      class="left-draw draw"
+      :style="`width:${sidebarWidth}vw;`"
+    >
       <!-- Database sidebar -->
       <div :class="['database-mode', { 'on': mode === 'database' }]">
-        <input type="text" class="search" placeholder="search" style="margin-top:0px;">
+        <input
+          type="text"
+          class="search"
+          placeholder="search"
+          style="margin-top:0px;"
+        >
         <ul class="tree">
-          <li @click="view = 'db-info'">Database Name</li>
-          <li @click="view = 'table-info'" class="active">Table Name</li>
+          <li @click="view = 'db-info'">
+            Database Name
+          </li>
+          <li
+            class="active"
+            @click="view = 'table-info'"
+          >
+            Table Name
+          </li>
           <li>Table Name</li>
           <li>Table Name</li>
         </ul>
@@ -20,63 +37,273 @@
         <section class="artboards">
           <span class="label-art label-art--large">Art Boards</span>
           <section class="art-collection">
-            <a style="z-index:3;" href="#/Graphics"><div class="art" style="width: 65px; height: 150px; background: white;"></div></a>
-            <a style="z-index:2;" href="#/"><div class="art" style="z-index: 1;width: 135px; height: 135px; background: white;"></div></a>
-            <a style="z-index:1;" href="#/"><div class="art" style="z-index: 0;width: 100px; height: 67px; background: white;"></div></a>
+            <a
+              style="z-index:3;"
+              href="#/Graphics"
+            ><div
+              class="art"
+              style="width: 65px; height: 150px; background: white;"
+            /></a>
+            <a
+              style="z-index:2;"
+              href="#/"
+            ><div
+              class="art"
+              style="z-index: 1;width: 135px; height: 135px; background: white;"
+            /></a>
+            <a
+              style="z-index:1;"
+              href="#/"
+            ><div
+              class="art"
+              style="z-index: 0;width: 100px; height: 67px; background: white;"
+            /></a>
           </section>
           <span class="label-art">Website Pages</span>
           <section class="art-collection">
-            <a style="z-index:3;" href="#/Graphics"><div class="art" style="width: 100px; height: 150px; background: white;"></div></a>
-            <a style="z-index:2;" href="#/"><div class="art" style="width: 100px; height: 150px; background: white;"></div></a>
-            <a style="z-index:1;" href="#/"><div class="art" style="width: 100px; height: 150px; background: white;"></div></a>
+            <a
+              style="z-index:3;"
+              href="#/Graphics"
+            ><div
+              class="art"
+              style="width: 100px; height: 150px; background: white;"
+            /></a>
+            <a
+              style="z-index:2;"
+              href="#/"
+            ><div
+              class="art"
+              style="width: 100px; height: 150px; background: white;"
+            /></a>
+            <a
+              style="z-index:1;"
+              href="#/"
+            ><div
+              class="art"
+              style="width: 100px; height: 150px; background: white;"
+            /></a>
           </section>
           <span class="label-art">Writer Art</span>
           <section class="art-collection">
-            <a style="z-index:14;" href="#/markdownwriter"><div class="art" style="width: 110px; height: 150px; background: white;"></div></a>
-            <a style="z-index:13;" href="#/"><div class="art" style="width: 110px; height: 150px; background: white;"></div></a>
-            <a style="z-index:12;" href="#/"><div class="art" style="width: 110px; height: 150px; background: white;"></div></a>
-            <a style="z-index:11;" href="#/"><div class="art" style="width: 110px; height: 150px; background: white;"></div></a>
-            <a style="z-index:10;" href="#/"><div class="art" style="width: 110px; height: 150px; background: white;"></div></a>
-            <a style="z-index:9;" href="#/"><div class="art" style="width: 110px; height: 150px; background: white;"></div></a>
-            <a style="z-index:8;" href="#/"><div class="art" style="width: 110px; height: 150px; background: white;"></div></a>
-            <a style="z-index:7;" href="#/"><div class="art" style="width: 110px; height: 150px; background: white;"></div></a>
-            <a style="z-index:6;" href="#/"><div class="art" style="width: 110px; height: 150px; background: white;"></div></a>
-            <a style="z-index:5;" href="#/"><div class="art" style="width: 110px; height: 150px; background: white;"></div></a>
-            <a style="z-index:4;" href="#/"><div class="art" style="width: 110px; height: 150px; background: white;"></div></a>
-            <a style="z-index:3;" href="#/"><div class="art" style="width: 110px; height: 150px; background: white;"></div></a>
-            <a style="z-index:2;" href="#/"><div class="art" style="width: 110px; height: 150px; background: white;"></div></a>
-            <a style="z-index:1;" href="#/"><div class="art" style="width: 110px; height: 150px; background: white;"></div></a>
+            <a
+              style="z-index:14;"
+              href="#/markdownwriter"
+            ><div
+              class="art"
+              style="width: 110px; height: 150px; background: white;"
+            /></a>
+            <a
+              style="z-index:13;"
+              href="#/"
+            ><div
+              class="art"
+              style="width: 110px; height: 150px; background: white;"
+            /></a>
+            <a
+              style="z-index:12;"
+              href="#/"
+            ><div
+              class="art"
+              style="width: 110px; height: 150px; background: white;"
+            /></a>
+            <a
+              style="z-index:11;"
+              href="#/"
+            ><div
+              class="art"
+              style="width: 110px; height: 150px; background: white;"
+            /></a>
+            <a
+              style="z-index:10;"
+              href="#/"
+            ><div
+              class="art"
+              style="width: 110px; height: 150px; background: white;"
+            /></a>
+            <a
+              style="z-index:9;"
+              href="#/"
+            ><div
+              class="art"
+              style="width: 110px; height: 150px; background: white;"
+            /></a>
+            <a
+              style="z-index:8;"
+              href="#/"
+            ><div
+              class="art"
+              style="width: 110px; height: 150px; background: white;"
+            /></a>
+            <a
+              style="z-index:7;"
+              href="#/"
+            ><div
+              class="art"
+              style="width: 110px; height: 150px; background: white;"
+            /></a>
+            <a
+              style="z-index:6;"
+              href="#/"
+            ><div
+              class="art"
+              style="width: 110px; height: 150px; background: white;"
+            /></a>
+            <a
+              style="z-index:5;"
+              href="#/"
+            ><div
+              class="art"
+              style="width: 110px; height: 150px; background: white;"
+            /></a>
+            <a
+              style="z-index:4;"
+              href="#/"
+            ><div
+              class="art"
+              style="width: 110px; height: 150px; background: white;"
+            /></a>
+            <a
+              style="z-index:3;"
+              href="#/"
+            ><div
+              class="art"
+              style="width: 110px; height: 150px; background: white;"
+            /></a>
+            <a
+              style="z-index:2;"
+              href="#/"
+            ><div
+              class="art"
+              style="width: 110px; height: 150px; background: white;"
+            /></a>
+            <a
+              style="z-index:1;"
+              href="#/"
+            ><div
+              class="art"
+              style="width: 110px; height: 150px; background: white;"
+            /></a>
           </section>
           <span class="label-art">Slides and presentations</span>
           <section class="art-collection">
-            <a style="z-index:3;" href="#/powerpoint"><div class="art" style="width: 150px; height: 150px; background: white;"></div></a>
-            <a style="z-index:2;" href="#/"><div class="art" style="width: 150px; height: 150px; background: white;"></div></a>
-            <a style="z-index:1;" href="#/"><div class="art" style="width: 150px; height: 150px; background: white;"></div></a>
+            <a
+              style="z-index:3;"
+              href="#/powerpoint"
+            ><div
+              class="art"
+              style="width: 150px; height: 150px; background: white;"
+            /></a>
+            <a
+              style="z-index:2;"
+              href="#/"
+            ><div
+              class="art"
+              style="width: 150px; height: 150px; background: white;"
+            /></a>
+            <a
+              style="z-index:1;"
+              href="#/"
+            ><div
+              class="art"
+              style="width: 150px; height: 150px; background: white;"
+            /></a>
           </section>
           <span class="label-art label-art--large">Attached Files</span>
           <span class="label-art">Videos</span>
           <section class="art-collection">
-            <a style="z-index:3;" href="#/video"><div class="art" style="width: 150px; height: 98px; background: white;"></div></a>
-            <a style="z-index:2;" href="#/"><div class="art" style="width: 150px; height: 98px; background: white;"></div></a>
-            <a style="z-index:1;" href="#/"><div class="art" style="width: 150px; height: 98px; background: white;"></div></a>
+            <a
+              style="z-index:3;"
+              href="#/video"
+            ><div
+              class="art"
+              style="width: 150px; height: 98px; background: white;"
+            /></a>
+            <a
+              style="z-index:2;"
+              href="#/"
+            ><div
+              class="art"
+              style="width: 150px; height: 98px; background: white;"
+            /></a>
+            <a
+              style="z-index:1;"
+              href="#/"
+            ><div
+              class="art"
+              style="width: 150px; height: 98px; background: white;"
+            /></a>
           </section>
           <span class="label-art">Databases</span>
           <section class="art-collection">
-            <a style="z-index:3;" href="#/database"><div class="art" style="width: 100px; height: 150px; background: white;"></div></a>
-            <a style="z-index:2;" href="#/"><div class="art" style="width: 100px; height: 150px; background: white;"></div></a>
-            <a style="z-index:1;" href="#/"><div class="art" style="width: 100px; height: 150px; background: white;"></div></a>
+            <a
+              style="z-index:3;"
+              href="#/database"
+            ><div
+              class="art"
+              style="width: 100px; height: 150px; background: white;"
+            /></a>
+            <a
+              style="z-index:2;"
+              href="#/"
+            ><div
+              class="art"
+              style="width: 100px; height: 150px; background: white;"
+            /></a>
+            <a
+              style="z-index:1;"
+              href="#/"
+            ><div
+              class="art"
+              style="width: 100px; height: 150px; background: white;"
+            /></a>
           </section>
           <span class="label-art">Code projects</span>
           <section class="art-collection">
-            <a style="z-index:3;" href="#/codeeditor"><div class="art" style="width: 100px; height: 150px; background: white;"></div></a>
-            <a style="z-index:2;" href="#/"><div class="art" style="width: 100px; height: 150px; background: white;"></div></a>
-            <a style="z-index:1;" href="#/"><div class="art" style="width: 100px; height: 150px; background: white;"></div></a>
+            <a
+              style="z-index:3;"
+              href="#/codeeditor"
+            ><div
+              class="art"
+              style="width: 100px; height: 150px; background: white;"
+            /></a>
+            <a
+              style="z-index:2;"
+              href="#/"
+            ><div
+              class="art"
+              style="width: 100px; height: 150px; background: white;"
+            /></a>
+            <a
+              style="z-index:1;"
+              href="#/"
+            ><div
+              class="art"
+              style="width: 100px; height: 150px; background: white;"
+            /></a>
           </section>
           <span class="label-art">Excel</span>
           <section class="art-collection">
-            <a style="z-index:3;" href="#/excel"><div class="art" style="width: 135px; height: 135px; background: white;"></div></a>
-            <a style="z-index:2;" href="#/"><div class="art" style="width: 135px; height: 135px; background: white;"></div></a>
-            <a style="z-index:1;" href="#/"><div class="art" style="width: 135px; height: 135px; background: white;"></div></a>
+            <a
+              style="z-index:3;"
+              href="#/excel"
+            ><div
+              class="art"
+              style="width: 135px; height: 135px; background: white;"
+            /></a>
+            <a
+              style="z-index:2;"
+              href="#/"
+            ><div
+              class="art"
+              style="width: 135px; height: 135px; background: white;"
+            /></a>
+            <a
+              style="z-index:1;"
+              href="#/"
+            ><div
+              class="art"
+              style="width: 135px; height: 135px; background: white;"
+            /></a>
           </section>
         </section>
 
@@ -85,30 +312,135 @@
         <section class="slides">
           <span class="label-art label-art--large slide-thread">Slides</span>
           <section class="art-collection">
-            <a style="z-index:17;" href="#/Graphics"><div class="art" style="width: 65px; height: 150px; background: white;"></div></a>
-            <a style="z-index:16;" href="#/"><div class="art" style="z-index: 1;width: 135px; height: 135px; background: white;"></div></a>
-            <a style="z-index:15;" href="#/"><div class="art" style="z-index: 0;width: 100px; height: 67px; background: white;"></div></a>
-            <a style="z-index:14;" href="#/markdownwriter"><div class="art" style="width: 110px; height: 150px; background: white;"></div></a>
-            <a style="z-index:13;" href="#/"><div class="art" style="width: 110px; height: 150px; background: white;"></div></a>
-            <a style="z-index:12;" href="#/"><div class="art" style="width: 110px; height: 150px; background: white;"></div></a>
-            <a style="z-index:11;" href="#/"><div class="art" style="width: 110px; height: 150px; background: white;"></div></a>
-            <a style="z-index:10;" href="#/"><div class="art" style="width: 110px; height: 150px; background: white;"></div></a>
-            <a style="z-index:9;" href="#/"><div class="art" style="width: 110px; height: 150px; background: white;"></div></a>
-            <a style="z-index:8;" href="#/"><div class="art" style="width: 110px; height: 150px; background: white;"></div></a>
-            <a style="z-index:7;" href="#/"><div class="art" style="width: 110px; height: 150px; background: white;"></div></a>
-            <a style="z-index:6;" href="#/"><div class="art" style="width: 110px; height: 150px; background: white;"></div></a>
-            <a style="z-index:5;" href="#/"><div class="art" style="width: 110px; height: 150px; background: white;"></div></a>
-            <a style="z-index:4;" href="#/"><div class="art" style="width: 110px; height: 150px; background: white;"></div></a>
-            <a style="z-index:3;" href="#/"><div class="art" style="width: 110px; height: 150px; background: white;"></div></a>
-            <a style="z-index:2;" href="#/"><div class="art" style="width: 110px; height: 150px; background: white;"></div></a>
-            <a style="z-index:1;" href="#/"><div class="art" style="width: 110px; height: 150px; background: white;"></div></a>
+            <a
+              style="z-index:17;"
+              href="#/Graphics"
+            ><div
+              class="art"
+              style="width: 65px; height: 150px; background: white;"
+            /></a>
+            <a
+              style="z-index:16;"
+              href="#/"
+            ><div
+              class="art"
+              style="z-index: 1;width: 135px; height: 135px; background: white;"
+            /></a>
+            <a
+              style="z-index:15;"
+              href="#/"
+            ><div
+              class="art"
+              style="z-index: 0;width: 100px; height: 67px; background: white;"
+            /></a>
+            <a
+              style="z-index:14;"
+              href="#/markdownwriter"
+            ><div
+              class="art"
+              style="width: 110px; height: 150px; background: white;"
+            /></a>
+            <a
+              style="z-index:13;"
+              href="#/"
+            ><div
+              class="art"
+              style="width: 110px; height: 150px; background: white;"
+            /></a>
+            <a
+              style="z-index:12;"
+              href="#/"
+            ><div
+              class="art"
+              style="width: 110px; height: 150px; background: white;"
+            /></a>
+            <a
+              style="z-index:11;"
+              href="#/"
+            ><div
+              class="art"
+              style="width: 110px; height: 150px; background: white;"
+            /></a>
+            <a
+              style="z-index:10;"
+              href="#/"
+            ><div
+              class="art"
+              style="width: 110px; height: 150px; background: white;"
+            /></a>
+            <a
+              style="z-index:9;"
+              href="#/"
+            ><div
+              class="art"
+              style="width: 110px; height: 150px; background: white;"
+            /></a>
+            <a
+              style="z-index:8;"
+              href="#/"
+            ><div
+              class="art"
+              style="width: 110px; height: 150px; background: white;"
+            /></a>
+            <a
+              style="z-index:7;"
+              href="#/"
+            ><div
+              class="art"
+              style="width: 110px; height: 150px; background: white;"
+            /></a>
+            <a
+              style="z-index:6;"
+              href="#/"
+            ><div
+              class="art"
+              style="width: 110px; height: 150px; background: white;"
+            /></a>
+            <a
+              style="z-index:5;"
+              href="#/"
+            ><div
+              class="art"
+              style="width: 110px; height: 150px; background: white;"
+            /></a>
+            <a
+              style="z-index:4;"
+              href="#/"
+            ><div
+              class="art"
+              style="width: 110px; height: 150px; background: white;"
+            /></a>
+            <a
+              style="z-index:3;"
+              href="#/"
+            ><div
+              class="art"
+              style="width: 110px; height: 150px; background: white;"
+            /></a>
+            <a
+              style="z-index:2;"
+              href="#/"
+            ><div
+              class="art"
+              style="width: 110px; height: 150px; background: white;"
+            /></a>
+            <a
+              style="z-index:1;"
+              href="#/"
+            ><div
+              class="art"
+              style="width: 110px; height: 150px; background: white;"
+            /></a>
           </section>
         </section>
       </div>
 
       <!-- Code Sidebar -->
       <div :class="['code-sidebar', { 'on': mode === 'code' }]">
-        <input type="text" placeholder="search">
+        <input
+          type="text"
+          placeholder="search"
+        >
         <div class="group">
           <div class="content">
             hello
@@ -118,8 +450,7 @@
     </div>
     <main id="graphics">
       <!-- Top draw -->
-      <div class="top-draw draw">
-      </div>
+      <div class="top-draw draw" />
 
       <!-- Sidebar -->
       <div :class="['right-draw draw', {'on': showRightDraw}]">
@@ -127,19 +458,32 @@
           <!-- People connected -->
           <div class="cards">
             <div class="card">
-              <img src="/static/images/vr-logo.png" alt="">
+              <img
+                src="/static/images/vr-logo.png"
+                alt=""
+              >
               <span class="label-art">John</span>
             </div>
             <div class="card">
-              <img src="/static/images/XBOX.png" alt="">
+              <img
+                src="/static/images/XBOX.png"
+                alt=""
+              >
               <span class="label-art">Joane</span>
             </div>
             <div class="card">
-              <img src="/static/images/XBOX.png" alt="">
+              <img
+                src="/static/images/XBOX.png"
+                alt=""
+              >
               <span class="label-art">Jeff</span>
             </div>
             <div class="card">
-              <img src="/static/images/Ubuntu.png" style="width:50px; margin: 0 auto;" alt="">
+              <img
+                src="/static/images/Ubuntu.png"
+                style="width:50px; margin: 0 auto;"
+                alt=""
+              >
               <span class="label-art">Jamie</span>
             </div>
           </div>
@@ -147,13 +491,27 @@
           <hr>
 
           <!-- Switch Mode -->
-          <router-link :to="'/environments?mode=spreadsheet'">Spreadsheet</router-link>
-          <router-link :to="'/environments?mode=presentation'">presentation</router-link>
-          <router-link :to="'/environments?mode=database'">Database</router-link>
-          <router-link :to="'/environments?mode=code'">Code</router-link>
-          <router-link :to="'/environments?mode=graphics'">Graphics</router-link>
-          <router-link :to="'/environments?mode=video'">Video</router-link>
-          <router-link :to="'/environments?mode=audio'">Audio</router-link>
+          <router-link :to="'/environments?mode=spreadsheet'">
+            Spreadsheet
+          </router-link>
+          <router-link :to="'/environments?mode=presentation'">
+            presentation
+          </router-link>
+          <router-link :to="'/environments?mode=database'">
+            Database
+          </router-link>
+          <router-link :to="'/environments?mode=code'">
+            Code
+          </router-link>
+          <router-link :to="'/environments?mode=graphics'">
+            Graphics
+          </router-link>
+          <router-link :to="'/environments?mode=video'">
+            Video
+          </router-link>
+          <router-link :to="'/environments?mode=audio'">
+            Audio
+          </router-link>
 
           <hr>
 
@@ -162,7 +520,10 @@
           <span class="label-art">Clipboard</span>
 
           <div class="box">
-            <div v-for="(clipbaord,index) in [1,2,3,4]" :key="index">
+            <div
+              v-for="(clipbaord,index) in [1,2,3,4]"
+              :key="index"
+            >
               Clipbaord content {{ index }} ...
             </div>
           </div>
@@ -176,12 +537,22 @@
           <div class="charts">
             <div class="half">
               <div>
-                <chartist ratio="ct-major-second" type="Line" :data="chartData" :options="chartOptions" />
+                <chartist
+                  ratio="ct-major-second"
+                  type="Line"
+                  :data="chartData"
+                  :options="chartOptions"
+                />
               </div>
             </div>
             <div class="half">
               <div>
-                <chartist ratio="ct-major-second" type="Line" :data="chartData" :options="chartOptions" />
+                <chartist
+                  ratio="ct-major-second"
+                  type="Line"
+                  :data="chartData"
+                  :options="chartOptions"
+                />
               </div>
             </div>
           </div>
@@ -193,155 +564,331 @@
           <span class="label-art">SQL Presets</span>
 
           <div class="box">
-            <div v-for="(clipbaord,index) in [1,2,3,4]" :key="index">
+            <div
+              v-for="(clipbaord,index) in [1,2,3,4]"
+              :key="index"
+            >
               <span class="label-art">Get Figures</span>
               SELECT FROM *{ columns } WHERE cell CONTAINS ${ market }
             </div>
           </div>
-
         </div>
       </div>
 
       <!-- Graphics, Presentation or Code -->
-      <div v-if="mode.match(/graphics|code|presentation/ig)" :class="['document', { 'last-canvas': linkedCanvas }]">
-        <a href="#/audio" class="audio"/>
-        <a href="#/database" class="database"/>
-        <a href="#/excel" class="excel"/>
-        <a href="#/video" class="video"/>
-        <a href="#/codeeditor" class="code"/>
-        <div class="linked-canvas" @click="linkedCanvas = true"/>
+      <div
+        v-if="mode.match(/graphics|code|presentation/ig)"
+        :class="['document', { 'last-canvas': linkedCanvas }]"
+      >
+        <a
+          href="#/audio"
+          class="audio"
+        />
+        <a
+          href="#/database"
+          class="database"
+        />
+        <a
+          href="#/excel"
+          class="excel"
+        />
+        <a
+          href="#/video"
+          class="video"
+        />
+        <a
+          href="#/codeeditor"
+          class="code"
+        />
+        <div
+          class="linked-canvas"
+          @click="linkedCanvas = true"
+        />
         <div id="mainCanvas">
-          <img class="desktop" src="/static/images/art-canvas.svg" alt="Vector Graphics">
-          <img class="mobile" src="/static/images/art-canvas-600.svg" alt="Vector Graphics">
+          <img
+            class="desktop"
+            src="/static/images/art-canvas.svg"
+            alt="Vector Graphics"
+          >
+          <img
+            class="mobile"
+            src="/static/images/art-canvas-600.svg"
+            alt="Vector Graphics"
+          >
           <!-- <div id="webglCanvas"/> -->
         </div>
       </div>
-      <div v-if="mode === 'graphics'" :class="['document', 'doc2', { linkedCanvas }]">
-        <a href="#/audio" class="audio"/>
-        <a href="#/database" class="database"/>
-        <a href="#/excel" class="excel"/>
-        <a href="#/video" class="video"/>
-        <a href="#/codeeditor" class="code"/>
-        <div class="linked-canvas" @click="linkedCanvas = false"/>
+      <div
+        v-if="mode === 'graphics'"
+        :class="['document', 'doc2', { linkedCanvas }]"
+      >
+        <a
+          href="#/audio"
+          class="audio"
+        />
+        <a
+          href="#/database"
+          class="database"
+        />
+        <a
+          href="#/excel"
+          class="excel"
+        />
+        <a
+          href="#/video"
+          class="video"
+        />
+        <a
+          href="#/codeeditor"
+          class="code"
+        />
+        <div
+          class="linked-canvas"
+          @click="linkedCanvas = false"
+        />
         <div id="mainCanvas">
-          <img src="/static/images/art-canvas.svg" alt="Vector Graphics">
+          <img
+            src="/static/images/art-canvas.svg"
+            alt="Vector Graphics"
+          >
           <!-- <div id="webglCanvas"/> -->
         </div>
       </div>
       
       <!-- Video -->
-      <div v-if="mode === 'video'" class="document video">
-          <div id="mainCanvas" style="position:relative;">
-            <img class="vid-overlay" src="/static/images/video-overlay.png" alt="" style="position:absolute;max-width:80%;">
-            <video style="max-width:100%;" src="/static/video/honey.mp4" autoplay loop="loop"></video>
-          </div>
+      <div
+        v-if="mode === 'video'"
+        class="document video"
+      >
+        <div
+          id="mainCanvas"
+          style="position:relative;"
+        >
+          <img
+            class="vid-overlay"
+            src="/static/images/video-overlay.png"
+            alt=""
+            style="position:absolute;max-width:80%;"
+          >
+          <video
+            style="max-width:100%;"
+            src="/static/video/honey.mp4"
+            autoplay
+            loop="loop"
+          />
+        </div>
       </div>
 
       <!-- Audio -->
-      <div v-if="mode === 'audio'" class="audio-env">
+      <div
+        v-if="mode === 'audio'"
+        class="audio-env"
+      >
         <div class="audio">
           <div class="track">
-            <div class="audio-preview"></div>
+            <div class="audio-preview" />
           </div>
           <div class="track">
-            <div class="audio-preview" style="left:200px;"></div>
+            <div
+              class="audio-preview"
+              style="left:200px;"
+            />
           </div>
         </div>
       </div>
 
       <!-- Database -->
-      <div v-if="mode === 'database'" class="database-env">
-        <div class="database-view" :style="`justify-content:${view === 'db-info' ? 'center' : 'flex-start'};`">
-            <div v-if="view === 'db-info'" class="db-info">
-              <span class="label-art">Database</span>
-              <div class="row" style="width: 250px;">
-                <input type="text" style="width: 120%;" placeholder="Host">
-                <input type="text" placeholder="Port">
-              </div>
-              <input type="text" placeholder="User">
-              <input type="text" placeholder="password">
-              <input type="text" placeholder="Database Name">
+      <div
+        v-if="mode === 'database'"
+        class="database-env"
+      >
+        <div
+          class="database-view"
+          :style="`justify-content:${view === 'db-info' ? 'center' : 'flex-start'};`"
+        >
+          <div
+            v-if="view === 'db-info'"
+            class="db-info"
+          >
+            <span class="label-art">Database</span>
+            <div
+              class="row"
+              style="width: 250px;"
+            >
+              <input
+                type="text"
+                style="width: 120%;"
+                placeholder="Host"
+              >
+              <input
+                type="text"
+                placeholder="Port"
+              >
             </div>
-            <div v-if="view === 'table-info'" class="table-info">
-              <div style="text-align:center;">
-                <div class="tabs">
-                  <span @click="subTab = 'schema'" :class="{ 'active': subTab === 'schema' }">Schema</span>
-                  <span @click="subTab = 'data'" :class="{ 'active': subTab === 'data' }">Data</span>
-                  <span>VR</span>
-                  <span>AR</span>
+            <input
+              type="text"
+              placeholder="User"
+            >
+            <input
+              type="text"
+              placeholder="password"
+            >
+            <input
+              type="text"
+              placeholder="Database Name"
+            >
+          </div>
+          <div
+            v-if="view === 'table-info'"
+            class="table-info"
+          >
+            <div style="text-align:center;">
+              <div class="tabs">
+                <span
+                  :class="{ 'active': subTab === 'schema' }"
+                  @click="subTab = 'schema'"
+                >Schema</span>
+                <span
+                  :class="{ 'active': subTab === 'data' }"
+                  @click="subTab = 'data'"
+                >Data</span>
+                <span>VR</span>
+                <span>AR</span>
+              </div>
+            </div>
+            <div
+              v-if="subTab === 'schema'"
+              class="schema"
+            >
+              <div style="margin-right:15px;">
+                <h3>table info</h3>
+                <input
+                  type="text"
+                  value="Database Name"
+                >
+                <h3>Columns</h3>
+                <input
+                  type="text"
+                  class="search"
+                  placeholder="search"
+                >
+              </div>
+              <div class="row row--wrap">
+                <div
+                  v-for="(col,index) in [1,1,1,1,1,1,1,1]"
+                  :key="index"
+                  class="column"
+                >
+                  <label>Column Name:</label>
+                  <input
+                    type="text"
+                    value="Col Name"
+                  >
+                  <label>Type:</label>
+                  <select
+                    name=""
+                    placeholder="DataType"
+                  >
+                    <option value="">
+                      Int
+                    </option>
+                    <option value="">
+                      Big Int
+                    </option>
+                    <option value="">
+                      Small Int
+                    </option>
+                    <option value="">
+                      Var Char
+                    </option>
+                    <option value="">
+                      Text
+                    </option>
+                    <option value="">
+                      Date
+                    </option>
+                  </select>
+                  <h5 class="label-art">
+                    Constraints
+                  </h5>
+                  <input
+                    type="text"
+                    value="Col Name"
+                  >
+                  <h5 class="label-art">
+                    Indexes
+                  </h5>
                 </div>
               </div>
-              <div v-if="subTab === 'schema'" class="schema">
-                <div style="margin-right:15px;">
-                  <h3>table info</h3>
-                  <input type="text" value="Database Name">
-                  <h3>Columns</h3>
-                  <input type="text" class="search" placeholder="search">
-                </div>
-                <div class="row row--wrap">
-                  <div class="column" v-for="(col,index) in [1,1,1,1,1,1,1,1]" :key="index">
-                    <label>Column Name:</label>
-                    <input type="text" value="Col Name">
-                    <label>Type:</label>
-                    <select name="" placeholder="DataType">
-                      <option value="">Int</option>
-                      <option value="">Big Int</option>
-                      <option value="">Small Int</option>
-                      <option value="">Var Char</option>
-                      <option value="">Text</option>
-                      <option value="">Date</option>
-                    </select>
-                    <h5 class="label-art">Constraints</h5>
-                    <input type="text" value="Col Name">
-                    <h5 class="label-art">Indexes</h5>
-                  </div>
-                </div>
-              </div>
-              <div v-if="subTab === 'data'">
-                <table class="table-contents">
-                  <thead>
-                    <th>Column Name</th>
-                    <th>Column Name</th>
-                    <th>Column Name</th>
-                    <th>Column Name</th>
-                    <th>Column Name</th>
-                    <th>Column Name</th>
-                    <th>Column Name</th>
-                    <th>Column Name</th>
-                  </thead>
-                  <tbody>
-                    <tr v-for="(row,index) in [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]" :key="index">
-                      <td>Value</td>
-                      <td>Value</td>
-                      <td>Value</td>
-                      <td>Value</td>
-                      <td>Value</td>
-                      <td>Value</td>
-                      <td>Value</td>
-                      <td>Value</td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
+            </div>
+            <div v-if="subTab === 'data'">
+              <table class="table-contents">
+                <thead>
+                  <th>Column Name</th>
+                  <th>Column Name</th>
+                  <th>Column Name</th>
+                  <th>Column Name</th>
+                  <th>Column Name</th>
+                  <th>Column Name</th>
+                  <th>Column Name</th>
+                  <th>Column Name</th>
+                </thead>
+                <tbody>
+                  <tr
+                    v-for="(row,index) in [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]"
+                    :key="index"
+                  >
+                    <td>Value</td>
+                    <td>Value</td>
+                    <td>Value</td>
+                    <td>Value</td>
+                    <td>Value</td>
+                    <td>Value</td>
+                    <td>Value</td>
+                    <td>Value</td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
           </div>
+        </div>
       </div>
       
       <!-- Code -->
 
 
       <!-- Spreadsheet -->
-      <div v-if="mode === 'spreadsheet'" class="spreadsheet-env">
-        <div ref="spreadsheet" class="spreadsheet">
+      <div
+        v-if="mode === 'spreadsheet'"
+        class="spreadsheet-env"
+      >
+        <div
+          ref="spreadsheet"
+          class="spreadsheet"
+        >
           <table class="table-contents">
             <thead ref="header">
               <td class="index" />
-              <th v-for="(row,indexHead) in [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]" :key="indexHead" />
+              <th
+                v-for="(row,indexHead) in [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]"
+                :key="indexHead"
+              />
             </thead>
             <tbody>
-              <tr v-for="(row,index) in [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]" :key="index">
-                <td class="index" v-html="index" />
-                <td class="cell" v-for="(row,indexCell) in [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]" :key="indexCell" />
+              <tr
+                v-for="(row,index) in [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]"
+                :key="index"
+              >
+                <td
+                  class="index"
+                > {{ index }}
+                </td>
+                
+                <td
+                  v-for="(row,indexCell) in [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]"
+                  :key="indexCell"
+                  class="cell"
+                />
               </tr>
             </tbody>
           </table>
@@ -350,37 +897,86 @@
       
 
       <!-- Bottom Draw -->
-      <div v-if="mode !== 'database' && mode !== 'spreadsheet'" class="bottom-draw draw">
-
+      <div
+        v-if="mode !== 'database' && mode !== 'spreadsheet'"
+        class="bottom-draw draw"
+      >
         <!-- Code -->
-        <div v-show="mode === 'code'" id="editor" />
+        <div
+          v-show="mode === 'code'"
+          id="editor"
+        />
         
         <!-- Video Timeline -->
-        <div  v-if="mode === 'video'" :style="`left: ${mousex - 75}px; top: ${mousey - 40}px; opacity:${showPreview ? '1' : '0'}`" id="live-preview">
-          <video src="/static/video/honey.mp4" autoplay loop="loop"></video>
+        <div
+          v-if="mode === 'video'"
+          id="live-preview"
+          :style="`left: ${mousex - 75}px; top: ${mousey - 40}px; opacity:${showPreview ? '1' : '0'}`"
+        >
+          <video
+            src="/static/video/honey.mp4"
+            autoplay
+            loop="loop"
+          />
         </div>
-        <div v-if="mode === 'video'" ref="timeline" class="animate-timeline">
-          <div class="line" :style="`left: ${mousex + timelineOffsetX}px`" />
+        <div
+          v-if="mode === 'video'"
+          ref="timeline"
+          class="animate-timeline"
+        >
+          <div
+            class="line"
+            :style="`left: ${mousex + timelineOffsetX}px`"
+          />
           <div class="track">
-            <div class="preview" @mousemove="showPreview = true" @mouseout="showPreview = false">
-              <img src="/static/video/honey-thumbnail.png" alt="thumbnail" height="38">
+            <div
+              class="preview"
+              @mousemove="showPreview = true"
+              @mouseout="showPreview = false"
+            >
+              <img
+                src="/static/video/honey-thumbnail.png"
+                alt="thumbnail"
+                height="38"
+              >
               <label>The movie of the honey badger</label>
             </div>
-            <div class="preview" style="left: 340px" @mousemove="showPreview = true" @mouseout="showPreview = false">
-              <img src="/static/video/honey-thumbnail.png" alt="thumbnail" height="38">
+            <div
+              class="preview"
+              style="left: 340px"
+              @mousemove="showPreview = true"
+              @mouseout="showPreview = false"
+            >
+              <img
+                src="/static/video/honey-thumbnail.png"
+                alt="thumbnail"
+                height="38"
+              >
               <label>The movie of the honey badger</label>
             </div>
           </div>
           <div class="track">
-            <div class="preview" style="width: 200px; left: 200px" @mousemove="showPreview = true" @mouseout="showPreview = false">
-              <img src="/static/video/honey-thumbnail.png" alt="thumbnail" height="38">
+            <div
+              class="preview"
+              style="width: 200px; left: 200px"
+              @mousemove="showPreview = true"
+              @mouseout="showPreview = false"
+            >
+              <img
+                src="/static/video/honey-thumbnail.png"
+                alt="thumbnail"
+                height="38"
+              >
               <label>The movie of the honey badger</label>
             </div>
           </div>
-          <div class="track" v-for="(track,index) in [1,1,1,1,1,1]" :key="index"/>
+          <div
+            v-for="(track,index) in [1,1,1,1,1,1]"
+            :key="index"
+            class="track"
+          />
         </div>
       </div>
-
     </main>
   </div>
 </template>
@@ -416,6 +1012,24 @@ export default {
       }
     }
   },
+  computed: {
+    sidebarWidth () {
+      if (this.mode === 'presentation') {
+        return 54.7
+      } if (this.mode === 'database') {
+        return 18.6
+      } if (this.mode === 'code') {
+        return 20
+      } 
+        return 0
+      
+    }
+  },
+  watch: {
+    '$route.query.mode': function() {
+      this.mode = this.$route.query.mode
+    }
+  },
   mounted () {
      document.body.addEventListener('keydown', function(e) {
       console.log(e.keyCode)
@@ -428,7 +1042,7 @@ export default {
     }.bind(this))
     if (this.$refs.spreadsheet) {
       this.$refs.spreadsheet.addEventListener('scroll', (e) => {
-        let scrollLeft = e.target.scrollLeft
+        const {scrollLeft} = e.target
         this.$refs.header.style.marginLeft = `${scrollLeft * -1}px`
       })
 
@@ -439,7 +1053,7 @@ export default {
       })
     }
     // Code Mirror
-    let codeSection = document.getElementById('editor')
+    const codeSection = document.getElementById('editor')
     CodeMirror(codeSection, {
       value: `document.getElementById('close').onmousedown = function(e) {
 window.onload = function () {
@@ -464,24 +1078,6 @@ window.onload = function () {
     },
     onSwipeLeft(e) {
       console.log(e)
-    }
-  },
-  watch: {
-    '$route.query.mode': function() {
-      this.mode = this.$route.query.mode
-    }
-  },
-  computed: {
-    sidebarWidth () {
-      if (this.mode === 'presentation') {
-        return 54.7
-      } else if (this.mode === 'database') {
-        return 18.6
-      } else if (this.mode === 'code') {
-        return 20
-      } else {
-        return 0
-      }
     }
   }
 }
@@ -1177,8 +1773,5 @@ window.onload = function () {
 }
 #editor {
   height: 150px;
-}
-/deep/ .CodeMirror {
-  background: transparent !important;
 }
 </style>

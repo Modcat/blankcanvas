@@ -1,20 +1,32 @@
 <template>
   <div>
-    <main @click="change" id="graphics">
-      <div id="target"/>
+    <main
+      id="graphics"
+      @click="change"
+    >
+      <div id="target" />
 
-      <span/>
+      <span />
       <div class="document">
         <div id="mainCanvas">
-          <video id="video" autoplay loop crossOrigin="anonymous" webkit-playsinline style="display:none">
-            <source src="/static/textures/sintel.mp4" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'>
+          <video
+            id="video"
+            autoplay
+            loop
+            crossOrigin="anonymous"
+            webkit-playsinline
+            style="display:none"
+          >
+            <source
+              src="/static/textures/sintel.mp4"
+              type="video/mp4; codecs=&quot;avc1.42E01E, mp4a.40.2&quot;"
+            >
           </video>
           <div id="container" />
         </div>
         <!-- <canvas id="mainCanvas"/> -->
       </div>
-      <span/>
-
+      <span />
     </main>
   </div>
 </template>
@@ -23,19 +35,19 @@
 export default {
   name: 'ThreeDVr',
   mounted () {
-    var container
-    var camera, scene, renderer
-    var video, texture, material, mesh
-    var composer
-    var mouseX = 0
-    var mouseY = 0
-    var windowHalfX = window.innerWidth / 2
-    var windowHalfY = window.innerHeight / 2
-    var cube_count,
-      meshes = [],
-      materials = [],
-      xgrid = 20,
-      ygrid = 10
+    let container
+    let camera; let scene; let renderer
+    let video; let texture; let material; let mesh
+    let composer
+    let mouseX = 0
+    let mouseY = 0
+    let windowHalfX = window.innerWidth / 2
+    let windowHalfY = window.innerHeight / 2
+    let cube_count;
+      const meshes = [];
+      const materials = [];
+      const xgrid = 20;
+      const ygrid = 10
     init()
     animate()
     function init () {
@@ -43,7 +55,7 @@ export default {
       camera = new THREE.PerspectiveCamera(40, window.innerWidth / window.innerHeight, 1, 10000)
       camera.position.z = 500
       scene = new THREE.Scene()
-      var light = new THREE.DirectionalLight(0xffffff)
+      const light = new THREE.DirectionalLight(0xffffff)
       light.position.set(0.5, 1, 1).normalize()
       scene.add(light)
       renderer = new THREE.WebGLRenderer()
@@ -53,14 +65,14 @@ export default {
       video = document.getElementById('video')
       texture = new THREE.VideoTexture(video)
       //
-      var i, j, ux, uy, ox, oy,
-        geometry,
-        xsize, ysize
+      let i; let j; let ux; let uy; let ox; let oy;
+        let geometry;
+        let xsize; let ysize
       ux = 1 / xgrid
       uy = 1 / ygrid
       xsize = 480 / xgrid
       ysize = 204 / ygrid
-      var parameters = { color: 0xffffff, map: texture }
+      const parameters = { color: 0xffffff, map: texture }
       cube_count = 0
       for (i = 0; i < xgrid; i++) {
         for (j = 0; j < ygrid; j++) {
@@ -88,9 +100,9 @@ export default {
       renderer.autoClear = false
       document.addEventListener('mousemove', onDocumentMouseMove, false)
       // postprocessing
-      var renderModel = new THREE.RenderPass(scene, camera)
-      var effectBloom = new THREE.BloomPass(1.3)
-      var effectCopy = new THREE.ShaderPass(THREE.CopyShader)
+      const renderModel = new THREE.RenderPass(scene, camera)
+      const effectBloom = new THREE.BloomPass(1.3)
+      const effectCopy = new THREE.ShaderPass(THREE.CopyShader)
       effectCopy.renderToScreen = true
       composer = new THREE.EffectComposer(renderer)
       composer.addPass(renderModel)
@@ -108,8 +120,8 @@ export default {
       composer.reset()
     }
     function change_uvs (geometry, unitx, unity, offsetx, offsety) {
-      var uvs = geometry.attributes.uv.array
-      for (var i = 0; i < uvs.length; i += 2) {
+      const uvs = geometry.attributes.uv.array
+      for (let i = 0; i < uvs.length; i += 2) {
         uvs[ i ] = (uvs[ i ] + offsetx) * unitx
         uvs[ i + 1 ] = (uvs[ i + 1 ] + offsety) * unity
       }
@@ -123,9 +135,9 @@ export default {
       requestAnimationFrame(animate)
       render()
     }
-    var h, counter = 1
+    let h; let counter = 1
     function render () {
-      var time = Date.now() * 0.00005
+      const time = Date.now() * 0.00005
       camera.position.x += (mouseX - camera.position.x) * 0.05
       camera.position.y += (-mouseY - camera.position.y) * 0.05
       camera.lookAt(scene.position)

@@ -4,7 +4,6 @@
 -->
 <template>
   <div class="hotkeys">
-
     <!-- This is the Common hotkeys -->
     <span class="label-art label-art--large">Global</span>
     
@@ -12,64 +11,84 @@
       <span class="label-art">Shift</span>
       <span class="combination">+</span>
       <span class="label-art">Spacebar</span>
-      <p class="description">This hotkey will let you go to the previous environment</p>
+      <p class="description">
+        This hotkey will let you go to the previous environment
+      </p>
     </div>
 
     <div class="hotkeysPosition">
       <span class="label-art">Ctrl</span>
       <span class="combination">+</span>
       <span class="label-art">C</span>
-      <p class="description">Press this to copy the currently selected asset or assets to the clipboard</p>
+      <p class="description">
+        Press this to copy the currently selected asset or assets to the clipboard
+      </p>
     </div>
 
     <div class="hotkeysPosition">
       <span class="label-art">Ctrl</span>
       <span class="combination">+</span>
       <span class="label-art">X</span>
-      <p class="description">Press this to cut the currently selected asset or assets into the clipboard</p>
+      <p class="description">
+        Press this to cut the currently selected asset or assets into the clipboard
+      </p>
     </div>
 
     <div class="hotkeysPosition">
       <span class="label-art">Ctrl</span>
       <span class="combination">+</span>
       <span class="label-art">V</span>
-      <p class="description">Paste out the asset or assets to the artboard</p>
+      <p class="description">
+        Paste out the asset or assets to the artboard
+      </p>
     </div>
 
     <div class="hotkeysPosition">
       <span class="label-art">Ctrl</span>
       <span class="combination">+</span>
       <span class="label-art">Z</span>
-      <p class="description">Press to undo and step back in the document history</p>
+      <p class="description">
+        Press to undo and step back in the document history
+      </p>
     </div>
 
     <div class="hotkeysPosition">
       <span class="label-art">Ctrl</span>
       <span class="combination">+</span>
       <span class="label-art">Y</span>
-      <p class="description">Press to redo and step forward in the document history</p>
+      <p class="description">
+        Press to redo and step forward in the document history
+      </p>
     </div>
 
     <!-- This is the Audio hotkeys -->
     <span class="label-art label-art--large">Audio</span>
     <div class="hotkeysPosition">
       <span class="label-art largeText">&lArr;</span>
-      <p class="description">- Move playhead back&nbsp;&nbsp;&nbsp;</p>
+      <p class="description">
+        - Move playhead back&nbsp;&nbsp;&nbsp;
+      </p>
     </div>
 
     <div class="hotkeysPosition">
       <span class="label-art largeText">&rArr;</span>
-      <p class="description">- Move playhead forward</p>
+      <p class="description">
+        - Move playhead forward
+      </p>
     </div>
 
     <div class="hotkeysPosition">
       <span class="label-art largeText">&uArr;</span>
-      <p class="description">- Volume Up</p>
+      <p class="description">
+        - Volume Up
+      </p>
     </div>
 
     <div class="hotkeysPosition">
       <span class="label-art largeText">&dArr;</span>
-      <p class="description">- Volume Down</p>
+      <p class="description">
+        - Volume Down
+      </p>
     </div>
     <!--This is the Code projects hotkeys-->
     <span class="label-art label-art--large">Code projects</span>
@@ -77,14 +96,18 @@
       <span class="label-art">Key</span>
       <span class="combination">+</span>
       <span class="label-art">Key</span>
-      <p class="description"> Some text</p>
+      <p class="description">
+        Some text
+      </p>
     </div>
 
     <div class="hotkeysPosition">
       <span class="label-art">Key</span>
       <span class="combination">+</span>
       <span class="label-art">Key</span>
-      <p class="description"> Some text</p>
+      <p class="description">
+        Some text
+      </p>
     </div>
 
     <!--This is the Spreadsheets hotkeys-->
@@ -93,14 +116,18 @@
       <span class="label-art">Key</span>
       <span class="combination">+</span>
       <span class="label-art">Key</span>
-      <p class="description"> Some text</p>
+      <p class="description">
+        Some text
+      </p>
     </div>
 
     <div class="hotkeysPosition">
       <span class="label-art">Key</span>
       <span class="combination">+</span>
       <span class="label-art">Key</span>
-      <p class="description"> Some Text</p>
+      <p class="description">
+        Some Text
+      </p>
     </div>
     <!--This is the Video hotkeys-->
     <span class="label-art label-art--large">Video</span>
@@ -108,14 +135,18 @@
       <span class="label-art">Key</span>
       <span class="combination">+</span>
       <span class="label-art">Key</span>
-      <p class="description"> Some text</p>
+      <p class="description">
+        Some text
+      </p>
     </div>
 
     <div class="hotkeysPosition">
       <span class="label-art">Key</span>
       <span class="combination">+</span>
       <span class="label-art">Key</span>
-      <p class="description"> Some text</p>
+      <p class="description">
+        Some text
+      </p>
     </div>
     <div class="hotkeysPosition" />
   </div>
@@ -123,7 +154,7 @@
 
 <script>
 export default {
-  name: 'hotkeys',
+  name: 'Hotkeys',
   methods: {
     openArtflow() {
       window.location.href = '#/artflow'
@@ -144,7 +175,7 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style  scoped>
 .tabs {
   display: flex;
   align-items: center;

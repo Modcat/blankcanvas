@@ -1,30 +1,52 @@
 <template>
   <div id="app">
-    <div v-if="$route.name !== 'Tools' && $route.name !== 'Properties'" class="top-panel">
+    <div
+      v-if="$route.name !== 'Tools' && $route.name !== 'Properties'"
+      class="top-panel"
+    >
       <div class="tabs">
-        <router-link to="/">Art boards</router-link>
-        <router-link to="/artflow">Art flow</router-link>
-        <router-link to="/director">Director</router-link>
-        <router-link to="/artstore">Art Store</router-link>
-        <router-link to="/hotkeys">HotKeys</router-link>
-        <router-link to="/bounty">Bounty Board</router-link>
+        <router-link to="/">
+          Art boards
+        </router-link>
+        <router-link to="/artflow">
+          Art flow
+        </router-link>
+        <router-link to="/director">
+          Director
+        </router-link>
+        <router-link to="/artstore">
+          Art Store
+        </router-link>
+        <router-link to="/hotkeys">
+          HotKeys
+        </router-link>
+        <router-link to="/bounty">
+          Bounty Board
+        </router-link>
       </div>
     </div>
-    <router-view></router-view>
+    <router-view />
   </div>
 </template>
 
 <script>
-import pg from 'pg'
+/* eslint-disable */
 import Sortable from 'vue-drag-sortable'
 import ArtStore from './components/Environments/ArtStore'
+
 export default {
-  name: 'blankcanvas',
-  components: { ArtStore, pg },
+  name: 'Blankcanvas',
+  components: { ArtStore },
   mounted () {
-    window.electron = require('electron')
-    window.elecWindows = electron.remote.getGlobal('windowAccess')
-    window.db = pg
+    
+    // Get remote windows
+    let electron = require('electron')
+    let mainWindow = electron.remote.app.mainWindow
+    let tools = electron.remote.app.tools
+    let properties = electron.remote.app.properties
+    console.log(mainWindow, tools, properties)
+    
+    // Make stuff sortable
     window.sortable = Sortable
     document.body.addEventListener('keydown', (e) => {
       if (e.shiftKey && e.keyCode === 32) {

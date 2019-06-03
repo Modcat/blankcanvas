@@ -1,49 +1,59 @@
-'use strict'
-
+/* eslint-disable */
 import { app, BrowserWindow } from 'electron'
+/* eslint-enable */
+const pkg = require('../../package.json')
+const { productName } = pkg.build
 
-/**
- * Set `__static` path to static files in production
- * https://simulatedgreg.gitbooks.io/electron-vue/content/en/using-static-assets.html
- */
-if (process.env.NODE_ENV !== 'development') {
-  global.__static = require('path').join(__dirname, '/static').replace(/\\/g, '\\\\')
-}
+app.hello = 'hello to you global'
+
+process.env.ELECTRON_DISABLE_SECURITY_WARNINGS = true
+
+const isDev = process.env.NODE_ENV === 'development'
 
 let mainWindow
-const winURL = process.env.NODE_ENV === 'development'
-  ? `http://localhost:9080`
-  : `file://${__dirname}/index.html`
 
-function createWindow () {
+if (isDev) {
+  // eslint-disable-next-line
+  require('electron-debug')()
+}
+
+async function installDevTools() {
+  try {
+    // eslint-disable-next-line
+    require('devtron').install()
+    // eslint-disable-next-line
+    require('vue-devtools').install()
+  } catch (err) {
+    // eslint-disable-next-line
+    console.error(err)
+  }
+}
+
+function createWindow() {
   /**
    * Initial window options
    */
-  mainWindow = new BrowserWindow({
-    useContentSize: true,
-    minWidth: 1000,
-    minHeight: 600,
+  const mainWindow = new BrowserWindow({
+    // useContentSize: true,
+    width: 960,
+    height: 640,
     frame: false,
-    transparent: true,
-    resizable: true,
-    fullscreenable: true,
-    vibrancy: 'light',
+    backgroundColor: '#00000000',
     webPreferences: {
-      // nativeWindowOpen: true,
+      nodeIntegration: true,
+      nodeIntegrationInWorker: false,
+      webSecurity: false,
       experimentalFeatures: true
-    }
+    },
+    show: false,
   })
+
+  app.mainWindow = mainWindow
 
   mainWindow.maximize()
 
-  mainWindow.loadURL(winURL)
-
-  mainWindow.on('closed', () => {
-    mainWindow = null
-  })
-
   // New properties window
-  let properties = new BrowserWindow({
+  const properties = new BrowserWindow({
     width: 300,
     height: 400,
     minWidth: 250,
@@ -53,11 +63,19 @@ function createWindow () {
     transparent: true,
     resizable: true,
     fullscreenable: false,
+    devTools: false,
+    backgroundColor: '#00000000',
+    webPreferences: {
+      nodeIntegration: true,
+      nodeIntegrationInWorker: false,
+      webSecurity: false,
+    },
     // vibrancy: 'light',
-    webPreferences: {webSecurity: false}
   })
+  app.properties = properties
   properties.loadURL(process.env.NODE_ENV === 'development' ? 'http://localhost:9080/#/properties' : `file://${__dirname}/index.html#ui`)
 
+  properties.hide()
 
   // New tools window
   let tools = null
@@ -69,44 +87,57 @@ function createWindow () {
     transparent: true,
     resizable: false,
     fullscreenable: false,
-    vibrancy: 'light',
-    webPreferences: {webSecurity: false}
+    // vibrancy: 'light',
+    backgroundColor: '#00000000',
+    devTools: false,
+    webPreferences: {
+      nodeIntegration: true,
+      nodeIntegrationInWorker: false,
+      webSecurity: false,
+    },
   })
+  app.tools = tools
   tools.loadURL(process.env.NODE_ENV === 'development' ? 'http://localhost:9080/#/tools' : `file://${__dirname}/index.html#tools`)
+  
+  tools.hide()
 
-  // Allow access globally all windows
+  if (isDev) {
+    mainWindow.loadURL('http://localhost:9080')
+  } else {
+    mainWindow.loadURL(`file://${__dirname}/index.html`)
 
-  global.windowAccess = {tools, properties, mainWindow}
+    global.__static = require('path')
+      .join(__dirname, '/static')
+      .replace(/\\/g, '\\\\')
+  }
 
-  // New window creation
-  mainWindow.webContents.on('new-window', (event, url, frameName, disposition, options, additionalFeatures, modal = false, width = 377, height = 350) => {
-    if (frameName === 'modal') {
-      // open window as modal
-      event.preventDefault()
-      Object.assign(options, {
-        minWidth: 250,
-        minHeight: 250,
-        modal: modal,
-        parent: mainWindow,
-        width,
-        height,
-        frame: false,
-        transparent: true,
-        resizable: true,
-        fullscreenable: true,
-        vibrancy: 'light',
-        webPreferences: {webSecurity: false}
-      })
-      event.newGuest = new BrowserWindow(options)
+  // Show when loaded
+  mainWindow.on('ready-to-show', () => {
+    mainWindow.setTitle(productName)
+    mainWindow.show()
+    mainWindow.focus()
+
+    if (isDev || process.argv.indexOf('--debug') !== -1) {
+      mainWindow.webContents.openDevTools()
     }
+  })
+
+  mainWindow.on('closed', () => {
+    mainWindow = null
   })
 }
 
-app.on('ready', createWindow)
+app.on('ready', () => {
+  app.setName(productName)
+  createWindow()
+
+  if (isDev) {
+    installDevTools()
+  }
+})
 
 app.on('window-all-closed', () => {
   if (process.platform !== 'darwin') {
-    win = null
     app.quit()
   }
 })
@@ -114,7 +145,6 @@ app.on('window-all-closed', () => {
 app.on('activate', () => {
   if (mainWindow === null) {
     createWindow()
-    // win.hide()
   }
 })
 

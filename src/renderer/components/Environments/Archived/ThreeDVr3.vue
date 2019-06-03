@@ -1,17 +1,19 @@
 <template>
   <div>
-    <main @click="change" id="graphics">
-      <div id="target"/>
+    <main
+      id="graphics"
+      @click="change"
+    >
+      <div id="target" />
 
-      <span/>
+      <span />
       <div class="document">
         <div id="mainCanvas">
           <div id="container" />
         </div>
         <!-- <canvas id="mainCanvas"/> -->
       </div>
-      <span/>
-
+      <span />
     </main>
   </div>
 </template>
@@ -20,10 +22,10 @@
 export default {
   name: 'ThreeDVr',
   mounted () {
-    var container, stats, controls
-    var camera, scene, renderer, light
-    var clock = new window.THREE.Clock()
-    var mixers = []
+    let container; let stats; let controls
+    let camera; let scene; let renderer; let light
+    const clock = new window.THREE.Clock()
+    const mixers = []
     init()
     animate()
     function init () {
@@ -49,20 +51,20 @@ export default {
       scene.add(light)
       // scene.add( new window.THREE.CameraHelper( light.shadow.camera ) );
       // ground
-      var mesh = new window.THREE.Mesh(new window.THREE.PlaneBufferGeometry(2000, 2000), new window.THREE.MeshPhongMaterial({ color: 0x999999, depthWrite: false }))
+      const mesh = new window.THREE.Mesh(new window.THREE.PlaneBufferGeometry(2000, 2000), new window.THREE.MeshPhongMaterial({ color: 0x999999, depthWrite: false }))
       mesh.rotation.x = -Math.PI / 2
       mesh.receiveShadow = true
       scene.add(mesh)
-      var grid = new window.THREE.GridHelper(2000, 20, 0x000000, 0x000000)
+      const grid = new window.THREE.GridHelper(2000, 20, 0x000000, 0x000000)
       grid.material.opacity = 0.2
       grid.material.transparent = true
       scene.add(grid)
       // model
-      var loader = new window.THREE.FBXLoader()
+      const loader = new window.THREE.FBXLoader()
       loader.load('/static/models/fbx/Samba Dancing.fbx', function (object) {
         object.mixer = new window.THREE.AnimationMixer(object)
         mixers.push(object.mixer)
-        var action = object.mixer.clipAction(object.animations[ 0 ])
+        const action = object.mixer.clipAction(object.animations[ 0 ])
         action.play()
         object.traverse(function (child) {
           if (child.isMesh) {
@@ -91,7 +93,7 @@ export default {
     function animate () {
       requestAnimationFrame(animate)
       if (mixers.length > 0) {
-        for (var i = 0; i < mixers.length; i++) {
+        for (let i = 0; i < mixers.length; i++) {
           mixers[ i ].update(clock.getDelta())
         }
       }

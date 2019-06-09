@@ -73,7 +73,6 @@
     "electron-simple-updater": "^1.5.0",
     "git": "^0.1.5",
     "simple-git": "^1.113.0",
-    "three": "^0.105.2",
     "ts-interface-validator": "^1.1.0",
     "vue": "^2.6.10",
     "vue-chartist": "^2.2.0",

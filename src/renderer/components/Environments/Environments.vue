@@ -451,6 +451,8 @@
       <!-- Top draw -->
       <div class="top-draw draw" />
 
+      <div id="three"></div>
+
       <!-- Sidebar -->
       <div :class="['right-draw draw', {'on': showRightDraw}]">
         <div class="blur">
@@ -852,9 +854,6 @@
           </div>
         </div>
       </div>
-      
-      <!-- Code -->
-
 
       <!-- Spreadsheet -->
       <div
@@ -987,8 +986,6 @@ import CodeMirrorMode from 'codemirror/mode/javascript/javascript.js'
 import CodeMirrorCSS from 'codemirror/lib/codemirror.css'
 import CodeMirrorTheme from 'codemirror/theme/base16-light.css'
 
-// ThreeJS
-import Three from 'three'
 
 export default {
   name: 'Graphics',
@@ -1071,6 +1068,45 @@ window.onload = function () {
       lineNumbers: true
     }
     )
+  },
+  mounted() {
+    // ThreeJS
+
+var camera, scene, renderer, geometry, material, mesh;
+
+init();
+animate();
+ 
+function init() {
+ 
+    camera = new THREE.PerspectiveCamera( 70, window.innerWidth / window.innerHeight, 0.01, 10 );
+    camera.position.z = 1;
+ 
+    scene = new THREE.Scene();
+ 
+    geometry = new THREE.BoxGeometry( 0.2, 0.2, 0.2 );
+    material = new THREE.MeshNormalMaterial();
+ 
+    mesh = new THREE.Mesh( geometry, material );
+    scene.add( mesh );
+ 
+    renderer = new THREE.WebGLRenderer( { antialias: true } );
+    renderer.setSize( window.innerWidth, window.innerHeight );
+    document.getElementById('three').appendChild( renderer.domElement );
+ 
+}
+ 
+function animate() {
+ 
+    requestAnimationFrame( animate );
+ 
+    mesh.rotation.x += 0.01;
+    mesh.rotation.y += 0.02;
+ 
+    renderer.render( scene, camera );
+ 
+}
+
   },
   methods: {
     mouseMove(event) {

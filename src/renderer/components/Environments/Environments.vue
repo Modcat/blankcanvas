@@ -1,6 +1,5 @@
 <template>
   <div
-    v-hammer:onTap="onSwipeLeft"
     class="main-layout"
   >
     <!-- Left Draw -->
@@ -987,6 +986,9 @@ import CodeMirror from 'codemirror'
 import CodeMirrorMode from 'codemirror/mode/javascript/javascript.js'
 import CodeMirrorCSS from 'codemirror/lib/codemirror.css'
 import CodeMirrorTheme from 'codemirror/theme/base16-light.css'
+
+// ThreeJS
+import Three from 'three'
 
 export default {
   name: 'Graphics',

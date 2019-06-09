@@ -147,13 +147,22 @@
 <script>
 /* eslint-disable */
 export default {
-  name: 'Artboards'
+  name: 'Artboards',
+  mounted() {
+
+    // Github
+    const simpleGit = require('simple-git')('/Users/Lawrence/Documents/blankcanvas/')
+    // If it doesn't exists clone
+    // simpleGit.clone('https://github.com/Modcat/blancanvas-project')
+    simpleGit.cwd('/Users/Lawrence/Documents/blankcanvas/blancanvas-project')
+    
+  }
 }
 </script>
 
 <style lang="scss" scoped>
 .clip {
-  max-height: 100vh;
+  max-height: calc(100vh - 52px);
   max-width: 100vw;
   overflow-y: auto;
   overflow-x: hidden;

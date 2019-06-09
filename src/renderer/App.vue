@@ -67,17 +67,17 @@ $orange: rgba(255, 134, 34, 0.3);
   justify-content: center;
   align-items: center;
   padding: 15px;
-  background: #dadada;
+  background: #eee;
   -webkit-app-region: drag;
   .tabs {
     border-radius: 3px;
-    box-shadow: 0px 2px 6px #ccc;
+    // box-shadow: 0px 2px 6px #ccc;
     font-weight: 600;
     a {
       padding: 0 15px;
       display: inline-block;
       text-decoration: none;
-      background: #eee;
+      background: #fff;
       margin-left: 1px;
       border: none;
       display: flex;
@@ -121,7 +121,7 @@ body {
   display: flex;
   flex-direction: column;
   // background: rgba(255, 255, 255, 0.45);
-  background: #eee;
+  background: #fff;
   font-family: 'Open Sans', sans-serif;
   font-size: 10px;
   color: #666;

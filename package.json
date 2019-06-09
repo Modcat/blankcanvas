@@ -1,10 +1,10 @@
 {
-  "author": "Muhammad Ubaid Raza <mubaidr@gmail.com>",
+  "author": "Lawrence Anthony Turton",
   "bugs": {
-    "url": "https://github.com/mubaidr/vue-electron-template/issues"
+    "url": "https://github.com/Modcat/blankcanvas/issues"
   },
   "build": {
-    "appId": "com.mubaidr.vue-electron-template",
+    "appId": "com.blankcanvas.modcat",
     "asar": true,
     "directories": {
       "output": "build/"
@@ -54,7 +54,7 @@
       "allowToChangeInstallationDirectory": true,
       "oneClick": false
     },
-    "productName": "Vue Electron Template",
+    "productName": "BlankCanvas",
     "win": {
       "icon": "_icons/icon.ico",
       "target": [
@@ -68,8 +68,11 @@
     "axios": "^0.18.0",
     "bulma-pro": "^0.1.6",
     "codemirror": "^5.47.0",
+    "electron-simple-publisher": "^0.6.2",
+    "electron-simple-updater": "^1.5.0",
     "git": "^0.1.5",
     "simple-git": "^1.113.0",
+    "ts-interface-validator": "^1.1.0",
     "vue": "^2.6.10",
     "vue-chartist": "^2.2.0",
     "vue-drag-sortable": "^0.1.0",
@@ -78,7 +81,7 @@
     "vuex": "^3.1.1",
     "vuex-electron": "^1.0.3"
   },
-  "description": "An electron-vue project",
+  "description": "Swiss knife application for developing in many different data types and environments with data connectivity supporting freedom computing for the application type.",
   "devDependencies": {
     "@babel/core": "^7.4.4",
     "@babel/preset-env": "^7.4.4",
@@ -121,12 +124,12 @@
     "webpack-dev-server": "^3.4.1",
     "webpack-hot-middleware": "^2.25.0"
   },
-  "license": "MIT",
+  "license": "GNU GPL 3",
   "main": "./dist/main.js",
-  "name": "vue-electron-template",
+  "name": "blankcanvas",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/mubaidr/vue-electron-template.git"
+    "url": "https://github.com/Modcat/blankcanvas"
   },
   "scripts": {
     "build": "npm run pack && electron-builder",

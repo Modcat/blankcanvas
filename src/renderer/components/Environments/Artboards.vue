@@ -92,12 +92,11 @@
           <a
             href="#/environments?mode=audio"
             class="art"
-            style="width: 110px; background: white;"
           >
-            <img
-              src="/static/images/audio.jpg"
-              alt=""
-            >
+            <div class="art">
+              <img src="../../assets/images/audio-icon.svg" width="60" alt="database">
+              <label>Audio File.wav</label>
+          </div>
           </a>
         </a>
       </section>
@@ -108,10 +107,10 @@
           :key="indexDB"
           href="#/environments?mode=database"
         >
-          <div
-            class="art"
-            style="width: 100px; height: 100px; background: url(/static/images/database.jpg) no-repeat white;background-size: auto 100%;"
-          />
+          <div class="art">
+            <img src="../../assets/images/database-icon.svg" width="60" alt="database">
+            <label>Postgre DB</label>
+          </div>
         </a>
       </section>
       <span class="label-art">Code projects</span>
@@ -121,10 +120,10 @@
           :key="indexCode"
           href="#/environments?mode=codeeditor"
         >
-          <div
-            class="art"
-            style="width: 100px; height: 150px; background: url(/static/images/code.jpg) no-repeat white;background-size: auto 100%;"
-          />
+          <div class="art">
+              <img src="../../assets/images/code-icon.svg" width="60" alt="code file">
+              <label>Component.vue</label>
+          </div>
         </a>
       </section>
       <span class="label-art">Spreadsheet</span>
@@ -134,10 +133,10 @@
           :key="indexSpreadsheet"
           href="#/environments?mode=spreadsheet"
         >
-          <div
-            class="art"
-            style="width: 100px; height: 150px; background: url(/static/images/excel.jpg) no-repeat white;background-size: auto 100%;"
-          />
+          <div class="art">
+              <img src="../../assets/images/spreadsheet-icon.svg" width="60" alt="database">
+              <label>Spreadsheet</label>
+          </div>
         </a>
       </section>
     </section>
@@ -176,10 +175,40 @@ export default {
   max-width: 100vw;
   overflow-x: hidden;
 }
+a {
+  text-decoration: none;
+  cursor: default;
+
+  &:hover {
+    .art {
+      label {
+        background: #eee;
+      }
+    }
+  }
+}
 .art {
-  display: block;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   max-width: 150px;
   max-height: 150px;
+  text-decoration: none;
+
+  label {
+    text-decoration: none;
+    color: #333;
+    max-width: 100%;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    padding: 3px 10px;
+    border-radius: 50px;
+    margin-top: 15px;
+    letter-spacing: 0.02em;
+    font-size: 10px;
+    transition: background-color 0.1s;
+  }
 }
 .art-collection {
   display: flex;
@@ -191,13 +220,6 @@ export default {
   > * {
     margin-top: 25px;
     margin-right: 25px;
-    box-shadow: 2px 2px 21px rgba(0,0,0,0.2);
-    transform: scale(1,1);
-    transition: transform 0.2s;
-  }
-
-  > *:hover {
-    transform: scale(1.1, 1.1)
   }
   video {
     max-width: 150px;

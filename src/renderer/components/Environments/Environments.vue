@@ -448,8 +448,6 @@
       </div>
     </div>
     <main id="graphics">
-      <!-- Top draw -->
-      <div class="top-draw draw" />
 
       <div id="three"></div>
 

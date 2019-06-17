@@ -1,5 +1,25 @@
 <template>
   <div class="clip">
+    <!-- Document information -->
+    <section class="document-info">
+      <button>Document Information</button>
+      <div class="expand">
+        <div class="input">
+          <label class="tag">File Path*</label>
+          <input type="text">
+        </div>
+        <div class="input">
+          <label class="tag">Github URL</label>
+          <input type="text">
+        </div>
+        <h3>Database</h3>
+        <section class="database-info">
+          <label class="tag">Github URL</label>
+          <input type="text">
+        </section>
+      </div>
+    </section>
+    
     <section class="artboards">
       <span class="label-art">Connected</span>
       <div
@@ -30,56 +50,38 @@
       </div>
       <span class="label-art">Graphics Artboards</span>
       <section class="art-collection">
-        <a href="#/environments?mode=graphics"><div
-          class="art"
-          style="width: 110px; height: 150px; background: white;"
+        <a
+          v-for="(graphic,indexGraphic) in [1,1,1]"
+          :key="indexGraphic"
+          href="#/environments?mode=graphics"
         >
-          <img
-            src="/static/images/art-canvas.jpg"
-            alt=""
-          ></div>
-        </a>
-        <a href="#/environments?mode=graphics"><div
-          class="art"
-          style="width: 110px; height: 150px; background: white;"
-        >
-          <img
-            src="/static/images/art-canvas.jpg"
-            alt=""
-          ></div>
-        </a>
-        <a href="#/environments?mode=graphics"><div
-          class="art"
-          style="width: 110px; height: 150px; background: white;"
-        >
-          <img
-            src="/static/images/art-canvas.jpg"
-            alt=""
-          ></div>
+          <div class="art" style="width: 110px; max-height: 220px; background: white;">
+            <img src="/static/images/art-canvas.jpg">
+            <label>Artboard</label>
+          </div>
         </a>
       </section>
       <span class="label-art">Videos Artboards</span>
       <section class="art-collection">
         <a
+          v-for="(video,indexVideo) in [1,1,1]"
+          :key="indexVideo"
           class="art"
           href="#/environments?mode=video"
         >
-          <img src="/static/video/honey-thumbnail.png">
+          <div class="art">
+            <img src="/static/video/honey-thumbnail.png">
+            <label>Video.webm</label>
+          </div>
         </a>
-        <a
-          class="art"
-          href="#/environments?mode=video"
-        >
-          <img src="/static/video/honey-thumbnail.png">
-        </a>
-        <a href="#/environments?mode=video">
+        <!-- <a href="#/environments?mode=video">
           <video
             class="art"
             src="/static/video/honey.mp4"
             autoplay
             loop="loop"
           />
-        </a>
+        </a> -->
       </section>
       <span class="label-art label-art--large">Attached Files</span>
       <span class="label-art">Audio</span>
@@ -121,7 +123,7 @@
           href="#/environments?mode=codeeditor"
         >
           <div class="art">
-              <img src="../../assets/images/code-icon.svg" width="60" alt="code file">
+              <img src="../../assets/images/writer-icon.svg" width="60" alt="code file">
               <label>Component.vue</label>
           </div>
         </a>

@@ -45,6 +45,7 @@ button {
 }
 input[type='text']:focus,
 input[type='search']:focus,
+input[type='password']:focus,
 select:focus,
 textarea:focus,
 button:focus {
@@ -85,7 +86,8 @@ textarea {
 	letter-spacing: -0.01em;
 	width: 100%;
 }
-input[type='text'] {
+input[type='text'],
+input[type='password'] {
   display: block;
   box-sizing: border-box;
   height: 25px;

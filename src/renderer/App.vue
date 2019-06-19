@@ -38,6 +38,8 @@ export default {
   name: 'Blankcanvas',
   components: { ArtStore },
   mounted () {
+
+    window.electron = require('electron')
     
     // Get remote windows
     let electron = require('electron')

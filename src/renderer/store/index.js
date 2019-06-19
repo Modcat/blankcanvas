@@ -2,6 +2,9 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 
+// Modules
+import fs from './modules/file-system'
+
 import { createPersistedState, createSharedMutations } from 'vuex-electron'
 
 // import modules from './modules'
@@ -460,6 +463,7 @@ const createStore = () => {
       createPersistedState(),
       createSharedMutations()
     ],
+    modules: {filesystem: fs},
     strict: process.env.NODE_ENV !== 'production'
   })
 }

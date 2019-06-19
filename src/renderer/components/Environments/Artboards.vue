@@ -6,16 +6,36 @@
       <div class="expand">
         <div class="input">
           <label class="tag">File Path*</label>
-          <input type="text">
+          <input type="text" style="padding-left: 65px;">
         </div>
         <div class="input">
           <label class="tag">Github URL</label>
-          <input type="text">
+          <input type="text" style="padding-left: 70px;">
         </div>
         <h3>Database</h3>
         <section class="database-info">
-          <label class="tag">Github URL</label>
-          <input type="text">
+          <div class="row">
+            <div class="input">
+              <label class="tag">Host</label>
+              <input type="text" style="padding-left:40px;">
+            </div>
+            <div class="input">
+              <label class="tag">Port</label>
+              <input type="text" style="padding-left:40px;">
+            </div>
+          </div>
+          <div class="input">
+            <label class="tag">User</label>
+            <input type="text" style="padding-left:40px;">
+          </div>
+          <div class="input">
+            <label class="tag">Password</label>
+            <input type="password" style="padding-left:67px;">
+          </div>
+          <div class="input">
+            <label class="tag">Database Name</label>
+            <input type="text" style="padding-left:92px;">
+          </div>
         </section>
       </div>
     </section>
@@ -162,6 +182,73 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.document-info {
+  display: flex;
+  flex-direction: column;
+  max-width: 400px;
+  margin: 35px auto 0 auto;
+  background: #eee;
+  padding: 25px;
+  border-radius: 4px;
+
+  button {
+    margin-bottom: 10px;
+    background: white;
+    box-shadow: none;
+    outline: none;
+    color: #444;
+    align-self: center;
+    justify-self: center;
+
+    &:active {
+      background: #777;
+      color: white;
+    }
+  }
+
+  h3 {
+    margin-top: 15px;
+    margin-bottom: 0;
+    text-transform: uppercase;
+    font-size: 10px;
+    user-select: none;
+  }
+
+  .row {
+    > *:first-child {
+      margin-right: 10px;
+    }
+
+    .input {
+      flex-grow: 1;
+    }
+
+  }
+
+  .tag {
+    position: relative;
+    background: #aaa;
+    border-radius: 2px;
+    color: white;
+    padding: 3px 5px;
+    bottom: -19px;
+    letter-spacing: 0.01em;
+    left: 3px;
+    font-size: 9px;
+    line-height: 1em;
+    text-transform: uppercase;
+    font-weight: 600;
+    user-select: none;
+  }
+
+  input {
+    flex-grow: 1;
+    width: 100%;
+    background: white;
+    box-shadow: none;
+    color: #555;
+  }
+}
 .clip {
   max-height: calc(100vh - 52px);
   max-width: 100vw;

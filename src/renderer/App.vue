@@ -39,6 +39,8 @@ export default {
   components: { ArtStore },
   mounted () {
 
+    console.log(this.$store)
+
     window.electron = require('electron')
     
     // Get remote windows

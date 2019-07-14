@@ -46,7 +46,7 @@ export default {
 .bounty-board {
   display: flex;
   flex-wrap: wrap;
-  max-height: 100vh;
+  max-height: calc(100vh - 50px);
   overflow-y: auto;
   overflow-x: hidden;
 

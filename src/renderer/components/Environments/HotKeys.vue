@@ -175,7 +175,7 @@ export default {
 }
 </script>
 
-<style  scoped>
+<style lang="scss" scoped>
 .tabs {
   display: flex;
   align-items: center;
@@ -191,9 +191,10 @@ export default {
   flex-wrap: wrap;
   padding: 15px;
   overflow-x: hidden;
-  max-height: 100vh;
+  max-height: calc(100vh - 50px);
   overflow-y: auto;
   justify-content: center;
+
   .tabs,
   .hotkeysPosition {
     width: 100%;

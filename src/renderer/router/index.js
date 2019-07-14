@@ -35,6 +35,11 @@ export default new Router({
       component: require('../components/Environments/ArtFlow').default
     },
     {
+      path: '/director',
+      name: 'Director',
+      component: require('../components/Environments/Director').default
+    },
+    {
       path: '/artstore',
       name: 'ArtStore',
       component: require('../components/Environments/ArtStore').default
@@ -48,6 +53,16 @@ export default new Router({
       path: '/hotkeys',
       name: 'HotKeys',
       component: require('../components/Environments/HotKeys').default
+    },
+    {
+      path: '/docs',
+      name: 'Docs',
+      component: require('../components/Environments/Docs').default
+    },
+    {
+      path: '/volenteer',
+      name: 'Volenteer',
+      component: require('../components/Environments/Volenteer').default
     },
     // Wild card loader
     {

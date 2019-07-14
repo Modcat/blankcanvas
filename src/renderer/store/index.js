@@ -3,6 +3,7 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 
 // Modules
+import electron from './modules/electron'
 import fs from './modules/file-system'
 import document from './modules/document'
 import connections from './modules/connections'
@@ -36,7 +37,7 @@ const createStore = () => {
       createPersistedState(),
       createSharedMutations()
     ],
-    modules: {fileSystem: fs, document, connections, artboards, artflow, director, attachedFiles},
+    modules: {electron, fs, document, connections, artboards, artflow, director, attachedFiles},
     strict: process.env.NODE_ENV !== 'production'
   })
 }

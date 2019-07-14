@@ -5,409 +5,6 @@
     <!-- Left Draw -->
     <!-- All main content that pushes over to left -->
     <div class="left-draw draw">
-      
-      <!-- Presentation -->
-      <div :class="['presenation', { 'on': mode === 'presentation' }]">
-        <section class="artboards">
-          <span class="label-art label-art--large">Art Boards</span>
-          <section class="art-collection">
-            <a
-              style="z-index:3;"
-              href="#/Graphics"
-            ><div
-              class="art"
-              style="width: 65px; height: 150px; background: white;"
-            /></a>
-            <a
-              style="z-index:2;"
-              href="#/"
-            ><div
-              class="art"
-              style="z-index: 1;width: 135px; height: 135px; background: white;"
-            /></a>
-            <a
-              style="z-index:1;"
-              href="#/"
-            ><div
-              class="art"
-              style="z-index: 0;width: 100px; height: 67px; background: white;"
-            /></a>
-          </section>
-          <span class="label-art">Website Pages</span>
-          <section class="art-collection">
-            <a
-              style="z-index:3;"
-              href="#/Graphics"
-            ><div
-              class="art"
-              style="width: 100px; height: 150px; background: white;"
-            /></a>
-            <a
-              style="z-index:2;"
-              href="#/"
-            ><div
-              class="art"
-              style="width: 100px; height: 150px; background: white;"
-            /></a>
-            <a
-              style="z-index:1;"
-              href="#/"
-            ><div
-              class="art"
-              style="width: 100px; height: 150px; background: white;"
-            /></a>
-          </section>
-          <span class="label-art">Writer Art</span>
-          <section class="art-collection">
-            <a
-              style="z-index:14;"
-              href="#/markdownwriter"
-            ><div
-              class="art"
-              style="width: 110px; height: 150px; background: white;"
-            /></a>
-            <a
-              style="z-index:13;"
-              href="#/"
-            ><div
-              class="art"
-              style="width: 110px; height: 150px; background: white;"
-            /></a>
-            <a
-              style="z-index:12;"
-              href="#/"
-            ><div
-              class="art"
-              style="width: 110px; height: 150px; background: white;"
-            /></a>
-            <a
-              style="z-index:11;"
-              href="#/"
-            ><div
-              class="art"
-              style="width: 110px; height: 150px; background: white;"
-            /></a>
-            <a
-              style="z-index:10;"
-              href="#/"
-            ><div
-              class="art"
-              style="width: 110px; height: 150px; background: white;"
-            /></a>
-            <a
-              style="z-index:9;"
-              href="#/"
-            ><div
-              class="art"
-              style="width: 110px; height: 150px; background: white;"
-            /></a>
-            <a
-              style="z-index:8;"
-              href="#/"
-            ><div
-              class="art"
-              style="width: 110px; height: 150px; background: white;"
-            /></a>
-            <a
-              style="z-index:7;"
-              href="#/"
-            ><div
-              class="art"
-              style="width: 110px; height: 150px; background: white;"
-            /></a>
-            <a
-              style="z-index:6;"
-              href="#/"
-            ><div
-              class="art"
-              style="width: 110px; height: 150px; background: white;"
-            /></a>
-            <a
-              style="z-index:5;"
-              href="#/"
-            ><div
-              class="art"
-              style="width: 110px; height: 150px; background: white;"
-            /></a>
-            <a
-              style="z-index:4;"
-              href="#/"
-            ><div
-              class="art"
-              style="width: 110px; height: 150px; background: white;"
-            /></a>
-            <a
-              style="z-index:3;"
-              href="#/"
-            ><div
-              class="art"
-              style="width: 110px; height: 150px; background: white;"
-            /></a>
-            <a
-              style="z-index:2;"
-              href="#/"
-            ><div
-              class="art"
-              style="width: 110px; height: 150px; background: white;"
-            /></a>
-            <a
-              style="z-index:1;"
-              href="#/"
-            ><div
-              class="art"
-              style="width: 110px; height: 150px; background: white;"
-            /></a>
-          </section>
-          <span class="label-art">Slides and presentations</span>
-          <section class="art-collection">
-            <a
-              style="z-index:3;"
-              href="#/powerpoint"
-            ><div
-              class="art"
-              style="width: 150px; height: 150px; background: white;"
-            /></a>
-            <a
-              style="z-index:2;"
-              href="#/"
-            ><div
-              class="art"
-              style="width: 150px; height: 150px; background: white;"
-            /></a>
-            <a
-              style="z-index:1;"
-              href="#/"
-            ><div
-              class="art"
-              style="width: 150px; height: 150px; background: white;"
-            /></a>
-          </section>
-          <span class="label-art label-art--large">Attached Files</span>
-          <span class="label-art">Videos</span>
-          <section class="art-collection">
-            <a
-              style="z-index:3;"
-              href="#/video"
-            ><div
-              class="art"
-              style="width: 150px; height: 98px; background: white;"
-            /></a>
-            <a
-              style="z-index:2;"
-              href="#/"
-            ><div
-              class="art"
-              style="width: 150px; height: 98px; background: white;"
-            /></a>
-            <a
-              style="z-index:1;"
-              href="#/"
-            ><div
-              class="art"
-              style="width: 150px; height: 98px; background: white;"
-            /></a>
-          </section>
-          <span class="label-art">Databases</span>
-          <section class="art-collection">
-            <a
-              style="z-index:3;"
-              href="#/database"
-            ><div
-              class="art"
-              style="width: 100px; height: 150px; background: white;"
-            /></a>
-            <a
-              style="z-index:2;"
-              href="#/"
-            ><div
-              class="art"
-              style="width: 100px; height: 150px; background: white;"
-            /></a>
-            <a
-              style="z-index:1;"
-              href="#/"
-            ><div
-              class="art"
-              style="width: 100px; height: 150px; background: white;"
-            /></a>
-          </section>
-          <span class="label-art">Code projects</span>
-          <section class="art-collection">
-            <a
-              style="z-index:3;"
-              href="#/codeeditor"
-            ><div
-              class="art"
-              style="width: 100px; height: 150px; background: white;"
-            /></a>
-            <a
-              style="z-index:2;"
-              href="#/"
-            ><div
-              class="art"
-              style="width: 100px; height: 150px; background: white;"
-            /></a>
-            <a
-              style="z-index:1;"
-              href="#/"
-            ><div
-              class="art"
-              style="width: 100px; height: 150px; background: white;"
-            /></a>
-          </section>
-          <span class="label-art">Excel</span>
-          <section class="art-collection">
-            <a
-              style="z-index:3;"
-              href="#/excel"
-            ><div
-              class="art"
-              style="width: 135px; height: 135px; background: white;"
-            /></a>
-            <a
-              style="z-index:2;"
-              href="#/"
-            ><div
-              class="art"
-              style="width: 135px; height: 135px; background: white;"
-            /></a>
-            <a
-              style="z-index:1;"
-              href="#/"
-            ><div
-              class="art"
-              style="width: 135px; height: 135px; background: white;"
-            /></a>
-          </section>
-        </section>
-
-        <!-- Slide for presentation -->
-
-        <section class="slides">
-          <span class="label-art label-art--large slide-thread">Slides</span>
-          <section class="art-collection">
-            <a
-              style="z-index:17;"
-              href="#/Graphics"
-            ><div
-              class="art"
-              style="width: 65px; height: 150px; background: white;"
-            /></a>
-            <a
-              style="z-index:16;"
-              href="#/"
-            ><div
-              class="art"
-              style="z-index: 1;width: 135px; height: 135px; background: white;"
-            /></a>
-            <a
-              style="z-index:15;"
-              href="#/"
-            ><div
-              class="art"
-              style="z-index: 0;width: 100px; height: 67px; background: white;"
-            /></a>
-            <a
-              style="z-index:14;"
-              href="#/markdownwriter"
-            ><div
-              class="art"
-              style="width: 110px; height: 150px; background: white;"
-            /></a>
-            <a
-              style="z-index:13;"
-              href="#/"
-            ><div
-              class="art"
-              style="width: 110px; height: 150px; background: white;"
-            /></a>
-            <a
-              style="z-index:12;"
-              href="#/"
-            ><div
-              class="art"
-              style="width: 110px; height: 150px; background: white;"
-            /></a>
-            <a
-              style="z-index:11;"
-              href="#/"
-            ><div
-              class="art"
-              style="width: 110px; height: 150px; background: white;"
-            /></a>
-            <a
-              style="z-index:10;"
-              href="#/"
-            ><div
-              class="art"
-              style="width: 110px; height: 150px; background: white;"
-            /></a>
-            <a
-              style="z-index:9;"
-              href="#/"
-            ><div
-              class="art"
-              style="width: 110px; height: 150px; background: white;"
-            /></a>
-            <a
-              style="z-index:8;"
-              href="#/"
-            ><div
-              class="art"
-              style="width: 110px; height: 150px; background: white;"
-            /></a>
-            <a
-              style="z-index:7;"
-              href="#/"
-            ><div
-              class="art"
-              style="width: 110px; height: 150px; background: white;"
-            /></a>
-            <a
-              style="z-index:6;"
-              href="#/"
-            ><div
-              class="art"
-              style="width: 110px; height: 150px; background: white;"
-            /></a>
-            <a
-              style="z-index:5;"
-              href="#/"
-            ><div
-              class="art"
-              style="width: 110px; height: 150px; background: white;"
-            /></a>
-            <a
-              style="z-index:4;"
-              href="#/"
-            ><div
-              class="art"
-              style="width: 110px; height: 150px; background: white;"
-            /></a>
-            <a
-              style="z-index:3;"
-              href="#/"
-            ><div
-              class="art"
-              style="width: 110px; height: 150px; background: white;"
-            /></a>
-            <a
-              style="z-index:2;"
-              href="#/"
-            ><div
-              class="art"
-              style="width: 110px; height: 150px; background: white;"
-            /></a>
-            <a
-              style="z-index:1;"
-              href="#/"
-            ><div
-              class="art"
-              style="width: 110px; height: 150px; background: white;"
-            /></a>
-          </section>
-        </section>
-      </div>
 
       <!-- Code Sidebar -->
       <div :class="['code-sidebar', { 'on': mode === 'code' }]">
@@ -551,7 +148,7 @@
 
       <!-- Graphics, Presentation or Code -->
       <div
-        v-if="mode.match(/graphics|code|presentation/ig)"
+        v-if="mode.match(/graphics/ig)"
         :class="['document', { 'last-canvas': linkedCanvas }]"
       >
         <a
@@ -628,6 +225,9 @@
           <!-- <div id="webglCanvas"/> -->
         </div>
       </div>
+
+      <!-- Presentation -->
+      <Presentation v-if="mode === 'presentation'"/>
       
       <!-- Video -->
       <div
@@ -806,9 +406,15 @@ import CodeMirrorCSS from 'codemirror/lib/codemirror.css'
 import CodeMirrorTheme from 'codemirror/theme/base16-light.css'
 
 import Database from './Components/Database'
+import Presentation from './Components/Presentation'
 
 export default {
-  name: 'Graphics',
+  name: 'Environments',
+
+  components: {
+    Database,
+    Presentation
+  },
   data () {
     return {
       linkedCanvas: false,
@@ -888,11 +494,6 @@ window.onload = function () {
       lineNumbers: true
     }
     )
-  },
-  components: {
-    Database
-  },
-  mounted() {
     // ThreeJS
 
     // var camera, scene, renderer, geometry, material, mesh;

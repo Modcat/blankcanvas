@@ -23,6 +23,12 @@
         <router-link to="/bounty">
           Bounty Board
         </router-link>
+        <router-link to="/docs">
+          Docs
+        </router-link>
+        <router-link to="/volenteer">
+          volenteer
+        </router-link>
       </div>
     </div>
     <router-view />
@@ -32,23 +38,16 @@
 <script>
 /* eslint-disable */
 import Sortable from 'vue-drag-sortable'
-import ArtStore from './components/Environments/ArtStore'
 
 export default {
   name: 'Blankcanvas',
-  components: { ArtStore },
   mounted () {
-
-    console.log(this.$store)
-
-    window.electron = require('electron')
     
     // Get remote windows
     let electron = require('electron')
     let mainWindow = electron.remote.app.mainWindow
     let tools = electron.remote.app.tools
     let properties = electron.remote.app.properties
-    console.log(mainWindow, tools, properties)
     
     // Make stuff sortable
     window.sortable = Sortable

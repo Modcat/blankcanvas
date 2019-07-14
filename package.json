@@ -74,6 +74,7 @@
     "git": "^0.1.5",
     "node-zip": "^1.1.1",
     "open": "~>6.3.0",
+    "perfect-scrollbar": "^1.4.0",
     "simple-git": "^1.113.0",
     "ts-interface-validator": "^1.1.0",
     "vue": "^2.6.10",

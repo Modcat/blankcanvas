@@ -1,32 +1,30 @@
-// Here are packages we need for UI, UX design and control
+import OS from 'os'
 
 const state = {
-  electron: require('electron'),
+  // These paths are OS dependant
+  // We unzip our .bcd files and work with them in this directory
+  // Only one bcd document can be opened at one time
+  path: {
+    darwin: `${OS.homedir()}/Library/Application Support/blankcanvas/`,
+    linux: `${OS.homedir()}/.config/blankcanvas`,
+    win32: `${OS.homedir()}\\AppData\\Local\\blankcanvas\\`
+  }[OS.platform()],
   perfectScrollbar: require('perfect-scrollbar')
 }
 
-const actions = {
-  // changeState ({ commit }, data) {
-  //   // do something async
-  //   commit('CHANGE_STATE', data)
-  // }
-  // someAsyncTask ({ commit }) {
-  //   // do something async
-  //   commit('INCREMENT_MAIN_COUNTER')
-  // }
+const getters = {
+  getOS() {
+    return OS.platform()
+  }
 }
 
-const mutations = {
-  // INCREMENT_MAIN_COUNTER (state) {
-  //   state.target++
-  // },
-  // CHANGE_STATE (state, data) {
-  //   state.target = data
-  // }
-}
+const actions = {}
+
+const mutations = {}
 
 export default {
   state,
+  getters,
   actions,
   mutations
 }

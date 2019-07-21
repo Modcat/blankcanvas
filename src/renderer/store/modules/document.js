@@ -3,7 +3,7 @@
 
 const state = {
   // Directory to save document (required even if github so it can store this information)
-  saveTo: '',
+  savedTo: 'yoyo',
   // OR || Github URL if hosted on github
   github: '',
   // Database for live connections (not to be confused with database's in the project)

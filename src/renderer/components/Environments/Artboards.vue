@@ -2,11 +2,11 @@
   <div class="clip">
     <!-- Document information -->
     <section class="document-info">
-      <button>Document Information</button>
+      <button  @click="$store.dispatch('saveDocument')">Document Information</button>
       <div class="expand">
         <div class="input">
           <label class="tag">File Path*</label>
-          <input type="text" style="padding-left: 65px;">
+          <input type="text" disabled :value="$store.state.yup" style="padding-left: 65px;">
         </div>
         <div class="input">
           <label class="tag">Github URL</label>
@@ -166,17 +166,26 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex'
+
 /* eslint-disable */
 export default {
   name: 'Artboards',
   mounted() {
-
     // Github
     const simpleGit = require('simple-git')('/Users/Lawrence/Documents/blankcanvas/')
     // If it doesn't exists clone
     // simpleGit.clone('https://github.com/Modcat/blancanvas-project')
     simpleGit.cwd('/Users/Lawrence/Documents/blankcanvas/blancanvas-project')
     
+  },
+  methods: {
+    ...mapActions([
+      'ssd', // map `this.increment()` to `this.$store.dispatch('increment')`
+    ]),
+    // ssd() {
+    //   console.log(this.$store.dispatch('ssd', 'YUP'), this.$store.state.yup)
+    // }
   }
 }
 </script>

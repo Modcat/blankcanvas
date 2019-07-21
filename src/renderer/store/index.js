@@ -3,8 +3,8 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 
 // Modules
-import app from './modules/app'
-import fs from './modules/file-system'
+import app from './modules/electron'
+import fs, { mutations as fsMutations } from './modules/file-system'
 import document from './modules/document'
 import connections from './modules/connections'
 import artboards from './modules/artboards'
@@ -12,7 +12,7 @@ import artflow from './modules/artflow'
 import director from './modules/director'
 import attachedFiles from './modules/attached-files'
 
-import { createPersistedState, createSharedMutations } from 'vuex-electron'
+import { createPersistedState } from 'vuex-electron'
 
 // import modules from './modules'
 
@@ -22,6 +22,7 @@ const createStore = () => {
   return new Vuex.Store({
     // State
     state: {
+      yup: 0,
       // Contains user selection of elements on active art board
       focus: [],
       
@@ -31,12 +32,14 @@ const createStore = () => {
       //////// Document's consist of artboards, artflow, attached files and director mode ////////
     },
     // Mutations
-    mutations: {},
-    // modules,
+    mutations: {
+      ...fsMutations
+    },
+    // Plugins,
     plugins: [
-      createPersistedState(),
-      createSharedMutations()
+      createPersistedState()
     ],
+    // Modules,
     modules: {app, fs, document, connections, artboards, artflow, director, attachedFiles},
     strict: process.env.NODE_ENV !== 'production'
   })

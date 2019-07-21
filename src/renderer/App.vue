@@ -38,12 +38,15 @@
 <script>
 /* eslint-disable */
 import Sortable from 'vue-drag-sortable'
+import { mapState } from 'vuex'
 
 export default {
   name: 'Blankcanvas',
   mounted () {
 
-    console.log(this)
+    console.log(this.$store)
+
+    this.initDocument();
     
     // Get remote windows
     let electron = require('electron')
@@ -60,6 +63,35 @@ export default {
       if (e.ctrlKey && e.keyCode === 32) {
         location.href = '#/'
       }
+    })
+  },
+  methods: {
+    initDocument() {
+      
+      let applicationDirectory = `${this.$store.state.app.path}openFile`
+
+      if (!this.fs.existsSync(applicationDirectory)) {
+        this.fs.mkdir(
+          applicationDirectory,
+          { recursive: true },
+          (isError) => {
+
+            // Create openFile directory in application directory
+            if (isError)
+              
+              console.log('err', err)
+              
+            // else
+
+              // Create the basic files to scratch
+          }
+        )
+      }
+    }
+  },
+  computed: {
+    ...mapState({
+      fs: state => { return state.fs.fs }
     })
   }
 }

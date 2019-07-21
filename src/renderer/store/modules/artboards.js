@@ -1,5 +1,5 @@
 // Each object is an artboard and a document can have multiple art boards
-const state = [
+export const state = [
   { // This is an artboard object
     id: 1,
     name: 'Label name',
@@ -218,14 +218,8 @@ const state = [
   }
 ]
 
-const actions = {
+export const actions = {
 }
 
-const mutations = {
-}
-
-export default {
-  state,
-  actions,
-  mutations
+export const mutations = {
 }

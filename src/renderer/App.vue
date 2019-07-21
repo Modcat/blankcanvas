@@ -44,8 +44,6 @@ export default {
   name: 'Blankcanvas',
   mounted () {
 
-    console.log(this.$store)
-
     this.initDocument();
     
     // Get remote windows

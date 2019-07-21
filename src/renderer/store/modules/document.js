@@ -1,4 +1,4 @@
-import artboards from './artboards'
+import { state as Artboardstate } from './artboards'
 
 // Document object contain's file system or github information
 // Also database information for live connectivity
@@ -12,7 +12,7 @@ const state = {
   database: {
     // DB object type
   },
-  ...artboards
+  ...Artboardstate
 }
 
 const actions = {

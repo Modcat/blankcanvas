@@ -2,11 +2,11 @@
   <div class="clip">
     <!-- Document information -->
     <section class="document-info">
-      <button  @click="$store.dispatch('saveDocument')">Document Information</button>
+      <button>Document Information</button>
       <div class="expand">
-        <div class="input">
+        <div class="input" @click="saveDoc">
           <label class="tag">File Path*</label>
-          <input type="text" disabled :value="$store.state.yup" style="padding-left: 65px;">
+          <input type="text" disabled :value="$store.state.document.saveTo" style="padding-left: 65px;">
         </div>
         <div class="input">
           <label class="tag">Github URL</label>
@@ -166,9 +166,6 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex'
-
-/* eslint-disable */
 export default {
   name: 'Artboards',
   mounted() {
@@ -180,12 +177,33 @@ export default {
     
   },
   methods: {
-    ...mapActions([
-      'ssd', // map `this.increment()` to `this.$store.dispatch('increment')`
-    ]),
-    // ssd() {
-    //   console.log(this.$store.dispatch('ssd', 'YUP'), this.$store.state.yup)
-    // }
+    saveDoc() {
+      const { dialog } = require('electron').remote
+
+      // Show save dialog
+      
+      dialog.showSaveDialog((filename) => {
+
+        if (filename) {
+
+           // JSON the data after remapping the object
+
+          let dataToWrite = JSON.stringify(this.$store.state.document)
+
+          // Write the file
+
+          let fileSystem = this.$store.state.fs.fs
+
+          fileSystem.writeFile(
+            `${filename}.bcd`,
+            dataToWrite,
+            () => {
+              new Notification( 'Saved File', { body: `${filename}.bcd`})
+              this.$store.dispatch('saveTo', filename)
+          })
+        }
+      })
+    }
   }
 }
 </script>

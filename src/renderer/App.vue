@@ -42,6 +42,8 @@ import Sortable from 'vue-drag-sortable'
 export default {
   name: 'Blankcanvas',
   mounted () {
+
+    console.log(this)
     
     // Get remote windows
     let electron = require('electron')

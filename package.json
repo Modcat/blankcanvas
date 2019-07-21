@@ -71,6 +71,7 @@
     "codemirror": "^5.47.0",
     "electron-simple-publisher": "^0.6.2",
     "electron-simple-updater": "^1.5.0",
+    "fs": "^0.0.1-security",
     "git": "^0.1.5",
     "node-zip": "^1.1.1",
     "open": "~>6.3.0",

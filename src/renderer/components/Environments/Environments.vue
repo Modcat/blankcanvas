@@ -275,42 +275,7 @@
       <Database v-if="mode === 'database'" />
 
       <!-- Spreadsheet -->
-      <div
-        v-if="mode === 'spreadsheet'"
-        class="spreadsheet-env"
-      >
-        <div
-          ref="spreadsheet"
-          class="spreadsheet"
-        >
-          <table class="table-contents">
-            <thead ref="header">
-              <td class="index" />
-              <th
-                v-for="(row,indexHead) in [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]"
-                :key="indexHead"
-              />
-            </thead>
-            <tbody>
-              <tr
-                v-for="(row,index) in [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]"
-                :key="index"
-              >
-                <td
-                  class="index"
-                > {{ index }}
-                </td>
-                
-                <td
-                  v-for="(row,indexCell) in [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]"
-                  :key="indexCell"
-                  class="cell"
-                />
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
+      <SpreadsheetView v-if="mode === 'spreadsheet'" />
       
 
       <!-- Bottom Draw -->
@@ -407,13 +372,15 @@ import CodeMirrorTheme from 'codemirror/theme/base16-light.css'
 
 import Database from './Components/Database'
 import Presentation from './Components/Presentation'
+import SpreadsheetView from './Components/SpreadsheetView'
 
 export default {
   name: 'Environments',
 
   components: {
     Database,
-    Presentation
+    Presentation,
+    SpreadsheetView
   },
   data () {
     return {

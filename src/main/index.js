@@ -38,7 +38,7 @@ function createWindow() {
     width: 960,
     height: 640,
     frame: false,
-    backgroundColor: '#00000000',
+    backgroundColor: '#FFF',
     webPreferences: {
       nodeIntegration: true,
       nodeIntegrationInWorker: false,

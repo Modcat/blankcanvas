@@ -170,17 +170,22 @@
 </template>
 
 <script>
+import { HotTable } from '@handsontable/vue'
+
 export default {
   name: 'Database',
   data() {
     return {
-      view: 'db-info'
+      view: 'db-info',
+      subTab: 'schema'
     }
   }
 }
 </script>
 
 <style lang="scss" scoped>
+@import '~handsontable/dist/handsontable.full.css';
+
 .Database {
   display: flex;
   flex-grow: 1;

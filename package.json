@@ -76,7 +76,7 @@
     "electron-simple-updater": "^1.5.0",
     "fs": "^0.0.1-security",
     "git": "^0.1.5",
-    "handsontable": "^7.1.1",
+    "handsontable": "^7.2.1",
     "hot-formula-parser": "^3.0.1",
     "node-zip": "^1.1.1",
     "open": "~>6.3.0",

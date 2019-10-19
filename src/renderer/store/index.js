@@ -10,6 +10,7 @@ import connections from './modules/connections'
 import artflow from './modules/artflow'
 import director from './modules/director'
 import attachedFiles from './modules/attached-files'
+import console from './modules/console'
 
 // import { createPersistedState } from 'vuex-electron'
 
@@ -38,7 +39,7 @@ const createStore = () => {
     //   createPersistedState()
     // ],
     // Modules,
-    modules: {app, fs, document, connections, artflow, director, attachedFiles},
+    modules: {app, fs, document, connections, artflow, director, attachedFiles, console},
     strict: process.env.NODE_ENV !== 'production'
   })
 }

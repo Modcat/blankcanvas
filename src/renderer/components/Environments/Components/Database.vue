@@ -184,8 +184,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '~handsontable/dist/handsontable.full.css';
-
 .Database {
   display: flex;
   flex-grow: 1;

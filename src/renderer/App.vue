@@ -30,9 +30,10 @@
           volenteer
         </router-link>
       </div>
+      <button @click="$store.dispatch('displayConsole', true)">Open Console</button>
     </div>
     <router-view />
-    <console/>
+    <Console/>
   </div>
 </template>
 
@@ -40,7 +41,7 @@
 /* eslint-disable */
 import Sortable from 'vue-drag-sortable'
 import { mapState } from 'vuex'
-import Console from './console/Global/Console'
+import Console from './components/Global/Console'
 
 export default {
   name: 'Blankcanvas',
@@ -109,8 +110,11 @@ $orange: rgba(255, 134, 34, 0.3);
   padding: 15px;
   background: #eee;
   -webkit-app-region: drag;
-  .tabs {
+
+  * {
     -webkit-app-region: none;
+  }
+  .tabs {
     border-radius: 3px;
     // box-shadow: 0px 2px 6px #ccc;
     font-weight: 600;

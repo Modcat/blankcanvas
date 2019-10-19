@@ -4054,10 +4054,10 @@ handle-thing@^2.0.0:
   resolved "https://registry.yarnpkg.com/handle-thing/-/handle-thing-2.0.0.tgz#0e039695ff50c93fc288557d696f3c1dc6776754"
   integrity sha512-d4sze1JNC454Wdo2fkuyzCr6aHcbL6PGGuFAz0Li/NcOm1tCHGnWDRmJP85dh9IhQErTc2svWFEX5xHIOo//kQ==
 
-handsontable@^7.1.1:
-  version "7.1.1"
-  resolved "https://registry.yarnpkg.com/handsontable/-/handsontable-7.1.1.tgz#97553bbd6d615cce5d1203c4f7522d7aa7248d9f"
-  integrity sha512-qE7z6/IBrNq8r/jQT8trFAqiBYa05mDvyuqfhiBg6r09GKcqPs74S6RbmR+dAKfszvFhpukk19SZKUQOoYDbWg==
+handsontable@^7.2.1:
+  version "7.2.1"
+  resolved "https://registry.yarnpkg.com/handsontable/-/handsontable-7.2.1.tgz#d3d190e023c4aadec5b617a021f165a0d7b63cc5"
+  integrity sha512-y8JUYah0oPLysS4W5A8Num9mTZ4nh/+0F71LAdlMteFZ6qtrd2xu5xNqAQwYVxxjiSrdCQOEt+FW3/RyJ2yuLg==
   dependencies:
     "@types/pikaday" "1.6.0"
     core-js "^3.0.0"
@@ -5518,6 +5518,16 @@ mkdirp@~0.3.5:
   version "0.3.5"
   resolved "https://registry.yarnpkg.com/mkdirp/-/mkdirp-0.3.5.tgz#de3e5f8961c88c787ee1368df849ac4413eca8d7"
   integrity sha1-3j5fiWHIjHh+4TaN+EmsRBPsqNc=
+
+moment@2.20.1:
+  version "2.20.1"
+  resolved "https://registry.yarnpkg.com/moment/-/moment-2.20.1.tgz#d6eb1a46cbcc14a2b2f9434112c1ff8907f313fd"
+  integrity sha512-Yh9y73JRljxW5QxN08Fner68eFLxM5ynNOAw2LbIB1YAGeQzZT8QFSUvkAz609Zf+IHhhaUxqZK8dG3W/+HEvg==
+
+moment@2.x, moment@>=2.14.0:
+  version "2.24.0"
+  resolved "https://registry.yarnpkg.com/moment/-/moment-2.24.0.tgz#0d055d53f5052aa653c9f6eb68bb5d12bf5c2b5b"
+  integrity sha512-bV7f+6l2QigeBBZSM/6yTNq4P2fNpSWj/0e7jQcy87A8e7o2nAfP/34/2ky5Vw4B9S446EtIhodAzkFCcR4dQg==
 
 move-concurrently@^1.0.1:
   version "1.0.1"

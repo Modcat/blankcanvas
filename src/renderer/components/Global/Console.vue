@@ -19,7 +19,7 @@
             </div>
         </header>
         <section class="terminals">
-            <section id="terminal"/>
+            <iframe class="terminal" src="http://localhost:8088/terminal/"/>
         </section>
         <footer class="status-bar">
             <select>
@@ -36,19 +36,10 @@
 export default {
     name: 'Console',
     mounted() {
-        var http        = require("http"),
-            terminal    = require("web-terminal");
- 
-        var app = http.createServer(function (req, res) {
-            res.writeHead(200, {"Content-Type": "text/plain"});
-            res.end("echo 2~ 2");
-        });
         
-        app.listen(1337);
-        console.log("Server running at http://127.0.0.1:1337/");
-        
-        terminal(app);
-        console.log("Web-terminal accessible at http://127.0.0.1:1337/terminal");
+        const shell = require('shelljs')
+
+        console.log('SHELL', shell.which('feathers'))
     }
 }
 </script>
@@ -71,7 +62,6 @@ export default {
         color: white;
         background: transparent;
     }
-
     header {
         display: flex;
         padding: 5px 5px 5px 10px;
@@ -109,6 +99,16 @@ export default {
         > * {
             white-space: nowrap;
             margin-right: 10px;
+        }
+    }
+    .terminals {
+        display: flex;
+        border: none;
+
+        .terminal {
+            width: 100%;
+            // display: flex;
+            flex-grow: 1;
         }
     }
 }

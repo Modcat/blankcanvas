@@ -67,6 +67,7 @@
     }
   },
   "dependencies": {
+    "@feathersjs/cli": "^4.2.1",
     "@handsontable/vue": "^4.1.0",
     "axios": "^0.18.0",
     "bulma-pro": "^0.1.6",
@@ -83,6 +84,7 @@
     "pdf-export": "^1.4.1",
     "perfect-scrollbar": "^1.4.0",
     "psd": "^3.2.0",
+    "shelljs": "^0.8.3",
     "simple-git": "^1.126.0",
     "ts-interface-validator": "^1.1.0",
     "tty.js": "^0.2.15",

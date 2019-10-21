@@ -18,13 +18,38 @@
                 <button id="close" @click="$store.dispatch('displayConsole', false)">X</button>
             </div>
         </header>
-        <section id="console"/>
+        <section class="terminals">
+            <section id="terminal"/>
+        </section>
+        <footer class="status-bar">
+            <select>
+                <option value="">master</option>
+                <option value="">develop</option>
+            </select>
+            <button>refresh</button>
+            <button>git conflicts</button>
+        </footer>
     </section>
 </template>
 
 <script>
 export default {
-    name: 'Console'
+    name: 'Console',
+    mounted() {
+        var http        = require("http"),
+            terminal    = require("web-terminal");
+ 
+        var app = http.createServer(function (req, res) {
+            res.writeHead(200, {"Content-Type": "text/plain"});
+            res.end("echo 2~ 2");
+        });
+        
+        app.listen(1337);
+        console.log("Server running at http://127.0.0.1:1337/");
+        
+        terminal(app);
+        console.log("Web-terminal accessible at http://127.0.0.1:1337/terminal");
+    }
 }
 </script>
 
@@ -38,9 +63,14 @@ export default {
     right: 0;
     width: 100vw;
     height: 200px;
-    background: white;
-    border-top: 1px solid #ccc;
+    background: #222;
+    color: white;
     z-index: 100;
+
+    button {
+        color: white;
+        background: transparent;
+    }
 
     header {
         display: flex;
@@ -64,6 +94,21 @@ export default {
             padding-right: 15px;
             box-shadow: none;
             background: #f3f3f3;
+        }
+        ~ * {
+            flex-grow: 1;
+        }
+    }
+    footer {
+        display: flex;
+        flex-grow: 0;
+        padding: 5px 5px 5px 10px;
+        background: rgb(62, 128, 214);
+        align-items: flex-start;
+
+        > * {
+            white-space: nowrap;
+            margin-right: 10px;
         }
     }
 }

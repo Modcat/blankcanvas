@@ -170,11 +170,10 @@ export default {
   name: 'Artboards',
   mounted() {
     // Github
-    const simpleGit = require('simple-git')('/Users/Lawrence/Documents/blankcanvas/')
+    // const simpleGit = require('simple-git')('/Users/Lawrence/Documents/blankcanvas/')
     // If it doesn't exists clone
+    // simpleGit.cwd('/Users/Lawrence/Documents/blankcanvas/blancanvas-project')
     // simpleGit.clone('https://github.com/Modcat/blancanvas-project')
-    simpleGit.cwd('/Users/Lawrence/Documents/blankcanvas/blancanvas-project')
-    
   },
   methods: {
     saveDoc() {

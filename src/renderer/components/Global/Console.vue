@@ -39,7 +39,11 @@ export default {
         
         const shell = require('shelljs')
 
-        console.log('SHELL', shell.which('feathers'))
+         shell.exec('ls -a')
+
+        shell.cd('~/')
+
+        console.log('SHELL', shell.exec('/usr/bin/ls -a'))
     }
 }
 </script>

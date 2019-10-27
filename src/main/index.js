@@ -64,7 +64,7 @@ function createWindow() {
     resizable: true,
     fullscreenable: false,
     devTools: false,
-    backgroundColor: '#00000000',
+    backgroundColor: '#FFF',
     webPreferences: {
       nodeIntegration: true,
       nodeIntegrationInWorker: false,
@@ -74,7 +74,6 @@ function createWindow() {
   })
   app.properties = properties
   properties.loadURL(process.env.NODE_ENV === 'development' ? 'http://localhost:9080/#/properties' : `file://${__dirname}/index.html#ui`)
-
   properties.hide()
 
   // New tools window

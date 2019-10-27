@@ -33,17 +33,55 @@
 </template>
 
 <script>
+import execSh from 'exec-sh'
 export default {
     name: 'Console',
     mounted() {
         
-        const shell = require('shelljs')
+        // const shell = require('shelljs')
 
-         shell.exec('ls -a')
+        //  shell.exec('ls -a')
 
-        shell.cd('~/')
+        // shell.cd('~/')
 
-        console.log('SHELL', shell.exec('/usr/bin/ls -a'))
+        // console.log('SHELL', shell.exec('/usr/bin/ls -a'))
+
+        // const Shell = require('node-powershell');
+ 
+        // const ps = new Shell({
+        // executionPolicy: 'Bypass',
+        // noProfile: true
+        // });
+        
+        // ps.addCommand('echo node-powershell');
+        // ps.invoke()
+        // .then(output => {
+        // console.log('OUTTT!!!', output);
+        // })
+        // .catch(err => {
+        // console.log('OUTTT!!!', err);
+        // });
+
+//         var execShPromise = require("exec-sh").promise;
+ 
+// // run interactive bash shell
+// const run = async () => {
+//   let out;
+  
+//   try {
+//     out = await execShPromise('cd ./blankcanvas-feathers && yarn dev', true);
+//   } catch (e) {
+//     console.log('Error: ', e);
+//     console.log('Stderr: ', e.stderr);
+//     console.log('Stdout: ', e.stdout);
+    
+//     return e;
+//   }
+  
+//   console.log('out: ', out.stdout, out.stderr);
+// }
+ 
+// run();
     }
 }
 </script>

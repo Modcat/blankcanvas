@@ -174,6 +174,31 @@ export default {
     // If it doesn't exists clone
     // simpleGit.cwd('/Users/Lawrence/Documents/blankcanvas/blancanvas-project')
     // simpleGit.clone('https://github.com/Modcat/blancanvas-project')
+
+    // Linux expand file watches
+    // echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf && sudo sysctl -p
+
+    console.log('updated')
+    var execShPromise = require("exec-sh").promise;
+ 
+// run interactive bash shell
+const run = async () => {
+  let out;
+  
+  try {
+    out = await execShPromise('cd ./blankcanvas-feathers && yarn dev', true);
+  } catch (e) {
+    console.log('Error: ', e);
+    console.log('Stderr: ', e.stderr);
+    console.log('Stdout: ', e.stdout);
+    
+    return e;
+  }
+  
+  console.log('out: ', out.stdout, out.stderr);
+}
+ 
+run();
   },
   methods: {
     saveDoc() {

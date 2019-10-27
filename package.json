@@ -75,6 +75,7 @@
     "codemirror": "^5.47.0",
     "electron-simple-publisher": "^0.6.2",
     "electron-simple-updater": "^1.5.0",
+    "exec-sh": "^0.3.2",
     "fs": "^0.0.1-security",
     "git": "^0.1.5",
     "handsontable": "^7.2.1",
@@ -95,10 +96,10 @@
     "vue-router": "^3.0.6",
     "vuex": "^3.1.1",
     "vuex-electron": "^1.0.3",
-    "web-terminal": "^0.7.0",
     "x-data-spreadsheet": "^1.0.27",
     "xterm": "^4.1.0",
-    "xterm-addon-web-links": "^0.2.1"
+    "xterm-addon-web-links": "^0.2.1",
+    "yarn": "^1.19.1"
   },
   "description": "Swiss knife application for developing in many different data types and environments with data connectivity supporting freedom computing for the application type.",
   "devDependencies": {

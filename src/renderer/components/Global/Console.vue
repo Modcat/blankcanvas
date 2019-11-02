@@ -2,7 +2,7 @@
     <section v-if="this.$store.state.console.displayConsole" class="console">
         <header>
             <nav>
-                <button>MESSAGES</button>
+                <button @click="startServer()">SERVER</button>
                 <button>OUTPUT</button>
                 <button>TERMINAL</button>
             </nav>
@@ -37,51 +37,35 @@ import execSh from 'exec-sh'
 export default {
     name: 'Console',
     mounted() {
-        
-        // const shell = require('shelljs')
-
-        //  shell.exec('ls -a')
-
-        // shell.cd('~/')
-
-        // console.log('SHELL', shell.exec('/usr/bin/ls -a'))
-
-        // const Shell = require('node-powershell');
+        this.startServer()
+    },
+    methods: {
+        startServer() {
+            var execShPromise = require("exec-sh").promise
  
-        // const ps = new Shell({
-        // executionPolicy: 'Bypass',
-        // noProfile: true
-        // });
-        
-        // ps.addCommand('echo node-powershell');
-        // ps.invoke()
-        // .then(output => {
-        // console.log('OUTTT!!!', output);
-        // })
-        // .catch(err => {
-        // console.log('OUTTT!!!', err);
-        // });
+            // run interactive bash shell
 
-//         var execShPromise = require("exec-sh").promise;
- 
-// // run interactive bash shell
-// const run = async () => {
-//   let out;
-  
-//   try {
-//     out = await execShPromise('cd ./blankcanvas-feathers && yarn dev', true);
-//   } catch (e) {
-//     console.log('Error: ', e);
-//     console.log('Stderr: ', e.stderr);
-//     console.log('Stdout: ', e.stdout);
-    
-//     return e;
-//   }
-  
-//   console.log('out: ', out.stdout, out.stderr);
-// }
- 
-// run();
+            // Increase GNU system file watchers
+            // 
+
+            const run = async () => {
+            
+                let out
+                
+                try {
+                    out = await execShPromise('cd ./static/blankcanvas-feathers && yarn dev', true)
+                } catch (e) {
+                    console.log('Error: ', e)
+                    console.log('Stderr: ', e.stderr)
+                    console.log('Stdout: ', e.stdout)
+                    
+                    return e
+                }
+                console.log('out: ', out.stdout, out.stderr)
+            }
+            
+            run()
+        }
     }
 }
 </script>

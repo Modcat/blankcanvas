@@ -8033,7 +8033,7 @@ psl@^1.1.24:
   resolved "https://registry.yarnpkg.com/psl/-/psl-1.2.0.tgz#df12b5b1b3a30f51c329eacbdef98f3a6e136dc6"
   integrity sha512-GEn74ZffufCmkDDLNcl3uuyF/aSD6exEyh1v/ZSdAomB82t6G9hzJVRx0jBmLDW+VfZqks3aScmMw9DszwUalA==
 
-"pty.js@>= 0.2.13":
+"pty.js@>= 0.2.13", pty.js@^0.3.1:
   version "0.3.1"
   resolved "https://registry.yarnpkg.com/pty.js/-/pty.js-0.3.1.tgz#81f5bed332d6e5e7ab685688d1ba0373410d51b5"
   integrity sha1-gfW+0zLW5eeraFaI0boDc0ENUbU=

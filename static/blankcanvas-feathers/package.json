@@ -1,15 +1,16 @@
 {
   "name": "blankcanvas-feathers",
-  "description": "",
-  "version": "0.0.0",
-  "homepage": "",
+  "description": "This project will run the blankcanvas backend for live database connections between devices and live streaming",
+  "license": "AGPL-3.0-or-later",
+  "version": "0.0.1",
+  "homepage": "https://www.blankcanvas.ltd",
   "main": "src",
   "keywords": [
-    "feathers"
+    "feathers",
+    "blankcanvas"
   ],
   "author": {
-    "name": "",
-    "email": ""
+    "name": "Lawrence Turton"
   },
   "contributors": [],
   "bugs": {},
@@ -33,6 +34,7 @@
     "@feathersjs/authentication": "^4.3.7",
     "@feathersjs/authentication-local": "^4.3.7",
     "@feathersjs/authentication-oauth": "^4.3.7",
+    "@feathersjs/client": "^4.3.10",
     "@feathersjs/configuration": "^4.3.7",
     "@feathersjs/errors": "^4.3.7",
     "@feathersjs/express": "^4.3.7",
@@ -44,6 +46,7 @@
     "feathers-nedb": "^5.1.0",
     "helmet": "^3.21.1",
     "nedb": "^1.8.0",
+    "node-pty": "^0.9.0",
     "serve-favicon": "^2.5.0",
     "winston": "^3.0.0"
   },

@@ -20,7 +20,7 @@ const authentication = require('./authentication');
 
 const app = express(feathers());
 
-// Load app configuration
+// Load app configurationF
 app.configure(configuration());
 // Enable security, CORS, compression, favicon and body parsing
 app.use(helmet());

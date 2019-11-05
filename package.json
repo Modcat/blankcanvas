@@ -1,6 +1,6 @@
 {
   "author": "Lawrence Anthony Turton",
-  "licens": "GPL-3.0-or-late",
+  "license": "GNU GPL 2",
   "bugs": {
     "url": "https://github.com/Modcat/blankcanvas/issues"
   },
@@ -85,6 +85,7 @@
     "pdf-export": "^1.4.1",
     "perfect-scrollbar": "^1.4.0",
     "psd": "^3.2.0",
+    "pty.js": "^0.3.1",
     "shelljs": "^0.8.3",
     "simple-git": "^1.126.0",
     "ts-interface-validator": "^1.1.0",
@@ -144,7 +145,6 @@
     "webpack-dev-server": "^3.4.1",
     "webpack-hot-middleware": "^2.25.0"
   },
-  "license": "GNU GPL 2",
   "main": "./dist/main.js",
   "name": "blankcanvas",
   "repository": {

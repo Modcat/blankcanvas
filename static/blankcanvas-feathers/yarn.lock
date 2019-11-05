@@ -69,6 +69,11 @@
     long-timeout "^0.1.1"
     uuid "^3.3.3"
 
+"@feathersjs/client@^4.3.10":
+  version "4.3.10"
+  resolved "https://registry.yarnpkg.com/@feathersjs/client/-/client-4.3.10.tgz#c723275809882137c0b01a7d9901a8770f1c2b4e"
+  integrity sha512-sw6VonuKw2rvvgH4fMdV+MeYIuh/ueqM8OvSz8XC4cTPYCQNXsqum/2tLr7aHtmtVfMhYxOVPkTvcPVgLTxmUg==
+
 "@feathersjs/commons@^4.3.0", "@feathersjs/commons@^4.3.7":
   version "4.3.7"
   resolved "https://registry.yarnpkg.com/@feathersjs/commons/-/commons-4.3.7.tgz#7f85d32d96d250a8a6d4a74f60cc7050b0be80df"
@@ -2522,7 +2527,7 @@ mute-stream@0.0.8:
   resolved "https://registry.yarnpkg.com/mute-stream/-/mute-stream-0.0.8.tgz#1630c42b2251ff81e2a283de96a5497ea92e5e0d"
   integrity sha512-nnbWWOkoWyUsTjKrhgD0dcz22mdkSnpYqbEjIm2nhwhuxlSkpywJmBo8h0ZqJdkp73mb90SssHkN4rsRaBAfAA==
 
-nan@^2.12.1:
+nan@^2.12.1, nan@^2.14.0:
   version "2.14.0"
   resolved "https://registry.yarnpkg.com/nan/-/nan-2.14.0.tgz#7818f722027b2459a86f0295d434d1fc2336c52c"
   integrity sha512-INOFj37C7k3AfaNTtX8RhsTw7qRy7eLET14cROi9+5HAVbbHuIWUHEauBv5qT4Av2tWasiTY1Jw6puUNqRJXQg==
@@ -2607,6 +2612,13 @@ node-pre-gyp@^0.12.0:
     rimraf "^2.6.1"
     semver "^5.3.0"
     tar "^4"
+
+node-pty@^0.9.0:
+  version "0.9.0"
+  resolved "https://registry.yarnpkg.com/node-pty/-/node-pty-0.9.0.tgz#8f9bcc0d1c5b970a3184ffd533d862c7eb6590a6"
+  integrity sha512-MBnCQl83FTYOu7B4xWw10AW77AAh7ThCE1VXEv+JeWj8mSpGo+0bwgsV+b23ljBFwEM9OmsOv3kM27iUPPm84g==
+  dependencies:
+    nan "^2.14.0"
 
 nodemon@^1.19.3:
   version "1.19.4"

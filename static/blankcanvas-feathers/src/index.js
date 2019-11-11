@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
 const logger = require('./logger');
 const app = require('./app');
-const hostname = '192.168.0.28';
+const hostname = Object.values(require('os').networkInterfaces()).flat().filter(inter => { return inter.family === 'IPv4' && !inter.internal })[0].address;
 // const hostname = app.get('host');
 const port = app.get('port');
 const server = app.listen(port, hostname);

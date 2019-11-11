@@ -1,5 +1,5 @@
 <template>
-    <section v-if="this.$store.state.console.displayConsole" class="console">
+    <section class="console">
         <header>
             <nav>
                 <button @click="startServer()">SERVER</button>
@@ -37,10 +37,11 @@ import execSh from 'exec-sh'
 export default {
     name: 'Console',
     mounted() {
-        this.startServer()
+        this.startFeathers()
+        this.startNUXT()
     },
     methods: {
-        startServer() {
+        startFeathers() {
             var execShPromise = require("exec-sh").promise
  
             // run interactive bash shell
@@ -54,6 +55,32 @@ export default {
                 
                 try {
                     out = await execShPromise('cd ./static/blankcanvas-feathers && yarn dev', true)
+                } catch (e) {
+                    console.log('Error: ', e)
+                    console.log('Stderr: ', e.stderr)
+                    console.log('Stdout: ', e.stdout)
+                    
+                    return e
+                }
+                console.log('out: ', out.stdout, out.stderr)
+            }
+            
+            run()
+        },
+        startNUXT() {
+            var execShPromise = require("exec-sh").promise
+ 
+            // run interactive bash shell
+
+            // Increase GNU system file watchers
+            // 
+
+            const run = async () => {
+            
+                let out
+                
+                try {
+                    out = await execShPromise('cd ./static/blankcanvas-nuxt && yarn dev', true)
                 } catch (e) {
                     console.log('Error: ', e)
                     console.log('Stderr: ', e.stderr)

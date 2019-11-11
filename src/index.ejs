@@ -7,9 +7,9 @@
     <title>vue-electron-template</title>
     <% if (htmlWebpackPlugin.options.nodeModules) { %>
     <script>
-      require('module').globalPaths.push(
-        `<%= htmlWebpackPlugin.options.nodeModules.replace(/\\/g, '\\\\') %>`,
-      )
+      if (window.require) {
+        require('module').globalPaths.push(`<%= htmlWebpackPlugin.options.nodeModules.replace(/\\/g, '\\\\') %>`,)
+      }
     </script>
     <% } %>
   </head>
@@ -18,10 +18,12 @@
     <div id="app"></div>
     <!-- Set `__static` path to static files in production -->
     <script>
-      if (process.env.NODE_ENV !== 'development')
-        window.__static = require('path')
-          .join(__dirname, '/static')
-          .replace(/\\/g, '\\\\')
+      if (window.require) {
+        if (process.env.NODE_ENV !== 'development')
+          window.__static = require('path')
+            .join(__dirname, '/static')
+            .replace(/\\/g, '\\\\')
+      }
     </script>
     <!-- webpack builds are automatically injected -->
   </body>

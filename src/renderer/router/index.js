@@ -64,6 +64,11 @@ export default new Router({
       name: 'Volenteer',
       component: require('../components/Environments/Volenteer').default
     },
+    {
+      path: '/admin',
+      name: 'Admin',
+      component: require('../components/Environments/Admin').default
+    },
     // Wild card loader
     {
       path: '*',

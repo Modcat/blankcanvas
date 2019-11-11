@@ -29,6 +29,9 @@
         <router-link to="/volenteer">
           volenteer
         </router-link>
+        <router-link to="/admin">
+          admin
+        </router-link>
       </div>
       <button @click="$store.dispatch('displayConsole', true)">Open Console</button>
     </div>
@@ -46,30 +49,35 @@ import Console from './components/Global/Console'
 export default {
   name: 'Blankcanvas',
   mounted () {
-
-    this.initDocument();
-    
-    // Get remote windows
-    let electron = require('electron')
-    let mainWindow = electron.remote.app.mainWindow
-    let tools = electron.remote.app.tools
-    let properties = electron.remote.app.properties
-    
-    // Make stuff sortable
-    window.sortable = Sortable
-    document.body.addEventListener('keydown', (e) => {
-      if (e.shiftKey && e.keyCode === 32) {
-        this.$router.go(-1)
-      }
-      if (e.ctrlKey && e.keyCode === 32) {
-        location.href = '#/'
-      }
-    })
+    this.$store.state.online ? this.clientInit() : this.webInit()
   },
   components: {
     Console
   },
   methods: {
+    clientInit() {
+      this.initDocument();
+    
+      // Get remote windows
+      let electron = require('electron')
+      let mainWindow = electron.remote.app.mainWindow
+      let tools = electron.remote.app.tools
+      let properties = electron.remote.app.properties
+      
+      // Make stuff sortable
+      window.sortable = Sortable
+      document.body.addEventListener('keydown', (e) => {
+        if (e.shiftKey && e.keyCode === 32) {
+          this.$router.go(-1)
+        }
+        if (e.ctrlKey && e.keyCode === 32) {
+          location.href = '#/'
+        }
+      })
+    },
+    webInit() {
+      // This init function is the feathers based web interface
+    },
     initDocument() {
       
       let applicationDirectory = `${this.$store.state.app.path}openFile`

@@ -2,9 +2,9 @@
   <div id="app">
     <aside>
       <h1>{{pkg.title}} {{pkg.version}}</h1>
-      <p>{{pkg.author}}</p>
-      <p>{{pkg.license}}</p>
-      <div class="row">
+      <b>{{pkg.author}}</b>
+      <small>{{pkg.license}}</small>
+      <div class="row row-db">
         <img src="./loader.svg" alt="loading">
         <p>Launching Realtime Database</p>
       </div>
@@ -110,6 +110,7 @@ body {
   font-size: 10px;
   color: #666;
   overflow: hidden;
+  user-select: none;
 }
 aside {
   display: flex;
@@ -129,6 +130,16 @@ aside {
     padding: 0;
     margin: 0;
   }
+  h1 {
+    font-size: 20px;
+  }
+  b {
+    font-style: normal;
+    margin: 3px 0 5px 0;
+  }
+  small {
+    font-style: normal;
+  }
   .row {
     display: flex;
     align-items: center;
@@ -138,6 +149,9 @@ aside {
       height: auto;
       margin-right: 5px;
     }
+  }
+  .row-db {
+    margin-top: 25px;
   }
   footer {
     margin-top: auto;

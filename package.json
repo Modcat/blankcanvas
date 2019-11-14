@@ -73,6 +73,7 @@
     "electron-simple-publisher": "^0.6.2",
     "electron-simple-updater": "^1.5.0",
     "exec-sh": "^0.3.2",
+    "fs": "^0.0.1-security",
     "vue": "^2.6.10",
     "vue-electron": "^1.0.6"
   },

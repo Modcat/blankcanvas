@@ -25,12 +25,30 @@ import pkg from '../../package.json'
 
 export default {
   name: 'App',
+  data() {
+    return {
+      privateIP:  Object.values(require('os').networkInterfaces()).flat().filter(inter => { return inter.family === 'IPv4' && !inter.internal })[0].address,
+      loaded: false
+    }
+  },
   mounted() {
     console.log(pkg)
+    // Fistly kill any process on port :3030 or :3031
     // netstat -a -n -o | find "3030"
     // taskkill /F /PID 14228
+    // Launch FeathersJS and NUXT
     this.startFeathers()
     this.startNUXT()
+    // Subroutine to test for both interfaces
+      // Test for feathers
+      // Test for nuxt
+      // Launch web interface by setting loaded to true when both services are available
+  },
+  watch: {
+    loaded(newValue) {
+      if (newValue)
+        document.location.href = `http://${this.privateIP}:3031`
+    }
   },
   methods: {
     startFeathers() {

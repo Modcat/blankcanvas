@@ -36,6 +36,9 @@ export default {
   components: {
     Logo
   },
+  mounted() {
+    console.log("RAD", require('fs'))
+  },
   computed: {
     isNative() {
       return window.require ? true : false

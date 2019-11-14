@@ -15,3 +15,5 @@ tmp/
 .cache
 dist
 build
+static/blankcanvas-nuxt/node_modules
+static/blankcanvas-feathers/node_modules

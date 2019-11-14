@@ -1,74 +1,110 @@
 <template>
   <div id="app">
-    <h1>loading</h1>
-    <p>hello</p>
+    <div
+      v-if="$route.name !== 'Tools' && $route.name !== 'Properties'"
+      class="top-panel"
+    >
+      <div class="tabs">
+        <router-link to="/">
+          Art boards
+        </router-link>
+        <router-link to="/artflow">
+          Art flow
+        </router-link>
+        <router-link to="/director">
+          Director
+        </router-link>
+        <router-link to="/artstore">
+          Art Store
+        </router-link>
+        <router-link to="/hotkeys">
+          HotKeys
+        </router-link>
+        <router-link to="/bounty">
+          Bounty Board
+        </router-link>
+        <router-link to="/docs">
+          Docs
+        </router-link>
+        <router-link to="/volenteer">
+          volenteer
+        </router-link>
+        <router-link to="/admin">
+          admin
+        </router-link>
+      </div>
+      <button @click="$store.dispatch('displayConsole', true)">Open Console</button>
+    </div>
+    <router-view />
+    <Console/>
   </div>
 </template>
 
 <script>
+/* eslint-disable */
+import Sortable from 'vue-drag-sortable'
+import { mapState } from 'vuex'
+import Console from './components/Global/Console'
+
 export default {
-  name: 'App',
-  mounted() {
-    // netstat -a -n -o | find "3030"
-    // taskkill /F /PID 14228
-    this.startFeathers()
-    this.startNUXT()
+  name: 'Blankcanvas',
+  mounted () {
+    this.$store.state.online ? this.clientInit() : this.webInit()
+  },
+  components: {
+    Console
   },
   methods: {
-    startFeathers() {
-      var execShPromise = require("exec-sh").promise
-
-      // run interactive bash shell
-
-      // Increase GNU system file watchers
-      // 
-
-      console.log('booting up')
-
-      const run = async () => {
+    clientInit() {
+      this.initDocument();
+    
+      // Get remote windows
+      let electron = require('electron')
+      let mainWindow = electron.remote.app.mainWindow
+      let tools = electron.remote.app.tools
+      let properties = electron.remote.app.properties
       
-          let out
-          
-          try {
-              out = await execShPromise('cd ./static/blankcanvas-feathers && yarn dev', true)
-          } catch (e) {
-              console.log('Error: ', e)
-              console.log('Stderr: ', e.stderr)
-              console.log('Stdout: ', e.stdout)
-              
-              return e
-          }
-          console.log('out: ', out.stdout, out.stderr)
-      }
-
-      console.log(run())
+      // Make stuff sortable
+      window.sortable = Sortable
+      document.body.addEventListener('keydown', (e) => {
+        if (e.shiftKey && e.keyCode === 32) {
+          this.$router.go(-1)
+        }
+        if (e.ctrlKey && e.keyCode === 32) {
+          location.href = '#/'
+        }
+      })
     },
-    startNUXT() {
-      var execShPromise = require("exec-sh").promise
-
-      // run interactive bash shell
-
-      // Increase GNU system file watchers
-      // 
-
-      const run = async () => {
+    webInit() {
+      // This init function is the feathers based web interface
+    },
+    initDocument() {
       
-          let out
-          
-          try {
-              out = await execShPromise('cd ./static/blankcanvas-nuxt && yarn dev', true)
-          } catch (e) {
-              console.log('Error: ', e)
-              console.log('Stderr: ', e.stderr)
-              console.log('Stdout: ', e.stdout)
+      let applicationDirectory = `${this.$store.state.app.path}openFile`
+
+      if (!this.fs.existsSync(applicationDirectory)) {
+        this.fs.mkdir(
+          applicationDirectory,
+          { recursive: true },
+          (isError) => {
+
+            // Create openFile directory in application directory
+            if (isError)
               
-              return e
+              console.log('err', err)
+              
+            // else
+
+              // Create the basic files to scratch
           }
-          console.log('out: ', out.stdout, out.stderr)
+        )
       }
-      
-      run()
     }
+  },
+  computed: {
+    ...mapState({
+      fs: state => { return state.fs.fs }
+    })
   }
 }
 </script>

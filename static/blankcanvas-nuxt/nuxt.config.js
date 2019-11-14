@@ -1,6 +1,6 @@
 
 export default {
-  mode: 'universal',
+  mode: 'spa',
   /*
   ** Headers of the page
   */
@@ -16,7 +16,7 @@ export default {
     ]
   },
   server: {
-    host: '192.168.0.28',
+    host: Object.values(require('os').networkInterfaces()).flat().filter(inter => { return inter.family === 'IPv4' && !inter.internal })[0].address,
     port: '3031'
   },
   /*

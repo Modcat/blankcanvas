@@ -36,64 +36,64 @@
 import execSh from 'exec-sh'
 export default {
     name: 'Console',
-    mounted() {
-        this.startFeathers()
-        this.startNUXT()
-    },
-    methods: {
-        startFeathers() {
-            var execShPromise = require("exec-sh").promise
+    // mounted() {
+    //     this.startFeathers()
+    //     this.startNUXT()
+    // },
+    // methods: {
+    //     startFeathers() {
+    //         var execShPromise = require("exec-sh").promise
  
-            // run interactive bash shell
+    //         // run interactive bash shell
 
-            // Increase GNU system file watchers
-            // 
+    //         // Increase GNU system file watchers
+    //         // 
 
-            const run = async () => {
+    //         const run = async () => {
             
-                let out
+    //             let out
                 
-                try {
-                    out = await execShPromise('cd ./static/blankcanvas-feathers && yarn dev', true)
-                } catch (e) {
-                    console.log('Error: ', e)
-                    console.log('Stderr: ', e.stderr)
-                    console.log('Stdout: ', e.stdout)
+    //             try {
+    //                 out = await execShPromise('cd ./static/blankcanvas-feathers && yarn dev', true)
+    //             } catch (e) {
+    //                 console.log('Error: ', e)
+    //                 console.log('Stderr: ', e.stderr)
+    //                 console.log('Stdout: ', e.stdout)
                     
-                    return e
-                }
-                console.log('out: ', out.stdout, out.stderr)
-            }
+    //                 return e
+    //             }
+    //             console.log('out: ', out.stdout, out.stderr)
+    //         }
             
-            run()
-        },
-        startNUXT() {
-            var execShPromise = require("exec-sh").promise
+    //         run()
+    //     },
+    //     startNUXT() {
+    //         var execShPromise = require("exec-sh").promise
  
-            // run interactive bash shell
+    //         // run interactive bash shell
 
-            // Increase GNU system file watchers
-            // 
+    //         // Increase GNU system file watchers
+    //         // 
 
-            const run = async () => {
+    //         const run = async () => {
             
-                let out
+    //             let out
                 
-                try {
-                    out = await execShPromise('cd ./static/blankcanvas-nuxt && yarn dev', true)
-                } catch (e) {
-                    console.log('Error: ', e)
-                    console.log('Stderr: ', e.stderr)
-                    console.log('Stdout: ', e.stdout)
+    //             try {
+    //                 out = await execShPromise('cd ./static/blankcanvas-nuxt && yarn dev', true)
+    //             } catch (e) {
+    //                 console.log('Error: ', e)
+    //                 console.log('Stderr: ', e.stderr)
+    //                 console.log('Stdout: ', e.stdout)
                     
-                    return e
-                }
-                console.log('out: ', out.stdout, out.stderr)
-            }
+    //                 return e
+    //             }
+    //             console.log('out: ', out.stdout, out.stderr)
+    //         }
             
-            run()
-        }
-    }
+    //         run()
+    //     }
+    // }
 }
 </script>
 

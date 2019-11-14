@@ -11,9 +11,13 @@
     "generate": "nuxt generate"
   },
   "dependencies": {
-    "nuxt": "^2.0.0",
     "@nuxtjs/axios": "^5.3.6",
-    "@nuxtjs/pwa": "^3.0.0-0"
+    "@nuxtjs/pwa": "^3.0.0-0",
+    "fs": "^0.0.1-security",
+    "gsap": "^3.0.1",
+    "nodezip": "^1.0.0",
+    "nuxt": "^2.0.0",
+    "os": "^0.1.1"
   },
   "devDependencies": {}
 }

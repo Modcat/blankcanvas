@@ -3,6 +3,7 @@
     <div>
       <logo />
       <h1 class="title">
+        {{ isNative ? 'yup' : 'nope'}}
         blankcanvas-nuxt
       </h1>
       <h2 class="subtitle">
@@ -34,6 +35,11 @@ import Logo from '~/components/Logo.vue'
 export default {
   components: {
     Logo
+  },
+  computed: {
+    isNative() {
+      return window.require ? true : false
+    }
   }
 }
 </script>

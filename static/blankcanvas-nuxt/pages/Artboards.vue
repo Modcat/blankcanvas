@@ -116,7 +116,7 @@
             class="art"
           >
             <div class="art">
-              <img src="../../assets/images/audio-icon.svg" width="60" alt="database">
+              <img src="../assets/images/audio-icon.svg" width="60" alt="database">
               <label>Audio File.wav</label>
           </div>
           </a>
@@ -130,7 +130,7 @@
           href="#/environments?mode=database"
         >
           <div class="art">
-            <img src="../../assets/images/database-icon.svg" width="60" alt="database">
+            <img src="../assets/images/database-icon.svg" width="60" alt="database">
             <label>Postgre DB</label>
           </div>
         </a>
@@ -143,7 +143,7 @@
           href="#/environments?mode=codeeditor"
         >
           <div class="art">
-              <img src="../../assets/images/writer-icon.svg" width="60" alt="code file">
+              <img src="../assets/images/writer-icon.svg" width="60" alt="code file">
               <label>Component.vue</label>
           </div>
         </a>
@@ -156,7 +156,7 @@
           href="#/environments?mode=spreadsheet"
         >
           <div class="art">
-              <img src="../../assets/images/spreadsheet-icon.svg" width="60" alt="database">
+              <img src="../assets/images/spreadsheet-icon.svg" width="60" alt="database">
               <label>Spreadsheet</label>
           </div>
         </a>
@@ -167,68 +167,7 @@
 
 <script>
 export default {
-  name: 'Artboards',
-  mounted() {
-    // Github
-    // const simpleGit = require('simple-git')('/Users/Lawrence/Documents/blankcanvas/')
-    // If it doesn't exists clone
-    // simpleGit.cwd('/Users/Lawrence/Documents/blankcanvas/blancanvas-project')
-    // simpleGit.clone('https://github.com/Modcat/blancanvas-project')
-
-    // Linux expand file watches
-    // echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf && sudo sysctl -p
-
-    console.log('updated')
-    var execShPromise = require("exec-sh").promise;
- 
-// run interactive bash shell
-const run = async () => {
-  let out;
-  
-  try {
-    out = await execShPromise('cd ./blankcanvas-feathers && yarn dev', true);
-  } catch (e) {
-    console.log('Error: ', e);
-    console.log('Stderr: ', e.stderr);
-    console.log('Stdout: ', e.stdout);
-    
-    return e;
-  }
-  
-  console.log('out: ', out.stdout, out.stderr);
-}
- 
-run();
-  },
-  methods: {
-    saveDoc() {
-      const { dialog } = require('electron').remote
-
-      // Show save dialog
-      
-      dialog.showSaveDialog((filename) => {
-
-        if (filename) {
-
-           // JSON the data after remapping the object
-
-          let dataToWrite = JSON.stringify(this.$store.state.document)
-
-          // Write the file
-
-          let fileSystem = this.$store.state.fs.fs
-
-          fileSystem.writeFile(
-            `${filename}.bcd`,
-            dataToWrite,
-            () => {
-              new Notification( 'Saved File', { body: `${filename}.bcd`})
-              this.$store.dispatch('saveTo', filename)
-          })
-        }
-      })
-    }
-  }
+  name: 'Artboards'
 }
 </script>
 

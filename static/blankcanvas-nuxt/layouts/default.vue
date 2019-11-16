@@ -1,6 +1,42 @@
 <template>
-  <div>
-    <nuxt />
+  <div id="app">
+    <div
+      v-if="$route.name !== 'Tools' && $route.name !== 'Properties'"
+      class="top-panel"
+    >
+      <div class="tabs">
+        <nuxt-link to="/">
+          Art boards
+        </nuxt-link>
+        <nuxt-link to="/artflow">
+          Art flow
+        </nuxt-link>
+        <nuxt-link to="/director">
+          Director
+        </nuxt-link>
+        <nuxt-link to="/artstore">
+          Art Store
+        </nuxt-link>
+        <nuxt-link to="/hotkeys">
+          HotKeys
+        </nuxt-link>
+        <nuxt-link to="/bounty">
+          Bounty Board
+        </nuxt-link>
+        <nuxt-link to="/docs">
+          Docs
+        </nuxt-link>
+        <nuxt-link to="/volenteer">
+          volenteer
+        </nuxt-link>
+        <nuxt-link to="/admin">
+          admin
+        </nuxt-link>
+      </div>
+      <button @click="$store.dispatch('displayConsole', true)">Open Console</button>
+    </div>
+    <nuxt/>
+    <Console/>
   </div>
 </template>
 

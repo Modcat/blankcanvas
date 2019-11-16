@@ -22,7 +22,6 @@
     "bulma-pro": "^0.1.6",
     "chalk": "^2.4.2",
     "codemirror": "^5.47.0",
-    "exec-sh": "^0.3.2",
     "git": "^0.1.5",
     "gsap": "^3.0.1",
     "handsontable": "^7.2.1",

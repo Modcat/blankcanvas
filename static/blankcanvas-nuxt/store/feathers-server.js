@@ -1,11 +1,13 @@
-const state = {
-    privateIP: false,
-    app: false,
-    // Array of messages to be outputted in the console
-    socketMessages: false
-}
+export const state = () => ({
+    server: {
+        privateIP: false,
+        app: false,
+        // Array of messages to be outputted in the console
+        socketMessages: false
+    }
+})
 
-const actions = {
+export const actions = {
     // displayConsole(context, payload) {
     //     context.commit('DISPLAYCONSOLE', payload)
     // }
@@ -17,21 +19,14 @@ const actions = {
     }
 }
 
-const mutations = {
+export const mutations = {
     // DISPLAYCONSOLE(state, payload) {
     //     state.displayConsole = payload
     // }
 }
 
-const getters = {
+export const getters = {
     feathersStatus() {
         return false
     }
-}
-
-export default {
-    state,
-    actions,
-    mutations,
-    getters
 }

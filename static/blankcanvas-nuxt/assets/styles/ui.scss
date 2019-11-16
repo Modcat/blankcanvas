@@ -1,6 +1,6 @@
 @font-face {
   font-family: 'icons';
-  src: url('font/icons.woff2');
+  src: url('../assets/fonts/opensans.woff');
 }
 
 // Old style
@@ -471,7 +471,7 @@ input[type=checkbox]:checked:before {
 }
 
 input[type=checkbox]:after {
-  content: url('check.svg');
+  // content: url('check.svg');
   position: absolute;
   left: 0;
   top: 0;

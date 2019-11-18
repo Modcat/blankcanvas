@@ -6,11 +6,27 @@
       <small>{{pkg.license}}</small>
       <div class="row row-db">
         <img src="./loader.svg" alt="loading">
+        <p>Private IP {{privateIP}}</p>
+      </div>
+      <div class="row">
+        <img src="./loader.svg" alt="loading">
+        <p>Establishing github repositories</p>
+      </div>
+      <div class="row">
+        <img src="./loader.svg" alt="loading">
         <p>Launching Realtime Database</p>
       </div>
       <div class="row">
         <img src="./loader.svg" alt="loading">
         <p>Launching Web Interface</p>
+      </div>
+      <div class="row">
+        <img src="./loader.svg" alt="loading">
+        <p>Establishing OpenFL</p>
+      </div>
+      <div class="row">
+        <img src="./loader.svg" alt="loading">
+        <p>Establishing Nativescript</p>
       </div>
       <footer>
         <p>© 2019 {{pkg.license}} by author {{pkg.author}}. Wolf in snow landscape photography is respectfully provided by Comfreak and pixabay.</p>

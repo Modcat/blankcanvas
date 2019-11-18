@@ -1,4 +1,5 @@
 export const state = () => ({
+  privateIP: Object.values(require('os').networkInterfaces()).flat().filter(inter => { return inter.family === 'IPv4' && !inter.internal })[0].address,
   connections: [
     // Each object is a person connected
     {

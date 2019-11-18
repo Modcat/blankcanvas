@@ -35,6 +35,7 @@
     "psd": "^3.2.0",
     "shelljs": "^0.8.3",
     "simple-git": "^1.126.0",
+    "three": "^0.110.0",
     "ts-interface-validator": "^1.1.0",
     "vue": "^2.6.10",
     "vue-chartist": "^2.2.0",

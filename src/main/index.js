@@ -4,8 +4,6 @@ import { app, BrowserWindow } from 'electron'
 const pkg = require('../../package.json')
 const { productName } = pkg.build
 
-app.hello = 'hello to you global'
-
 process.env.ELECTRON_DISABLE_SECURITY_WARNINGS = true
 
 const isDev = process.env.NODE_ENV === 'development'

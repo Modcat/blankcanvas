@@ -74,9 +74,12 @@
     "electron-simple-updater": "^1.5.0",
     "exec-sh": "^0.3.4",
     "fs": "^0.0.1-security",
+    "nativescript": "^6.2.0",
     "nuxt": "^2.10.2",
+    "openfl": "^8.9.5",
     "vue": "^2.6.10",
-    "vue-electron": "^1.0.6"
+    "vue-electron": "^1.0.6",
+    "vuex-electron": "^1.0.3"
   },
   "description": "Swiss knife application for developing in many different data types and environments with data connectivity supporting freedom computing for the application type.",
   "devDependencies": {

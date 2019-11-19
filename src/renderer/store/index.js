@@ -10,7 +10,7 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   modules,
   state: {
-    count: 0
+    privateIP:  Object.values(require('os').networkInterfaces()).flat().filter(inter => { return inter.family === 'IPv4' && !inter.internal })[0].address,
   },
   plugins: [
     createPersistedState(),

@@ -6,7 +6,7 @@
       <small>{{pkg.license}}</small>
       <div class="row row-db">
         <img src="./loader.svg" alt="loading">
-        <p>Private IP {{privateIP}}</p>
+        <p>Private IP {{$store.state.privateIP}}</p>
       </div>
       <div class="row">
         <img src="./loader.svg" alt="loading">
@@ -43,7 +43,6 @@ export default {
   name: 'App',
   data() {
     return {
-      privateIP:  Object.values(require('os').networkInterfaces()).flat().filter(inter => { return inter.family === 'IPv4' && !inter.internal })[0].address,
       loaded: false
     }
   },

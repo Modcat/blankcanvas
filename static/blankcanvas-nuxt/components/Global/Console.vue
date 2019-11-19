@@ -19,7 +19,6 @@
             </div>
         </header>
         <section class="terminals">
-            <iframe class="terminal" src="http://localhost:8088/terminal/"/>
         </section>
         <footer class="status-bar">
             <select>
@@ -33,73 +32,13 @@
 </template>
 
 <script>
-import execSh from 'exec-sh'
 export default {
     name: 'Console',
-    // mounted() {
-    //     this.startFeathers()
-    //     this.startNUXT()
-    // },
-    // methods: {
-    //     startFeathers() {
-    //         var execShPromise = require("exec-sh").promise
- 
-    //         // run interactive bash shell
-
-    //         // Increase GNU system file watchers
-    //         // 
-
-    //         const run = async () => {
-            
-    //             let out
-                
-    //             try {
-    //                 out = await execShPromise('cd ./static/blankcanvas-feathers && yarn dev', true)
-    //             } catch (e) {
-    //                 console.log('Error: ', e)
-    //                 console.log('Stderr: ', e.stderr)
-    //                 console.log('Stdout: ', e.stdout)
-                    
-    //                 return e
-    //             }
-    //             console.log('out: ', out.stdout, out.stderr)
-    //         }
-            
-    //         run()
-    //     },
-    //     startNUXT() {
-    //         var execShPromise = require("exec-sh").promise
- 
-    //         // run interactive bash shell
-
-    //         // Increase GNU system file watchers
-    //         // 
-
-    //         const run = async () => {
-            
-    //             let out
-                
-    //             try {
-    //                 out = await execShPromise('cd ./static/blankcanvas-nuxt && yarn dev', true)
-    //             } catch (e) {
-    //                 console.log('Error: ', e)
-    //                 console.log('Stderr: ', e.stderr)
-    //                 console.log('Stdout: ', e.stdout)
-                    
-    //                 return e
-    //             }
-    //             console.log('out: ', out.stdout, out.stderr)
-    //         }
-            
-    //         run()
-    //     }
-    // }
 }
 </script>
 
 <style lang="scss" scoped>
 .console {
-    position: fixed;
     display: flex;
     flex-direction: column;
     bottom: 0;

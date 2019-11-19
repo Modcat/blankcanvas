@@ -240,7 +240,6 @@ export default {
   }
 }
 .clip {
-  max-height: calc(100vh - 52px);
   max-width: 100vw;
   overflow-y: auto;
   overflow-x: hidden;

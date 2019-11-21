@@ -32,6 +32,7 @@ export default {
   ** Plugins to load before mounting the App
   */
   plugins: [
+    './plugins/feathers-init.js'
   ],
   /*
   ** Nuxt.js dev-modules

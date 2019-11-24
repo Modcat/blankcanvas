@@ -11,13 +11,13 @@ export default {
         client
         .authenticate({
             strategy: 'local',
-            email: 'my@email.com',
-            password: 'my-password'
+            email: 'example@feathers.com',
+            password: 'secret'
         }).then(() => {
             alert('welcome')
         }).catch(e => {
             alert('Sorry this user is not authenticated')
-        });
+        })
     },
     methods: {
         getPrivateIP() {

@@ -81,7 +81,7 @@ body {
 }
 .row {
   display: flex;
-  max-height: calc(100vh - 352px);
+  max-height: calc(100vh - 252px);
 }
 .top-panel {
   display: flex;

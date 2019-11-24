@@ -2083,6 +2083,11 @@ bluebird-lst@^1.0.7, bluebird-lst@^1.0.9:
   dependencies:
     bluebird "^3.5.5"
 
+bluebird@^2.10.2:
+  version "2.11.0"
+  resolved "https://registry.yarnpkg.com/bluebird/-/bluebird-2.11.0.tgz#534b9033c022c9579c56ba3b3e5a5caafbb650e1"
+  integrity sha1-U0uQM8AiyVecVro7Plpcqvu2UOE=
+
 bluebird@^3.1.1, bluebird@^3.5.0, bluebird@^3.5.1, bluebird@^3.5.3, bluebird@^3.5.5:
   version "3.7.1"
   resolved "https://registry.yarnpkg.com/bluebird/-/bluebird-3.7.1.tgz#df70e302b471d7473489acf26a93d63b53f874de"
@@ -9721,6 +9726,13 @@ promise-retry@^1.1.1:
     err-code "^1.0.0"
     retry "^0.10.0"
 
+promise-streams@^2.1.1:
+  version "2.1.1"
+  resolved "https://registry.yarnpkg.com/promise-streams/-/promise-streams-2.1.1.tgz#7309f1d3698330ea7fadab1922f13989229ac85a"
+  integrity sha1-cwnx02mDMOp/rasZIvE5iSKayFo=
+  dependencies:
+    bluebird "^2.10.2"
+
 promptly@^0.2.1:
   version "0.2.1"
   resolved "https://registry.yarnpkg.com/promptly/-/promptly-0.2.1.tgz#6444e7ca4dbd9899e7eeb5ec3922827ebdc22b3b"
@@ -12671,6 +12683,11 @@ widest-line@^3.1.0:
   integrity sha512-NsmoXalsWVDMGupxZ5R08ka9flZjjiLvHVAWYOKtiKM8ujtZWr9cRffak+uSE48+Ob8ObalXpwyeUiyDD6QFgg==
   dependencies:
     string-width "^4.0.0"
+
+win-spawn@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/win-spawn/-/win-spawn-2.0.0.tgz#397a29130ec98d0aa0bc86baa4621393effd0b07"
+  integrity sha1-OXopEw7JjQqgvIa6pGITk+/9Cwc=
 
 window-size@0.1.0:
   version "0.1.0"

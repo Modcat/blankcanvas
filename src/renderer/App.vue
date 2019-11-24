@@ -38,50 +38,37 @@
 
 <script>
 import pkg from '../../package.json'
+import axios from 'axios'
 
 export default {
   name: 'App',
   data() {
     return {
-      loaded: false
+      feathersReady: false,
+      webInterfaceReady: false,
+      execShPromise: require('exec-sh').promise
     }
   },
   mounted() {
-    console.log(pkg)
+    // Increase GNU system file watchers
     // Fistly kill any process on port :3030 or :3031
     // netstat -a -n -o | find "3030"
     // taskkill /F /PID 14228
     // Launch FeathersJS and NUXT
     this.startFeathers()
-    this.startNUXT()
-    // Subroutine to test for both interfaces
-      // Test for feathers
-      // Test for nuxt
-      // Launch web interface by setting loaded to true when both services are available
-  },
-  watch: {
-    loaded(newValue) {
-      if (newValue)
-        document.location.href = `http://${this.privateIP}:3031`
-    }
   },
   methods: {
     startFeathers() {
-      var execShPromise = require("exec-sh").promise
-
-      // run interactive bash shell
-
-      // Increase GNU system file watchers
-      // 
-
-      console.log('booting up')
-
-      const run = async () => {
-      
+      let execShPromise = this.execShPromise,
+          readPromiseStream = require('promise-streams')
+      const runFeathers = async () => {
           let out
-          
           try {
-              out = await execShPromise('cd ./static/blankcanvas-feathers && yarn dev', true)
+              out = execShPromise('cd ./static/blankcanvas-feathers && yarn dev', true, function(err, stdout, stderr){
+                console.log("error: ", err);
+                console.log("stdout: ", stdout);
+                console.log("stderr: ", stderr);
+              })
           } catch (e) {
               console.log('Error: ', e)
               console.log('Stderr: ', e.stderr)
@@ -91,34 +78,51 @@ export default {
           }
           console.log('out: ', out.stdout, out.stderr)
       }
-
-      console.log(run().then((response) => { console.log('FEATHERS', response) }))
+      runFeathers()
+      // Test for feathers
+      .then(function() {
+        let loadTest = setInterval(function() {
+          axios
+          .get(`http://${this.$store.state.privateIP}:3030`)
+          .then(function(response) {
+            if (response.status === 200) {
+              this.feathersReady = true
+              this.startNUXT()
+              clearInterval(loadTest)
+            }
+          }.bind(this))
+        }.bind(this), 300)
+      }.bind(this))
     },
     startNUXT() {
-      var execShPromise = require("exec-sh").promise
-
-      // run interactive bash shell
-
-      // Increase GNU system file watchers
-      // 
-
+      let execShPromise = this.execShPromise
       const run = async () => {
-      
-          let out
-          
-          try {
-              out = await execShPromise('cd ./static/blankcanvas-nuxt && yarn dev', true)
-          } catch (e) {
-              console.log('Error: ', e)
-              console.log('Stderr: ', e.stderr)
-              console.log('Stdout: ', e.stdout)
-              
-              return e
-          }
-          console.log('out: ', out.stdout, out.stderr)
+        let out
+        try {
+            out = execShPromise('cd ./static/blankcanvas-nuxt && yarn dev', (a,b,c) => { console.log(a,b,c) })
+        } catch (e) {
+            console.log('Error: ', e)
+            console.log('Stderr: ', e.stderr)
+            console.log('Stdout: ', e.stdout)
+            return e
+        }
       }
-      
-      console.log(run().then((response) => { console.log('NUXT', response) }))
+      run()
+      // Test for nuxt
+      .then(function() {
+        let loadTest = setInterval(function() {
+          axios
+          .get(`http://${this.$store.state.privateIP}:3031`)
+          .then(function(response) {
+            if (response.status === 200) {
+              this.webInterfaceReady = true
+              // Launch web interface by setting loaded to true when both services are available
+              // document.location.href = `http://${this.$store.state.privateIP}:3031`
+              clearInterval(loadTest)
+            }
+          }.bind(this))
+        }.bind(this), 300)
+      }.bind(this))
     }
   },
   computed: {

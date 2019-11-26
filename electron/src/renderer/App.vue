@@ -94,34 +94,11 @@ export default {
       }.bind(this))
     },
     startNUXT() {
-      // let execShPromise = this.execShPromise
-      // const run = async () => {
-      //   let out
-      //   try {
-      //       out = execShPromise('cd ./static/blankcanvas-nuxt && yarn dev', (a,b,c) => { console.log(a,b,c) })
-      //   } catch (e) {
-      //       console.log('Error: ', e)
-      //       console.log('Stderr: ', e.stderr)
-      //       console.log('Stdout: ', e.stdout)
-      //       return e
-      //   }
-      // }
-      // run()
-      // // Test for nuxt
-      // .then(function() {
-      //   let loadTest = setInterval(function() {
-      //     axios
-      //     .get(`http://${this.$store.state.privateIP}:3031`)
-      //     .then(function(response) {
-      //       if (response.status === 200) {
-      //         this.webInterfaceReady = true
-      //         // Launch web interface by setting loaded to true when both services are available
-      //         // document.location.href = `http://${this.$store.state.privateIP}:3031`
-      //         clearInterval(loadTest)
-      //       }
-      //     }.bind(this))
-      //   }.bind(this), 300)
-      // }.bind(this))
+      const connect = require('connect')
+      const serveStatic = require('serve-static')
+      connect().use(serveStatic('./static/web-interface/')).listen(3031, this.$store.state.privateIP, () => {
+          console.log(`Web interface running on http://${this.$store.state.privateIP}:3031`)
+      })
     }
   },
   computed: {

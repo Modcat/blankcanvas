@@ -53,8 +53,26 @@ export default {
     // Increase GNU system file watchers
     // Fistly kill any process on port :3030 or :3031
     // netstat -a -n -o | find "3030"
+    const findProcess = async () => {
+      let execShPromise = this.execShPromise
+      let out
+      try {
+        out = await execShPromise('netstat -a -n -o | find "3030"', true, function(err, stdout, stderr) {
+          console.log("error: ", err);
+          console.log("stdout: ", stdout);
+          console.log("stderr: ", stderr);
+        })
+      } catch (e) {
+        console.log('Error: ', e)
+        console.log('Stderr: ', e.stderr)
+        console.log('Stdout: ', e.stdout)
+        return e
+      }
+      console.log(out)
+    }
+    findProcess()
     // taskkill /F /PID 14228
-    // Launch FeathersJS and NUXT
+    // Launch FeathersJS
     this.startFeathers()
   },
   methods: {
@@ -75,7 +93,6 @@ export default {
               
               return e
           }
-          console.log('out: ', out.stdout, out.stderr)
       }
       runFeathers()
       // Test for feathers
@@ -96,7 +113,9 @@ export default {
     startNUXT() {
       const connect = require('connect')
       const serveStatic = require('serve-static')
-      connect().use(serveStatic('./static/web-interface/')).listen(3031, this.$store.state.privateIP, () => {
+      connect()
+      .use(serveStatic('./static/web-interface/'))
+      .listen(3031, this.$store.state.privateIP, () => {
           console.log(`Web interface running on http://${this.$store.state.privateIP}:3031`)
       })
     }
@@ -124,6 +143,7 @@ body {
   color: #666;
   overflow: hidden;
   user-select: none;
+  pointer-events: none;
 }
 aside {
   display: flex;

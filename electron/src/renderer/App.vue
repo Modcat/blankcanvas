@@ -4,29 +4,9 @@
       <h1>{{pkg.title}} {{pkg.version}}</h1>
       <b>{{pkg.author}}</b>
       <small>{{pkg.license}}</small>
-      <div class="row row-db">
+      <div class="row" v-for="(process,index) in notifications" :key="index">
         <img src="./loader.svg" alt="loading">
-        <p>Private IP {{$store.state.privateIP}}</p>
-      </div>
-      <div class="row">
-        <img src="./loader.svg" alt="loading">
-        <p>Establishing github repositories</p>
-      </div>
-      <div class="row">
-        <img src="./loader.svg" alt="loading">
-        <p>Launching Realtime Database</p>
-      </div>
-      <div class="row">
-        <img src="./loader.svg" alt="loading">
-        <p>Launching Web Interface</p>
-      </div>
-      <div class="row">
-        <img src="./loader.svg" alt="loading">
-        <p>Establishing OpenFL</p>
-      </div>
-      <div class="row">
-        <img src="./loader.svg" alt="loading">
-        <p>Establishing Nativescript</p>
+        <p>{{ process }}</p>
       </div>
       <footer>
         <p>© 2019 {{pkg.license}} by author {{pkg.author}}. Wolf in snow landscape photography is respectfully provided by Comfreak and pixabay.</p>
@@ -46,83 +26,83 @@ export default {
     return {
       feathersReady: false,
       webInterfaceReady: false,
-      execShPromise: require('exec-sh').promise
+      execShPromise: require('exec-sh').promise,
+      notifications: [],
+      privateIP: this.$store.state.privateIP
     }
-  },
-  mounted() {
-    // Increase GNU system file watchers
-    // Fistly kill any process on port :3030 or :3031
-    // netstat -a -n -o | find "3030"
-    const findProcess = async () => {
-      let execShPromise = this.execShPromise
-      let out
-      try {
-        out = await execShPromise('netstat -a -n -o | find "3030"', true, function(err, stdout, stderr) {
-          console.log("error: ", err);
-          console.log("stdout: ", stdout);
-          console.log("stderr: ", stderr);
-        })
-      } catch (e) {
-        console.log('Error: ', e)
-        console.log('Stderr: ', e.stderr)
-        console.log('Stdout: ', e.stdout)
-        return e
-      }
-      console.log(out)
-    }
-    findProcess()
-    // taskkill /F /PID 14228
-    // Launch FeathersJS
-    this.startFeathers()
   },
   methods: {
     startFeathers() {
-      let execShPromise = this.execShPromise
-      const runFeathers = async () => {
-          let out
-          try {
-              out = execShPromise('cd ./static/blankcanvas-feathers && yarn dev', true, function(err, stdout, stderr){
-                console.log("error: ", err);
-                console.log("stdout: ", stdout);
-                console.log("stderr: ", stderr);
-              })
-          } catch (e) {
-              console.log('Error: ', e)
-              console.log('Stderr: ', e.stderr)
-              console.log('Stdout: ', e.stdout)
-              
-              return e
-          }
-      }
-      runFeathers()
+      this.execShPromise('cd ./static/blankcanvas-feathers && yarn dev', true)
       // Test for feathers
-      .then(function() {
-        let loadTest = setInterval(function() {
-          axios
-          .get(`http://${this.$store.state.privateIP}:3030`)
-          .then(function(response) {
-            if (response.status === 200) {
-              this.feathersReady = true
-              this.startNUXT()
-              clearInterval(loadTest)
-            }
-          }.bind(this))
-        }.bind(this), 300)
-      }.bind(this))
+      let loadTest = setInterval(function() {
+        axios
+        .get(`http://${this.privateIP}:3030`)
+        .then(function(response) {
+          if (response.status === 200) {
+            this.feathersReady = true
+            this.notifications.push('Launched realtime database')
+            this.startNUXT()
+            clearInterval(loadTest)
+          }
+        }.bind(this))
+      }.bind(this), 300)
+      // Put in a fail safe and notify user feathers has failed to boot
     },
     startNUXT() {
       const connect = require('connect')
       const serveStatic = require('serve-static')
       connect()
       .use(serveStatic('./static/web-interface/'))
-      .listen(3031, this.$store.state.privateIP, () => {
-          console.log(`Web interface running on http://${this.$store.state.privateIP}:3031`)
+      .listen(3031, this.privateIP, () => {
+        this.notifications.push('Launched web interface')
+        console.log(`Web interface running on http://${this.privateIP}:3031`)
       })
     }
   },
   computed: {
-    pkg() {return pkg}
-  }
+    pkg() {return pkg},
+    os() {return this.$store.state.os.platform()}
+  },
+  mounted() {
+    if (this.privateIP) {
+      this.notifications.push('Obtained private IP')
+    }
+    // Increase GNU system file watchers
+    if (this.os === 'linux')
+    {
+      this.execShPromise(`echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf && sudo sysctl -p`)
+    }
+    // Kill PID processes on port :3030 or :3031
+    let findAllProcessIDs = this.os === 'win32' ? 'netstat -a -n -o' : 'ps -eF'
+    this.execShPromise(findAllProcessIDs, true)
+    .then(response => {
+      let io = response
+      .stdout
+      .match(/.*\:3030.*|.*\:3031.*/gm)
+
+      if (io)
+      {
+        io = io.map(el => {
+          return el.replace(/\s+/gmi, ' ').split(' ')
+        })
+        .filter(el => {
+          // Find listening process
+          return el.indexOf('LISTENING') !== -1
+        })
+        if (this.os === 'win32') {
+          io.forEach(function(service) {this.execShPromise(`taskkill /F /PID ${service.pop()}`) }.bind(this))
+        }
+        else if (this.os.match(/linux|mac/gmi))
+        {
+          io.forEach(function(service) { this.execShPromise(`kill ${service[1]}`) }.bind(this))
+        }
+      }
+      this.notifications.push('Opened ports :3030 and :3031')
+    })
+    // Launch FeathersJS
+    this.startFeathers()
+  },
 }
 </script>
 

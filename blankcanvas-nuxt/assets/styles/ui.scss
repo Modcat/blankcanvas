@@ -18,7 +18,10 @@ h1 {
   margin: 50px 0;
   text-align: center;
 }
-
+svg {
+  width: auto;
+  height: auto;
+}
 ::selection {
   background: #333;
   color: #fff;

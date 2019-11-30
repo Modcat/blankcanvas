@@ -21,19 +21,27 @@
         <section class="terminals">
         </section>
         <footer class="status-bar">
+            <Fork class="fork" height="25"/>
             <select>
                 <option value="">master</option>
                 <option value="">develop</option>
             </select>
-            <button>refresh</button>
+            <button><Refresh height="15"/></button>
             <button>git conflicts</button>
         </footer>
     </section>
 </template>
 
 <script>
+// SVG images
+import Fork from '~/assets/images/fork.svg'
+import Refresh from '~/assets/images/loop-circular.svg'
 export default {
     name: 'Console',
+    components: {
+        Fork,
+        Refresh
+    }
 }
 </script>
 
@@ -71,18 +79,13 @@ export default {
             display: flex;
             align-self: flex-end;
         }
-        select {
-            margin-right: 10px;
-            padding-right: 15px;
-            box-shadow: none;
-            background: #f3f3f3;
-        }
         ~ * {
             flex-grow: 1;
         }
     }
     footer {
         display: flex;
+        align-items: center;
         flex-grow: 0;
         padding: 5px 5px 5px 10px;
         background: rgb(62, 128, 214);
@@ -103,5 +106,25 @@ export default {
             flex-grow: 1;
         }
     }
+}
+button {
+    border: none;
+    padding: 0;
+}
+select {
+    appearance: none;
+    border: none;
+    background: rgba(255,255,255,0.35);
+    border-radius: 1px;
+    color: white;
+    font-size: 13px;
+
+    option {
+        color: #444;
+    }
+}
+/deep/ .fork * {
+    fill: white;
+    // stroke: white;
 }
 </style>

@@ -35,7 +35,8 @@ export default {
   ** Plugins to load before mounting the App
   */
   plugins: [
-    './plugins/feathers-init.js'
+    './plugins/feathers-init.js',
+    './plugins/nativescript-elements.js',
   ],
   /*
   ** Nuxt.js dev-modules
@@ -49,6 +50,7 @@ export default {
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
     '@nuxtjs/pwa',
+    'nuxt-svg-loader'
   ],
   /*
   ** Axios module configuration

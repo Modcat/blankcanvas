@@ -1,0 +1,34 @@
+{
+  "name": "blankcanvas",
+  "version": "1.0.0",
+  "description": "A swiss knife app that integrates as most environments for creativity and connectivity across devices",
+  "author": "Lawrence Turton",
+  "private": true,
+  "main": "main.js",
+  "build": {
+    "appId": "com.blankcanvas.app",
+    "directories": {
+      "buildResources": "static"
+    }
+  },
+  "scripts": {
+    "dev": "cross-env NODE_ENV=DEV electron .",
+    "build": "nuxt build && electron-builder"
+  },
+  "dependencies": {
+    "node-sass": "^4.13.0",
+    "nuxt": "^1.4.0",
+    "sass-loader": "^8.0.0"
+  },
+  "devDependencies": {
+    "babel-eslint": "^8.2.1",
+    "cross-env": "^5.1.4",
+    "electron": "2.0.0-beta.7",
+    "electron-builder": "^20.8.1",
+    "electron-devtools-installer": "^2.2.3",
+    "eslint": "^4.15.0",
+    "eslint-friendly-formatter": "^3.0.0",
+    "eslint-loader": "^1.7.1",
+    "eslint-plugin-vue": "^4.0.0"
+  }
+}

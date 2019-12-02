@@ -1,5 +1,6 @@
 {
   "name": "blankcanvas",
+  "currentRelease": "Alpha Wolf",
   "version": "1.0.0",
   "description": "A swiss knife app that integrates as most environments for creativity and connectivity across devices",
   "author": "Lawrence Turton",
@@ -15,20 +16,35 @@
     "dev": "cross-env NODE_ENV=DEV electron .",
     "build": "nuxt build && electron-builder"
   },
+  "engines": {
+    "node": ">=0.12"
+  },
   "dependencies": {
-    "node-sass": "^4.13.0",
-    "nuxt": "^1.4.0",
-    "sass-loader": "^8.0.0"
+    "axios": "^0.19.0",
+    "connect": "^3.7.0",
+    "electron-builder-squirrel-windows": "^22.1.0",
+    "electron-simple-publisher": "^0.6.2",
+    "electron-simple-updater": "^1.5.0",
+    "exec-sh": "^0.3.4",
+    "fs": "^0.0.1-security",
+    "lockme": "^2.0.1",
+    "nativescript": "^6.2.0",
+    "nuxt": "^2.10.0",
+    "openfl": "^8.9.5",
+    "promise-streams": "^2.1.1",
+    "serve-static": "^1.14.1",
+    "win-spawn": "^2.0.0"
   },
   "devDependencies": {
     "babel-eslint": "^8.2.1",
     "cross-env": "^5.1.4",
-    "electron": "2.0.0-beta.7",
+    "electron": "@latest",
     "electron-builder": "^20.8.1",
     "electron-devtools-installer": "^2.2.3",
-    "eslint": "^4.15.0",
     "eslint-friendly-formatter": "^3.0.0",
     "eslint-loader": "^1.7.1",
-    "eslint-plugin-vue": "^4.0.0"
+    "eslint-plugin-vue": "^4.0.0",
+    "node-sass": "^4.13.0",
+    "sass-loader": "^8.0.0"
   }
 }

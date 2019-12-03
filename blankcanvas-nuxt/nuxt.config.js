@@ -2,7 +2,7 @@
 export default {
   mode: 'spa',
   generate: {
-    dir: '../electron/static/web-interface'
+    dir: '../electron-nuxt/static/web-interface'
   },
   /*
   ** Headers of the page

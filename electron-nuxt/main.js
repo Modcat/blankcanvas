@@ -50,7 +50,7 @@ const newWin = () => {
 		// Install vue dev tool and open chrome dev tools
 		const { default: installExtension, VUEJS_DEVTOOLS } = require('electron-devtools-installer')
 		installExtension(VUEJS_DEVTOOLS.id).then(name => {
-			// win.webContents.openDevTools()
+			win.webContents.openDevTools()
 		}).catch(err => console.log('An error occurred: ', err))
 		// Wait for nuxt to build
 		const pollServer = () => {
@@ -81,7 +81,7 @@ const webInterfaceWin = () => {
 			// webIFWin.webContents.openDevTools()
 		}).catch(err => console.log('An error occurred: ', err))
 	}
-	webIFWin.loadURL('http://192.168.0.28:3031/index/')
+	webIFWin.loadURL('http://192.168.0.28:3031/')
 }
 app.on('ready', newWin)
 app.on('ready', webInterfaceWin)

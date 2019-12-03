@@ -3,7 +3,7 @@
     <div v-if="$route.name !== 'Tools' && $route.name !== 'Properties'"
       class="top-panel">
       <div class="tabs">
-        <nuxt-link to="/">
+        <nuxt-link to="/index">
           Art boards
         </nuxt-link>
         <nuxt-link to="/artflow">

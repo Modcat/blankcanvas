@@ -68,7 +68,7 @@ export default {
       // Test for NUXT
       let loadTest = setInterval(function() {
         axios
-        .get(`http://${this.privateIP}:3031/index/`)
+        .get(`http://${this.privateIP}:3031/`)
         .then(function(response) {
           if (response.status === 200) {
             this.openWebInterface()

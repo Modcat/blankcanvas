@@ -11,10 +11,12 @@
     "generate": "nuxt generate"
   },
   "dependencies": {
-    "@feathersjs/authentication-client": "^4.3.10",
+    "@feathersjs/authentication-client": "^4.4.1",
     "@feathersjs/cli": "^4.2.1",
-    "@feathersjs/feathers": "^4.3.10",
-    "@feathersjs/socketio-client": "^4.3.10",
+    "@feathersjs/feathers": "^4.4.1",
+    "@feathersjs/primus-client": "^4.4.1",
+    "@feathersjs/rest-client": "^4.4.1",
+    "@feathersjs/socketio-client": "^4.4.1",
     "@handsontable/vue": "^4.1.0",
     "@nuxtjs/axios": "^5.3.6",
     "@nuxtjs/pwa": "^3.0.0-0",

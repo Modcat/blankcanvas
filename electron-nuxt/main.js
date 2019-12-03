@@ -50,7 +50,7 @@ const newWin = () => {
 		// Install vue dev tool and open chrome dev tools
 		const { default: installExtension, VUEJS_DEVTOOLS } = require('electron-devtools-installer')
 		installExtension(VUEJS_DEVTOOLS.id).then(name => {
-			win.webContents.openDevTools()
+			// win.webContents.openDevTools()
 		}).catch(err => console.log('An error occurred: ', err))
 		// Wait for nuxt to build
 		const pollServer = () => {
@@ -65,19 +65,20 @@ const webInterfaceWin = () => {
 	webIFWin = new electron.BrowserWindow({
 		icon: path.join(__dirname, 'static/icon.png'),
 		// transparent: true,
+		width: 0,
+		height: 0,
 		frame: false,
 		show: false
 	})
 	global.sharedWindows.webIFWin = webIFWin
 	webIFWin.hide()
-	webIFWin.maximize()
+	// webIFWin.maximize()
 	webIFWin.on('closed', () => webIFWin = null)
-	webIFWin.webContents.openDevTools()
 	if (config.dev) {
 		// Install vue dev tool and open chrome dev tools
 		const { default: installExtension, VUEJS_DEVTOOLS } = require('electron-devtools-installer')
 		installExtension(VUEJS_DEVTOOLS.id).then(name => {
-			webIFWin.webContents.openDevTools()
+			// webIFWin.webContents.openDevTools()
 		}).catch(err => console.log('An error occurred: ', err))
 	}
 	webIFWin.loadURL('http://192.168.0.28:3031/index/')

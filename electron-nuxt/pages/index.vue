@@ -19,7 +19,7 @@
 <script>
 import pkg from '../package.json'
 import axios from 'axios'
-import { electron, app } from 'electron'
+import electron from 'electron'
 
 export default {
   name: 'App',
@@ -33,7 +33,6 @@ export default {
   created() {
     let remote = require('electron').remote
     let sharedWindows = remote.getGlobal('sharedWindows')
-    sharedWindows.webIFWin.hide()
   },
   methods: {
     addNotification(note) {
@@ -79,42 +78,41 @@ export default {
         .catch(error => { console.log(error) })
       }.bind(this), 300)
     },
+    closePorcesses() {
+      // Kill PID processes on port :3030 or :3031
+      let findAllProcessIDs = this.os === 'win32' ? 'netstat -a -n -o' : 'ps -eF'
+      this.execShPromise(findAllProcessIDs, true)
+      .then(response => {
+        let io = response
+        .stdout
+        .match(/.*\:3030.*|.*\:3031.*/gm)
+
+        if (io)
+        {
+          io = io.map(el => {
+            return el.replace(/\s+/gmi, ' ').split(' ')
+          })
+          .filter(el => {
+            // Find listening process
+            return el.indexOf('LISTENING') !== -1
+          })
+          if (this.os === 'win32') {
+            io.forEach(function(service) {this.execShPromise(`taskkill /F /PID ${service.pop()}`) }.bind(this))
+          }
+          else if (this.os.match(/linux|mac/gmi))
+          {
+            io.forEach(function(service) { this.execShPromise(`kill ${service[1]}`) }.bind(this))
+          }
+        }
+        this.addNotification('Opened ports :3030 and :3031')
+      })
+    },
     openWebInterface() {
-      // win = new electron.BrowserWindow({
-      //   // icon: path.join(__dirname, 'static/icon.png'),
-      //   webPreferences: {
-      //     nodeIntegration: true,
-      //     nodeIntegrationInWorker: false,
-      //     webSecurity: false,
-      //     experimentalFeatures: true
-      //   },
-      // })
-      // win.maximize()
-      // win.on('closed', () => win = null)
-      // if (config.dev) {
-      //   // Install vue dev tool and open chrome dev tools
-      //   const { default: installExtension, VUEJS_DEVTOOLS } = require('electron-devtools-installer')
-      //   installExtension(VUEJS_DEVTOOLS.id).then(name => {
-      //     console.log(`Added Extension:  ${name}`)
-      //     win.webContents.openDevTools()
-      //   }).catch(err => console.log('An error occurred: ', err))
-      //   // Wait for nuxt to build
-      //   // const pollServer = () => {
-      //   // 	http.get(_NUXT_URL_, (res) => {
-      //   // 		if (res.statusCode === 200) { win.loadURL(_NUXT_URL_) } else { setTimeout(pollServer, 300) }
-      //   // 	}).on('error', pollServer)
-      //   // }
-      //   // pollServer()
-      // }
-      // win.loadURL('http://192.168.0.28:3031/index')
+      let wins = electron.remote.getGlobal('sharedWindows')
+      wins.win.hide()
+      wins.webIFWin.reload()
+      wins.webIFWin.maximize()
     }
-  },
-  watch: {
-	  notifications(newValue) {
-		  if (newValue.length === 4) {
-			//   window.location.href = `http://${this.privateIP}:3031/index/`
-		  }
-	  }
   },
   computed: {
     pkg() {return pkg},
@@ -129,38 +127,14 @@ export default {
     {
       this.execShPromise(`echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf && sudo sysctl -p`)
     }
-    // Kill PID processes on port :3030 or :3031
-    let findAllProcessIDs = this.os === 'win32' ? 'netstat -a -n -o' : 'ps -eF'
-    this.execShPromise(findAllProcessIDs, true)
-    .then(response => {
-      let io = response
-      .stdout
-      .match(/.*\:3030.*|.*\:3031.*/gm)
-
-      if (io)
-      {
-        io = io.map(el => {
-          return el.replace(/\s+/gmi, ' ').split(' ')
-        })
-        .filter(el => {
-          // Find listening process
-          return el.indexOf('LISTENING') !== -1
-        })
-        if (this.os === 'win32') {
-          io.forEach(function(service) {this.execShPromise(`taskkill /F /PID ${service.pop()}`) }.bind(this))
-        }
-        else if (this.os.match(/linux|mac/gmi))
-        {
-          io.forEach(function(service) { this.execShPromise(`kill ${service[1]}`) }.bind(this))
-        }
-      }
-      this.addNotification('Opened ports :3030 and :3031')
-    })
+    this.closePorcesses()
     // Close all process when app closes
-    
+    electron.remote.app.on('window-all-closed', function() {
+      this.closePorcesses()
+    }.bind(this))
     // Launch FeathersJS
     this.startFeathers()
-  },
+  }
 }
 </script>
 

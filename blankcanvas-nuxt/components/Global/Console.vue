@@ -18,6 +18,7 @@
                 <button id="close" @click="$store.dispatch('displayConsole', false)">X</button>
             </div>
         </header>
+        <pre ref="sysOutput" class="messages"></pre>
         <section class="terminals">
         </section>
         <footer class="status-bar">
@@ -36,11 +37,39 @@
 // SVG images
 import Fork from '~/assets/images/fork.svg'
 import Refresh from '~/assets/images/loop-circular.svg'
+
+// Feathers
+import io  from 'socket.io-client'
+import feathers from '@feathersjs/feathers'
+import socketio from '@feathersjs/socketio-client'
+
 export default {
     name: 'Console',
     components: {
         Fork,
         Refresh
+    },
+    mounted() {
+        const socket = io(`http://${this.$store.state.privateIP}:3030`)
+        const client = feathers()
+
+        client.configure(socketio(socket))
+
+        // Services
+        
+
+        client.service('messages').on('created', message => console.log('Created a message', message))
+
+        // Use the messages service from the server
+        messageService.create({
+        text: 'Message from client'
+        });
+
+    },
+    methods: {
+        sendIO() {
+
+        }
     }
 }
 </script>

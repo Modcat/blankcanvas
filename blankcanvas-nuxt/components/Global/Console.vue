@@ -3,7 +3,7 @@
         <header>
             <nav>
                 <button @click="startServer()">SERVER</button>
-                <button>OUTPUT</button>
+                <button>GIT</button>
                 <button>TERMINAL</button>
             </nav>
             <div class="right">
@@ -13,21 +13,21 @@
                     <option value="">3: Terminal</option>
                 </select>
                 <button id="new-terminal">+</button>
-                <button id="delete">Del</button>
-                <button id="full-view">Full View</button>
-                <button id="close" @click="$store.dispatch('displayConsole', false)">X</button>
+                <button id="delete"><Delete class="delete"/></button>
+                <button id="full-view"><FullScreen class="fullscreen"/></button>
+                <button id="close" @click="$store.dispatch('displayConsole', false)">x</button>
             </div>
         </header>
-        <pre ref="sysOutput" class="messages"></pre>
+        <pre ref="sysOutput" class="messages">{{sysOutput.join('\n')}}</pre>
         <section class="terminals">
         </section>
         <footer class="status-bar">
-            <Fork class="fork" height="25"/>
+            <Fork class="fork"/>
             <select>
                 <option value="">master</option>
                 <option value="">develop</option>
             </select>
-            <button><Refresh height="15"/></button>
+            <button><Refresh class="refresh"/></button>
             <button>git conflicts</button>
         </footer>
     </section>
@@ -37,6 +37,8 @@
 // SVG images
 import Fork from '~/assets/images/fork.svg'
 import Refresh from '~/assets/images/loop-circular.svg'
+import Delete from '~/assets/images/trash.svg'
+import FullScreen from '~/assets/images/fullscreen-enter.svg'
 
 // Feathers
 import io  from 'socket.io-client'
@@ -47,28 +49,38 @@ export default {
     name: 'Console',
     components: {
         Fork,
-        Refresh
+        Refresh,
+        Delete,
+        FullScreen
+    },
+    data() {
+        return {
+            sysOutput: [],
+            gitOutput: []
+        }
     },
     mounted() {
         const socket = io(`http://${this.$store.state.privateIP}:3030`)
         const client = feathers()
-
         client.configure(socketio(socket))
 
-        // Services
-        
+        this.sysIO('Interface connected to feathers and sockets')
 
-        client.service('messages').on('created', message => console.log('Created a message', message))
+        // Services
+        // client.service('messages').on('created', message => console.log('Created a message', message))
 
         // Use the messages service from the server
-        messageService.create({
-        text: 'Message from client'
-        });
+        // messageService.create({
+        //     text: 'Message from client'
+        // });
 
     },
     methods: {
-        sendIO() {
-
+        sysIO(sysOutput) {
+            this.sysOutput.unshift(sysOutput)
+        },
+        gitIO(gitOutput) {
+            this.sysOutput.unshift(gitOutput)
         }
     }
 }
@@ -93,7 +105,7 @@ export default {
     }
     header {
         display: flex;
-        padding: 5px 5px 5px 10px;
+        padding: 5px 5px 0 10px;
         justify-content: space-between;
 
         button {
@@ -111,18 +123,43 @@ export default {
         ~ * {
             flex-grow: 1;
         }
+        svg {
+            /deep/ * {
+                fill: white;
+            }
+        }
     }
     footer {
         display: flex;
         align-items: center;
         flex-grow: 0;
-        padding: 5px 5px 5px 10px;
+        padding: 5px 10px;
         background: rgb(62, 128, 214);
-        align-items: flex-start;
 
         > * {
             white-space: nowrap;
             margin-right: 10px;
+        }
+        .fork {
+            width: 13px;
+            height: 17px;
+            margin-right: 0;
+        }
+        button {
+            line-height: 0;
+            min-width: auto;
+        }
+        select {
+            padding: 0;
+            background: transparent;
+        }
+        .refresh {
+            width: 15px;
+            height: 15px;
+
+            /deep/ * {
+                fill: white;
+            }
         }
     }
     .terminals {
@@ -136,7 +173,12 @@ export default {
         }
     }
 }
+pre {
+    font-size: 12px;
+    padding: 10px;
+}
 button {
+    font-size: 10px;
     border: none;
     padding: 0;
 }
@@ -146,7 +188,11 @@ select {
     background: rgba(255,255,255,0.35);
     border-radius: 1px;
     color: white;
-    font-size: 13px;
+    padding: 6px 15px 6px 6px;
+    margin-right: 10px;
+    line-height: 11px;
+    font-size: 10px;
+    text-align: left;
 
     option {
         color: #444;

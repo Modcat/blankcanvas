@@ -109,7 +109,7 @@ export default {
     },
     openWebInterface() {
       let wins = electron.remote.getGlobal('sharedWindows')
-      wins.win.hide()
+      // wins.win.hide()
       wins.webIFWin.reload()
       wins.webIFWin.maximize()
     }

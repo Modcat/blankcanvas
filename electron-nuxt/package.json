@@ -32,6 +32,7 @@
     "nuxt": "^2.10.0",
     "openfl": "^8.9.5",
     "promise-streams": "^2.1.1",
+    "selfsigned": "^1.10.7",
     "serve-static": "^1.14.1",
     "simple-git": "^1.128.0",
     "win-spawn": "^2.0.0"

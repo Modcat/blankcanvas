@@ -71,7 +71,6 @@ export default {
   display: flex;
   flex-direction: column;
   width: 100vw;
-  max-height: calc(100vh - 50px);
   overflow-y: auto;
   overflow-x: hidden;
 

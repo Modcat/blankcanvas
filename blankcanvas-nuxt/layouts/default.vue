@@ -1,5 +1,5 @@
 <template>
-  <main id="app">
+  <main id="app" class="l-flex-column u-max-viewport">
     <div v-if="$route.name !== 'Tools' && $route.name !== 'Properties'"
       class="c-top-panel">
       <div class="c-tabs">
@@ -33,13 +33,11 @@
       </div>
       <button @click="$store.dispatch('displayConsole', true)">_ &lt;</button>
     </div>
-    <div class="c-main-content">
-      <aside id="main-sidebar">
+      <nuxt class="c-main-content"/>
+      <!-- <aside id="main-sidebar">
         <h4>OPEN DOCUMENTS</h4>
         <h4>RECENT DOCUMENTS</h4>
-      </aside>
-      <nuxt/>
-    </div>
+      </aside> -->
     <Console/>
   </main>
 </template>
@@ -58,8 +56,8 @@ export default {
 <style lang="scss">
 .c-main-content {
   display: flex;
-  max-height: calc(100vh - 252px);
-  height: 100vh;
+  overflow: hidden;
+  flex-grow: 1;
 }
 .c-top-panel {
   display: flex;

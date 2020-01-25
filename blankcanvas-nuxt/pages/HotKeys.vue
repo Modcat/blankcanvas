@@ -191,7 +191,6 @@ export default {
   flex-wrap: wrap;
   padding: 15px;
   overflow-x: hidden;
-  max-height: calc(100vh - 50px);
   overflow-y: auto;
   justify-content: center;
 

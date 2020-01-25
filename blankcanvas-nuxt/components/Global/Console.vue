@@ -94,7 +94,7 @@ export default {
     left: 0;
     right: 0;
     width: 100vw;
-    height: 200px;
+    min-height: 200px;
     background: #222;
     color: white;
     z-index: 100;

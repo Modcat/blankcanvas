@@ -30,7 +30,16 @@ export default {
   ** Global CSS
   */
   css: [
+    './assets/styles/base.scss',
+    './assets/styles/layout.scss',
+    './assets/styles/utilities.scss'
   ],
+  styleResources: {
+    // your settings here
+    sass: [
+      './assets/styles/variables.scss'
+    ]
+  },
   /*
   ** Plugins to load before mounting the App
   */
@@ -47,7 +56,7 @@ export default {
   ** Nuxt.js modules
   */
   modules: [
-    // Doc: https://axios.nuxtjs.org/usage
+    '@nuxtjs/style-resources',
     '@nuxtjs/axios',
     '@nuxtjs/pwa',
     'nuxt-svg-loader'

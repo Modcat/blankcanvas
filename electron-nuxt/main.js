@@ -9,6 +9,7 @@ config.rootDir = __dirname // for electron-builder
 const nuxt = new Nuxt(config)
 const builder = new Builder(nuxt)
 const server = http.createServer(nuxt.render)
+const privateIP = Object.values(require('os').networkInterfaces()).flat().filter(inter => { return inter.family === 'IPv4' && !inter.internal })[0].address
 // Build only in dev mode
 if (config.dev) {
 	builder.build().catch(err => {
@@ -81,7 +82,8 @@ const webInterfaceWin = () => {
 			// webIFWin.webContents.openDevTools()
 		}).catch(err => console.log('An error occurred: ', err))
 	}
-	webIFWin.loadURL('http://192.168.0.28:3031/')
+	// Production
+	webIFWin.loadURL(`http://${privateIP}:3031/`)
 }
 app.on('ready', newWin)
 app.on('ready', webInterfaceWin)

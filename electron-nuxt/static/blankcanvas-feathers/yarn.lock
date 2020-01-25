@@ -2816,6 +2816,11 @@ npmlog@^4.0.2:
     gauge "~2.7.3"
     set-blocking "~2.0.0"
 
+ntru@^3.2.1:
+  version "3.2.1"
+  resolved "https://registry.yarnpkg.com/ntru/-/ntru-3.2.1.tgz#1b7cae33f51dd48cd55b1c73fc2fedb792d9121a"
+  integrity sha512-kD+H4/+Wpqg72ZkzzamlEXCsmTTC6MKVLIgjZETBjQJ8sZL2ji53pbtGdSwKQ6vRuRQ9WIZfyaTQiDEDsL2O2Q==
+
 number-is-nan@^1.0.0:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/number-is-nan/-/number-is-nan-1.0.1.tgz#097b602b53422a522c1afb8790318336941a011d"

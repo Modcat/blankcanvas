@@ -1,8 +1,8 @@
 <template>
-  <div id="app">
+  <main id="app">
     <div v-if="$route.name !== 'Tools' && $route.name !== 'Properties'"
-      class="top-panel">
-      <div class="tabs">
+      class="c-top-panel">
+      <div class="c-tabs">
         <nuxt-link to="/">
           Art boards
         </nuxt-link>
@@ -33,7 +33,7 @@
       </div>
       <button @click="$store.dispatch('displayConsole', true)">_ &lt;</button>
     </div>
-    <div class="row">
+    <div class="c-main-content">
       <aside id="main-sidebar">
         <h4>OPEN DOCUMENTS</h4>
         <h4>RECENT DOCUMENTS</h4>
@@ -41,7 +41,7 @@
       <nuxt/>
     </div>
     <Console/>
-  </div>
+  </main>
 </template>
 
 <script>
@@ -56,34 +56,12 @@ export default {
 </script>
 
 <style lang="scss">
-$orange: rgba(255, 134, 34, 0.3);
-html,
-body {
-  position: relative;
-  margin: 0;
-  padding: 0;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  // background: rgba(255, 255, 255, 0.45);
-  background: #fff;
-  color: #666;
-  overflow: hidden;
-  font-family: 'opensans';
-  font-size: 16px;
-  word-spacing: 1px;
-  -ms-text-size-adjust: 100%;
-  -webkit-text-size-adjust: 100%;
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  font-size: 10px;
-}
-.row {
+.c-main-content {
   display: flex;
   max-height: calc(100vh - 252px);
+  height: 100vh;
 }
-.top-panel {
+.c-top-panel {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -94,7 +72,7 @@ body {
   * {
     -webkit-app-region: none;
   }
-  .tabs {
+  .c-tabs {
     display: flex;
     border-radius: 3px;
     font-weight: 600;
@@ -141,31 +119,6 @@ body {
 *:after {
   box-sizing: border-box;
   margin: 0;
-}
-.button--green {
-  display: inline-block;
-  border-radius: 4px;
-  border: 1px solid #3b8070;
-  color: #3b8070;
-  text-decoration: none;
-  padding: 10px 30px;
-}
-.button--green:hover {
-  color: #fff;
-  background-color: #3b8070;
-}
-.button--grey {
-  display: inline-block;
-  border-radius: 4px;
-  border: 1px solid #35495e;
-  color: #35495e;
-  text-decoration: none;
-  padding: 10px 30px;
-  margin-left: 15px;
-}
-.button--grey:hover {
-  color: #fff;
-  background-color: #35495e;
 }
 #wrapper {
 	display: flex;

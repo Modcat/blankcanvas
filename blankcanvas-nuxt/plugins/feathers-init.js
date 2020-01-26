@@ -1,8 +1,14 @@
-const io = require('socket.io-client')
-const feathers = require('@feathersjs/feathers')
-const socketio = require('@feathersjs/socketio-client')
+(function(){
+    const io = require('socket.io-client')
+    const feathers = require('@feathersjs/client')
+    const socket = io(`http://${document.location.hostname}:3030`)
+    const client = feathers()
 
-const socket = io(`http://${document.location.hostname}:3030`)
-window.client = feathers()
+    client.configure(feathers.socketio(socket))
 
-client.configure(socketio(socket))
+    client.configure(feathers.authentication({
+        storage: window.localStorage
+    }))
+    
+    window.client = client
+})()

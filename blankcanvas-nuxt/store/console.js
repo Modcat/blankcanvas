@@ -1,8 +1,6 @@
 export const state = () => ({
-    console: {
-        displayConsole: false,
-        terminals: []
-    }
+    displayConsole: false,
+    terminals: []
 })
 
 export const actions = {

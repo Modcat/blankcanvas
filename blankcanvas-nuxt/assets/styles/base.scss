@@ -1,6 +1,10 @@
+@font-face {
+  font-family: 'opensans';
+  src: url('../fonts/opensans.woff');
+}
 html,
 body {
-  position: relative;
+  position: fixed;
   margin: 0;
   padding: 0;
   width: 100vw;
@@ -21,7 +25,8 @@ body {
     font-size: 1.2rem;
 }
 button {
-    user-select: none;
+  user-select: none;
+  cursor: pointer !important;
 }
 .button--green {
   display: inline-block;

@@ -30,9 +30,7 @@ export default {
   ** Global CSS
   */
   css: [
-    './assets/styles/base.scss',
-    './assets/styles/layout.scss',
-    './assets/styles/utilities.scss'
+    './assets/styles/main.scss'
   ],
   styleResources: {
     // your settings here

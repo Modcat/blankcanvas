@@ -812,6 +812,11 @@
     update-notifier "^4.0.0"
     yeoman-environment "^2.4.0"
 
+"@feathersjs/client@^4.5.1":
+  version "4.5.1"
+  resolved "https://registry.yarnpkg.com/@feathersjs/client/-/client-4.5.1.tgz#79d5e629b92b0e3dc5f7d6e23e2c5483ff2ece9c"
+  integrity sha512-tkvU7QAhF7LK4q//LkE0Wmp7wyKr4xvsIIqcqRS+2CW4+wjaMRHVRatAS47Cm8xOngji8tX9LV3WxeQJu7NFfw==
+
 "@feathersjs/commons@^4.5.1":
   version "4.5.1"
   resolved "https://registry.yarnpkg.com/@feathersjs/commons/-/commons-4.5.1.tgz#cd18cd9c49f9b06994c285629d97bc0dc271b32a"
@@ -824,7 +829,7 @@
   dependencies:
     debug "^4.1.1"
 
-"@feathersjs/feathers@^4.4.1", "@feathersjs/feathers@^4.5.1":
+"@feathersjs/feathers@^4.5.1":
   version "4.5.1"
   resolved "https://registry.yarnpkg.com/@feathersjs/feathers/-/feathers-4.5.1.tgz#8b1e082606402d4208f400b6efba4c77ec96b80e"
   integrity sha512-fR+JjdW6HN0LgZzlS0TatyYhtr0Hu7Zh5/uJWbDVQ1+3Eqe3IFeqQzXXIVWipnFUEZ0Pw9d2n7TFvtMCkgHu3Q==

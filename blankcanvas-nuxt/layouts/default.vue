@@ -31,14 +31,14 @@
           admin
         </nuxt-link>
       </div>
-      <button @click="$store.dispatch('displayConsole', true)">_ &lt;</button>
+      <button @click="$store.dispatch('console/displayConsole', !$store.state.console.displayConsole)">_ &lt;</button>
     </div>
       <nuxt class="c-main-content"/>
       <!-- <aside id="main-sidebar">
         <h4>OPEN DOCUMENTS</h4>
         <h4>RECENT DOCUMENTS</h4>
       </aside> -->
-    <Console/>
+    <Console v-if="$store.state.console.displayConsole"/>
   </main>
 </template>
 
@@ -66,6 +66,9 @@ export default {
   padding: 15px;
   background: #eee;
   -webkit-app-region: drag;
+  box-shadow: 0px 0px 6px rgba(0,0,0,0.25);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.13);
+  z-index: 99;
 
   * {
     -webkit-app-region: none;

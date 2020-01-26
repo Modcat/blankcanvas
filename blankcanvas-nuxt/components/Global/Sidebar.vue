@@ -1,6 +1,8 @@
 <template>
-    <aside class="c-aside" v-if="content">
+    <aside :class="['c-aside', { 'c-aside--over': over }]" v-if="content">
         <input v-if="showSearch" type="c-aside__search" v-model="search">
+        <div class="section"></div>
+        <slot/>
     </aside>
 </template>
 
@@ -13,6 +15,10 @@ export default {
             default: false
         },
         showSearch: {
+            type: Boolean,
+            default: true
+        },
+        over: {
             type: Boolean,
             default: true
         },
@@ -54,7 +60,13 @@ export default {
     width: 18.5vw;
     transition: width 0.45s ease-in-out;
     border-right: 0.5px solid rgba(255,255,255,.45);
+    background: $sidebar-bg;
+    border-right: 1px solid #d5d5d5
     
+    &--over {
+        z-index: 99;
+        box-shadow: 1px 0px 10px rgba(0,0,0,0.2);
+    }
     &__search {
         margin-left: 15px;
         width: calc(100% - 30px);

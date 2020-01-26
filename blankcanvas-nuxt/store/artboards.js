@@ -1,6 +1,5 @@
 // Each object is an artboard and a document can have multiple art boards
-export const state = () => ({
-    artboards: [
+export const state = () => ([
     { // This is an artboard object
       id: 1,
       name: 'Label name',
@@ -217,8 +216,7 @@ export const state = () => ({
         '4.2.3.3': { /* Is a layer in group 3.1.2.0 */ }
       }
     }
-  ]
-})
+])
 
 export const actions = {
 }

@@ -1,3 +1,6 @@
+.u-allow-fixed {
+    transform: translateX(0);
+}
 .u-gpu {
     transform: translate3d(0,0,0);
 }
@@ -9,7 +12,4 @@
     width: 100vw;
     height: 100vh;
     overflow-x: hidden;
-}
-.u-label {
-    
 }

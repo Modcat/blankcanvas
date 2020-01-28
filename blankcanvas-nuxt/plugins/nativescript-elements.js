@@ -6,23 +6,19 @@ document.createElement('GridLayout')
 document.createElement('StackLayout')
 document.createElement('WrapLayout')
 
-// Nativescript action bar
-document.createElement('ActionBar')
-document.createElement('ActionItem')
-document.createElement('NavigationButton')
+// Nativescript action bar (disbaled on desktop)
+// ActionBar
+// ActionItem
+// NavigationButton
 
 // Nativescript components
 document.createElement('ActivityIndicator')
 document.createElement('Button')
 document.createElement('DatePicker')
-document.createElement('Frame')
-document.createElement('HtmlView')
 document.createElement('Image')
 document.createElement('Label')
 document.createElement('ListPicker')
 document.createElement('ListView')
-document.createElement('Page')
-document.createElement('Placeholder')
 document.createElement('Progress')
 document.createElement('ScrollView')
 document.createElement('SearchBar')
@@ -32,5 +28,10 @@ document.createElement('Switch')
 document.createElement('TabView')
 document.createElement('TextField')
 document.createElement('TextView')
-document.createElement('TimePicker')
-document.createElement('WebView')
+
+// Nativscript disabled components strictly NOT ALLOWED
+// HtmlView
+// WebView
+// TimePicker
+// Page
+// Placeholder

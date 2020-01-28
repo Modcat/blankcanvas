@@ -30,7 +30,8 @@ export default {
   ** Global CSS
   */
   css: [
-    './assets/styles/main.scss'
+    './assets/styles/main.scss',
+    './assets/styles/nativescript-polyfill.scss'
   ],
   styleResources: {
     // your settings here

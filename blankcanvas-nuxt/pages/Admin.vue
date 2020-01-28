@@ -1,6 +1,6 @@
 <template>
     <section id="admin">
-        
+        <h1>hello admin</h1>
     </section>
 </template>
 

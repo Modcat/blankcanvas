@@ -1,0 +1,231 @@
+// Compatibility / custom classes
+* {
+    flex-shrink: 1;
+}
+.u-android-only,
+.u-ios-only {
+    display: none; 
+}
+body.android {
+    .u-android-only {
+        display: flex;
+    }
+}
+body.ios {
+    .u-ios-only {
+        display: flex;
+    }
+}
+// Nativescript layout
+AbsoluteLayout {
+    position: relative;
+    display: block;
+
+    > * {
+        position: absolute;
+    }
+}
+DockLayout {
+    position: relative;
+    display: block;
+    transform: translate(0);
+
+    &[stretchLastChild='true'] {
+
+    }
+    > * {
+        position: fixed;
+
+        &[dock='left'] {
+            left: 0;
+            top: 0;
+            bottom: 0;
+        }
+        &[dock='top'] {
+            top: 0;
+            right: 0;
+            left: 0;
+        }
+        &[dock='center'] {
+            right: 0;
+            top: 0;
+            bottom: 0;
+        }
+        &[dock='right'] {
+            right: 0;
+            top: 0;
+            bottom: 0;
+        }
+        &[dock='bottom'] {
+            bottom: 0;
+            left: 0;
+            right: 0;
+        }
+    }
+}
+FlexboxLayout {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-items: stretch;
+    align-content: stretch;
+
+    &[flexDirection='row'] { flex-direction: row; }
+    &[flexDirection='row-reverse'] { flex-direction: row-reverse; }
+    &[flexDirection='column'] { flex-direction: column; }
+    &[flexDirection='column-reverse'] { flex-direction: column-reverse; }
+
+    &[flexWrap='nowrap'] { flex-wrap: nowrap; }
+    &[flexWrap='wrap'] { flex-wrap: wrap; }
+    &[flexWrap='wrap-reverse'] { flex-wrap: wrap-reverse; }
+
+    &[justifyContent='flex-start'] { justify-content: flex-start; }
+    &[justifyContent='flex-end'] { justify-content: flex-end; }
+    &[justifyContent='center'] { justify-content: center; }
+    &[justifyContent='space-between'] { justify-content: space-between; }
+    &[justifyContent='space-around'] { justify-content: space-around; }
+
+    &[alignItems='flex-start'] { align-items: flex-start; }
+    &[alignItems='flex-end'] { align-items: flex-end; }
+    &[alignItems='center'] { align-items: center; }
+    &[alignItems='baseline'] { align-items: baseline; }
+    &[alignItems='stretch'] { align-items: stretch; }
+
+    &[alignContent='flex-start'] { align-content: flex-start; }
+    &[alignContent='flex-end'] { align-content: flex-end; }
+    &[alignContent='center'] { align-content: center; }
+    &[alignContent='space-between'] { align-content: space-between; }
+    &[alignContent='space-around'] { align-content: space-around; }
+    &[alignContent='stretch'] { align-content: stretch; }
+
+    > * {
+        flex-shrink: 1;
+        align-self: stretch;
+
+        // Order attribute and css property for compatability (on each element)
+
+        &[flexGrow] { flex-grow: 1; }
+        &[flexShrink] { flex-shrink: 1; }
+
+        &[alignSelf='flex-start'] { align-self: flex-start; }
+        &[alignSelf='flex-end'] { align-self: flex-end; }
+        &[alignSelf='center'] { align-self: center; }
+        &[alignSelf='baseline'] { align-self: baseline; }
+        &[alignSelf='stretch'] { align-self: stretch; }
+    }
+}
+GridLayout {
+    display: grid;
+    // columns and rows attribute and css styling for compatability
+
+    // Child elements can have the following attributes and styles applied for compatability
+        // row
+        // col
+        // rowSpan
+        // colSpan
+}
+WrapLayout {
+    display: flex;
+    flex-flow: wrap row;
+
+    &[orientation='vertical'] {
+        flex-flow: wrap column;
+    }
+
+    // Attributes and styles need to be applied individually for compatability
+        // itemWidth
+        // itemHeight
+}
+// StackLayout cannot be used for compatability reasons
+
+// Actionbar disbaled for desktop (can ONLY be used on mobile platforms)
+ActionBar,
+ActionItem,
+NavigationButton {
+    display: none;
+}
+
+// Nativescript components
+// ActivityIndicator markup <ActivityIndicator><div></div><div></div><div></div><div></div></ActivityIndicator>
+ActivityIndicator {
+    display: inline-block;
+    position: relative;
+    width: 80px;
+    height: 80px;
+    
+    div {
+        box-sizing: border-box;
+        display: block;
+        position: absolute;
+        width: 64px;
+        height: 64px;
+        margin: 8px;
+        border: 8px solid #ffaf6d;
+        border-radius: 50%;
+        animation: ActivityIndicatorAnim 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+        border-color: #ffaf6d transparent transparent transparent;
+    }
+    div:nth-child(1) {
+        animation-delay: -0.45s;
+    }
+    div:nth-child(2) {
+        animation-delay: -0.3s;
+    }
+    div:nth-child(3) {
+        animation-delay: -0.15s;
+    }
+}
+@keyframes ActivityIndicatorAnim {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+Button {
+    display: inline-block;
+}
+DatePicker {
+    display: inline-block;
+}
+Image {
+    display: inline-block;
+}
+Label {
+    display: inline-block;
+}
+ListPicker {
+    display: inline-block;
+}
+ListView {
+    display: inline-block;
+}
+Progress {
+    display: inline-block;
+}
+ScrollView {
+    display: inline-block;
+}
+SearchBar {
+    display: inline-block;
+}
+SegmentedBar {
+    display: inline-block;
+}
+Slider {
+    display: inline-block;
+}
+Switch {
+    display: inline-block;
+}
+TabView {
+    display: inline-block;
+}
+TextField {
+    display: inline-block;
+}
+TextView {
+    display: inline-block;
+}

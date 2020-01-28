@@ -1,6 +1,7 @@
 <template>
   <main>
-      <h1></h1>
+      <h1>hello world</h1>
+      <ActivityIndicator><div></div><div></div><div></div><div></div></ActivityIndicator>
   </main>
 </template>
 

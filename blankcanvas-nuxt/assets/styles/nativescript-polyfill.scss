@@ -213,6 +213,18 @@ SearchBar {
 }
 SegmentedBar {
     display: inline-block;
+    
+    SegmentedBarItem {
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        
+        &::before {
+            display: inline;
+            content: attr(title);
+        }
+    }
 }
 Slider {
     display: inline-block;

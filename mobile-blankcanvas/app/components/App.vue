@@ -1,32 +1,39 @@
 <template>
     <Page>
-        <ActionBar title="Welcome to NativeScript-Vue!"/>
-        <GridLayout columns="*" rows="*">
-            <Label class="message" :text="msg" col="0" row="0"/>
-        </GridLayout>
+        <FlexboxLayout class="c-main-layout">
+          <Header/>
+          <FlexboxLayout class="c-main" />
+          <FlexboxLayout class="c-console"/>
+        </FlexboxLayout>
     </Page>
 </template>
 
 <script >
+  import Header from '../../../blankcanvas-nuxt/components/Global/Header'
+
   export default {
+    components: {
+        Header
+      },
     data() {
-      return {
-        msg: 'Hello World!'
-      }
+      return {}
     }
   }
 </script>
 
-<style scoped>
-    ActionBar {
-        background-color: #53ba82;
-        color: #ffffff;
-    }
-
-    .message {
-        vertical-align: center;
-        text-align: center;
-        font-size: 20;
-        color: #333333;
-    }
+<style lang="scss" scoped>
+.c-main-layout {
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  background: white;
+}
+.c-main {
+  background: white;
+  flex-grow: 1;
+}
+.c-console {
+  background: darkslategray;
+  height: 300px;
+}
 </style>

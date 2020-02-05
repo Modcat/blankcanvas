@@ -31,7 +31,6 @@ export default {
   justify-content: center;
   align-items: center;
   padding: 15px;
-  max-height: 95px;
   background: #eee;
 
   * {
@@ -58,11 +57,17 @@ export default {
       font-size: 10px;
       font-weight: bold;
     }
+
+    SegmentedBarItem {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+    }
   }
 }
 @media screen and (max-width: 100000px) {
   .c-header {
-    background: green;
+    background: #f4f4f4;
   }
 }
 </style>

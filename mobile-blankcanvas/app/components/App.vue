@@ -3,25 +3,27 @@
         <FlexboxLayout class="c-main-layout">
           <Header/>
           <FlexboxLayout class="c-main" />
-          <FlexboxLayout class="c-console"/>
+          <Terminal/>
         </FlexboxLayout>
     </Page>
 </template>
 
 <script >
-  import Header from '../../../blankcanvas-nuxt/components/Global/Header'
+import Header from '../../../blankcanvas-nuxt/components/Global/Header'
+import Terminal from '../../../blankcanvas-nuxt/components/Global/Terminal'
 
-  export default {
-    components: {
-        Header
-      },
-    data() {
-      return {}
-    }
+export default {
+  components: {
+    Header,
+    Terminal
+  },
+  data() {
+    return {}
   }
+}
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .c-main-layout {
   flex-direction: column;
   width: 100%;
@@ -31,9 +33,5 @@
 .c-main {
   background: white;
   flex-grow: 1;
-}
-.c-console {
-  background: darkslategray;
-  height: 300px;
 }
 </style>

@@ -6,17 +6,21 @@
 .u-ios-only {
     display: none; 
 }
+
 body.android {
     .u-android-only {
         display: flex;
     }
 }
+
 body.ios {
     .u-ios-only {
         display: flex;
     }
 }
+
 // Nativescript layout
+
 AbsoluteLayout {
     position: relative;
     display: block;
@@ -25,6 +29,7 @@ AbsoluteLayout {
         position: absolute;
     }
 }
+
 DockLayout {
     position: relative;
     display: block;
@@ -63,6 +68,7 @@ DockLayout {
         }
     }
 }
+
 FlexboxLayout {
     display: flex;
     flex-direction: row;
@@ -115,6 +121,7 @@ FlexboxLayout {
         &[alignSelf='stretch'] { align-self: stretch; }
     }
 }
+
 GridLayout {
     display: grid;
     // columns and rows attribute and css styling for compatability
@@ -125,6 +132,7 @@ GridLayout {
         // rowSpan
         // colSpan
 }
+
 WrapLayout {
     display: flex;
     flex-flow: wrap row;
@@ -166,6 +174,7 @@ ActivityIndicator {
         animation: ActivityIndicatorAnim 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
         border-color: #ffaf6d transparent transparent transparent;
     }
+    
     div:nth-child(1) {
         animation-delay: -0.45s;
     }
@@ -186,6 +195,11 @@ ActivityIndicator {
 }
 Button {
     display: inline-block;
+    
+    &::before {
+        display: inline;
+        content: attr(title);
+    }
 }
 DatePicker {
     display: inline-block;

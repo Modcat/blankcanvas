@@ -1,8 +1,45 @@
-
 export default {
   mode: 'spa',
   generate: {
     dir: '../electron-nuxt/static/web-interface'
+  },
+  vue: {
+    config: {
+      ignoredElements : [
+        'AbsoluteLayout',
+        'DockLayout',
+        'FlexboxLayout',
+        'GridLayout',
+        'StackLayout',
+        'SegmentedBarItem',
+        'WrapLayout',
+        'ActionBar',
+        'ActionItem',
+        'NavigationButton',
+        'ActivityIndicator',
+        'Button',
+        'DatePicker',
+        'Image',
+        'Label',
+        'ListPicker',
+        'ListView',
+        'Progress',
+        'ScrollView',
+        'SearchBar',
+        'SegmentedBar',
+        'Slider',
+        'Switch',
+        'TabView',
+        'TextField',
+        'TextView',
+        'HtmlView',
+        'WebView',
+        'TimePicker',
+        'Page',
+        'Placeholder'
+      ],
+      productionTip: false
+    }
   },
   /*
   ** Headers of the page

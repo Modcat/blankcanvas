@@ -51,8 +51,7 @@
     "nedb": "^1.8.0",
     "ntru": "^3.2.1",
     "os": "^0.1.1",
-    "serve-favicon": "^2.5.0",
-    "winston": "^3.0.0"
+    "serve-favicon": "^2.5.0"
   },
   "devDependencies": {
     "axios": "^0.19.0",

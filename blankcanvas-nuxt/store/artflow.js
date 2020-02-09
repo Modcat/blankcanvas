@@ -1,6 +1,7 @@
 // Art flow consists of art boards that are nested within a document
 // Each object is the flow
 export const state = () => ({
+  test: 'hello test string',
   artflow: [
     {
       // Id of artboard
@@ -35,4 +36,7 @@ export const actions = {
 }
 
 export const mutations = {
+}
+
+export const getters = {
 }

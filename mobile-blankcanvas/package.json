@@ -14,6 +14,12 @@
       "version": "6.0.1"
     }
   },
+  "build": {
+    "appId": "native.blankcanvas.app",
+    "directories": {
+      "buildResources": "../blankcanvas-feathers"
+    }
+  },
   "dependencies": {
     "@vue/devtools": "^5.0.6",
     "nativescript-platform-css": "^1.6.10",

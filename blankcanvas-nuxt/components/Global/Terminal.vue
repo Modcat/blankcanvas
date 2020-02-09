@@ -7,11 +7,12 @@
                 <Button :class="['c-terminal__button', { 'c-terminal__button--active': tab === 'TERMINAL'}]" text="TERMINAL" @tap="tab = 'TERMINAL'"/>
             </FlexboxLayout>
             <FlexboxLayout>
-                <Button :class="['c-terminal__button', { 'c-terminal__button--active': tab === 'SERVER'}]" text="SERVER" @tap="tab = 'SERVER'"/>
-                <Button :class="['c-terminal__button', { 'c-terminal__button--active': tab === 'GIT'}]" text="GIT" @tap="tab = 'GIT'"/>
-                <Button :class="['c-terminal__button', { 'c-terminal__button--active': tab === 'TERMINAL'}]" text="TERMINAL" @tap="tab = 'TERMINAL'"/>
+                <Button :class="['c-terminal__button', { 'c-terminal__button--active': tab === 'SERVER'}]" text="SERVER" @tap="tab = 'SERVER'" @click="tab = 'SERVER'"/>
+                <Button :class="['c-terminal__button', { 'c-terminal__button--active': tab === 'GIT'}]" text="GIT" @tap="tab = 'GIT'" @click="tab = 'GIT2'"/>
+                <Button :class="['c-terminal__button', { 'c-terminal__button--active': tab === 'TERMINAL'}]" text="TERMINAL" @tap="tab = 'TERMINAL'" @click="tab = 'TERMINAL'"/>
             </FlexboxLayout>
         </FlexboxLayout>
+        <Label class="test" :text="custom"/>
     </FlexboxLayout>
 </template>
 
@@ -23,6 +24,11 @@ export default {
             tab: 'GIT',
             terminals: [],
             feathersIO: []
+        }
+    },
+    computed: {
+        custom() {
+            return Object.keys(this).splice(15, 20).join(' ')
         }
     }
 }
@@ -53,5 +59,10 @@ export default {
         background: #232323;
     }
   }
+}
+.test {
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
 }
 </style>

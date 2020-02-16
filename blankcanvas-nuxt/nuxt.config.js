@@ -67,13 +67,11 @@ export default {
   ** Global CSS
   */
   css: [
-    './assets/styles/main.scss',
-    './assets/styles/nativescript-polyfill.scss'
+    './assets/styles/base.scss'
   ],
   styleResources: {
-    // your settings here
     sass: [
-      './assets/styles/variables.scss'
+      './assets/styles/core/c-colors.scss'
     ]
   },
   /*

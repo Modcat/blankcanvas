@@ -1,28 +1,73 @@
 <template>
   <FlexboxLayout class="c-header">
     <SegmentedBar class="c-tabs">
-      <SegmentedBarItem title="Artboards"/>
-      <SegmentedBarItem title="Artflow"/>
-      <SegmentedBarItem title="Director"/>
-      <SegmentedBarItem title="Art Store"/>
-      <SegmentedBarItem title="HotKeys"/>
-      <SegmentedBarItem title="Bounty Board"/>
-      <SegmentedBarItem title="Docs"/>
-      <SegmentedBarItem title="Volenteer"/>
-      <SegmentedBarItem title="Admin"/>
+      <SegmentedBarItem
+        title="Artboards"
+        @click="changeRoute('index')"
+        @tap="changeRoute('index')"
+      />
+      <SegmentedBarItem
+        title="Artflow"
+        @click="changeRoute('artflow')"
+        @tap="changeRoute('artflow')"
+      />
+      <SegmentedBarItem
+        title="Director"
+        @click="changeRoute('director')"
+        @tap="changeRoute('director')"
+      />
+      <SegmentedBarItem
+        title="Art Store"
+        @click="changeRoute('artstore')"
+        @tap="changeRoute('artstore')"
+      />
+      <SegmentedBarItem
+        title="HotKeys"
+        @click="changeRoute('hotkeys')"
+        @tap="changeRoute('hotkeys')"
+      />
+      <SegmentedBarItem
+        title="Bounty Board"
+        @click="changeRoute('bounty')"
+        @tap="changeRoute('bounty')"
+      />
+      <SegmentedBarItem
+        title="Docs"
+        @click="changeRoute('docs')"
+        @tap="changeRoute('docs')"
+      />
+      <SegmentedBarItem
+        title="Volenteer"
+        @click="changeRoute('volenteer')"
+        @tap="changeRoute('volenteer')"
+      />
+      <SegmentedBarItem
+        title="Admin"
+        @click="changeRoute('admin')"
+        @tap="changeRoute('admin')"
+      />
     </SegmentedBar>
+    <Button
+      class="c-button c-button--white"
+      text="_<"
+      @tap="openConsole()"
+      @click="openConsole()"
+    />
   </FlexboxLayout>
 </template>
 
 <script>
 export default {
-    name: 'Header',
-    methods: {
-      showAlert() {
-        alert('Hello world')
-      }
+  name: "Header",
+  methods: {
+    openConsole() {
+      this.$store.dispatch("console/displayConsole", true);
+    },
+    changeRoute(route = "/", query = {}, params = {}) {
+      this.$router.push({ name: route, query, params });
     }
-}
+  }
+};
 </script>
 
 <style lang="scss">
@@ -36,6 +81,11 @@ export default {
   * {
     -webkit-app-region: none;
   }
+
+  > * {
+    margin-left: 15px;
+  }
+
   .c-tabs {
     display: flex;
     border-radius: 3px;
@@ -65,6 +115,7 @@ export default {
     }
   }
 }
+
 @media screen and (max-width: 100000px) {
   .c-header {
     background: #f4f4f4;

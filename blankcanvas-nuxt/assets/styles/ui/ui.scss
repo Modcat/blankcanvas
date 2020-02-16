@@ -1,6 +1,13 @@
 // Old style
-a { text-decoration: none; }
-*:focus, *:hover, *:active { cursor:default; outline:none; }
+a {
+  text-decoration: none;
+}
+*:focus,
+*:hover,
+*:active {
+  cursor: default;
+  outline: none;
+}
 h1 {
   display: inline-flex;
   align-self: center;
@@ -27,77 +34,88 @@ $blue: #4ca1f7;
 
 body.radialEvent {
   -webkit-user-select: none;
-  pointer-events:none;
+  pointer-events: none;
 }
 
 .fa {
-  font-family:'icons' !important;
+  font-family: "icons" !important;
 }
 
-.block select, .dark.block select, select.block {
+.block select,
+.dark.block select,
+select.block {
   color: #fff;
   line-height: 33px;
-  border:none;
-  background: url('data:image/svg+xml;utf8,<svg  xmlns="http://www.w3.org/2000/svg" width="10" height="15"><path d="M5 0 L0 6 L10 6 Z" fill="#fff" /><path d="M5 15 L0 9 L10 9 Z" fill="#fff" /></svg>') right 10px center no-repeat #777;
+  border: none;
+  background: url('data:image/svg+xml;utf8,<svg  xmlns="http://www.w3.org/2000/svg" width="10" height="15"><path d="M5 0 L0 6 L10 6 Z" fill="#fff" /><path d="M5 15 L0 9 L10 9 Z" fill="#fff" /></svg>')
+    right 10px center no-repeat #777;
 }
 
 .field_ui {
   perspective: 1000px;
-  position:relative;
-  display:inline-flex;
+  position: relative;
+  display: inline-flex;
   padding: 5px 0;
-  line-height:15px;
+  line-height: 15px;
   border-bottom: 1px solid #aaa;
   font-size: 14px;
 }
 
-.block .field_ui, .field_ui.block {
+.block .field_ui,
+.field_ui.block {
   padding: 5px;
   border-radius: 100px;
-  line-height:15px;
+  line-height: 15px;
   border: none;
-  background: rgba(0,0,0,0.1);
+  background: rgba(0, 0, 0, 0.1);
 }
 
-.block .field_ui:before, .field_ui.block:before {
+.block .field_ui:before,
+.field_ui.block:before {
   display: none;
 }
 
-.block .field_ui input,.block .field_ui select,
-.field_ui.block input, .field_ui.block select {
-  opacity: .6;
+.block .field_ui input,
+.block .field_ui select,
+.field_ui.block input,
+.field_ui.block select {
+  opacity: 0.6;
   color: #000;
 }
 
-.block .field_ui button, .field_ui.block button {
+.block .field_ui button,
+.field_ui.block button {
   color: #777;
 }
 
-.block .field_ui i, .field_ui.block i {
+.block .field_ui i,
+.field_ui.block i {
   background: #fff;
   box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.3);
   border-radius: 2px;
 }
 
-.block .field_ui.disabled i , .field_ui.block.disabled i {
-  box-shadow:none;
+.block .field_ui.disabled i,
+.field_ui.block.disabled i {
+  box-shadow: none;
   background: transparent;
 }
 
-.block .field_ui i:after, .field_ui.block i:after {
+.block .field_ui i:after,
+.field_ui.block i:after {
   border-radius: 2px;
   background: $gray;
 }
 
-.field_ui:before { 
-    content: "";
-    position:absolute;
-    left:0;
-    bottom: -1px;
-    width: 0px;
-    height: 2px;
-    background:$gray;
-    transition: width .2s cubic-bezier(.07,.89,.17,.98);
+.field_ui:before {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -1px;
+  width: 0px;
+  height: 2px;
+  background: $gray;
+  transition: width 0.2s cubic-bezier(0.07, 0.89, 0.17, 0.98);
 }
 
 .field_ui:after {
@@ -108,14 +126,14 @@ body.radialEvent {
   left: 15px;
   top: -5px;
   border-radius: 5px;
-  transition: all .3s;
+  transition: all 0.3s;
 }
 
 .field_ui.locked:after {
-  background:#f82856;
+  background: #f82856;
   top: -5px;
   left: -5px;
-  box-shadow: 2px 2px 0px rgba(0,0,0,.3);
+  box-shadow: 2px 2px 0px rgba(0, 0, 0, 0.3);
 }
 
 .field_ui.focused:before {
@@ -131,26 +149,28 @@ body.radialEvent {
 }
 
 .field_ui i {
-  font-family: 'icons';
+  font-family: "icons";
   background: #f0f0f0;
   border-radius: 3px;
 }
 
-.field_ui i, .field_ui button,
-.block div.field_ui button, div.field_ui.block button {
+.field_ui i,
+.field_ui button,
+.block div.field_ui button,
+div.field_ui.block button {
   perspective: 250px;
   position: relative;
-  display:inline-block;
+  display: inline-block;
   padding: 2px 5px 0 5px;
-  float:left;
+  float: left;
   min-width: 25px;
-  box-sizing:border-box;
+  box-sizing: border-box;
   line-height: 23px;
-  font-size:inherit;
-  text-align:center;
+  font-size: inherit;
+  text-align: center;
   font-style: normal;
   color: #777;
-  transition: color .2s;
+  transition: color 0.2s;
 }
 
 div.field_ui button {
@@ -160,7 +180,7 @@ div.field_ui button {
   box-sizing: border-box;
   border: 1px solid transparent;
   background: transparent;
-  transition: border .2s; 
+  transition: border 0.2s;
 }
 
 .field_ui button:hover {
@@ -168,7 +188,7 @@ div.field_ui button {
 }
 
 .field_ui button:active {
-  border:1px solid transparent;
+  border: 1px solid transparent;
   background: $blue;
   color: #fff !important;
   transition: none;
@@ -197,7 +217,7 @@ div.field_ui button {
   transform-origin: center center;
   transform: rotateX(-70deg);
   background: $gray;
-  transition: all .3s;
+  transition: all 0.3s;
 }
 
 .field_ui.focused i:after {
@@ -206,21 +226,21 @@ div.field_ui button {
   transform: rotateZ(0deg);
 }
 
-.field_ui input[type="text"]{
+.field_ui input[type="text"] {
   flex-grow: 1;
-  padding:0;
-  margin:0;
+  padding: 0;
+  margin: 0;
   min-width: 0px;
   line-height: inherit;
   box-sizing: border-box;
   font-size: 14px;
   border: none;
-  box-shadow:none;
+  box-shadow: none;
   background: transparent;
 }
 
 .field_ui input[type="text"]:focus {
-  outline:none;
+  outline: none;
 }
 
 .field_ui select {
@@ -229,9 +249,10 @@ div.field_ui button {
   font-size: inherit;
   border: none;
   border-radius: 0;
-  background: url('data:image/svg+xml;utf8,<svg xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" version="1.1" id="svg3373" viewBox="0 0 10 7.0000001" height="7" width="10"><defs id="defs3375" /><metadata id="metadata3378"> <rdf:RDF> <cc:Work rdf:about=""> <dc:format>image/svg+xml</dc:format><dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage" /><dc:title></dc:title></cc:Work></rdf:RDF></metadata><g transform="translate(0,-1045.3622)" id="layer1"> <path id="path3381" d="m -0.04464286,1052.4069 10.93749986,-7.634 0.178567,9.1964 z" style="fill:#000000;fill-rule:evenodd;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" /></g></svg>') no-repeat right bottom transparent;
+  background: url('data:image/svg+xml;utf8,<svg xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" version="1.1" id="svg3373" viewBox="0 0 10 7.0000001" height="7" width="10"><defs id="defs3375" /><metadata id="metadata3378"> <rdf:RDF> <cc:Work rdf:about=""> <dc:format>image/svg+xml</dc:format><dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage" /><dc:title></dc:title></cc:Work></rdf:RDF></metadata><g transform="translate(0,-1045.3622)" id="layer1"> <path id="path3381" d="m -0.04464286,1052.4069 10.93749986,-7.634 0.178567,9.1964 z" style="fill:#000000;fill-rule:evenodd;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" /></g></svg>')
+    no-repeat right bottom transparent;
   background-size: auto 4px;
-  border-left: 1px solid rgba(0,0,0,0.33);
+  border-left: 1px solid rgba(0, 0, 0, 0.33);
   line-height: 18px;
   height: 19px;
   margin-right: 3px !important;
@@ -242,15 +263,15 @@ div.field_ui button {
 }
 
 .field_ui.disabled {
-  pointer-events:none;
+  pointer-events: none;
   border-bottom: 1px solid #ddd;
 }
 
 .field_ui.disabled * {
-  opacity: .3 !important;
+  opacity: 0.3 !important;
 }
 
-.field_ui.disabled input[type="text"]{
+.field_ui.disabled input[type="text"] {
   color: transparent;
 }
 
@@ -263,49 +284,52 @@ button {
   font-size: 13px;
   color: $gray;
   background: transparent;
-  box-sizing:border-box;
+  box-sizing: border-box;
   border: 1px solid $gray;
-  transition: background .2s;
+  transition: background 0.2s;
 }
 
 button i {
-  font-family: 'icons';
+  font-family: "icons";
   font-style: normal;
   padding-right: 10px;
 }
 
 button i:last-child {
   line-height: 27px;
-  pointer-events:none;
+  pointer-events: none;
   padding-right: 0;
 }
 
 button:hover {
-  background: rgba(0,0,0,.1);
+  background: rgba(0, 0, 0, 0.1);
 }
 
 button:active {
- background: rgba(0,0,0,.2);
+  background: rgba(0, 0, 0, 0.2);
 }
 
-.block button, button.block {
+.block button,
+button.block {
   border: none;
   color: #fff;
   background: #777;
 }
 
-button.block:active, button.block.active,
-.block button:active, .block button.active {
- background: $gray;
+button.block:active,
+button.block.active,
+.block button:active,
+.block button.active {
+  background: $gray;
 }
 
 *[disabled] {
-  opacity: .3;
-  pointer-events:none;
+  opacity: 0.3;
+  pointer-events: none;
 }
 
 .toggle * {
-  pointer-events:none;
+  pointer-events: none;
 }
 
 .toggle.on {
@@ -313,21 +337,24 @@ button.block:active, button.block.active,
   color: #fff;
 }
 
-.groupVals, .groupValsRadial {
+.groupVals,
+.groupValsRadial {
   display: inline-flex;
 }
 
 .groupValsRadial .field_ui {
-    line-height: 23px;
-    height: 30px;
+  line-height: 23px;
+  height: 30px;
 }
 
-.groupVals .field_ui, .groupValsRadial .field_ui {
-  width:30px;
-  margin-left:10px;
+.groupVals .field_ui,
+.groupValsRadial .field_ui {
+  width: 30px;
+  margin-left: 10px;
 }
 
-.groupVals .field_ui input, .groupValsRadial .field_ui input {
+.groupVals .field_ui input,
+.groupValsRadial .field_ui input {
   text-align: center;
 }
 
@@ -336,12 +363,11 @@ button.block:active, button.block.active,
   height: 5px;
   left: 30px;
   top: 5px;
-  box-sizing:border-box;
+  box-sizing: border-box;
   border: 1px solid $gray;
 }
 
-input[type=range]{
-  
+input[type="range"] {
   -webkit-appearance: none;
   flex-grow: 1;
   background: transparent;
@@ -361,26 +387,25 @@ input[type=range]{
     box-sizing: border-box;
     background: $gray;
     border-radius: 50px;
-    
   }
 }
 
-input[type=range].block, form.block input[type=range],
-.block input[type=range], .block form input[type=range] {
-
+input[type="range"].block,
+form.block input[type="range"],
+.block input[type="range"],
+.block form input[type="range"] {
   &::-webkit-slider-runnable-track {
-    border: 2px solid rgba(0,0,0,0);
+    border: 2px solid rgba(0, 0, 0, 0);
     background: $gray;
   }
 
   &::-webkit-slider-thumb {
     background: white;
-    box-shadow: -1px 1px 1px rgba(0,0,0,.3);
+    box-shadow: -1px 1px 1px rgba(0, 0, 0, 0.3);
   }
-
 }
 
-input[type=radio] {
+input[type="radio"] {
   -webkit-appearance: none;
   position: relative;
   margin: 0;
@@ -392,12 +417,12 @@ input[type=radio] {
   background: #ddd;
 }
 
-input[type=radio][disabled]{
+input[type="radio"][disabled] {
   border: 1px solid #aaa;
   background: transparent;
-} 
+}
 
-input[type=radio]:before {
+input[type="radio"]:before {
   content: "";
   display: inline-block;
   float: left;
@@ -406,15 +431,15 @@ input[type=radio]:before {
   transform: scale(0);
   border-radius: 50px;
   transform-origin: center center;
-  transition: all .2s ease-in;
+  transition: all 0.2s ease-in;
 }
 
-input[type=radio]:checked:before{
+input[type="radio"]:checked:before {
   background: $blue;
   transform: scale(1);
 }
 
-input[type=radio]:after {
+input[type="radio"]:after {
   content: "";
   position: absolute;
   display: inline-block;
@@ -426,16 +451,15 @@ input[type=radio]:after {
   border-radius: 50px;
   transform-origin: center center;
   transform: scale(0);
-  transition: all .3s .2s ease-out;
+  transition: all 0.3s 0.2s ease-out;
 }
 
-
-input[type=radio]:checked:after {
+input[type="radio"]:checked:after {
   transform-origin: center center;
   transform: scale(1);
 }
 
-input[type=checkbox]{
+input[type="checkbox"] {
   -webkit-appearance: none;
   position: relative;
   overflow: hidden;
@@ -443,32 +467,32 @@ input[type=checkbox]{
   padding: 0;
   width: 15px;
   height: 15px;
-  background:#ddd;
+  background: #ddd;
   border-radius: 3px;
 }
 
-input[type=checkbox][disabled] {
+input[type="checkbox"][disabled] {
   border: 1px solid #aaa;
   background: transparent;
 }
 
-input[type=checkbox]:before {
+input[type="checkbox"]:before {
   content: "";
-  display:inline-block;
+  display: inline-block;
   width: inherit;
   height: inherit;
   background: $blue;
   transform-origin: center center;
   transform: scale(0);
   border-radius: 3px;
-  transition: all .2s ease-in;
+  transition: all 0.2s ease-in;
 }
 
-input[type=checkbox]:checked:before {
+input[type="checkbox"]:checked:before {
   transform: scale(1);
 }
 
-input[type=checkbox]:after {
+input[type="checkbox"]:after {
   // content: url('check.svg');
   position: absolute;
   left: 0;
@@ -476,16 +500,16 @@ input[type=checkbox]:after {
   width: 15px;
   height: 15px;
   opacity: 0;
-  transition: all .2s .2s ease-in;
+  transition: all 0.2s 0.2s ease-in;
 }
 
-input[type=checkbox]:checked:after {
+input[type="checkbox"]:checked:after {
   opacity: 1;
 }
 
-input[type=radio][disabled] + label,
-input[type=checkbox][disabled] + label{
-  opacity: .2;
+input[type="radio"][disabled] + label,
+input[type="checkbox"][disabled] + label {
+  opacity: 0.2;
 }
 
 .buttonGroup button {
@@ -497,8 +521,8 @@ input[type=checkbox][disabled] + label{
   color: $gray;
   background: transparent;
   border: none;
-  border-radius:0;
-  transition: all .2s ease-out;
+  border-radius: 0;
+  transition: all 0.2s ease-out;
 }
 
 .buttonGroup button.active {
@@ -507,24 +531,25 @@ input[type=checkbox][disabled] + label{
 }
 
 .buttonGroup.toggle button.active {
-  pointer-events:none;
+  pointer-events: none;
 }
 
 .buttonGroup {
   display: inline-flex;
   border-color: $gray;
   max-height: 33px;
-  box-sizing:border-box;
+  box-sizing: border-box;
 }
 
 .buttonGroup button {
-  border-color: inherit;  
+  border-color: inherit;
 }
 
-.buttonGroup button > *, .buttonGroup button:before {
+.buttonGroup button > *,
+.buttonGroup button:before {
   position: relative;
   z-index: 2;
-  pointer-events:none;
+  pointer-events: none;
 }
 
 .buttonGroup button:after {
@@ -536,13 +561,13 @@ input[type=checkbox][disabled] + label{
   width: 0px;
   border-bottom: 2px solid;
   border-color: inherit;
-  transition: all .2s cubic-bezier(.02,.89,.01,.98);
+  transition: all 0.2s cubic-bezier(0.02, 0.89, 0.01, 0.98);
 }
 
 .buttonGroup button.active:after {
   left: 0;
   width: 100%;
-  transition: all .2s .1s cubic-bezier(.02,.89,.01,.98);
+  transition: all 0.2s 0.1s cubic-bezier(0.02, 0.89, 0.01, 0.98);
 }
 
 .buttonGroup.vertical {
@@ -555,12 +580,12 @@ input[type=checkbox][disabled] + label{
   width: 100%;
   padding: 7px 15px;
   margin: 0;
-  text-align:left;
-  clear:left;
+  text-align: left;
+  clear: left;
 }
 
 .buttonGroup.vertical button.active {
-  background: rgba(0,0,0,.05);
+  background: rgba(0, 0, 0, 0.05);
 }
 
 .buttonGroup.vertical button:after {
@@ -578,14 +603,16 @@ input[type=checkbox][disabled] + label{
   height: 100%;
 }
 
-.block .buttonGroup, .buttonGroup.block {
+.block .buttonGroup,
+.buttonGroup.block {
   border: 1px solid $gray;
   border-radius: 3px;
 }
 
-.block .buttonGroup button, .buttonGroup.block button {
+.block .buttonGroup button,
+.buttonGroup.block button {
   border-right: none;
-  border-color:  inherit;
+  border-color: inherit;
   padding: 5px 10px;
   margin: 0;
 }
@@ -604,7 +631,7 @@ input[type=checkbox][disabled] + label{
 .buttonGroup.block button:after {
   width: 100%;
   height: 0px;
-  border:none;
+  border: none;
 }
 
 .block .buttonGroup button.active:after,
@@ -626,26 +653,26 @@ section[data-opener].active {
   height: auto;
   opacity: 1;
   transform: rotateX(0deg) scale(1);
-  transition: all .2s .1s;
+  transition: all 0.2s 0.1s;
 }
 
 section[data-opener] {
   height: 0px;
   overflow: hidden;
   opacity: 0;
-  transform: rotateX(40deg) scale(.9);
-  transition: all .3s;
+  transform: rotateX(40deg) scale(0.9);
+  transition: all 0.3s;
 }
 
 .block form > .field_ui {
   border: none;
   border-bottom: 1px solid #aaa;
   background: transparent;
-  border-radius:0px;
+  border-radius: 0px;
 }
 
 .block form > .field_ui input {
-  opacity:1;
+  opacity: 1;
 }
 
 // DARK DESIGN
@@ -655,7 +682,7 @@ section[data-opener] {
 }
 
 .dark hr {
-  border-color:#202020;
+  border-color: #202020;
 }
 
 .dark .field_ui {
@@ -670,7 +697,7 @@ section[data-opener] {
   background: #dedede;
 }
 
-.dark .field_ui.focused i:before{
+.dark .field_ui.focused i:before {
   color: $gray;
 }
 
@@ -683,7 +710,8 @@ section[data-opener] {
   border-color: #dedede;
 }
 
-.dark .field_ui input, .dark .field_ui select{
+.dark .field_ui input,
+.dark .field_ui select {
   color: #fff;
 }
 
@@ -693,11 +721,13 @@ section[data-opener] {
 
 .dark select {
   color: #fff;
-  background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="10" height="15"><path d="M5 0 L0 6 L10 6 Z" fill="#dedede" /><path d="M5 15 L0 9 L10 9 Z" fill="#dedede" /></svg>') right 10px center no-repeat transparent;
+  background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="10" height="15"><path d="M5 0 L0 6 L10 6 Z" fill="#dedede" /><path d="M5 15 L0 9 L10 9 Z" fill="#dedede" /></svg>')
+    right 10px center no-repeat transparent;
 }
 
 .dark .field_ui select {
-  background: url('data:image/svg+xml;utf8,<svg xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" version="1.1" id="svg3373" viewBox="0 0 10 7.0000001" height="7" width="10"><defs id="defs3375" /><metadata id="metadata3378"> <rdf:RDF> <cc:Work rdf:about=""> <dc:format>image/svg+xml</dc:format><dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage" /><dc:title></dc:title></cc:Work></rdf:RDF></metadata><g transform="translate(0,-1045.3622)" id="layer1"> <path id="path3381" d="m -0.04464286,1052.4069 10.93749986,-7.634 0.178567,9.1964 z" style="fill:#DEDEDE;fill-rule:evenodd;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" /></g></svg>') no-repeat right bottom transparent;
+  background: url('data:image/svg+xml;utf8,<svg xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" version="1.1" id="svg3373" viewBox="0 0 10 7.0000001" height="7" width="10"><defs id="defs3375" /><metadata id="metadata3378"> <rdf:RDF> <cc:Work rdf:about=""> <dc:format>image/svg+xml</dc:format><dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage" /><dc:title></dc:title></cc:Work></rdf:RDF></metadata><g transform="translate(0,-1045.3622)" id="layer1"> <path id="path3381" d="m -0.04464286,1052.4069 10.93749986,-7.634 0.178567,9.1964 z" style="fill:#DEDEDE;fill-rule:evenodd;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" /></g></svg>')
+    no-repeat right bottom transparent;
 }
 
 .dark.block .field_ui,
@@ -709,26 +739,27 @@ section[data-opener] {
 .dark.block form > .field_ui {
   background: transparent;
   border: none;
-  border-radius:0px;
+  border-radius: 0px;
   border-bottom: 1px solid #666;
 }
 
-.dark input[type=checkbox], .dark input[type=radio]{
+.dark input[type="checkbox"],
+.dark input[type="radio"] {
   background: $gray;
 }
 
 .dark button {
-
   color: #dedede;
 
   &:hover {
-    background: rgba(255,255,255,.05);
+    background: rgba(255, 255, 255, 0.05);
   }
 
-  &:active, &.on {
-    background: rgba(255,255,255,.1);
+  &:active,
+  &.on {
+    background: rgba(255, 255, 255, 0.1);
   }
- 
+
   &.block {
     background: $gray;
     box-sizing: border-box;
@@ -738,20 +769,20 @@ section[data-opener] {
     background: #333;
   }
 
-  &.block:active, &.block.on {
+  &.block:active,
+  &.block.on {
     background: #222;
-    box-shadow: inset 0 0 0 1px rgba(255,255,255,.1);
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.1);
   }
-
 }
 
 .dark .buttonGroup {
-
   &.block {
     border-color: $gray;
   }
 
-  & button:hover,& button:active {
+  & button:hover,
+  & button:active {
     background: transparent;
   }
 
@@ -760,21 +791,20 @@ section[data-opener] {
   }
 }
 
-.dark input[type=range]{
-
+.dark input[type="range"] {
   &::-webkit-slider-runnable-track {
     border: 2px solid #dedede;
   }
 
   &::-webkit-slider-thumb {
-    background: #dedede;    
+    background: #dedede;
   }
-
 }
 
-.dark.block input[type=range], .dark.block form input[type=range],
-.dark input[type=range].block, .dark form.block input[type=range] {
-
+.dark.block input[type="range"],
+.dark.block form input[type="range"],
+.dark input[type="range"].block,
+.dark form.block input[type="range"] {
   &::-webkit-slider-runnable-track {
     border: 2px solid #dedede;
     background: #dedede;
@@ -782,7 +812,5 @@ section[data-opener] {
 
   &::-webkit-slider-thumb {
     background: #333;
-    
   }
-  
 }

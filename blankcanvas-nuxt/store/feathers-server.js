@@ -8,9 +8,6 @@ export const state = () => ({
 })
 
 export const actions = {
-    // displayConsole(context, payload) {
-    //     context.commit('DISPLAYCONSOLE', payload)
-    // }
     startFeathers(context) {
     },
     shutdownFeathers(context) {
@@ -20,9 +17,6 @@ export const actions = {
 }
 
 export const mutations = {
-    // DISPLAYCONSOLE(state, payload) {
-    //     state.displayConsole = payload
-    // }
 }
 
 export const getters = {

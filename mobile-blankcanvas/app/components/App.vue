@@ -2,8 +2,10 @@
     <Page>
         <FlexboxLayout class="c-main-layout">
           <Header/>
-          <FlexboxLayout class="c-main" />
-          <Terminal/>
+          <FlexboxLayout class="c-main">
+            <Label title="Homepage"/>
+          </FlexboxLayout>
+          <Terminal v-if="$store.state.console.displayConsole"/>
         </FlexboxLayout>
     </Page>
 </template>

@@ -3,7 +3,7 @@
         <FlexboxLayout class="c-main-layout">
           <Header/>
           <FlexboxLayout class="c-main">
-            <Label title="Homepage"/>
+            <Index/>
           </FlexboxLayout>
           <Terminal v-if="$store.state.console.displayConsole"/>
         </FlexboxLayout>
@@ -12,11 +12,13 @@
 
 <script >
 import Header from '../../../blankcanvas-nuxt/components/Global/Header'
+import Index from '../../../blankcanvas-nuxt/pages/index'
 import Terminal from '../../../blankcanvas-nuxt/components/Global/Terminal'
 
 export default {
   components: {
     Header,
+    Index,
     Terminal
   },
   data() {
@@ -35,5 +37,10 @@ export default {
 .c-main {
   background: white;
   flex-grow: 1;
+}
+.c-label {
+  color: #666;
+  font-size: 14px;
+  font-weight: bold;
 }
 </style>

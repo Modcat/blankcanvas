@@ -74,9 +74,6 @@ export default {
     };
   },
   computed: {
-    custom() {
-      return 'store'
-    }
   }
 };
 </script>
@@ -84,8 +81,8 @@ export default {
 <style lang="scss">
 .c-terminal {
   background: black;
-  height: 300px;
   flex-direction: column;
+  min-height: 250px;
 
   &__header {
     display: flex;
@@ -97,19 +94,12 @@ export default {
     color: white;
     background: black;
     border-radius: 0;
-    padding: 8px 20px;
+    padding: 10px 20px;
     margin: 0;
-    height: 60px;
 
     &--active {
       background: #232323;
     }
   }
-}
-
-.test {
-  color: white;
-  font-size: 14px;
-  font-weight: bold;
 }
 </style>

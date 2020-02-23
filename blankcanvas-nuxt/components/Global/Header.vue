@@ -114,11 +114,11 @@ export default {
       align-items: center;
     }
   }
-}
 
-@media screen and (max-width: 100000px) {
-  .c-header {
-    background: #f4f4f4;
+  .c-button--white {
+    background: white;
+    width: auto;
+    box-shadow: none;
   }
 }
 </style>

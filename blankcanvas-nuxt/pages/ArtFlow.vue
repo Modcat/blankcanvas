@@ -1,10 +1,7 @@
 <template>
-  <div class="artflow">
-    <img
-      src="/static/images/artflow.svg"
-      alt=""
-    >
-  </div>
+  <FlexboxLayout class="c-artflow">
+    <Label text="Artflow"/>
+  </FlexboxLayout>
 </template>
 
 <script>
@@ -31,7 +28,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.artflow {
+.c-artflow {
   display: flex;
   flex-direction: column;
   padding: 25px;

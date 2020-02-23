@@ -1,8 +1,7 @@
 <template>
-  <main>
-      <h1>hello world</h1>
-      <ActivityIndicator><div></div><div></div><div></div><div></div></ActivityIndicator>
-  </main>
+  <FlexboxLayout>
+    <Label text="start up screen"/>
+  </FlexboxLayout>
 </template>
 
 <script>

@@ -271,8 +271,13 @@ image {
   display: inline-block;
 }
 
-label {
+Label {
   display: inline-block;
+
+  &::before {
+    content: attr(text);
+    display: inline;
+  }
 }
 
 ListPicker {

@@ -11,9 +11,9 @@
 </template>
 
 <script >
-import Header from '../../../blankcanvas-nuxt/components/Global/Header'
+import Header from '../../../blankcanvas-nuxt/components/global/Header'
 import Index from '../../../blankcanvas-nuxt/pages/index'
-import Terminal from '../../../blankcanvas-nuxt/components/Global/Terminal'
+import Terminal from '../../../blankcanvas-nuxt/components/global/Terminal'
 
 export default {
   components: {

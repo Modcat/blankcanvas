@@ -1,5 +1,4 @@
 import OS from 'os'
-import PerfectScrollbar from 'perfect-scrollbar'
 
 export const state = () => ({
   electron: {
@@ -10,8 +9,7 @@ export const state = () => ({
       darwin: `${OS.homedir()}/Library/Application Support/blankcanvas/`,
       linux: `${OS.homedir()}/.config/blankcanvas`,
       win32: `${OS.homedir()}\\AppData\\Local\\blankcanvas\\`
-    }[OS.platform()],
-    perfectScrollbar: PerfectScrollbar
+    }[OS.platform()]
   }
 })
 

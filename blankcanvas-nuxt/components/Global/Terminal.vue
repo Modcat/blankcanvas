@@ -32,31 +32,10 @@
       </FlexboxLayout>
       <FlexboxLayout>
         <Button
-          :class="[
-            'c-button c-terminal__button',
-            { 'c-terminal__button--active': tab === 'SERVER' }
-          ]"
-          text="SERVER"
-          @tap="tab = 'SERVER'"
-          @click="tab = 'SERVER'"
-        />
-        <Button
-          :class="[
-            'c-button c-terminal__button',
-            { 'c-terminal__button--active': tab === 'GIT' }
-          ]"
-          text="GIT"
-          @tap="tab = 'GIT'"
-          @click="tab = 'GIT'"
-        />
-        <Button
-          :class="[
-            'c-button c-terminal__button',
-            { 'c-terminal__button--active': tab === 'TERMINAL' }
-          ]"
-          text="TERMINAL"
-          @tap="tab = 'TERMINAL'"
-          @click="tab = 'TERMINAL'"
+          class="c-button"
+          text="X"
+          @tap="closeTerminal()"
+          @click="closeTerminal()"
         />
       </FlexboxLayout>
     </FlexboxLayout>
@@ -73,9 +52,12 @@ export default {
       feathersIO: []
     };
   },
-  computed: {
+  methods: {
+    closeTerminal() {
+      this.$store.dispatch("console/displayConsole", false);
+    }
   }
-};
+}
 </script>
 
 <style lang="scss">
@@ -98,7 +80,7 @@ export default {
     margin: 0;
 
     &--active {
-      background: #232323;
+      background: #2c2c2c;
     }
   }
 }

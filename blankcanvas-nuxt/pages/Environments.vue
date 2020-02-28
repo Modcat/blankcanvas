@@ -370,8 +370,8 @@ import CodeMirrorMode from 'codemirror/mode/javascript/javascript.js'
 import CodeMirrorCSS from 'codemirror/lib/codemirror.css'
 import CodeMirrorTheme from 'codemirror/theme/base16-light.css'
 
-import Database from '@/components/Environments/Database'
-import Presentation from '@/components/Environments/Presentation'
+import Database from '@/components/environments/Database'
+import Presentation from '@/components/environments/Presentation'
 import SpreadsheetView from '@/components/Environments/SpreadsheetView'
 
 export default {

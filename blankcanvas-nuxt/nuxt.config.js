@@ -1,11 +1,11 @@
-export default {
+module.exports = {
   mode: 'spa',
   generate: {
     dir: '../electron-nuxt/static/web-interface'
   },
   vue: {
     config: {
-      ignoredElements : [
+      ignoredElements: [
         'AbsoluteLayout',
         'DockLayout',
         'FlexboxLayout',
@@ -42,53 +42,46 @@ export default {
     }
   },
   /*
-  ** Headers of the page
-  */
+   ** Headers of the page
+   */
   head: {
     title: process.env.npm_package_name || '',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: process.env.npm_package_description || '' }
+      {
+        hid: 'description',
+        name: 'description',
+        content: process.env.npm_package_description || ''
+      }
     ],
-    link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
-    ]
-  },
-  server: {
-    host: Object.values(require('os').networkInterfaces()).flat().filter(inter => { return inter.family === 'IPv4' && !inter.internal })[0].address,
-    port: '3031'
+    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
   },
   /*
-  ** Customize the progress-bar color
-  */
+   ** Customize the progress-bar color
+   */
   loading: { color: '#fff' },
   /*
-  ** Global CSS
-  */
-  css: [
-    './assets/styles/base.scss'
-  ],
+   ** Global CSS
+   */
+  css: ['./assets/styles/base.scss'],
   styleResources: {
-    sass: [
-      './assets/styles/core/c-colors.scss'
-    ]
+    sass: ['./assets/styles/core/c-colors.scss']
   },
   /*
-  ** Plugins to load before mounting the App
-  */
+   ** Plugins to load before mounting the App
+   */
   plugins: [
     './plugins/feathers-init.js',
-    './plugins/nativescript-elements.js',
+    './plugins/nativescript-elements.js'
   ],
   /*
-  ** Nuxt.js dev-modules
-  */
-  buildModules: [
-  ],
+   ** Nuxt.js dev-modules
+   */
+  buildModules: [],
   /*
-  ** Nuxt.js modules
-  */
+   ** Nuxt.js modules
+   */
   modules: [
     '@nuxtjs/style-resources',
     '@nuxtjs/axios',
@@ -96,19 +89,17 @@ export default {
     'nuxt-svg-loader'
   ],
   /*
-  ** Axios module configuration
-  ** See https://axios.nuxtjs.org/options
-  */
-  axios: {
-  },
+   ** Axios module configuration
+   ** See https://axios.nuxtjs.org/options
+   */
+  axios: {},
   /*
-  ** Build configuration
-  */
+   ** Build configuration
+   */
   build: {
     /*
-    ** You can extend webpack config here
-    */
-    extend (config, ctx) {
-    }
+     ** You can extend webpack config here
+     */
+    extend(config, ctx) {}
   }
 }

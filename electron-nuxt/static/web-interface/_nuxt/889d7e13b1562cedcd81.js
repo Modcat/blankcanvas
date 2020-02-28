@@ -1,1 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[13],{800:function(e,n,t){"use strict";t.r(n);var r={name:"Preferences"},c=t(6),component=Object(c.a)(r,(function(){var e=this.$createElement;return(this._self._c||e)("div",{staticClass:"nuxt_proto"},[this._v("\n  Preferences\n")])}),[],!1,null,"7b9ae3a6",null);n.default=component.exports}}]);

@@ -7,8 +7,8 @@
 </template>
 
 <script>
-import Header from '../components/Global/Header'
-import Terminal from '../components/Global/Terminal'
+import Header from '../components/global/Header'
+import Terminal from '../components/global/Terminal'
 
 export default {
   name: 'BlankcanvasDefault',

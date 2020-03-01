@@ -20,7 +20,8 @@ if (config.dev) {
 process.env.ELECTRON_DISABLE_SECURITY_WARNINGS = true
 // Listen the server
 server.listen()
-const _NUXT_URL_ = `http://localhost:${server.address().port}`
+const _NUXT_URL_ = `http://${privateIP}:${server.address().port}`
+// const _NUXT_URL_ = `http://www.google.com`
 global.sharedWindows = {}
 /*
 ** Electron
@@ -37,7 +38,7 @@ const newWin = () => {
 		transparent: true,
 		width: 800,
 		height: 480,
-		alwaysOnTop: true,
+		// alwaysOnTop: true,
 		webPreferences: {
 			nodeIntegration: true,
 			nodeIntegrationInWorker: false,
@@ -62,33 +63,9 @@ const newWin = () => {
 		pollServer()
 	} else { return win.loadURL(_NUXT_URL_) }
 }
-const webInterfaceWin = () => {
-	webIFWin = new electron.BrowserWindow({
-		icon: path.join(__dirname, 'static/icon.png'),
-		// transparent: true,
-		width: 0,
-		height: 0,
-		frame: false,
-		show: false
-	})
-	global.sharedWindows.webIFWin = webIFWin
-	webIFWin.hide()
-	// webIFWin.maximize()
-	webIFWin.on('closed', () => webIFWin = null)
-	if (config.dev) {
-		// Install vue dev tool and open chrome dev tools
-		const { default: installExtension, VUEJS_DEVTOOLS } = require('electron-devtools-installer')
-		installExtension(VUEJS_DEVTOOLS.id).then(name => {
-			// webIFWin.webContents.openDevTools()
-		}).catch(err => console.log('An error occurred: ', err))
-	}
-	// Production
-	webIFWin.loadURL(`http://${privateIP}:3031/`)
-}
 app.on('ready', newWin)
-app.on('ready', webInterfaceWin)
+// app.on('ready', webInterfaceWin)
 app.on('window-all-closed', () => app.quit())
 app.on('activate', () => {
 	win = newWin()
-	webIFWin = webInterfaceWin()
 })

@@ -1,5 +1,5 @@
 <template>
-  <FlexboxLayout class="main">
+  <FlexboxLayout>
     <Label text="start up screen"/>
   </FlexboxLayout>
 </template>
@@ -10,12 +10,8 @@ export default {
 }
 </script>
 
-<style lang="less">
-.main {
+<style>
+main {
   flex-grow: 1;
-
-  h1 {
-    color: red;
-  }
 }
 </style>

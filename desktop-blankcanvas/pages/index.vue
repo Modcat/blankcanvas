@@ -1,7 +1,6 @@
 <template>
   <FlexboxLayout class="main">
     <Label text="start up screen"/>
-    <h1>HELLO WORLD</h1>
   </FlexboxLayout>
 </template>
 

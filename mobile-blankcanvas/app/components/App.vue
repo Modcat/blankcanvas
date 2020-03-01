@@ -11,9 +11,9 @@
 </template>
 
 <script >
-import Header from '../../../blankcanvas-nuxt/components/global/Header'
-import Index from '../../../blankcanvas-nuxt/pages/index'
-import Terminal from '../../../blankcanvas-nuxt/components/global/Terminal'
+import Header from '../../../desktop-blankcanvas/components/global/Header'
+import Index from '../../../desktop-blankcanvas/pages/index'
+import Terminal from '../../../desktop-blankcanvas/components/global/Terminal'
 
 export default {
   components: {
@@ -27,7 +27,7 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="less">
 .c-main-layout {
   flex-direction: column;
   width: 100%;

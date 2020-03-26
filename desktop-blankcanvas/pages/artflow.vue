@@ -27,7 +27,7 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="less" scoped>
 .c-artflow {
   display: flex;
   flex-direction: column;

@@ -35,7 +35,7 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="less" scoped>
 .tabs {
   display: flex;
   align-items: center;

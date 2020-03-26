@@ -47,7 +47,7 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="less" scoped>
 .Docs {
   display: flex;
   flex-direction: row;

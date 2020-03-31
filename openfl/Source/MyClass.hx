@@ -1,3 +1,4 @@
+// Expose API https://haxe.org/manual/target-javascript-expose.html
 @:expose
 class MyClass {
   var name:String;

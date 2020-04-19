@@ -1,0 +1,8 @@
+{
+    "name": "setup",
+    "description": "init scripts for blankcanvas to make life a little easier",
+    "scripts": {
+        "initbc" : "cd ./desktop-blankcanvas && yarn && cd ../mobile-blankcanvas && yarn && cd ../renderer && yarn",
+        "buildbc" : "cd ./desktop-blankcanvas && yarn build && cd ../mobile-blankcanvas && tns build android ios && cd ../renderer && yarn build"
+    }
+}

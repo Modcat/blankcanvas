@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "A native application built with NativeScript-Vue",
   "author": "Lawrence Anthony Turton",
-  "license": "GPL v3",
+  "license": "GPL-3.0-only",
   "nativescript": {
     "id": "ltd.blankcanvas.design",
     "templateVersion": "v2",

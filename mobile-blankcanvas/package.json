@@ -15,10 +15,7 @@
     }
   },
   "build": {
-    "appId": "native.blankcanvas.app",
-    "directories": {
-      "buildResources": "../blankcanvas-feathers"
-    }
+    "appId": "native.blankcanvas.app"
   },
   "dependencies": {
     "@feathersjs/authentication-client": "^4.4.1",

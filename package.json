@@ -2,6 +2,10 @@
     "name": "setup",
     "description": "init scripts for blankcanvas to make life a little easier",
     "license": "GPL-3.0-only",
+    "author": {
+        "name" : "Lawrence Turton",
+        "url" : "https://avelx.co.uk/"
+    },
     "scripts": {
         "initbc" : "cd ./desktop-blankcanvas && yarn && cd ../mobile-blankcanvas && yarn && cd ../renderer && yarn",
         "upgradebc" : "cd ./desktop-blankcanvas && yarn upgrade && cd ../mobile-blankcanvas && yarn upgrade && cd ../renderer && yarn upgrade",

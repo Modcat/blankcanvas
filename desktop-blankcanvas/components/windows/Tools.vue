@@ -8,7 +8,7 @@ export default {
 }
 </script>
 
-<style>
+<style lang="less">
 .tools {
   display: flex;
   width: 100vw;

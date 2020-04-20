@@ -10,7 +10,7 @@ export default {
 }
 </script>
 
-<style>
+<style lang="less">
 main {
   flex-grow: 1;
 }

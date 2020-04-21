@@ -16,9 +16,6 @@ import { state as feathersServerState, mutations as feathersServerMutations, act
 import { state as fileSystemState, mutations as fileSystemMutations, actions as fileSystemActions } from '../../desktop-blankcanvas/store/file-system'
 
 export const store = new Vuex.Store({
-  state: {
-    test: 'hello test string 44'
-  },
   modules: {
     artboards: {
       namespaced: true,

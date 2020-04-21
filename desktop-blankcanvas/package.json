@@ -13,9 +13,6 @@
       "buildResources": "static"
     }
   },
-  "files": [
-    "../blankcanvas-feathers"
-  ],
   "scripts": {
     "dev": "cross-env NODE_ENV=DEV electron .",
     "build": "nuxt build && electron-builder"

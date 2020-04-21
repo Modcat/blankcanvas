@@ -4,6 +4,9 @@
           <Header/>
           <FlexboxLayout class="c-main">
             <Index/>
+            <Button
+              text="YO3"
+            />
           </FlexboxLayout>
           <Terminal v-if="$store.state.console.displayConsole"/>
         </FlexboxLayout>
@@ -23,7 +26,7 @@ export default {
   },
   data() {
     return {}
-  }
+  },
 }
 </script>
 

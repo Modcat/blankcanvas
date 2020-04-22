@@ -18,22 +18,11 @@
     "appId": "native.blankcanvas.app"
   },
   "dependencies": {
-    "@feathersjs/authentication": "^4.5.1",
-    "@feathersjs/authentication-local": "^4.5.1",
-    "@feathersjs/authentication-oauth": "^4.5.1",
-    "@feathersjs/client": "^4.5.1",
-    "@feathersjs/configuration": "^4.5.1",
-    "@feathersjs/express": "^4.5.1",
-    "@feathersjs/feathers": "^4.5.1",
-    "@feathersjs/socketio": "^4.5.1",
     "@vue/devtools": "^5.0.6",
     "axios": "^0.19.0",
     "bulma-pro": "^0.1.6",
     "chalk": "^2.4.2",
     "codemirror": "^5.47.0",
-    "compression": "^1.7.4",
-    "consola": "^2.11.3",
-    "cors": "^2.8.5",
     "git": "^0.1.5",
     "gsap": "^3.0.1",
     "handsontable": "^7.2.1",
@@ -49,21 +38,16 @@
     "open": "~>6.3.0",
     "os": "^0.1.1",
     "pdf-export": "^1.4.1",
-    "perfect-scrollbar": "^1.4.0",
     "psd": "^3.2.0",
-    "serve-favicon": "^2.5.0",
     "shelljs": "^0.8.3",
     "simple-git": "^1.126.0",
-    "socket.io-client": "^2.3.0",
     "three": "^0.110.0",
     "tns-core-modules": "^6.0.0",
     "vue": "^2.6.10",
     "vue-chartist": "^2.2.0",
     "vuex": "^3.1.2",
-    "winston": "^3.2.1",
     "xterm": "^4.1.0",
-    "xterm-addon-web-links": "^0.2.1",
-    "yarn": "^1.19.1"
+    "xterm-addon-web-links": "^0.2.1"
   },
   "devDependencies": {
     "@babel/core": "^7.0.0",
@@ -72,7 +56,6 @@
     "nativescript-dev-webpack": "^1.0.0",
     "nativescript-vue-template-compiler": "^2.0.0",
     "nativescript-worker-loader": "~0.9.0",
-    "node-sass": "^4.9.2",
     "vue-loader": "^15.4.0"
   }
 }

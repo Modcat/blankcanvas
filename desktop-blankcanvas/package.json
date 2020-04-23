@@ -58,7 +58,7 @@
     "serve-static": "^1.14.1",
     "simple-git": "^1.128.0",
     "win-spawn": "^2.0.0",
-    "x-data-spreadsheet": "^1.0.29"
+    "x-data-spreadsheet": "^1.1.0"
   },
   "devDependencies": {
     "babel-eslint": "^10.1.0",

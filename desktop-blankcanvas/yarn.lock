@@ -12255,10 +12255,10 @@ ws@~6.1.0:
   dependencies:
     async-limiter "~1.0.0"
 
-x-data-spreadsheet@^1.0.29:
-  version "1.0.29"
-  resolved "https://registry.yarnpkg.com/x-data-spreadsheet/-/x-data-spreadsheet-1.0.29.tgz#8e9f60a4c2e340d5a74666d2741bc2dde43785cb"
-  integrity sha512-dN+R1hkJMdEg3VLxDLOxzyeyeQG+Mgsv8/nXtWNbW3RKNr5GkzWEhRqnLuBn/zwXzQEeBkY5EDLpLGr6Rj+2cw==
+x-data-spreadsheet@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/x-data-spreadsheet/-/x-data-spreadsheet-1.1.0.tgz#62f7473df8c63158cf1fe6bac708ed303ed59f18"
+  integrity sha512-4F6VZk9lS8P2BibFv3gksYXfdWQvCZuwoaTAuh/Mkly/+Xog87c2O/4Er8te8lXdEPfEXj2xMcDpz/BkGMoZYg==
   dependencies:
     opencollective "^1.0.3"
     opencollective-postinstall "^2.0.2"

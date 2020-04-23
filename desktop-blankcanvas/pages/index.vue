@@ -1,12 +1,18 @@
 <template>
-  <FlexboxLayout>
+  <!-- <FlexboxLayout>
     <Label text="start up screen"/>
-  </FlexboxLayout>
+  </FlexboxLayout> -->
+  <SpreadsheetView class="is-web-view"/>
 </template>
 
 <script>
-export default {
+import SpreadsheetView from '../components/environments/SpreadsheetView'
 
+export default {
+  name: 'spreadsheetEnvironment',
+  components: {
+    SpreadsheetView
+  }
 }
 </script>
 

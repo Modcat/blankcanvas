@@ -3,24 +3,38 @@
 </template>
 
 <script>
-import SpreadsheetJS from 'x-data-spreadsheet/dist/xspreadsheet.js'
-import SpreadsheetCSS from 'x-data-spreadsheet/dist/xspreadsheet.css'
+import Spreadsheet from "x-data-spreadsheet";
 
 export default {
-  name: 'Spreadsheet',
+  name: 'SpreadsheetView',
   data() {
     return {
       spreadsheet: false
     }
   },
   mounted() {
-    this.spreadsheet = x.spreadsheet('#xspreadsheet')
-    // Insert data
+    this.spreadsheet = new Spreadsheet("#xspreadsheet")
     .loadData({}) // load data
-    // Events
     .change(data => {
-      console.log('Save changes to spreadsheet')
-    })
+      // save data to db
+    });
+  
+    // data validation
+    this.spreadsheet.validate()
   }
 }
 </script>
+
+<style lang="less">
+  #xspreadsheet {
+    
+    .x-spreadsheet-toolbar,
+    .x-spreadsheet-bottombar {
+      width: 100vw !important;
+    }
+
+    .x-spreadsheet-icon .x-spreadsheet-icon-img {
+      background: url('/assets/sprite.svg');
+    }
+  }
+</style>

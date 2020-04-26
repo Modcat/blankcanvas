@@ -4,9 +4,6 @@
           <Header/>
           <FlexboxLayout class="c-main">
             <Index/>
-            <Button
-              text="YO3"
-            />
           </FlexboxLayout>
           <Terminal v-if="$store.state.console.displayConsole"/>
         </FlexboxLayout>
@@ -18,11 +15,14 @@ import Header from '../../../desktop-blankcanvas/components/global/Header'
 import Index from '../../../desktop-blankcanvas/pages/index'
 import Terminal from '../../../desktop-blankcanvas/components/global/Terminal'
 
+import Spreadsheet from '../../../desktop-blankcanvas/pages/index'
+
 export default {
   components: {
     Header,
     Index,
-    Terminal
+    Terminal,
+    Spreadsheet
   },
   data() {
     return {}

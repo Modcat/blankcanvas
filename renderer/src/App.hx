@@ -1,7 +1,7 @@
 import openfl.display.Sprite;
 import openfl.display.Stage;
 
-
+@:expose
 class App extends Sprite {
 	
 	

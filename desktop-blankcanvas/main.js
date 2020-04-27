@@ -33,7 +33,7 @@ const newWin = () => {
 	win = new electron.BrowserWindow({
 		icon: path.join(__dirname, 'static/icon.png'),
 		frame: false,
-		transparent: true,
+		transparent: false,
 		width: 1020,
 		height: 800,
 		webPreferences: {

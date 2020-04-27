@@ -1,5 +1,16 @@
+const host = Object.values(require('os').networkInterfaces())
+	.flat()
+	.filter((inter) => {
+		return inter.family === 'IPv4' && !inter.internal
+	})[0].address
+
 module.exports = {
 	mode: 'spa',
+	
+	server: {
+		host,
+		port: '1992'
+	},
 	/*
 	** Headers of the page
 	*/

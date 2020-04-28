@@ -7,8 +7,11 @@
         "url" : "https://avelx.co.uk/"
     },
     "scripts": {
-        "initbc" : "cd ./desktop-blankcanvas && yarn && cd ../mobile-blankcanvas && yarn && cd ../renderer && yarn",
-        "upgradebc" : "cd ./desktop-blankcanvas && yarn upgrade && cd ../mobile-blankcanvas && yarn upgrade && cd ../renderer && yarn upgrade",
-        "buildbc" : "cd ./desktop-blankcanvas && yarn build && cd ../mobile-blankcanvas && tns build android ios && cd ../renderer && yarn build"
+        "dev": "cd ./desktop && yarn dev",
+        "desktop": "cd ./desktop && cross-env NODE_ENV=DEV electron .",
+        "mobile": "cd ./mobile tns preview",
+        "initbc" : "cd ./desktop && yarn && cd ../mobile && yarn && cd ../renderer && yarn",
+        "upgradebc" : "cd ./desktop && yarn upgrade && cd ../mobile && yarn upgrade && cd ../renderer && yarn upgrade",
+        "buildbc" : "cd ./desktop && yarn build && cd ../mobile && tns build android ios && cd ../renderer && yarn build"
     }
 }

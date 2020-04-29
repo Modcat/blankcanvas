@@ -1,6 +1,6 @@
 {
   "host": "localhost",
-  "port": 3030,
+  "port": 1993,
   "public": "../public/",
   "paginate": {
     "default": 10,
@@ -9,7 +9,7 @@
   "authentication": {
     "entity": "user",
     "service": "users",
-    "secret": "G6WF02HnWXbbCy9RwJJekGvwEAo=",
+    "secret": "+ZPZli38erlxHvaNxaTwB9nn5MI=",
     "authStrategies": [
       "jwt",
       "local"
@@ -28,5 +28,5 @@
       "passwordField": "password"
     }
   },
-  "nedb": "../data"
+  "sqlite": "sqlite://server.sqlite"
 }

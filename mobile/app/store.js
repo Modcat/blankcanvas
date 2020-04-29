@@ -12,7 +12,6 @@ import { state as consoleState, mutations as consoleMutations, actions as consol
 import { state as directorState, mutations as directorMutations, actions as directorActions } from '../../desktop/store/director'
 import { state as documentState, mutations as documentMutations, actions as documentActions } from '../../desktop/store/document'
 import { state as electronState, mutations as electronMutations, actions as electronActions } from '../../desktop/store/electron'
-import { state as feathersServerState, mutations as feathersServerMutations, actions as feathersServerActions } from '../../desktop/store/feathers-server'
 import { state as fileSystemState, mutations as fileSystemMutations, actions as fileSystemActions } from '../../desktop/store/file-system'
 
 export const store = new Vuex.Store({
@@ -64,12 +63,6 @@ export const store = new Vuex.Store({
       state: electronState,
       mutations: electronMutations,
       actions: electronActions
-    },
-    feathersServer: {
-      namespaced: true,
-      state: feathersServerState,
-      mutations: feathersServerMutations,
-      actions: feathersServerActions
     },
     fileSystem: {
       namespaced: true,

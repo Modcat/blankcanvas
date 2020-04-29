@@ -1,5 +1,5 @@
 <template>
-  <section id="xspreadsheet"/>
+  <section class="is-web-view" id="xspreadsheet"/>
 </template>
 
 <script>

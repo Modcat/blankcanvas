@@ -1,15 +1,26 @@
 /*
+**  Feathers
+*/
+// const http = require('http')
+// const { Nuxt, Builder } = require('nuxt')
+// let config = require('./nuxt.config.js')
+// config.rootDir = __dirname // for electron-builder
+
+const pm2 = require('pm2')
+pm2.start('./server/src/index.js', { name: 'blankcanvas' })
+
+/*
 **  Nuxt
 */
 const http = require('http')
 const { Nuxt, Builder } = require('nuxt')
 let config = require('./nuxt.config.js')
 config.rootDir = __dirname // for electron-builder
-// Init Nuxt.js
 const nuxt = new Nuxt(config)
 const builder = new Builder(nuxt)
 const server = http.createServer(nuxt.render)
 const privateIP = Object.values(require('os').networkInterfaces()).flat().filter(inter => { return inter.family === 'IPv4' && !inter.internal })[0].address
+
 // Build only in dev mode
 if (config.dev) {
 	builder.build().catch(err => {
@@ -19,7 +30,7 @@ if (config.dev) {
 }
 process.env.ELECTRON_DISABLE_SECURITY_WARNINGS = true
 // Listen the server
-server.listen()
+server.listen('1992')
 const _NUXT_URL_ = `http://${privateIP}:${server.address().port}`
 global.sharedWindows = {}
 /*
@@ -61,7 +72,6 @@ const newWin = () => {
 	} else { return win.loadURL(_NUXT_URL_) }
 }
 app.on('ready', newWin)
-// app.on('ready', webInterfaceWin)
 app.on('window-all-closed', () => app.quit())
 app.on('activate', () => {
 	win = newWin()

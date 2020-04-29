@@ -1,9 +1,13 @@
+import process from 'process'
+import crypto from 'crypto'
+import os from 'os'
+import zlib from 'zlib'
+import path from 'path'
+
 export const state = () => ({
-    crypto: require ? require('crypto') : false,
-    // childProcess: require ? require('child_process') : false,
-    os: require ? require('os') : false,
-    // fs: require ? require('fs') : false,
-    zlib: require ? require('zlib') : false,
-    path: require ? require('path') : false,
-    process: require ? require('process') : false,
+    crypto,
+    os,
+    zlib,
+    path,
+    process,
 })

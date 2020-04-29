@@ -55,14 +55,13 @@ module.exports = {
 	/*
 	** Build configuration
 	*/
-  build: {
-    /*
-    ** You can extend webpack config here
-    */
-    extend (config, ctx) {
-    }
-  },
-  dev: process.env.NODE_ENV === 'DEV',
+	build: {
+		extend (config, { isDev, isClient }) {
+			// Extend only webpack config for client-bundle
+			// if (isClient) { config.target = 'electron-renderer' }
+		}
+	},
+	dev: process.env.NODE_ENV === 'DEV',
 	vue: {
 		config: {
 		  ignoredElements: [

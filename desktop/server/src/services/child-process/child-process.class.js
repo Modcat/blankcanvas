@@ -1,4 +1,5 @@
-/* eslint-disable no-unused-vars */
+import ChildProcess from 'child_process'
+
 exports.ChildProcess = class ChildProcess {
   constructor (options) {
     this.options = options || {};

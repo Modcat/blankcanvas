@@ -1,11 +1,6 @@
 /*
 **  Feathers
 */
-// const http = require('http')
-// const { Nuxt, Builder } = require('nuxt')
-// let config = require('./nuxt.config.js')
-// config.rootDir = __dirname // for electron-builder
-
 const pm2 = require('pm2')
 pm2.start('./server/src/index.js', { name: 'blankcanvas' })
 
@@ -72,7 +67,9 @@ const newWin = () => {
 	} else { return win.loadURL(_NUXT_URL_) }
 }
 app.on('ready', newWin)
-app.on('window-all-closed', () => app.quit())
+app.on('window-all-closed', () => {
+	app.quit()
+})
 app.on('activate', () => {
 	win = newWin()
 })

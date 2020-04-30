@@ -19,10 +19,10 @@ exports.ChildProcess = class ChildProcess {
 
   async update (id, data, params) {
 
-    // let terminal = this.terminals[id]
-    // .spawn( data.program, { shell: true, cwd: data.cwd } )
+    let terminal = this.terminals[id]
+    .spawn( data.cmd, { shell: true, cwd: data.cwd } )
 
-    let terminal = this.terminals[id].exec(data.cmd, { shell: true, cwd: data.cwd })
+    // let terminal = this.terminals[id].exec(data.cmd, { shell: true, cwd: data.cwd })
 
     // console.log(terminal)
     

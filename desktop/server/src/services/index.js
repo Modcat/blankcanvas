@@ -5,6 +5,7 @@ const fonts = require('./fonts/fonts.service.js');
 const fs = require('./fs/fs.service.js');
 const profile = require('./profile/profile.service.js');
 const messages = require('./messages/messages.service.js');
+const images = require('./images/images.service.js');
 // eslint-disable-next-line no-unused-vars
 module.exports = function (app) {
   app.configure(users)
@@ -14,4 +15,5 @@ module.exports = function (app) {
   app.configure(fs);
   app.configure(profile);
   app.configure(messages);
+  app.configure(images);
 }

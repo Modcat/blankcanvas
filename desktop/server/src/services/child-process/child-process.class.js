@@ -22,9 +22,9 @@ exports.ChildProcess = class ChildProcess {
     // let terminal = this.terminals[id]
     // .spawn( data.program, { shell: true, cwd: data.cwd } )
 
-    let terminal = ChildProcessCLI.exec(data.cmd, { shell: true, cwd: data.cwd })
+    let terminal = this.terminals[id].exec(data.cmd, { shell: true, cwd: data.cwd })
 
-    console.log(terminal)
+    // console.log(terminal)
     
     // terminal
     // .stdout

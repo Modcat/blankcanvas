@@ -56,6 +56,7 @@ module.exports = {
 	** Build configuration
 	*/
 	build: {
+		transpile: ['feathers-vuex'],
 		extend (config, { isDev, isClient }) {
 			// Extend only webpack config for client-bundle
 			// if (isClient) { config.target = 'electron-renderer' }
@@ -64,40 +65,40 @@ module.exports = {
 	dev: process.env.NODE_ENV === 'DEV',
 	vue: {
 		config: {
-		  ignoredElements: [
-			'AbsoluteLayout',
-			'DockLayout',
-			'FlexboxLayout',
-			'GridLayout',
-			'StackLayout',
-			'SegmentedBarItem',
-			'WrapLayout',
-			'ActionBar',
-			'ActionItem',
-			'NavigationButton',
-			'ActivityIndicator',
-			'Button',
-			'DatePicker',
-			'Image',
-			'Label',
-			'ListPicker',
-			'ListView',
-			'Progress',
-			'ScrollView',
-			'SearchBar',
-			'SegmentedBar',
-			'Slider',
-			'Switch',
-			'TabView',
-			'TextField',
-			'TextView',
-			'HtmlView',
-			'WebView',
-			'TimePicker',
-			'Page',
-			'Placeholder'
-		  ],
-		  productionTip: false
+			ignoredElements: [
+				'AbsoluteLayout',
+				'DockLayout',
+				'FlexboxLayout',
+				'GridLayout',
+				'StackLayout',
+				'SegmentedBarItem',
+				'WrapLayout',
+				'ActionBar',
+				'ActionItem',
+				'NavigationButton',
+				'ActivityIndicator',
+				'Button',
+				'DatePicker',
+				'Image',
+				'Label',
+				'ListPicker',
+				'ListView',
+				'Progress',
+				'ScrollView',
+				'SearchBar',
+				'SegmentedBar',
+				'Slider',
+				'Switch',
+				'TabView',
+				'TextField',
+				'TextView',
+				'HtmlView',
+				'WebView',
+				'TimePicker',
+				'Page',
+				'Placeholder'
+			],
+			productionTip: false
 		}
 	},
 }

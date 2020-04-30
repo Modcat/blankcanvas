@@ -68,6 +68,9 @@ const newWin = () => {
 }
 app.on('ready', newWin)
 app.on('window-all-closed', () => {
+	// Remove any PM2 blankcanvas process
+	const { execSync } = require('child_process')
+	execSync('pm2 delete blankcanvas', { shell: true })
 	app.quit()
 })
 app.on('activate', () => {

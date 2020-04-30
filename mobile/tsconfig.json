@@ -30,7 +30,7 @@
   },
   "include": [
     "app",
-    "types"
+    "types", "server", "server"
   ],
   "exclude": [
     "node_modules",

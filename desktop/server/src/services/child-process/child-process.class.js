@@ -14,6 +14,14 @@ exports.ChildProcess = class ChildProcess {
 
     this.terminals.push(ChildProcessCLI)
 
+    // Send action to authenticated users channel
+    this
+    .publish('created', data => {
+      return app
+        .channel('authenticated')
+        .send(`Terminal ${this.terminals.length}: ${data.spawnfile}`);
+    });
+
     return data;
   }
 
@@ -21,26 +29,30 @@ exports.ChildProcess = class ChildProcess {
 
     let terminal = this.terminals[id]
     .spawn( data.cmd, { shell: true, cwd: data.cwd } )
-
-    // let terminal = this.terminals[id].exec(data.cmd, { shell: true, cwd: data.cwd })
-
-    // console.log(terminal)
     
-    // terminal
-    // .stdout
-    // .on('data', (data) => {
-    //   return `stdout: ${data}`
-    // });
+    terminal
+    .stdout
+    .on('data', (data) => {
+      // Send this information to the authenticated users channel
+      this
+      .publish('updated', data => {
+        return app.channel('authenticated').send({
+          output: `${data}`
+        });
+      });
+    });
     
-    // terminal
-    // .stderr
-    // .on('data', (data) => {
-    //   return `stderr: ${data}`
-    // });
-    
-    // terminal.on('close', (code) => {
-    //   return `child process exited with code ${code}`
-    // });
+    terminal
+    .stderr
+    .on('data', (data) => {
+      // Send this information to the authenticated users channel
+      this
+      .publish('updated', data => {
+        return app.channel('authenticated').send({
+          output: `${data}`
+        });
+      });
+    });
 
     return terminal
   }

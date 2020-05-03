@@ -1,9 +1,6 @@
 
 module.exports = {
-  mode: 'spa',
-  /*
-	** Headers of the page
-	*/
+	mode: 'spa',
 	head: {
 		title: process.env.npm_package_name || '',
 		meta: [
@@ -15,46 +12,24 @@ module.exports = {
 			{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
 		]
 	},
-	/*
-	** Customize the progress-bar color
-	*/
 	loading: false,
-	/*
-	** Global CSS
-	*/
 	css: [
 		'./assets/styles/base.less'
 	],
-
 	styleResources: {
 		sass: ['./assets/styles/core/c-colors.less']
 	},
-	/*
-	** Plugins to load before mounting the App
-	*/
 	plugins: [
-		'./plugins/nativescript-elements.js'
+		'./plugins/nativescript-elements.js',
+		'./plugins/feathers-client.js'
 	],
-	/*
-	** Nuxt.js dev-modules
-	*/
 	buildModules: [],
-	/*
-	** Nuxt.js modules
-	*/
 	modules: [
 		'@nuxtjs/style-resources',
 		'@nuxtjs/axios',
 		'@nuxtjs/pwa',
 	],
-	/*
-	** Axios module configuration
-	** See https://axios.nuxtjs.org/options
-	*/
 	axios: {},
-	/*
-	** Build configuration
-	*/
 	build: {
 		transpile: ['feathers-vuex'],
 		extend (config, { isDev, isClient }) {

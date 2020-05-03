@@ -59,6 +59,6 @@ exports.ChildProcess = class ChildProcess {
 
   async remove (id, params) {
     this.terminals.splice( id, 1 )
-    return { id };
+    return { id: id };
   }
 };

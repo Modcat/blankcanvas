@@ -26,38 +26,52 @@ window.addEventListener('load', function(){
         'profile',
     ]
 
-    client
-    .service('users')
-    .on('created', payload => { console.log(payload) })
+    client.authenticate({
+        strategy: 'local',
+        email: 'admin',
+        password: '123'
+    })
     
     // Loop over services
-    // services
-    // .forEach( serviceName => {
+    services
+    .forEach( serviceName => {
+        
+        const service = client.service(serviceName)
 
-    //     // Assign event sockets
+        // Assign event sockets
 
-    //     const events = ['created', 'updated', 'patched', 'removed']
+        const events = ['created', 'updated', 'patched']
 
-    //     events
-    //     .forEach( eventName => {
+        events
+        .forEach( eventName => {
 
-    //         // Expose feathers service to Vuex
-
-    //         const service = client.service(serviceName)
-
-    //         // window.$nuxt.$store.state.services[serviceName] = 
-
-    //         // Forward the store
-
-    //         console.log(service)
             
-    //         service
-    //         .on(
-    //             eventName,
-    //             // payload => { window.$nuxt.$store.dispatch(`services/${serviceName}/${eventName}`, payload)
-    //             payload => { console.log(serviceName, payload)
-    //         })
 
-    //     })
-    // })
+            // window.$nuxt.$store.state.services[serviceName] = 
+
+            // Forward the store
+
+            // Register each socket event
+            
+            service
+            .on(
+                eventName,
+                payload => { window.$nuxt.$store.dispatch(`services/${serviceName}/io`, payload)
+            })
+
+        })
+
+        // Removed is adcense of data so register it sperately
+
+        service
+        .on(
+            'removed',
+            payload => { window.$nuxt.$store.dispatch(`services/${serviceName}/removed`, payload)
+        })
+
+        // expose global scope
+
+        window.client = client
+
+    })
 })

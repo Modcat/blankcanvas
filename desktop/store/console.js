@@ -4,8 +4,8 @@ export const state = () => ({
 });
 
 export const actions = {
-  displayConsole(context, payload) {
-    context.commit("DISPLAYCONSOLE", payload);
+  displayConsole({ commit }, payload) {
+    commit("DISPLAYCONSOLE", payload);
   }
 };
 

@@ -40,12 +40,10 @@ window.addEventListener('load', function(){
 
         // Assign event sockets
 
-        const events = ['created', 'updated', 'patched']
+        const events = ['created', 'updated', 'patched', 'removed']
 
         events
         .forEach( eventName => {
-
-            
 
             // window.$nuxt.$store.state.services[serviceName] = 
 
@@ -56,18 +54,20 @@ window.addEventListener('load', function(){
             service
             .on(
                 eventName,
-                payload => { window.$nuxt.$store.dispatch(`services/${serviceName}/io`, payload)
-            })
+                // payload => { window.$nuxt.$store.dispatch(`services/${serviceName}/io`, payload)}
+                payload => { console.log(payload) }
+            )
 
         })
 
         // Removed is adcense of data so register it sperately
 
-        service
-        .on(
-            'removed',
-            payload => { window.$nuxt.$store.dispatch(`services/${serviceName}/removed`, payload)
-        })
+        // service
+        // .on(
+        //     'removed',
+        //     // payload => { window.$nuxt.$store.dispatch(`services/${serviceName}/removed`, payload)},
+        //     payload => { console.log(payload) }
+        // )
 
         // expose global scope
 

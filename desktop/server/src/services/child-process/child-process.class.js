@@ -23,29 +23,20 @@ exports.ChildProcess = class ChildProcess {
       .find(terminal => terminal.id == id)
       .ChildProcessCLI
       .spawn( data.cmd, { shell: true, cwd: data.cwd } )
-
-    console.log(terminal)
     
-    let stdout = terminal
+    terminal
     .stdout
     .on('data', function(data) {
-      // Send this information to the authenticated users channel
-      this.patch(id, { test: `${data}` })
+      this.patch(id, { output: `${data}` })
     }.bind(this));
     
-    // terminal
-    // .stderr
-    // .on('data', (data) => {
-    //   // Send this information to the authenticated users channel
-    //   this
-    //   .publish('updated', data => {
-    //     return app.channel('authenticated').send({
-    //       output: `${data}`
-    //     });
-    //   });
-    // });
+    terminal
+    .stderr
+    .on('data', function(data) {
+      this.patch(id, { error: `${data}` })
+    }.bind(this));
 
-    return stdout
+    return { id, input: data }
   }
 
   async patch(id, params) {

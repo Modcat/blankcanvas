@@ -24,12 +24,4 @@ exports.Fonts = class Fonts {
 
     return data;
   }
-
-  async update (id, data, params) {
-    return data;
-  }
-
-  async patch (id, data, params) {
-    return data;
-  }
 };

@@ -50,6 +50,8 @@
     "feathers-client": "^2.4.0",
     "feathers-hooks-common": "^5.0.3",
     "feathers-sequelize": "^6.1.0",
+    "font-list": "^1.2.11",
+    "git": "^0.1.5",
     "helmet": "^3.22.0",
     "less-loader": "^6.0.0",
     "nuxt": "^2.0.0",

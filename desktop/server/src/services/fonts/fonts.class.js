@@ -1,23 +1,26 @@
-/* eslint-disable no-unused-vars */
+const fontList = require('font-list');
+
 exports.Fonts = class Fonts {
   constructor (options) {
     this.options = options || {};
   }
 
-  async find (params) {
-    return [];
-  }
-
-  async get (id, params) {
-    return {
-      id, text: `A new message with ID: ${id}!`
-    };
-  }
-
   async create (data, params) {
-    if (Array.isArray(data)) {
-      return Promise.all(data.map(current => this.create(current, params)));
-    }
+
+    // Upon creation list all fonts installed on the root node
+    
+    data = fontList
+      .getFonts()
+      .then(fonts => {
+        return fonts
+          .map(font => {
+            return font.replace(/\/|\\/gi,'').replace(/"/gi,'')
+          })
+        return fonts
+      })
+      .catch(err => {
+        return err
+      })
 
     return data;
   }
@@ -28,9 +31,5 @@ exports.Fonts = class Fonts {
 
   async patch (id, data, params) {
     return data;
-  }
-
-  async remove (id, params) {
-    return { id };
   }
 };

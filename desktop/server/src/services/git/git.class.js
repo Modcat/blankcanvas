@@ -1,4 +1,5 @@
-/* eslint-disable no-unused-vars */
+const GitCLI = require('git')
+
 exports.Git = class Git {
   constructor (options) {
     this.options = options || {};

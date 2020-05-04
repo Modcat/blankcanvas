@@ -14,7 +14,7 @@ exports.Fonts = class Fonts {
       .then(fonts => {
         return fonts
           .map(font => {
-            return font.replace(/\/|\\/gi,'').replace(/"/gi,'')
+            return font.replace(/\/|\\|"/gi,'')
           })
         return fonts
       })

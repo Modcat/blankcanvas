@@ -14,14 +14,14 @@ exports.Save = class Save {
     return this.savedfiles[id] || { error: "Sorry no document found" }
   }
 
-  // Create eill opening existing files or creating a new file
+  // Create will open existing files or creating a new file
 
   async create (data, params) {
     if (Array.isArray(data)) {
       return Promise.all(data.map(current => this.create(current, params)));
     }
 
-    // Save each directory currently opened
+    // Push file to savedfiles array / open documents
 
     if (this.savedfiles.indexOf(data))
     {
@@ -45,6 +45,8 @@ exports.Save = class Save {
       // Extract file to app directory {namespaced by index}
 
       // return JSON data to app
+
+      return {}
     }
     else
     {
@@ -53,9 +55,9 @@ exports.Save = class Save {
       // Zip directory and save at URL location
 
       // Return JSON data
-    }
 
-    return data;
+      return {}
+    }
   }
 
   // Update will save when a document is already opened
@@ -73,6 +75,9 @@ exports.Save = class Save {
   // Remove is called when one closes the document or application
 
   async remove (id, params) {
+    
+    // Delete the directory specified
+
     return { id };
   }
 };

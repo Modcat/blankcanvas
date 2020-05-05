@@ -4,7 +4,7 @@ const git = require('./git/git.service.js');
 const fonts = require('./fonts/fonts.service.js');
 const profile = require('./profile/profile.service.js');
 const messages = require('./messages/messages.service.js');
-const images = require('./images/images.service.js');
+const files = require('./files/files.service.js');
 const permissions = require('./permissions/permissions.service.js');
 const save = require('./save/save.service.js');
 const recent = require('./recent/recent.service.js');
@@ -16,7 +16,7 @@ module.exports = function (app) {
   app.configure(fonts);
   app.configure(profile);
   app.configure(messages);
-  app.configure(images);
+  app.configure(files);
   app.configure(permissions);
   app.configure(save);
   app.configure(recent);

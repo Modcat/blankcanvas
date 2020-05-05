@@ -1,5 +1,5 @@
 const { Service } = require('feathers-sequelize');
 
-exports.Images = class Images extends Service {
+exports.Files = class Files extends Service {
   
 };

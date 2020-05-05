@@ -1,19 +1,10 @@
-import { state as Artboardstate } from './artboards'
-
-// Document object contain's file system or github information
-// Also database information for live connectivity
-
 export const state = () => ({
   document: {
-    // Directory to save document (required even if github so it can store this information)
+    // Document location
     saveTo: '',
-    // OR || Github URL if hosted on github
-    github: '',
-    // Database for live connections (not to be confused with database's in the project)
     database: {
       // DB object type
     },
-    ...Artboardstate
   }
 })
 

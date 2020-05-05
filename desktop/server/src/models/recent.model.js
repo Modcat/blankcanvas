@@ -5,8 +5,8 @@ const DataTypes = Sequelize.DataTypes;
 
 module.exports = function (app) {
   const sequelizeClient = app.get('sequelizeClient');
-  const messages = sequelizeClient.define('messages', {
-    text: {
+  const recent = sequelizeClient.define('recent', {
+    url: {
       type: DataTypes.STRING,
       allowNull: false
     }
@@ -19,10 +19,10 @@ module.exports = function (app) {
   });
 
   // eslint-disable-next-line no-unused-vars
-  messages.associate = function (models) {
+  recent.associate = function (models) {
     // Define associations here
     // See http://docs.sequelizejs.com/en/latest/docs/associations/
   };
 
-  return messages;
+  return recent;
 };

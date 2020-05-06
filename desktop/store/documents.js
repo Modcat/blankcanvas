@@ -1,6 +1,13 @@
-// Each object is an artboard and a document can have multiple art boards
-export const state = () => ([
-    { // This is an artboard object
+export const state = () => ({
+  documents: [{
+    // Document location
+    saveTo: '',
+    // Databases
+    database: [{
+      // DB object type
+    }],
+    // Artboards
+    artboards: [{ // This is an artboard object
       id: 1,
       name: 'Label name',
       group: 'name of group',
@@ -215,11 +222,200 @@ export const state = () => ([
         '4.2.3.2': { /* Is a layer in group 3.1.2.0 */ },
         '4.2.3.3': { /* Is a layer in group 3.1.2.0 */ }
       }
+    }],
+    // Artflow
+    artflow: [
+      {
+        // Id of artboard
+        artboard: 1,
+        // Position in diagram
+        position: {x: 0, y: 0},
+        // Position of link on next art board
+        linkedline: {x: 0, y: 0},
+        // Note object attached to art board
+        Note: {}
+      },
+      // Artflow has parts of the diagram which are questions
+      {
+        // Id of artboard
+        question: 'Admin User?',
+        // Output values have nested art boards and continues to nest on this branch
+        yes: [
+          {
+            // <Database> object type
+          }
+        ],
+        no: [
+          {
+            // <Artboard> object type
+          }
+        ]
+      }
+    ],
+    // Attached files
+    attachedFiles: [
+      {
+        // Video constructor
+        // This is to the video project that conatains all JSON data relating to the timeline in the software
+        path: 'path/to/file/video.vid',
+        // AFTER THIS LINE WILL BE THE DATA IN A JSON FILE
+        assets: [
+          // Each object is either an image, video, spreadsheet, database or audio visualization, Code canvas and all other types
+          // A video project is an art board and therefore will be treated as one
+          // All assets will have none distructive filters
+          {
+            // Audio, video, spreadsheet, database or audio visualization, Code canvas
+            filters: []
+          }
+        ]
+      },
+      {
+        // Audio constructor,
+        tracks: [
+          {
+            name: 'name of track',
+            audioSnippets: [
+              {
+                name: 'name of snippet',
+                soundBytes: [],
+                mappedInstrument: 'piano',
+                instumentMode: 'name of mode',
+                audioMapping: [
+                  { position: '1:22', length: 200, pitchCurve: ['array of bezier curve'], instruemtPosition: '20%' },
+                  { position: '1:33', length: 200, pitchCurve: ['array of bezier curve'], instruemtPosition: '20%' }
+                ],
+                // visual interface
+                waveVisulizer: 'image of wave data',
+                audioVisulizer: '3D swerl',
+                codeVisualizer: 'code project for visualizer overriding the default',
+                instrument3D: '3d object for instrument'
+              }
+            ]
+          }
+        ],
+        assets: [
+          // Each object will be an audio
+        ]
+      },
+      {
+        // Spreadsheet constructor,
+        sheets: [
+          {
+            // Each object is a spreadsheet
+            // Each spreadsheet has data data
+            data: {}
+          }
+        ]
+      },
+      {
+        // Database is the data object referncing all the table information for a visual chart
+        // Connection info for database
+        connection: {
+          type: 'oracle',
+          host: 'localhost:3000',
+          socket: ':90'
+        },
+        // Design of database
+        schema: [
+          // Each object is a schema
+          {
+            tableName: 'Table Name',
+            // Relationships defined as an array of strings or objects, I haven't decided just yet
+            relations: [
+              'TO `Table Users`'
+            ],
+            fields: [
+              // Each object is a field
+              {
+                fieldName: 'Field Name',
+                dataType: 'varchar255'
+              }
+            ]
+          }
+        ],
+        // Data holds the current information of data for a selected table or query in the database
+        // What ever data is focused on will be controlled by the space rendered
+        data: {}
+      }
+    ],
+    // Director
+    director: {
+      // Mapped environment
+      environment: {
+        // A Mapped environment allows VR, AR, Drones and more devices to be mapped to one space
+        gridSize: [],
+        gridHeight: [],
+        gridSegments: []
+      },
+      // All devices for direction will be listed in this object
+      devices: {
+        UUID: {
+          // Key is the UUID or name of the device
+          type: ['drone', 'Screen', 'Holographic', 'lightArray', '3DCamera', 'Phone or table AR device cameras IP address'],
+          // For drones, screens and holographics you can attach an art board, audio visualizer or video file
+          // This will be under attached files and linked to an audio project that has an associated graphic
+          attachedFile: ['Audio', 'ArtBoard', 'video'],
+          // Camera only
+          cameras: [ // Array of cameras
+            {
+              // Camera UUID to identify camera (drone, DSLR, video camcorda, VR headset, AR device etc...)
+              id: 'Camera UUID',
+              // Different name to identify the camera
+              alias: 'Alias'
+              // Paths for camera to follow in the mapped environment
+            }
+          ],
+          // For drones and cameras
+          flightPaths: [
+            {
+              // Each object is a path
+              path: [112, 203, 30],
+              rotationCords: [
+                ['x', 'y', 'z', 'duration']
+              ],
+              startTime: '1:22',
+              activeDuration: 200
+            }
+          ],
+          // Light array only
+          lightPatterns: [ // This array is a collection of light patterns
+            [ // This array is one pattern
+              { /* This object will define the lazer light pattern or array of normal light patterns including the start and duration of the light pattern */ }
+            ],
+            [ // Light pattern
+              { /* Light object */ },
+              { /* Light object */ },
+              { /* Light object */ }
+            ]
+          ]
+        }
+      },
+      // All assets exported from each media device
+      exportAssets: {
+        // Exported assets or video recording of all the cameras, screens, holograms and more
+        assets: [],
+        // Streamed cut
+        postProduction: {
+          // This will be a video project object
+        },
+        // This object will contain the final directors cut or post production
+        // The assets can be used in this final cut to make the video direction perfect
+        finalCut: {
+          // This will be a video project object
+        }
+      }
     }
-])
+  }]
+})
 
 export const actions = {
+  saveTo(context, payload) {
+    context.commit('SAVETO', payload)
+  }
 }
 
 export const mutations = {
+  SAVETO(state, payload) {
+    state.saveTo = `${payload}.bcd`
+  }
 }

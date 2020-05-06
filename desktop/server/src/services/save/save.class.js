@@ -4,14 +4,8 @@ exports.Save = class Save {
     this.options = options || {};
     this.savedfiles = [],
     this.app = app
-  }
-
-  async find (params) {
-    return this.savedfiles;
-  }
-
-  async get (id, params) {
-    return this.savedfiles[id] || { error: "Sorry no document found" }
+    // Define app directory foreach OS
+    this.appDirectory = false
   }
 
   // Create will open existing files or creating a new file
@@ -35,10 +29,40 @@ exports.Save = class Save {
     .service('recent')
     .create({ url: data.url })
 
-    // Extract file / create file if it doesn't exist
+    // Modules
 
-    const fs = require('fs')
-    const os = require('process').os
+    const fs = require('fs'),
+      os = require('process').platform,
+      fstream = require('fstream'),
+      tar = require('tar'),
+      zlib = require('zlib'),
+      fileIndex = this.savedfiles.length - 1
+
+    // Define app directory
+
+    if (!this.appDirectory)
+    {
+      switch(os) {
+        case 'win32':
+          this.appDirectory = '/blankcanvas/'
+          break
+        case 'linux':
+          this.appDirectory = '/var/tmp/blankcanvas/'
+          break
+        case 'darwin':
+          this.appDirectory = '~/Library/blankcanvas/'
+          break
+      }
+    }
+
+    // Create app directory if it doesn't exist
+
+    if (fs.existsSync(this.appDirectory))
+    {
+      fs.mkdirSync(this.appDirectory)
+    }
+
+    // If file exists extract file else create file
 
     if ( fs.existsSync(data.url) )
     {
@@ -50,14 +74,32 @@ exports.Save = class Save {
     }
     else
     {
-      // Create files in app directory
+      // Create files and directories in app directory
+      fs.mkdirSync(`${this.appDirectory}/${fileIndex}/files`)
+
+      fs.writeFileSync(`${this.appDirectory}/${fileIndex}/artboards.js`)
+      fs.writeFileSync(`${this.appDirectory}/${fileIndex}/artflow.js`)
+      fs.writeFileSync(`${this.appDirectory}/${fileIndex}/director.js`)
+      fs.writeFileSync(`${this.appDirectory}/${fileIndex}/attchedfiles.js`)
 
       // Zip directory and save at URL location
+      fstream.Reader({ 'path': `${this.appDirectory}/${fileIndex}/`, 'type': 'Directory' })
+        .pipe(tar.Pack())
+        .pipe(zlib.Gzip())
+        .pipe(fstream.Writer({ 'path': data.url }));
 
-      // Return JSON data
+      // Return created message
 
-      return {}
+      return { created: `${this.appDirectory}/${fileIndex}/` }
     }
+  }
+
+  async find (params) {
+    return this.savedfiles;
+  }
+
+  async get (id, params) {
+    return this.savedfiles[id] || { error: "Sorry no document found" }
   }
 
   // Update will save when a document is already opened
@@ -77,6 +119,9 @@ exports.Save = class Save {
   async remove (id, params) {
     
     // Delete the directory specified
+
+    // Set saved index to false
+    this.savedfiles[id] = false
 
     return { id };
   }

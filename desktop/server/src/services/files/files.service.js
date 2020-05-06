@@ -1,11 +1,9 @@
-// Initializes the `images` service on path `/images`
+// Initializes the `files` service on path `/files`
 const { Files } = require('./files.class');
-const createModel = require('../../models/files.model');
 const hooks = require('./files.hooks');
 
 module.exports = function (app) {
   const options = {
-    Model: createModel(app),
     paginate: app.get('paginate')
   };
 

@@ -5,7 +5,8 @@ exports.Save = class Save {
     this.savedfiles = [],
     this.app = app
     // Define app directory foreach OS
-    this.appDirectory = false
+    this.appDirectory = false,
+    this.os = require('process').platform
   }
 
   // Create will open existing files or creating a new file
@@ -32,17 +33,17 @@ exports.Save = class Save {
     // Modules
 
     const fs = require('fs'),
-      os = require('process').platform,
       fstream = require('fstream'),
       tar = require('tar'),
       zlib = require('zlib'),
+      { execSync } = require('child_process'),
       fileIndex = this.savedfiles.length - 1
 
     // Define app directory
 
     if (!this.appDirectory)
     {
-      switch(os) {
+      switch(this.os) {
         case 'win32':
           this.appDirectory = '/blankcanvas/'
           break
@@ -77,10 +78,7 @@ exports.Save = class Save {
       // Create files and directories in app directory
       fs.mkdirSync(`${this.appDirectory}/${fileIndex}/files`)
 
-      fs.writeFileSync(`${this.appDirectory}/${fileIndex}/artboards.js`)
-      fs.writeFileSync(`${this.appDirectory}/${fileIndex}/artflow.js`)
-      fs.writeFileSync(`${this.appDirectory}/${fileIndex}/director.js`)
-      fs.writeFileSync(`${this.appDirectory}/${fileIndex}/attchedfiles.js`)
+      fs.writeFileSync(`${this.appDirectory}/${fileIndex}/document.json`)
 
       // Zip directory and save at URL location
       fstream.Reader({ 'path': `${this.appDirectory}/${fileIndex}/`, 'type': 'Directory' })
@@ -89,7 +87,7 @@ exports.Save = class Save {
         .pipe(fstream.Writer({ 'path': data.url }));
 
       // Return created message
-
+      
       return { created: `${this.appDirectory}/${fileIndex}/` }
     }
   }
@@ -119,6 +117,14 @@ exports.Save = class Save {
   async remove (id, params) {
     
     // Delete the directory specified
+    if (os === 'win32')
+    {
+      execSync(`del -RF ${this.appDirectory}/${id}`)
+    }
+    else
+    {
+      execSync(`rm -RF ${this.appDirectory}/${id}`)
+    }
 
     // Set saved index to false
     this.savedfiles[id] = false

@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 exports.Messages = class Messages {
   constructor (options) {
-    this.options = options || { maxHistory: 30 };
+    this.options = options || { maxHistory: 30 }
     this.messages = []
   }
   

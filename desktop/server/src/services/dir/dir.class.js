@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-exports.Opendir = class Opendir {
+exports.Dir = class Dir {
   constructor (options) {
     this.options = options || {};
   }

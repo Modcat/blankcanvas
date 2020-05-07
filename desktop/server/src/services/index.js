@@ -9,7 +9,7 @@ const permissions = require('./permissions/permissions.service.js');
 const save = require('./save/save.service.js');
 const recent = require('./recent/recent.service.js');
 const recovered = require('./recovered/recovered.service.js');
-const opendir = require('./opendir/opendir.service.js');
+const dir = require('./dir/dir.service.js');
 // eslint-disable-next-line no-unused-vars
 module.exports = function (app) {
   app.configure(users)
@@ -23,5 +23,5 @@ module.exports = function (app) {
   app.configure(save);
   app.configure(recent);
   app.configure(recovered);
-  app.configure(opendir);
+  app.configure(dir);
 }

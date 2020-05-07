@@ -62,9 +62,10 @@ exports.Save = class Save {
     if ( fs.existsSync(`${data.url}/${data.fileName}`) )
     {
       // Extract file to app directory {namespaced by index}
-      const extract = fs
+      fs
       .createReadStream(`${data.url}/${data.fileName}`, { emitClose: true })
       .pipe( unzipper.Extract({ path: `${this.appDirectory}/${fileIndex}` }) )
+      
       return {
         created: `${this.appDirectory}/${fileIndex}/`,
         fileIndex: `${fileIndex}`
@@ -79,7 +80,7 @@ exports.Save = class Save {
       fs.writeFileSync(`${this.appDirectory}/${fileIndex}/document.json`)
       fs.writeFileSync(`${this.appDirectory}/${fileIndex}/notes.json`)
 
-      fs.writeFileSync(`${this.appDirectory}/${fileIndex}/files/test.json`,'{"test": "Lawrence"}')
+      fs.writeFileSync(`${this.appDirectory}/${fileIndex}/files/test.json`)
 
       // Zip directory and save at URL location
       zip(
@@ -111,12 +112,35 @@ exports.Save = class Save {
   // Update will save when a document is already opened
     // Optionally if bcg file it will push to the git repo
   async update (id, data, params) {
-    // Save new data (nuxt store) to files
+    // Save new data (nuxt store) to document.json
+    fs.writeFile(
+      `${this.appDirectory}/${id}/document.json`,
+      data.document,
+      { encoding: 'utf8'},
+      function() {
+        this
+        .patch(id, `${this.appDirectory}/${id}/document.json` )
+      }.bind(this)
+    )
 
     // Zip data and save to URL
+    const fs = require('fs'),
+    zip = require('zip-dir')
 
+    zip(
+      `${this.appDirectory}/${id}`,
+      { saveTo: `${data.url}${data.fileName}` },
+      function (err, buffer) {
+        this.patch(id, { wroteTo: `${data.url}${data.fileName}` })
+    }.bind(this));
+    
     // Optional: push to git if .git directory exists
     return data;
+  }
+
+  // Patch is used to send message upon successful writing of files
+  async patch (id, data, params) {
+    return { id, data }
   }
 
   // Remove is called when one closes the document or application

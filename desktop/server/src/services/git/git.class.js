@@ -1,4 +1,4 @@
-const GitCLI = require('git')
+const git = require('git')
 
 exports.Git = class Git {
   constructor (options) {

@@ -76,7 +76,8 @@ exports.Save = class Save {
       fs.mkdirSync(`${this.appDirectory}/${fileIndex}`)
       fs.mkdirSync(`${this.appDirectory}/${fileIndex}/files`)
 
-      fs.writeFileSync(`${this.appDirectory}/${fileIndex}/document.json`,'{"name": "Lawrence"}')
+      fs.writeFileSync(`${this.appDirectory}/${fileIndex}/document.json`)
+      fs.writeFileSync(`${this.appDirectory}/${fileIndex}/notes.json`)
 
       fs.writeFileSync(`${this.appDirectory}/${fileIndex}/files/test.json`,'{"test": "Lawrence"}')
 

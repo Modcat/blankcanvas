@@ -7,6 +7,18 @@ exports.Save = class Save {
     // Define app directory foreach OS
     this.appDirectory = false,
     this.os = require('process').platform
+
+    switch(this.os) {
+      case 'win32':
+        this.appDirectory = 'C:\\blankcanvas'
+        break
+      case 'linux':
+        this.appDirectory = '/var/tmp/blankcanvas'
+        break
+      case 'darwin':
+        this.appDirectory = '~/Library/blankcanvas'
+        break
+    }
   }
 
   // Create will open existing files or creating a new file
@@ -80,8 +92,6 @@ exports.Save = class Save {
       fs.writeFileSync(`${this.appDirectory}/${fileIndex}/document.json`)
       fs.writeFileSync(`${this.appDirectory}/${fileIndex}/notes.json`)
 
-      fs.writeFileSync(`${this.appDirectory}/${fileIndex}/files/test.json`)
-
       // Zip directory and save at URL location
       zip(
         `${this.appDirectory}/${fileIndex}`,
@@ -99,7 +109,15 @@ exports.Save = class Save {
   }
 
   async find (params) {
-    return this.savedfiles;
+    if (params.appDirectory)
+    {
+      console.log(this.appDirectory)
+      return this.appDirectory
+    }
+    else
+    {
+      return this.savedfiles
+    }
   }
 
   async get (id, params) {

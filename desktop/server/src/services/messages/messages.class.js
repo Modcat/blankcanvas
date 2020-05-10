@@ -6,17 +6,22 @@ exports.Messages = class Messages {
   }
   
   async create (data, params) {
+
+    // Check object interface
     
     this.messages.unshift(data)
-
-    if (this.messages.length > this.options.maxHistory) {
-      this.messages.pop()
-    }
 
     return data;
   }
 
+  async remove(id, params) {
+    // ID is not in use
+
+    // Params saved date and time are more important
+    return {  }
+  }
+
   async get (id, params) {
     return this.messages[id]
-  } 
+  }
 }

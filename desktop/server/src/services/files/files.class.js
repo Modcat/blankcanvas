@@ -33,56 +33,75 @@ exports.Files = class Files {
       'mp3', 'ogg', 'wav'
     ]
 
-    // Check to see if file exists (this means we can copy the file instead of uploading)
-    if (data.url && this.fs.existsSync(data.url))
+    const appDirectory = await this.app.service('save').find({ appDirectory: true })
+
+    // Check if existing project file (ensuring no overwritten files)
+    if (!this.fs.existsSync(`${appDirectory}/${data.id}/files/${data.filename}`))
     {
-      // Then copy the image, video or audio
-      if ( acceptedFormats.indexOf(data.url.split('.').pop()) )
+      // Check to see if file exists (this means we can copy the file instead of uploading)
+      if (data.url && this.fs.existsSync(data.url))
       {
-        return this.execSync( `mv -R ${data.url} ${app.service('save').appDirectory}/${data.id}/files/${data.url.split('/').pop()}` )
+        // Then copy the image, video or audio
+        if ( acceptedFormats.indexOf(data.url.split('.').pop()) )
+        {
+          return this.execSync( `mv -R ${data.url} ${appDirectory}/${data.id}/files/${data.filename}` )
+        }
+      }
+      else
+      {
+        // Write file process
+        const appDirectory = 
+          await this
+          .app
+          .service('save')
+          .find({ appDirectory: true })
+
+        // Return successfully written file
+        return this
+          .fs
+          .writeFileSync(
+            `${appDirectory}/${data.blankcanvasID}/files/${data.filename}`,
+            data.uri,
+            'binary'
+          )
       }
     }
     else
     {
-      // Write file process
-      const appDirectory = 
-        await this
-        .app
-        .service('save')
-        .find({ appDirectory: true })
-      this.fs.writeFile(
-        `${appDirectory}/${data.blankcanvasID}/files/${data.filename}`,
-        data.uri,
-        'binary',
-        function(error) {
-          // Throw error if exists
-          if (error) throw error
-          // Else send patch update
-          this
-          .update(0, { status: 200, filename: data.filename })
-        }.bind(this)
-      )
-
-      // Return writing file sucess
-      return this.fs.writeFile
+      throw error('Sorry file already exists')
     }
   }
 
   // Update is used to replace an old file
-  async update (id, data, params) {
-    return data;
-  }
-
-  // Patch is used to send success messages
-  async patch (id, data, params) {
-    return data;
+  async update (id, data) {
+    // Get app directory
+    const appDirectory = await this.app.service('save').find({ appDirectory: true })
+    
+    // Make sure the file exists first
+    if (this.fs.existsSync(`${appDirectory}/${id}/files/${data.filename}`))
+    {
+      return this
+        .fs
+        .writeFileSync(
+          `${appDirectory}/${id}/files/${data.filename}`,
+          data.uri,
+          'binary'
+        )
+    }
+    throw error(`File doesn't exist, cannot update`)
   }
 
   async remove (id, params) {
     if (this.fs.existsSync(params.url))
     {
-      this.execSync(`rm -RF ${params.url}`)
+      const appDirectory = await this.app.service('save').find({ appDirectory: true })
+      
+      this.execSync(`rm ${appDirectory}/${id}/files/${params.filename}`)
+      
+      return { deleted: params.filename };
     }
-    return { deleted: params.url };
+    
+    throw error('None existant file, cannot delete')
+    
   }
 };

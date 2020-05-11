@@ -1,11 +1,10 @@
-const ValidatorManager = require('ts-interface-validator'),
-  fs = require('fs'),
-  { execSync } = require('child_process')
+const fs = require('fs'),
+{ execSync } = require('child_process')
 
 /* eslint-disable no-unused-vars */
 exports.Interfaces = class Interfaces {
   constructor (options) {
-    this.options = options || {},
+    this.options = options || {}
     this.interfaces = {}
     // Get all validators
 
@@ -18,7 +17,7 @@ exports.Interfaces = class Interfaces {
       // Read each file and convert to string
 
       // Create interface
-      this.interfaces[ interfaceName ] = ValidatorManager.default.instance.getValidator( `{ a: string; b: number[]; }` )
+      this.interfaces[ interfaceName ] = `{ a: string; b: number[]; }`
     })
   }
 

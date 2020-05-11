@@ -8,17 +8,17 @@ exports.Interfaces = class Interfaces {
     this.interfaces = {}
     // Get all validators
 
-    const tsFiles = fs.readdirSync('./src/services/interfaces/ts/')
+    // const tsFiles = fs.readdirSync('./src/services/interfaces/ts/')
 
-    tsFiles.forEach(file => {
-      // Define interface name
-      const interfaceName = file.split('.').shift()
+    // tsFiles.forEach(file => {
+    //   // Define interface name
+    //   const interfaceName = file.split('.').shift()
 
-      // Read each file and convert to string
+    //   // Read each file and convert to string
 
-      // Create interface
-      this.interfaces[ interfaceName ] = `{ a: string; b: number[]; }`
-    })
+    //   // Create interface
+    //   this.interfaces[ interfaceName ] = `{ a: string; b: number[]; }`
+    // })
   }
 
   async find (params) {

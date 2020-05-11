@@ -12,6 +12,7 @@ const recovered = require('./recovered/recovered.service.js');
 const dir = require('./dir/dir.service.js');
 const invitation = require('./invitation/invitation.service.js');
 const notes = require('./notes/notes.service.js');
+const interfaces = require('./interfaces/interfaces.service.js');
 // eslint-disable-next-line no-unused-vars
 module.exports = function (app) {
   app.configure(users)
@@ -28,4 +29,5 @@ module.exports = function (app) {
   app.configure(dir);
   app.configure(invitation);
   app.configure(notes);
+  app.configure(interfaces);
 }

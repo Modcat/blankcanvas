@@ -64,6 +64,7 @@
     "socket.io-client": "^2.3.0",
     "sqlite3": "^4.2.0",
     "unzipper": "^0.10.11",
+    "validator.js": "^2.0.4",
     "winston": "^3.2.1",
     "x-data-spreadsheet": "^1.1.1"
   },

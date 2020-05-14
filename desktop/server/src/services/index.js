@@ -15,6 +15,7 @@ const notes = require('./notes/notes.service.js');
 const interfaces = require('./interfaces/interfaces.service.js');
 const documents = require('./documents/documents.service.js');
 const e2e = require('./e2e/e2e.service.js');
+const connections = require('./connections/connections.service.js');
 // eslint-disable-next-line no-unused-vars
 module.exports = function (app) {
   app.configure(users)
@@ -34,4 +35,5 @@ module.exports = function (app) {
   app.configure(interfaces);
   app.configure(documents);
   app.configure(e2e);
+  app.configure(connections);
 }
